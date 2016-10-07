@@ -1,8 +1,0 @@
-version: "Apple Swift version 2.2 (swiftlang-703.0.18.1 clang-703.0.29)"
-options: "189a55ad6aa739a079a6a7c012a7cc81"
-build_time: [529033710, 442448000]
-inputs:
-  "/Users/martinzhang/Desktop/Aim!/Aim! For iOS and watchOS/Aim!/Aim!/AwardsViewController.swift": [529033413, 0]
-  "/Users/martinzhang/Desktop/Aim!/Aim! For iOS and watchOS/Aim!/Aim!/AimViewController.swift": [529033447, 0]
-  "/Users/martinzhang/Desktop/Aim!/Aim! For iOS and watchOS/Aim!/Aim!/AppDelegate.swift": [529031053, 0]
-  "/Users/martinzhang/Desktop/Aim!/Aim! For iOS and watchOS/Aim!/Aim!/SettingsViewController.swift": [529033463, 0]
