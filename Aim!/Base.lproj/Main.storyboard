@@ -19,15 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Awards" badgeValue="3" id="FWp-CW-YTJ"/>
+                    <tabBarItem key="tabBarItem" title="Awards" image="World Cup Filled30" badgeValue="3" id="FWp-CW-YTJ"/>
+                    <navigationItem key="navigationItem" title="Awards" id="rbk-ej-VRl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFw-fT-ZKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2460" y="211"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Aim!-->
         <scene sceneID="6dz-Re-R3t">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8G-O0-W0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="1ir-57-5Pv" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sfq-fJ-a3s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -48,10 +50,9 @@
                             <outlet property="delegate" destination="1ir-57-5Pv" id="j5q-Xh-BA8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Aim!" badgeValue="17" id="xoJ-6Y-jxg"/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="7hS-EB-Mwk"/>
+                    <tabBarItem key="tabBarItem" title="Aim!" image="Goal Filled" badgeValue="17" id="xoJ-6Y-jxg"/>
+                    <navigationItem key="navigationItem" title="Aim!" id="9Tl-kV-JFO"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h8G-O0-W0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2460" y="-557"/>
         </scene>
@@ -68,7 +69,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="gPd-Px-nis"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings Filled30" id="gPd-Px-nis"/>
+                    <navigationItem key="navigationItem" title="Settings" id="aa7-q4-4yf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4A1-9A-kom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,24 +91,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9BC-vi-zE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4114" y="-185"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="951" y="136"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YxA-Ac-C1T">
@@ -129,4 +113,9 @@
             <point key="canvasLocation" x="-3294" y="-185"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Goal Filled" width="30" height="30"/>
+        <image name="Settings Filled30" width="30" height="30"/>
+        <image name="World Cup Filled30" width="16" height="30"/>
+    </resources>
 </document>
