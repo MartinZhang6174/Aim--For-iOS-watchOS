@@ -288,6 +288,8 @@
 				TargetAttributes = {
 					9C6890991DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeamName = "Martin Zhang (Personal Team)";
 						LastSwiftMigration = 0800;
 					};
 					9C6890AD1DA5DA8D005CA654 = {

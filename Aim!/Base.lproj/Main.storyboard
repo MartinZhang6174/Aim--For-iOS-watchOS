@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YTn-88-8Wt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O99-vv-05G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
@@ -19,42 +19,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Awards" image="World Cup Filled30" badgeValue="3" id="FWp-CW-YTJ"/>
                     <navigationItem key="navigationItem" title="Awards" id="rbk-ej-VRl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFw-fT-ZKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2460" y="211"/>
+            <point key="canvasLocation" x="-815.20000000000005" y="392.65367316341832"/>
         </scene>
         <!--Aim!-->
-        <scene sceneID="6dz-Re-R3t">
+        <scene sceneID="ayz-Fv-2zL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h8G-O0-W0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="1ir-57-5Pv" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sfq-fJ-a3s">
+                <viewController id="sNf-Yh-QoR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B7v-Lt-G2f"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iyw-z8-e1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mE2-SJ-8Cf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UvO-oL-Dvu">
-                                <frame key="frameInset" minY="92" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UvO-oL-Dvu" id="wkQ-ne-nF7">
-                                    <frame key="frameInset" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1ir-57-5Pv" id="5hj-Wr-rZ6"/>
-                            <outlet property="delegate" destination="1ir-57-5Pv" id="j5q-Xh-BA8"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Aim!" image="Goal Filled" badgeValue="17" id="xoJ-6Y-jxg"/>
-                    <navigationItem key="navigationItem" title="Aim!" id="9Tl-kV-JFO"/>
-                </tableViewController>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Aim!" id="OIQ-Hl-bGI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AgK-F3-eg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2460" y="-557"/>
+            <point key="canvasLocation" x="-815.20000000000005" y="-925.18740629685169"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ilN-Du-P2D">
@@ -69,28 +57,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings Filled30" id="gPd-Px-nis"/>
                     <navigationItem key="navigationItem" title="Settings" id="aa7-q4-4yf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4A1-9A-kom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1749" y="-185"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="f4U-Ag-93F">
-            <objects>
-                <navigationController id="YTn-88-8Wt" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="abC-wL-BfP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="O99-vv-05G" kind="relationship" relationship="rootViewController" id="pUU-hH-3eg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9BC-vi-zE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4114" y="-185"/>
+            <point key="canvasLocation" x="-815.20000000000005" y="-261.31934032983509"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="YxA-Ac-C1T">
@@ -103,18 +74,75 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1ir-57-5Pv" kind="relationship" relationship="viewControllers" id="PmJ-qn-2NE"/>
-                        <segue destination="Ycn-xW-0gd" kind="relationship" relationship="viewControllers" id="Hfj-Kt-hh0"/>
-                        <segue destination="q8e-EM-kpO" kind="relationship" relationship="viewControllers" id="XgZ-0G-wUh"/>
+                        <segue destination="F4Y-n4-s05" kind="relationship" relationship="viewControllers" id="FOn-lY-PeV"/>
+                        <segue destination="h0G-vy-Ma7" kind="relationship" relationship="viewControllers" id="Hfj-Kt-hh0"/>
+                        <segue destination="Chx-JC-fVa" kind="relationship" relationship="viewControllers" id="XgZ-0G-wUh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew9-OM-qwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3294" y="-185"/>
         </scene>
+        <!--Aim!-->
+        <scene sceneID="4hn-Pg-1tB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Aim!" image="AimFilled30" badgeValue="17" id="xaE-d2-f2p"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sNf-Yh-QoR" kind="relationship" relationship="rootViewController" id="zRE-y5-Imo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NFv-az-Lct" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1754.4000000000001" y="-925.18740629685169"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Jaw-eB-AcV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings Filled30" id="gPd-Px-nis"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q8e-EM-kpO" kind="relationship" relationship="rootViewController" id="qSp-Zx-jlj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UE4-KX-1u4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1754.4000000000001" y="-261.31934032983509"/>
+        </scene>
+        <!--Awards-->
+        <scene sceneID="bav-LC-fJQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Awards" image="World Cup Filled30" badgeValue="3" id="FWp-CW-YTJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ycn-xW-0gd" kind="relationship" relationship="rootViewController" id="IVJ-7J-p4Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQa-F6-vRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1754.4000000000001" y="392.65367316341832"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Goal Filled" width="30" height="30"/>
+        <image name="AimFilled30" width="30" height="30"/>
         <image name="Settings Filled30" width="30" height="30"/>
         <image name="World Cup Filled30" width="16" height="30"/>
     </resources>
