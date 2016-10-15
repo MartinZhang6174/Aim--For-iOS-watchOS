@@ -108,7 +108,7 @@
         <scene sceneID="4hn-Pg-1tB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Aim!" image="AimFilled30" badgeValue="17" id="xaE-d2-f2p"/>
+                    <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -127,7 +127,7 @@
         <scene sceneID="Jaw-eB-AcV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings Filled30" id="gPd-Px-nis"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -146,7 +146,7 @@
         <scene sceneID="bav-LC-fJQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Awards" image="World Cup Filled30" badgeValue="3" id="FWp-CW-YTJ"/>
+                    <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -163,8 +163,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AimFilled30" width="30" height="30"/>
+        <image name="Goal Filled" width="30" height="30"/>
+        <image name="Goal Unfilled" width="30" height="30"/>
         <image name="Settings Filled30" width="30" height="30"/>
+        <image name="Settings30" width="30" height="30"/>
         <image name="World Cup Filled30" width="16" height="30"/>
+        <image name="World Cup Unfilled" width="16" height="30"/>
     </resources>
 </document>
