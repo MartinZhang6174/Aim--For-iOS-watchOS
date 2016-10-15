@@ -55,7 +55,28 @@
                     <view key="view" contentMode="scaleToFill" id="j4u-YV-m45">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ha-JB-WPd">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="bcf-hS-JVQ">
+                                        <frame key="frameInset" minY="92" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bcf-hS-JVQ" id="0Kq-mp-2oY">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Ha-JB-WPd" firstAttribute="leading" secondItem="j4u-YV-m45" secondAttribute="leading" id="6W6-P9-3iJ"/>
+                            <constraint firstAttribute="trailing" secondItem="4Ha-JB-WPd" secondAttribute="trailing" id="DtM-pQ-pq1"/>
+                            <constraint firstItem="1Gb-eg-Wg1" firstAttribute="top" secondItem="4Ha-JB-WPd" secondAttribute="bottom" id="NgM-oU-yu4"/>
+                            <constraint firstItem="4Ha-JB-WPd" firstAttribute="top" secondItem="258-5W-p6z" secondAttribute="bottom" constant="-64" id="x3s-yP-UEn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="aa7-q4-4yf"/>
                 </viewController>
