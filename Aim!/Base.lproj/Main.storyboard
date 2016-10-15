@@ -26,6 +26,42 @@
             <point key="canvasLocation" x="-815.20000000000005" y="392.65367316341832"/>
         </scene>
         <!--Aim!-->
+        <scene sceneID="VOM-VY-OVI">
+            <objects>
+                <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.87058823529999996" green="0.20784313730000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XgZ-Wc-2if">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uel-yS-DXC">
+                                <frame key="frameInset" minY="64" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <color key="backgroundColor" red="0.3921568627" green="0.95686274510000002" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="j3J-b9-vwj" id="DZw-IA-VQU"/>
+                            <outlet property="delegate" destination="j3J-b9-vwj" id="nBH-Cv-0fw"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Aim!" id="kQz-ss-oqB"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEl-hd-MOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-815" y="-1604"/>
+        </scene>
+        <!--Aim!-->
         <scene sceneID="ayz-Fv-2zL">
             <objects>
                 <viewController id="sNf-Yh-QoR" sceneMemberID="viewController">
@@ -95,6 +131,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="Fqr-gq-dhn" kind="relationship" relationship="viewControllers" id="5oC-Lm-Zzm"/>
                         <segue destination="F4Y-n4-s05" kind="relationship" relationship="viewControllers" id="FOn-lY-PeV"/>
                         <segue destination="h0G-vy-Ma7" kind="relationship" relationship="viewControllers" id="Hfj-Kt-hh0"/>
                         <segue destination="Chx-JC-fVa" kind="relationship" relationship="viewControllers" id="XgZ-0G-wUh"/>
@@ -160,6 +197,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQa-F6-vRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1754.4000000000001" y="392.65367316341832"/>
+        </scene>
+        <!--Aim!-->
+        <scene sceneID="OXx-5t-s4c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="j3J-b9-vwj" kind="relationship" relationship="rootViewController" id="04m-Bj-yj3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vZn-dv-TrA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1754" y="-1604"/>
         </scene>
     </scenes>
     <resources>
