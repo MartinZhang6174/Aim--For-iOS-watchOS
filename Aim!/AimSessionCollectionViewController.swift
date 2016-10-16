@@ -8,9 +8,11 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "aimSessionsCell"
 
 class AimSessionCollectionViewController: UICollectionViewController {
+    
+    let aimSessionDurationTexts = ["25-Minute-Long Session", "Hour-Long Session", "Custom-Duration Session", "Endless-Duration Session"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class AimSessionCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -43,24 +45,32 @@ class AimSessionCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 4
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! AimSessionsCollectionViewCell
     
         // Configure the cell
+        
+        cell.anAimSessionButtonLabel.text = self.aimSessionDurationTexts[indexPath.item]
     
         return cell
     }
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("Selected item #\(indexPath.item)")
+        
+        self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

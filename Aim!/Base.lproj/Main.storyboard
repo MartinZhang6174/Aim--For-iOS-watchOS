@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,20 +35,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.1764705882352941" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XgZ-Wc-2if">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="175" height="174"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uel-yS-DXC">
-                                <frame key="frameInset" minY="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="aimSessionsCell" id="Uel-yS-DXC" customClass="AimSessionsCollectionViewCell" customModule="Aim_" customModuleProvider="target">
+                                <frame key="frameInset" minY="64" width="175" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard" translatesAutoresizingMaskIntoConstraints="NO" id="ycB-Di-mPo"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25-Minute-Long Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-L8-vby">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.3921568627" green="0.95686274510000002" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.85098039215686272" green="0.37254901960784315" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="ycB-Di-mPo" secondAttribute="bottom" constant="-8" id="6Tw-xZ-bxb"/>
+                                    <constraint firstItem="kUo-L8-vby" firstAttribute="centerY" secondItem="ycB-Di-mPo" secondAttribute="centerY" id="Dya-S1-8VY"/>
+                                    <constraint firstItem="ycB-Di-mPo" firstAttribute="top" secondItem="Uel-yS-DXC" secondAttribute="topMargin" constant="-8" id="Jij-Ue-yhY"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="kUo-L8-vby" secondAttribute="trailing" constant="17" id="POX-RU-JBM"/>
+                                    <constraint firstItem="ycB-Di-mPo" firstAttribute="leading" secondItem="Uel-yS-DXC" secondAttribute="leadingMargin" constant="-8" id="hh9-Zt-fh0"/>
+                                    <constraint firstItem="kUo-L8-vby" firstAttribute="leading" secondItem="Uel-yS-DXC" secondAttribute="leadingMargin" constant="17" id="kBb-ID-eqo"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ycB-Di-mPo" secondAttribute="trailing" constant="-8" id="shp-db-56K"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="anAimSessionButtonLabel" destination="kUo-L8-vby" id="OwZ-WY-aEa"/>
+                                    <outlet property="anAimSessionImageView" destination="ycB-Di-mPo" id="mkS-M3-gJD"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -56,10 +78,31 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Aim!" id="kQz-ss-oqB"/>
+                    <connections>
+                        <segue destination="nJr-wG-UPZ" kind="show" identifier="startAimSessionWithSpecifiedDurationSegue" id="ynf-6c-zz1"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEl-hd-MOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-815" y="-1604"/>
+            <point key="canvasLocation" x="-815.20000000000005" y="-1604.3478260869567"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="atX-8W-qha">
+            <objects>
+                <viewController id="nJr-wG-UPZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Zd-yL-txr"/>
+                        <viewControllerLayoutGuide type="bottom" id="M3a-fI-pe1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9ZX-cZ-uxC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKr-27-Ycl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15" y="-1604"/>
         </scene>
         <!--Aim!-->
         <scene sceneID="ayz-Fv-2zL">
@@ -219,6 +262,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Artboard" width="300" height="300"/>
         <image name="Goal Filled" width="30" height="30"/>
         <image name="Goal Unfilled" width="30" height="30"/>
         <image name="Settings Filled30" width="30" height="30"/>
