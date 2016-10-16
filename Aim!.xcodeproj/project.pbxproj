@@ -306,6 +306,8 @@
 					};
 					9C6890D01DA5E5C0005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeamName = "Martin Zhang (Personal Team)";
 						LastSwiftMigration = 0800;
 					};
 				};
