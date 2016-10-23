@@ -49,7 +49,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard" translatesAutoresizingMaskIntoConstraints="NO" id="ycB-Di-mPo"/>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25-Minute-Long Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-L8-vby">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="25-Minute-Long Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUo-L8-vby">
+                                            <frame key="frameInset" minX="25" minY="76.5" width="125" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -80,11 +81,30 @@
                     <navigationItem key="navigationItem" title="Aim!" id="kQz-ss-oqB"/>
                     <connections>
                         <segue destination="nJr-wG-UPZ" kind="show" identifier="startAimSessionWithSpecifiedDurationSegue" id="ynf-6c-zz1"/>
+                        <segue destination="TuD-e1-o3X" kind="show" identifier="goToSessionCustomizationViewSegue" id="rT3-Zl-0f0"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEl-hd-MOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-815.20000000000005" y="-1604.3478260869567"/>
+        </scene>
+        <!--Aim Session Customization View Controller-->
+        <scene sceneID="vha-ro-hIu">
+            <objects>
+                <viewController id="TuD-e1-o3X" customClass="AimSessionCustomizationViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pRl-h0-5bh"/>
+                        <viewControllerLayoutGuide type="bottom" id="m9O-BS-UEA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MLX-Bp-SbD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xJ-bA-eiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173" y="-2190"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="atX-8W-qha">
@@ -97,12 +117,23 @@
                     <view key="view" contentMode="scaleToFill" id="9ZX-cZ-uxC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session in progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eua-8M-Et5">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eua-8M-Et5" firstAttribute="centerX" secondItem="9ZX-cZ-uxC" secondAttribute="centerX" id="Ox7-CX-zht"/>
+                            <constraint firstItem="Eua-8M-Et5" firstAttribute="centerY" secondItem="9ZX-cZ-uxC" secondAttribute="centerY" id="ybM-vv-Eed"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKr-27-Ycl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="-1604"/>
+            <point key="canvasLocation" x="163" y="-1400"/>
         </scene>
         <!--Aim!-->
         <scene sceneID="ayz-Fv-2zL">
