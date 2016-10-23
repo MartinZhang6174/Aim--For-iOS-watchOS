@@ -13,6 +13,7 @@ private let reuseIdentifier = "aimSessionsCell"
 class AimSessionCollectionViewController: UICollectionViewController {
     
     let aimSessionDurationTexts = ["25-Minute-Long Session", "Hour-Long Session", "Custom-Duration Session", "Endless-Duration Session"]
+    var collectionViewCells = [AimSessionsCollectionViewCell]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class AimSessionCollectionViewController: UICollectionViewController {
         // Configure the cell
         
         cell.anAimSessionButtonLabel.text = self.aimSessionDurationTexts[indexPath.item]
+        self.collectionViewCells.append(cell)
     
         return cell
     }
@@ -69,7 +71,24 @@ class AimSessionCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        print("Selected item #\(indexPath.item)")
         
-        self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+        if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "25-Minute-Long Session" || collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "Hour-Long Session" {
+            
+            // Lead users to session directly if no need to customize durations
+            self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+        } else if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "Custom-Duration Session" {
+        
+            // Lead users to session customization screen if customization needed
+            self.performSegue(withIdentifier: "goToSessionCustomizationViewSegue", sender: self)
+            
+        } else {
+        
+            // Lead users to the same VC as the "startAimSessionWithSpecifiedDurationSegue" but with no time limit
+            // TODO: start working on delegation and remove time limit for limitless session
+            self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+        }
+
+        
+
     }
 
     /*
