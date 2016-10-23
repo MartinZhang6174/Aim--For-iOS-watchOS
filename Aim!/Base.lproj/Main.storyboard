@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="-815.20000000000005" y="-1604.3478260869567"/>
         </scene>
-        <!--View Controller-->
+        <!--Aim Session Customization View Controller-->
         <scene sceneID="vha-ro-hIu">
             <objects>
-                <viewController id="TuD-e1-o3X" sceneMemberID="viewController">
+                <viewController id="TuD-e1-o3X" customClass="AimSessionCustomizationViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pRl-h0-5bh"/>
                         <viewControllerLayoutGuide type="bottom" id="m9O-BS-UEA"/>
