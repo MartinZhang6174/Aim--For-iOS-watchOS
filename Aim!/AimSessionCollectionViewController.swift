@@ -14,7 +14,8 @@ class AimSessionCollectionViewController: UICollectionViewController {
     
     let aimSessionDurationTexts = ["25-Minute-Long Session", "Hour-Long Session", "Custom-Duration Session", "Endless-Duration Session"]
     var collectionViewCells = [AimSessionsCollectionViewCell]()
-
+    var delegate: DurationDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,25 +70,50 @@ class AimSessionCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("Selected item #\(indexPath.item)")
+        print("Selected item #\(indexPath.item)")
         
-        if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "25-Minute-Long Session" || collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "Hour-Long Session" {
-            
+        switch indexPath.item {
+        case 1:
+            // 25 minutes
             // Lead users to session directly if no need to customize durations
             self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
-        } else if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "Custom-Duration Session" {
-        
-            // Lead users to session customization screen if customization needed
-            self.performSegue(withIdentifier: "goToSessionCustomizationViewSegue", sender: self)
-            
-        } else {
-        
-            // Lead users to the same VC as the "startAimSessionWithSpecifiedDurationSegue" but with no time limit
-            // TODO: start working on delegation and remove time limit for limitless session
+            if let delegate = self.delegate {
+                delegate.beginCustomSession(durationInSeconds: (25 * 60))
+            }
+        case 2:
+            // 60 minutes
+            // Lead users to session directly if no need to customize durations
             self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+            if let delegate = self.delegate {
+                delegate.beginCustomSession(durationInSeconds: (60 * 60))
+            }
+        case 3:
+            // Custom duration controller
+            self.performSegue(withIdentifier: "goToSessionCustomizationViewSegue", sender: self)
+        default:
+            // Unspecified session duration
+            self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+            if let delegate = self.delegate {
+                delegate.beginEndlessSession()
+            }
         }
-
-        
+//        
+//        if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "25-Minute-Long Session" {
+//
+//            
+//        } else if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "Custom-Duration Session" {
+//        
+//            // Lead users to session customization screen if customization needed
+//            self.performSegue(withIdentifier: "goToSessionCustomizationViewSegue", sender: self)
+//            
+//        } else {
+//        
+//            // Lead users to the same VC as the "startAimSessionWithSpecifiedDurationSegue" but with no time limit
+//            // TODO: start working on delegation and remove time limit for limitless session
+//            self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
+//        }
+//
+//        
 
     }
 
