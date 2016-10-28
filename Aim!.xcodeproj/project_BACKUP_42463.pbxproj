@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B6353071DB449210069DF61 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6353061DB449210069DF61 /* TimerManager.swift */; };
+		1B6353091DB6FF760069DF61 /* DurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6353081DB6FF760069DF61 /* DurationDelegate.swift */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
 		9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A11DA5DA8D005CA654 /* Main.storyboard */; };
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
@@ -24,7 +26,6 @@
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890E31DA5E5C0005CA654 /* Aim! For watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */; };
 		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
-		9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */; };
 		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
 		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
 		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
@@ -80,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B6353061DB449210069DF61 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		1B6353081DB6FF760069DF61 /* DurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationDelegate.swift; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C6890A21DA5DA8D005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890E01DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
-		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
 		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B6353051DB448FD0069DF61 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1B6353061DB449210069DF61 /* TimerManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		9C6890911DA5DA8D005CA654 = {
 			isa = PBXGroup;
 			children = (
@@ -161,8 +171,10 @@
 			isa = PBXGroup;
 			children = (
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
+				1B6353081DB6FF760069DF61 /* DurationDelegate.swift */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
+				1B6353051DB448FD0069DF61 /* Managers */,
 				9C6890A91DA5DA8D005CA654 /* Info.plist */,
 			);
 			path = "Aim!";
@@ -190,7 +202,6 @@
 		9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */,
 				9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */,
 				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
 				9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */,
@@ -404,14 +415,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
+<<<<<<< HEAD
 				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
+=======
 				1B6353071DB449210069DF61 /* TimerManager.swift in Sources */,
+>>>>>>> NelsonWorkingBranch
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
 				9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
+				1B6353091DB6FF760069DF61 /* DurationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +445,6 @@
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
 				9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */,
 				9C6890D91DA5E5C0005CA654 /* InterfaceController.swift in Sources */,
-				9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
