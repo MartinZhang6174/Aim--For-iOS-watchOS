@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9C6890AD1DA5DA8D005CA654"
-               BuildableName = "Aim!Tests.xctest"
-               BlueprintName = "Aim!Tests"
+               BuildableName = "Aim! Tests.xctest"
+               BlueprintName = "Aim! Tests"
                ReferencedContainer = "container:Aim!.xcodeproj">
             </BuildableReference>
          </TestableReference>
