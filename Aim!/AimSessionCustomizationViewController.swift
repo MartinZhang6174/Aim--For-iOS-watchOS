@@ -15,7 +15,7 @@ class AimSessionCustomizationViewController: UIViewController {
 
 //        self.tabBarController?.tabBar.isHidden = true
 //        self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.layer.zPosition = -1
+//        self.tabBarController?.tabBar.layer.zPosition = -1
         // Do any additional setup after loading the view.
     }
 
