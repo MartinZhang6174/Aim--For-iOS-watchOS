@@ -415,11 +415,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
+<<<<<<< HEAD
 <<<<<<< .merge_file_eleZ43
 				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
 =======
 				1B6353071DB449210069DF61 /* TimerManager.swift in Sources */,
 >>>>>>> .merge_file_huEe22
+=======
+<<<<<<< HEAD
+				1B6353071DB449210069DF61 /* TimerManager.swift in Sources */,
+=======
+				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
+>>>>>>> origin/Development
+>>>>>>> bec8eae7b190294d26511bd983d711a4ec9e2dfc
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,

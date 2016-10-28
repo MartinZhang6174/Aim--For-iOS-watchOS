@@ -9,6 +9,6 @@
 import Foundation
 
 protocol DurationDelegate {
-    func beginCustomSession(duration: TimeInterval)
+    func beginCustomSession(durationInSeconds: TimeInterval)
     func beginEndlessSession()
 }
