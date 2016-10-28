@@ -27,6 +27,8 @@
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! .app */; };
 		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
+		9CBDCBFC1DC309CC00805DF3 /* DurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDCBFB1DC309CC00805DF3 /* DurationDelegate.swift */; };
+		9CBDCBFE1DC309F100805DF3 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBDCBFD1DC309F100805DF3 /* TimerManager.swift */; };
 		9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */; };
 		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
 		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
@@ -110,6 +112,8 @@
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890E01DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
+		9CBDCBFB1DC309CC00805DF3 /* DurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationDelegate.swift; sourceTree = "<group>"; };
+		9CBDCBFD1DC309F100805DF3 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
 		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
+				9CBDCBFB1DC309CC00805DF3 /* DurationDelegate.swift */,
+				9CBDCBFD1DC309F100805DF3 /* TimerManager.swift */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C6890A91DA5DA8D005CA654 /* Info.plist */,
@@ -413,8 +419,10 @@
 			files = (
 				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
 				1B6353071DB449210069DF61 /* TimerManager.swift in Sources */,
+				9CBDCBFC1DC309CC00805DF3 /* DurationDelegate.swift in Sources */,
 				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
+				9CBDCBFE1DC309F100805DF3 /* TimerManager.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
 				9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */,
