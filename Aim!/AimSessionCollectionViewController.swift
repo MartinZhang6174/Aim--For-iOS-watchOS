@@ -12,7 +12,7 @@ private let reuseIdentifier = "aimSessionsCell"
 
 class AimSessionCollectionViewController: UICollectionViewController {
     
-    let aimSessionDurationTexts = ["25-Minute-Long Session", "Hour-Long Session", "Custom-Duration Session", "Endless-Duration Session"]
+    let aimSessionDurationTexts = ["25 Minutes", "60 Minutes", "Custom Duration", "Endless Duration"]
     var collectionViewCells = [AimSessionsCollectionViewCell]()
     var delegate: DurationDelegate?
     
@@ -61,8 +61,12 @@ class AimSessionCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         
-        cell.anAimSessionButtonLabel.text = self.aimSessionDurationTexts[indexPath.item]
         self.collectionViewCells.append(cell)
+        cell.anAimSessionButtonLabel.text = self.aimSessionDurationTexts[indexPath.item]
+        //        cell.backgroundColor = UIColor.blue
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.borderWidth = 4
+        cell.layer.cornerRadius = 16
     
         return cell
     }
@@ -73,21 +77,21 @@ class AimSessionCollectionViewController: UICollectionViewController {
         print("Selected item #\(indexPath.item)")
         
         switch indexPath.item {
-        case 1:
+        case 0:
             // 25 minutes
             // Lead users to session directly if no need to customize durations
             self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
             if let delegate = self.delegate {
                 delegate.beginCustomSession(durationInSeconds: (25 * 60))
             }
-        case 2:
+        case 1:
             // 60 minutes
             // Lead users to session directly if no need to customize durations
             self.performSegue(withIdentifier: "startAimSessionWithSpecifiedDurationSegue", sender: self)
             if let delegate = self.delegate {
                 delegate.beginCustomSession(durationInSeconds: (60 * 60))
             }
-        case 3:
+        case 2:
             // Custom duration controller
             self.performSegue(withIdentifier: "goToSessionCustomizationViewSegue", sender: self)
         default:

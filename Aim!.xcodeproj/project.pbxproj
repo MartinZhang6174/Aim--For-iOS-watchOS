@@ -166,10 +166,10 @@
 		9C68909C1DA5DA8D005CA654 /* Aim! */ = {
 			isa = PBXGroup;
 			children = (
-				9C7160241DC5A940003C7773 /* DurationDelegate.swift */,
-				9C7160251DC5A940003C7773 /* TimerManager.swift */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
+				9C7F38361DC690050038BC2F /* Protocols */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
+				9C7F38371DC690200038BC2F /* Manager Classes */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C6890A91DA5DA8D005CA654 /* Info.plist */,
 			);
@@ -215,6 +215,22 @@
 				9C6890D71DA5E5C0005CA654 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C7F38361DC690050038BC2F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9C7160241DC5A940003C7773 /* DurationDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		9C7F38371DC690200038BC2F /* Manager Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C7160251DC5A940003C7773 /* TimerManager.swift */,
+			);
+			name = "Manager Classes";
 			sourceTree = "<group>";
 		};
 		9CFFE2851DB313EE00895C3C /* Controllers */ = {

@@ -23,18 +23,18 @@
                             <color key="color" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         </separator>
                         <label alignment="center" text="Use Aim! To Boost Your Productivity" textAlignment="center" numberOfLines="0" id="DLW-c8-80L">
-                            <fontDescription key="font" type="system" pointSize="10"/>
+                            <fontDescription key="font" type="system" pointSize="11"/>
                         </label>
                         <group width="1" height="44" alignment="center" id="XKG-ub-hko">
                             <items>
                                 <button width="0.5" height="1" alignment="left" title="Sessions" id="ZOT-Sz-ZnS">
-                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <segue destination="l1H-L2-trl" kind="modal" id="GsZ-08-wS5"/>
                                     </connections>
                                 </button>
                                 <button width="0.5" height="1" alignment="right" title="Awards" id="tvU-5d-t87">
-                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                     <connections>
                                         <segue destination="h1y-vm-7uY" kind="modal" id="CAZ-xa-uKW"/>
                                     </connections>
