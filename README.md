@@ -22,3 +22,10 @@ iOS + watchOS
 3. Build session-in-progress animations.
 4. Notifications to users when session ends(on phone or watch.).
 5. Notifications when user earning awards.
+
+# Watch App Snapshots:
+
+![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915266/51111c76-a06e-11e6-9a84-0902f0b215ad.jpg)
+
+![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915265/50f23590-a06e-11e6-8368-946dc3cbe139.jpg)
+
