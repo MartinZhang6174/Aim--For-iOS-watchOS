@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
-		6F7EFC2C92DDB24146BEADCF /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */; };
 		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
 		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
@@ -34,6 +33,7 @@
 		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
 		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
 		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
+		E0522466825AE9F2A5D2AA21 /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DBC06798D732C5A747B6DD /* Pods_Aim_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,10 @@
 
 /* Begin PBXFileReference section */
 		1B9F04991DBF006B002054E8 /* SessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionVC.swift; sourceTree = "<group>"; };
-		6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.release.xcconfig"; sourceTree = "<group>"; };
+		29A95537D47A3BECC7EABC87 /* Pods-Aim!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.release.xcconfig"; sourceTree = "<group>"; };
+		859C0E35FA849F9F3A4F285D /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
+		9C25372D1E16418C00BAA657 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Build/Products/Debug-iphonesimulator/Bolts/Bolts.framework"; sourceTree = "<group>"; };
+		9C25372F1E1641AE00BAA657 /* Pods_Aim_.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Aim_.framework; path = "Build/Products/Debug-iphonesimulator/Pods_Aim_.framework"; sourceTree = "<group>"; };
 		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
 		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,8 +123,7 @@
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
 		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
-		DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
+		A0DBC06798D732C5A747B6DD /* Pods_Aim_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F7EFC2C92DDB24146BEADCF /* Pods_Aim_.framework in Frameworks */,
+				E0522466825AE9F2A5D2AA21 /* Pods_Aim_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +162,9 @@
 		289BC6FC0F9C9BD9A621647A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */,
+				9C25372F1E1641AE00BAA657 /* Pods_Aim_.framework */,
+				9C25372D1E16418C00BAA657 /* Bolts.framework */,
+				A0DBC06798D732C5A747B6DD /* Pods_Aim_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -192,12 +196,12 @@
 		9C68909C1DA5DA8D005CA654 /* Aim! */ = {
 			isa = PBXGroup;
 			children = (
+				9C6890A91DA5DA8D005CA654 /* Info.plist */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C7F38361DC690050038BC2F /* Protocols */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
-				9C6890A91DA5DA8D005CA654 /* Info.plist */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -289,8 +293,8 @@
 		A5BB9639843B70C7AC11846A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */,
-				6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */,
+				859C0E35FA849F9F3A4F285D /* Pods-Aim!.debug.xcconfig */,
+				29A95537D47A3BECC7EABC87 /* Pods-Aim!.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -498,7 +502,7 @@
 		};
 		F78CA937C1D930FC15FBFDF7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -640,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -681,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -691,9 +695,14 @@
 		};
 		9C6890B81DA5DA8D005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */;
+			baseConfigurationReference = 859C0E35FA849F9F3A4F285D /* Pods-Aim!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/Bolts",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+				);
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
@@ -704,9 +713,14 @@
 		};
 		9C6890B91DA5DA8D005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */;
+			baseConfigurationReference = 29A95537D47A3BECC7EABC87 /* Pods-Aim!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/Bolts",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
+				);
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
