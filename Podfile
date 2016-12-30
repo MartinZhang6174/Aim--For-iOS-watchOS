@@ -7,6 +7,10 @@ target 'Aim!' do
 
   # Pods for Aim!
 
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+
   target 'Aim! Tests' do
     inherit! :search_paths
     # Pods for testing

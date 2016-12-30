@@ -1,6 +1,0 @@
-framework module Pods_Aim_ {
-  umbrella header "Pods-Aim!-umbrella.h"
-
-  export *
-  module * { export * }
-}

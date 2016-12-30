@@ -1,6 +1,0 @@
-framework module Pods_Aim__Tests {
-  umbrella header "Pods-Aim! Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
