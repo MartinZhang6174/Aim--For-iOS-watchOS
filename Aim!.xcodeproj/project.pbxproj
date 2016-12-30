@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
+		6F7EFC2C92DDB24146BEADCF /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */; };
 		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
 		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
@@ -33,7 +34,6 @@
 		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
 		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
 		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
-		FB7A41DDC4BD2DA5BC2EB209 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		1B9F04991DBF006B002054E8 /* SessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionVC.swift; sourceTree = "<group>"; };
+		6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.release.xcconfig"; sourceTree = "<group>"; };
 		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
 		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +120,8 @@
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
 		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
+		DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F7EFC2C92DDB24146BEADCF /* Pods_Aim_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +157,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		289BC6FC0F9C9BD9A621647A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCFD2C1E0DBA8E13613DF969 /* Pods_Aim_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9C6890911DA5DA8D005CA654 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +173,8 @@
 				9C6890C61DA5E5C0005CA654 /* Aim! For watchOS */,
 				9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */,
 				9C68909B1DA5DA8D005CA654 /* Products */,
+				A5BB9639843B70C7AC11846A /* Pods */,
+				289BC6FC0F9C9BD9A621647A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,10 +193,10 @@
 			isa = PBXGroup;
 			children = (
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
+				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C7F38361DC690050038BC2F /* Protocols */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
-				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C6890A91DA5DA8D005CA654 /* Info.plist */,
 			);
 			path = "Aim!";
@@ -272,6 +286,15 @@
 			name = "UI Files";
 			sourceTree = "<group>";
 		};
+		A5BB9639843B70C7AC11846A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */,
+				6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -279,10 +302,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C6890B71DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim!" */;
 			buildPhases = (
+				C78F2C0B8EDA69CE5E433D33 /* [CP] Check Pods Manifest.lock */,
 				9C6890961DA5DA8D005CA654 /* Sources */,
 				9C6890971DA5DA8D005CA654 /* Frameworks */,
 				9C6890981DA5DA8D005CA654 /* Resources */,
 				9C6890EB1DA5E5C0005CA654 /* Embed Watch Content */,
+				F78CA937C1D930FC15FBFDF7 /* [CP] Embed Pods Frameworks */,
+				5EB29D847E5D25C29EF71514 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -438,6 +464,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EB29D847E5D25C29EF71514 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim!/Pods-Aim!-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C78F2C0B8EDA69CE5E433D33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F78CA937C1D930FC15FBFDF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim!/Pods-Aim!-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C6890961DA5DA8D005CA654 /* Sources */ = {
@@ -617,6 +691,7 @@
 		};
 		9C6890B81DA5DA8D005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E76B204258D29D26F2231821 /* Pods-Aim!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aim!/Info.plist";
@@ -629,6 +704,7 @@
 		};
 		9C6890B91DA5DA8D005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6235BA0FF94D00F28E409DA2 /* Pods-Aim!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aim!/Info.plist";
