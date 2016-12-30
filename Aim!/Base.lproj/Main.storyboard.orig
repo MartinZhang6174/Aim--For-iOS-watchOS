@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YTn-88-8Wt">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O99-vv-05G">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+>>>>>>> 6a73a0f4f30379b2ef6955ac5d3c212b1b6b064a
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,6 +39,19 @@
         <!--Aim!-->
         <scene sceneID="VOM-VY-OVI">
             <objects>
+<<<<<<< HEAD
+                <tableViewController id="1ir-57-5Pv" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sfq-fJ-a3s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UvO-oL-Dvu">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UvO-oL-Dvu" id="wkQ-ne-nF7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/z
+=======
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -46,6 +69,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="175" height="174"/>
+>>>>>>> 6a73a0f4f30379b2ef6955ac5d3c212b1b6b064a
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard" translatesAutoresizingMaskIntoConstraints="NO" id="ycB-Di-mPo"/>
@@ -96,7 +120,11 @@
                         <viewControllerLayoutGuide type="top" id="pRl-h0-5bh"/>
                         <viewControllerLayoutGuide type="bottom" id="m9O-BS-UEA"/>
                     </layoutGuides>
+<<<<<<< HEAD
+                    <view key="view" contentMode="scaleToFill" id="j4u-YV-m45">
+=======
                     <view key="view" contentMode="scaleToFill" id="MLX-Bp-SbD">
+>>>>>>> 6a73a0f4f30379b2ef6955ac5d3c212b1b6b064a
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,6 +171,12 @@
                         <viewControllerLayoutGuide type="top" id="B7v-Lt-G2f"/>
                         <viewControllerLayoutGuide type="bottom" id="Iyw-z8-e1j"/>
                     </layoutGuides>
+<<<<<<< HEAD
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+=======
                     <view key="view" contentMode="scaleToFill" id="mE2-SJ-8Cf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,6 +221,7 @@
                             <constraint firstItem="1Gb-eg-Wg1" firstAttribute="top" secondItem="4Ha-JB-WPd" secondAttribute="bottom" id="NgM-oU-yu4"/>
                             <constraint firstItem="4Ha-JB-WPd" firstAttribute="top" secondItem="258-5W-p6z" secondAttribute="bottom" constant="-64" id="x3s-yP-UEn"/>
                         </constraints>
+>>>>>>> 6a73a0f4f30379b2ef6955ac5d3c212b1b6b064a
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="aa7-q4-4yf"/>
                 </viewController>

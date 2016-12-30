@@ -23,6 +23,10 @@
 		9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */; };
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890E31DA5E5C0005CA654 /* Aim! For watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */; };
+		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
+		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
+		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
+		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,10 @@
 		9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890E01DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
+		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
+		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,13 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
-				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
-				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
-				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
+				9CFFE2861DB3140C00895C3C /* UI Files */,
+				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C6890A91DA5DA8D005CA654 /* Info.plist */,
-				9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */,
-				9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */,
-				9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -200,6 +204,30 @@
 				9C6890D71DA5E5C0005CA654 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9CFFE2851DB313EE00895C3C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */,
+				9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */,
+				9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */,
+				9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */,
+				9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9CFFE2861DB3140C00895C3C /* UI Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
+				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
+				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
+				9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */,
+				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
+			);
+			name = "UI Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,16 +316,24 @@
 				TargetAttributes = {
 					9C6890991DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeamName = "Martin Zhang (Personal Team)";
+						LastSwiftMigration = 0800;
 					};
 					9C6890AD1DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 9C6890991DA5DA8D005CA654;
 					};
 					9C6890C41DA5E5C0005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					9C6890D01DA5E5C0005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeamName = "Martin Zhang (Personal Team)";
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -364,8 +400,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
+				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
+				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
+				9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
 			);
@@ -528,6 +568,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -539,6 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -550,6 +592,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aim!.app/Aim!";
 			};
 			name = Debug;
@@ -562,6 +605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aim!.app/Aim!";
 			};
 			name = Release;
@@ -577,6 +621,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -593,6 +638,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -607,6 +653,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -621,6 +668,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.2;
 			};
@@ -663,6 +711,7 @@
 				9C6890E71DA5E5C0005CA654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9C6890EA1DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! For watchOS" */ = {
 			isa = XCConfigurationList;
@@ -671,6 +720,7 @@
 				9C6890E51DA5E5C0005CA654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
