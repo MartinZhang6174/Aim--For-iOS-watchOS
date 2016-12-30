@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
+		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
+		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
 		9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A11DA5DA8D005CA654 /* Main.storyboard */; };
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		1B9F04991DBF006B002054E8 /* SessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionVC.swift; sourceTree = "<group>"; };
+		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
+		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C6890A21DA5DA8D005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -198,8 +202,8 @@
 		9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */,
 				9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */,
+				9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */,
 				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
 				9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */,
 				9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */,
@@ -236,6 +240,8 @@
 		9CFFE2851DB313EE00895C3C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */,
+				9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */,
 				9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */,
 				1B9F04991DBF006B002054E8 /* SessionVC.swift */,
 				9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */,
@@ -439,7 +445,9 @@
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
 				9C7160261DC5A940003C7773 /* DurationDelegate.swift in Sources */,
+				9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */,
 				1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */,
+				9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
