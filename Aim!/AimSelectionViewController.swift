@@ -13,8 +13,9 @@ class AimSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        self.tabBarController?.tabBar.barStyle = UIBarStyle.blackOpaque
+        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
+//        self.tabBarController?.tabBar.barStyle = UIBarStyle.blackOpaque
         // Do any additional setup after loading the view.
     }
 
