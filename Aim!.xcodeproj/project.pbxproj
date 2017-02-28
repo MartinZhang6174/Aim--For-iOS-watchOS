@@ -34,6 +34,7 @@
 		9CC013501E458D2200EDC879 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* LoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
 		9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */; };
+		9CE3C7CD1E6614C700426465 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE3C7CC1E6614C700426465 /* LoadingView.swift */; };
 		9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */; };
 		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
@@ -136,6 +137,7 @@
 		9CC0134F1E458D2200EDC879 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
 		9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerButton.swift; sourceTree = "<group>"; };
+		9CE3C7CC1E6614C700426465 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
 				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
 				9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */,
+				9CE3C7CC1E6614C700426465 /* LoadingView.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
 				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
 				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
+				9CE3C7CD1E6614C700426465 /* LoadingView.swift in Sources */,
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
