@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -96,6 +97,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
             loginButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
         }, completion: nil)
+    }
+    
+    @IBAction func signUpButtonPressed(_ sender: Any) {
+        guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
+            print("Enter valid info.")
+            return
+        }
+        
+        if pwd1 == pwd2 {
+            FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                guard let uid = user?.uid else {
+                    return
+                }
+                
+                let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+                let userReference = reference.child("users").child(uid)
+                let userInfoValues = ["Email" : email, "Password" : pwd1]
+                userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
+                    if err != nil {
+                        print(err)
+                        return
+                    }
+                    print("User creation success.")
+                })
+                print("Registered new user.")
+            })
+        }
+//        dismiss(animated: true, completion: nil)
     }
 }
 

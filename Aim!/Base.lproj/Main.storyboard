@@ -98,6 +98,7 @@
                                     <color key="titleColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="signUpButtonPressed:" destination="5gY-TM-HY8" eventType="touchUpInside" id="S8q-7d-9dw"/>
                                     <action selector="signupButtonPressed:" destination="5gY-TM-HY8" eventType="touchDown" id="1Ix-DE-IBs"/>
                                     <action selector="signupButtonReleased:" destination="5gY-TM-HY8" eventType="touchUpInside" id="wPj-f7-2ft"/>
                                 </connections>
