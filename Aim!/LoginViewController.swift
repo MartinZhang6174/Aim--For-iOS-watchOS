@@ -42,6 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         signupButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
         loginButton.layer.shadowOpacity = 0.7
         loginButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
+        
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
     }
@@ -57,21 +58,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//    func configureSelectedButtonShadow(selectedButton: UIButton) {
+//        
+//    }
+    
+    @IBAction func signupButtonPressed(_ sender: Any) {
+        let signupButton = sender as! UIButton
+        
+            let bounds = signupButton.bounds
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                signupButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
+            }, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func signupButtonReleased(_ sender: Any) {
+        let signupButton = sender as! UIButton
+        
+        let bounds = signupButton.bounds
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            signupButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
+        }, completion: nil)
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        let loginButton = sender as! UIButton
 
+        let bounds = loginButton.bounds
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            loginButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
+        }, completion: nil)
+    }
+    
+    @IBAction func loginButtonReleased(_ sender: Any) {
+        let loginButton = sender as! UIButton
+        
+        let bounds = loginButton.bounds
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            loginButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
+        }, completion: nil)
+    }
 }
 
 
