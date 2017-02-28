@@ -10,6 +10,7 @@ target 'Aim!' do
 pod ‘Firebase/Database’
 pod ‘Firebase/Auth’
 pod ‘Firebase/Storage’
+pod ‘NVActivityIndicatorView’
 
   #target 'Aim! Tests' do
     #inherit! :search_paths
