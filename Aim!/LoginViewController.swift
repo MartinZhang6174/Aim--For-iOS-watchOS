@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
     let themePurpleColor = hexStringToUIColor(hex: "1A1423")
+    
+    var loadingViewFrame = CGRect()
+    var loadingViewType = NVActivityIndicatorType(rawValue: 10)
+    var loadingViewPadding = CGFloat()
+    let loadingViewUIBlockerSize = CGSize(width: 40, height: 40)
 
     @IBOutlet weak var aimLogoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
@@ -43,6 +49,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         signupButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
         loginButton.layer.shadowOpacity = 0.7
         loginButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
+        
+        // Configure loading view data
+        loadingViewFrame = CGRect(x: self.view.center.x - 25, y: aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
         
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
@@ -99,15 +108,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }, completion: nil)
     }
     
+    func moveLoadingView(loadingView: NVActivityIndicatorView) {
+        self.view.addSubview(loadingView)
+        loadingView.startAnimating()
+    }
+    
+    func endLoadingView(movingLoadingView: NVActivityIndicatorView) {
+        movingLoadingView.stopAnimating()
+        movingLoadingView.removeFromSuperview()
+    }
+    
     @IBAction func signUpButtonPressed(_ sender: Any) {
+        // Configuring loading view at this point in order to test TODO: move this to point where the info entered is valid and system establishing connections to Firebase.
+        
+        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrame, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        moveLoadingView(loadingView: loginLoadingView)
+        
         guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
             print("Enter valid info.")
             return
         }
         
         if pwd1 == pwd2 {
+            print("Password match, point where loading view needed.")
             FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
                 if error != nil {
+                    self.endLoadingView(movingLoadingView: loginLoadingView)
                     print(error)
                     return
                 }
@@ -121,9 +147,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let userInfoValues = ["Email" : email, "Password" : pwd1]
                 userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                     if err != nil {
+                        self.endLoadingView(movingLoadingView: loginLoadingView)
                         print(err)
                         return
                     }
+                    self.endLoadingView(movingLoadingView: loginLoadingView)
                     print("User creation success.")
                 })
                 print("Registered new user.")
