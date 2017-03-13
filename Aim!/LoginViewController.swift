@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
         UITextField.appearance().tintColor = themeOrangeColor
@@ -121,15 +120,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpButtonPressed(_ sender: Any) {
         // Configuring loading view at this point in order to test TODO: move this to point where the info entered is valid and system establishing connections to Firebase.
         
+        // If password confirming tf is hidden, show it first(with placeholder change to password creation tf)
+        if passwordConfirmEntryTextField.isHidden == true {
+            passwordCreateEntryTextField.placeholder = "Create your password"
+            passwordConfirmEntryTextField.isHidden = false
+            passwordConfirmEntryTextField.alpha = 0.7
+        } else {
+        
+            // If password confirming tf ISN'T hidden (it's there), handle signup
         let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrame, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
-        moveLoadingView(loadingView: loginLoadingView)
+//        moveLoadingView(loadingView: loginLoadingView)
         
         guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
-            print("Enter valid info.")
+//            print("Enter valid info.")
             return
         }
         
-        if pwd1 == pwd2 {
+        if pwd1 != "" && pwd1 == pwd2 {
+            moveLoadingView(loadingView: loginLoadingView)
             print("Password match, point where loading view needed.")
             FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
                 if error != nil {
@@ -151,13 +159,57 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         print(err)
                         return
                     }
-                    self.endLoadingView(movingLoadingView: loginLoadingView)
+                    if FIRAuth.auth()?.currentUser?.uid != nil {
+                        self.dismiss(animated: true, completion: nil)
+                    }
                     print("User creation success.")
                 })
                 print("Registered new user.")
             })
+        } else {
+            self.endLoadingView(movingLoadingView: loginLoadingView)
+            print("Invalid info.")
+            }
         }
-//        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func logInButtonPressed(_ sender: Any) {
+        // If the password confirming textfield isn't hidden, hide it
+        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrame, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        if passwordConfirmEntryTextField.isHidden == false {
+            UIView.animate(withDuration: 3.0) {
+                self.passwordCreateEntryTextField.placeholder = "Enter your password"
+                self.passwordConfirmEntryTextField.alpha = 0
+            }
+            passwordConfirmEntryTextField.isHidden = true
+        } else {
+            // If password confirming tf IS hidden, then handle log in
+            moveLoadingView(loadingView: loginLoadingView)
+            
+            guard let email = emailAddressEntryTextField.text, let pwd = passwordCreateEntryTextField.text else {
+                endLoadingView(movingLoadingView: loginLoadingView)
+                print("Enter valid info.")
+                return
+            }
+            
+            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                if error != nil {
+                    self.endLoadingView(movingLoadingView: loginLoadingView)
+                    print(error)
+                }
+                if FIRAuth.auth()?.currentUser?.uid != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
+//        if FIRAuth.auth()?.currentUser?.uid != nil {
+//        } else {
+//            endLoadingView(movingLoadingView: loginLoadingView)
+//        }
+    }
+    
+    @IBAction func closeWindowButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
