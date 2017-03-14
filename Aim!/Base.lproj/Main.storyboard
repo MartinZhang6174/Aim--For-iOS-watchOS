@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PhosphateProInline.otf">
+            <string>PhosphatePro-Inline</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Awards-->
         <scene sceneID="8KA-Wq-fr9">
@@ -180,26 +185,26 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="145" y="177" width="38" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <rect key="frame" x="146.5" y="177" width="36.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Zr-eJS">
-                                <rect key="frame" x="187" y="177" width="2" height="20"/>
+                                <rect key="frame" x="187" y="177" width="2" height="26.5"/>
                                 <color key="backgroundColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="l9l-w7-PNa"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="193" y="177" width="30" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="193" y="177.5" width="27.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HOz-8d-Ztb">
-                                <rect key="frame" x="0.0" y="216" width="375" height="451"/>
+                                <rect key="frame" x="0.0" y="222" width="375" height="445"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sjM-yv-Nw2">
@@ -220,20 +225,32 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-Bf-Reb">
-                                <rect key="frame" x="162" y="507" width="51" height="30"/>
-                                <state key="normal" title="signout"/>
+                                <rect key="frame" x="140.5" y="496" width="94" height="41"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
+                                <state key="normal" title="signout">
+                                    <color key="titleColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="signOutButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="cfj-rJ-pzl"/>
                                     <segue destination="5gY-TM-HY8" kind="modal" identifier="showLoginPageSegue" id="90Y-3Y-77V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZV-ka-lSj">
-                                <rect key="frame" x="166" y="469" width="43" height="30"/>
-                                <state key="normal" title="status"/>
+                                <rect key="frame" x="152.5" y="447" width="70" height="41"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
+                                <state key="normal" title="status">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="statusButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="dam-80-KdA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
+                                <rect key="frame" x="134.5" y="68" width="106" height="16"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -243,16 +260,20 @@
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="6jg-QT-UDS"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="centerY" secondItem="0iR-Zr-eJS" secondAttribute="centerY" id="KWu-bs-d0z"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="4" id="PXL-ca-eyU"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="118.5" id="QT9-v6-o86"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="QdG-1c-iw1"/>
                             <constraint firstItem="kbo-Gh-4I7" firstAttribute="top" secondItem="HOz-8d-Ztb" secondAttribute="bottom" id="YO7-Eo-zgd"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="height" secondItem="yNA-sf-FvZ" secondAttribute="height" id="bBL-F8-zyf"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="32" id="bsW-PM-FEk"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="centerY" secondItem="0iR-Zr-eJS" secondAttribute="centerY" id="dRf-It-pAJ"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="4" id="eQI-ob-UW6"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="mfl-ob-oVs"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="4" id="n4b-YM-wfo"/>
                             <constraint firstItem="Qau-Bf-Reb" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="nBl-Z6-n4O"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="sSP-O5-d19" secondAttribute="bottom" constant="16" id="ney-r5-22B"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="18" id="ofQ-ja-IJN"/>
                             <constraint firstItem="kbo-Gh-4I7" firstAttribute="top" secondItem="Qau-Bf-Reb" secondAttribute="bottom" constant="130" id="uCG-Z1-HoG"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="118.5" id="uql-rs-AIr"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="zni-Fh-FHb"/>
                         </constraints>
                     </view>
@@ -264,6 +285,11 @@
                             <color key="tintColor" red="1" green="0.18431372549019609" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aimHourSumLabel" destination="g0k-5i-ZEl" id="2c4-IX-nk4"/>
+                        <outlet property="aimTokenSumLabel" destination="yNA-sf-FvZ" id="fFM-De-ZNs"/>
+                        <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-dz-vlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,7 +299,7 @@
         <scene sceneID="VOM-VY-OVI">
             <objects>
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -473,7 +499,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -492,7 +518,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -641,7 +667,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -660,7 +686,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrS-fg-Iy3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -679,7 +705,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UvH-t4-RPu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="kA0-Uk-V6h"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YSa-ke-oY5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YSa-ke-oY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -697,7 +723,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>

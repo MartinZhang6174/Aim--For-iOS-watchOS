@@ -9,18 +9,29 @@
 import UIKit
 import Firebase
 
+@IBDesignable
 class AimSessionSelectionMainViewController: UIViewController {
 
+    let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
+    @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
+    @IBOutlet weak var aimTokenSumLabel: UILabel!
+    @IBOutlet weak var aimHourSumLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Putting Aim! logo onto nav bar:
+        let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
+        self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
+        
+        // Use custom PhosphatePro-Inline font
+        aimTokenSumLabel.font = aimApplicationThemeFont24
+        aimHourSumLabel.font = aimApplicationThemeFont24
         
         // Check user login status
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLoginRegister), with: nil, afterDelay: 0)
         }
-        print("Log")
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,13 +53,13 @@ class AimSessionSelectionMainViewController: UIViewController {
 
     @IBAction func statusButtonPressed(_ sender: Any) {
         var userLoginStatus = false
+        let userLoginEmail = FIRAuth.auth()?.currentUser?.email
         if FIRAuth.auth()?.currentUser?.uid != nil {
             userLoginStatus = true
         } else {
             userLoginStatus = false
         }
-        print(userLoginStatus)
-        print(FIRAuth.auth()?.currentUser?.email)
+        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(userLoginEmail)"
     }
     /*
     // MARK: - Navigation

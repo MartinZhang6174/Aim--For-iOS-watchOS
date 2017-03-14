@@ -13,6 +13,10 @@
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
 		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
 		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
+		9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
+		9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
+		9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
+		9C646DE71E788591007D4578 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
 		9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A11DA5DA8D005CA654 /* Main.storyboard */; };
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
@@ -111,6 +115,8 @@
 		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
 		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
 		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
+		9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateProInline.otf; sourceTree = "<group>"; };
+		9C646DE61E788591007D4578 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C6890A21DA5DA8D005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -213,6 +219,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9C646DE01E7884B8007D4578 /* Phosphate Font */ = {
+			isa = PBXGroup;
+			children = (
+				9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */,
+			);
+			name = "Phosphate Font";
+			sourceTree = "<group>";
+		};
+		9C646DE81E78859A007D4578 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C646DE01E7884B8007D4578 /* Phosphate Font */,
+				9C646DE61E788591007D4578 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9C6890911DA5DA8D005CA654 = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +269,7 @@
 				9C7F38361DC690050038BC2F /* Protocols */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
+				9C646DE81E78859A007D4578 /* Supporting Files */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -487,6 +511,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */,
+				9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
+				9C646DE71E788591007D4578 /* Info.plist in Resources */,
 				9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */,
 				9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */,
 				9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
@@ -506,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6890CB1DA5E5C0005CA654 /* Assets.xcassets in Resources */,
+				9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */,
 				9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 				9C6890C91DA5E5C0005CA654 /* Interface.storyboard in Resources */,
 			);
@@ -515,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
 				9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */,
 				9CFB013A1E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 			);
