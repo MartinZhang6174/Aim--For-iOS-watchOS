@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kcj-o3-Mv4">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kcj-o3-Mv4">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -95,9 +98,6 @@
                             <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
                     </items>
-                    <connections>
-                        <outlet property="priviousSessionButton" destination="DzU-Sh-xTQ" id="yqT-Gw-wc8"/>
-                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="455" y="222"/>
@@ -105,11 +105,12 @@
         <!--Static Interface-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
-                <notificationController backgroundImage="Insta Like Color" id="YCC-NB-fut" userLabel="Static Interface">
+                <notificationController id="YCC-NB-fut" userLabel="Static Interface">
                     <items>
                         <label alignment="left" text="Session Finished!" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -121,7 +122,9 @@
         <!--Dynamic Interface-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller backgroundImage="Insta Like Color" id="4sK-HA-Art" userLabel="Dynamic Interface" customClass="NotificationController" customModule="Aim__" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" userLabel="Dynamic Interface" customClass="NotificationController" customModule="Aim__" customModuleProvider="target">
+                    <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                </controller>
             </objects>
             <point key="canvasLocation" x="295" y="574"/>
         </scene>

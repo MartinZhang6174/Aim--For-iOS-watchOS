@@ -10,10 +10,11 @@ import UIKit
 import NVActivityIndicatorView
 import Firebase
 
+let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
+let themePurpleColor = hexStringToUIColor(hex: "1A1423")
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
-    let themePurpleColor = hexStringToUIColor(hex: "1A1423")
     
     var loadingViewFrame = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
@@ -66,10 +67,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-    
-//    func configureSelectedButtonShadow(selectedButton: UIButton) {
-//        
-//    }
     
     @IBAction func signupButtonPressed(_ sender: Any) {
         let signupButton = sender as! UIButton

@@ -9,13 +9,14 @@
 import UIKit
 import Firebase
 
+let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
+let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
+let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
+
 @IBDesignable
-class AimSessionSelectionMainViewController: UIViewController {
+class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
-    let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1c")
-    let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
-    let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
     
     @IBOutlet weak var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
@@ -53,9 +54,15 @@ class AimSessionSelectionMainViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        var userLoginStatus = false
+        let userLoginEmail = FIRAuth.auth()?.currentUser?.email
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            userLoginStatus = true
+        } else {
+            userLoginStatus = false
+        }
+        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(userLoginEmail)"
     }
     
     func handleLoginRegister() {
@@ -69,17 +76,25 @@ class AimSessionSelectionMainViewController: UIViewController {
             print(signOutError)
         }
     }
-
-    @IBAction func statusButtonPressed(_ sender: Any) {
-        var userLoginStatus = false
-        let userLoginEmail = FIRAuth.auth()?.currentUser?.email
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            userLoginStatus = true
-        } else {
-            userLoginStatus = false
-        }
-        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(userLoginEmail)"
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
+        
+        sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
+        sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+        sessionCell.sessionInfoLabel.text = "+"
+        sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+        sessionCell.layer.cornerRadius = 5.0
+        sessionCell.layer.shadowOpacity = 0.7
+        sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
+        
+        return sessionCell
+    }
+    
     /*
     // MARK: - Navigation
 

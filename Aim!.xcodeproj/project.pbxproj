@@ -10,6 +10,9 @@
 		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
 		305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */; };
 		75659762C66996131985A075 /* Pods_Aim__Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */; };
+		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
+		9C3A3A011E7DE1240053D8AC /* AimSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A001E7DE1240053D8AC /* AimSettingsViewController.swift */; };
+		9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */; };
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
 		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
 		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
@@ -112,6 +115,9 @@
 		64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionVCCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C3A3A001E7DE1240053D8AC /* AimSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSettingsViewController.swift; sourceTree = "<group>"; };
+		9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsViewController.swift; sourceTree = "<group>"; };
 		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
 		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
 		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 				9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */,
 				9CC0134F1E458D2200EDC879 /* LoginViewController.swift */,
 				9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */,
+				9C3A3A001E7DE1240053D8AC /* AimSettingsViewController.swift */,
+				9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
 				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
 				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
+				9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */,
 				9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */,
 				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
 				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
@@ -724,11 +733,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC013501E458D2200EDC879 /* LoginViewController.swift in Sources */,
+				9C3A3A011E7DE1240053D8AC /* AimSettingsViewController.swift in Sources */,
 				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
 				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
 				9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */,
 				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
 				9CE3C7CD1E6614C700426465 /* LoadingView.swift in Sources */,
+				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
@@ -738,6 +749,7 @@
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
 				9C7160261DC5A940003C7773 /* DurationDelegate.swift in Sources */,
 				9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */,
+				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
 				1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */,
 				9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */,
 				9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */,
