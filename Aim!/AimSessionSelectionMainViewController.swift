@@ -24,8 +24,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
     @IBOutlet weak var aimHourSumLabel: UILabel!
     
+    var sessionNameArray = ["Sep 17th, 2017", "May 6th, 2017", "Feb 19th, 2016", "Vocabulary for Engineering", "Aerodynamics Test"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.sessionNameArray.append("+")
         
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
         self.view.backgroundColor = aimApplicationThemePurpleColor
@@ -53,7 +57,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             perform(#selector(handleLoginRegister), with: nil, afterDelay: 0)
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         var userLoginStatus = false
         let userLoginEmail = FIRAuth.auth()?.currentUser?.email
@@ -77,32 +81,62 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        // Returning the number of items in sessionDict plus one for the last cell is going to be an ADD button
+        return sessionNameArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
-        sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-        sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-        sessionCell.sessionInfoLabel.text = "+"
-        sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-        sessionCell.layer.cornerRadius = 5.0
-        sessionCell.layer.shadowOpacity = 0.7
-        sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
-        
+        if indexPath.row == sessionNameArray.count-1 {
+            
+            
+            // Deactivate label constraints relative to black view;
+            sessionCell.sessionInfoLabelCenterYConstraintRelativeToBlackView.isActive = false
+            sessionCell.sessionInfoLabelLeadingConstraintRelativeToBlackView.isActive = false
+            sessionCell.sessionInfoLabelTrailingConstraintRelativeToBlackView.isActive = false
+            
+            // Rather, put constraints in relative to the entire cell
+            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor).isActive = true
+            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
+            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
+            
+            // Remove black view from view hierarchy(spelling check?)
+            // sessionCell.backgroundBlackView.removeFromSuperview()
+            
+            sessionCell.sessionInfoLabel.text = "+"
+            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
+            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+            sessionCell.layer.cornerRadius = 5.0
+            sessionCell.layer.shadowOpacity = 0.7
+            sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
+        } else {
+            
+            // sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
+            // sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+            sessionCell.sessionInfoLabel.text = sessionNameArray[indexPath.row]
+            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+            sessionCell.layer.cornerRadius = 5.0
+            sessionCell.layer.shadowOpacity = 0.7
+            sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
+        }
         return sessionCell
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

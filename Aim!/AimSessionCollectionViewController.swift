@@ -13,7 +13,7 @@ private let reuseIdentifier = "aimSessionsCell"
 class AimSessionCollectionViewController: UICollectionViewController {
     
     let aimSessionDurationTexts = ["25 Minutes", "60 Minutes", "Custom Duration", "Endless Duration"]
-    var collectionViewCells = [AimSessionsCollectionViewCell]()
+    var collectionViewCells = [AimSessionSelectionVCCollectionViewCell]()
     var delegate: DurationDelegate?
     
     override func viewDidLoad() {
@@ -57,12 +57,12 @@ class AimSessionCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! AimSessionsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! AimSessionSelectionVCCollectionViewCell
     
         // Configure the cell
         
         self.collectionViewCells.append(cell)
-        cell.anAimSessionButtonLabel.text = self.aimSessionDurationTexts[indexPath.item]
+        cell.sessionInfoLabel.text = self.aimSessionDurationTexts[indexPath.item]
         //        cell.backgroundColor = UIColor.blue
         cell.layer.borderColor = UIColor.clear.cgColor
         cell.layer.borderWidth = 4

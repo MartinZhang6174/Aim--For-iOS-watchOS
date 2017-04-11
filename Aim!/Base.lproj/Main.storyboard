@@ -221,22 +221,46 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="32" y="-2" width="36" height="94"/>
-                                                    <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="78"/>
-                                                    <color key="textColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="91T-Bv-622">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
+                                                    <rect key="frame" x="0.0" y="78" width="100" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
+                                                            <rect key="frame" x="0.0" y="-4" width="100" height="29"/>
+                                                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
+                                                            <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="4gw-IE-VsM"/>
+                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="RVc-bz-WCv"/>
+                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="leading" secondItem="kyh-Ra-LRz" secondAttribute="leading" id="i7k-44-vnV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ssh-v0-26P" secondAttribute="trailing" id="iD4-t3-dwf"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerX" secondItem="5O6-EW-93G" secondAttribute="centerX" id="JVh-iu-m53"/>
-                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="5O6-EW-93G" secondAttribute="centerY" constant="-5" id="So4-mu-p2Z"/>
+                                            <constraint firstAttribute="bottom" secondItem="kyh-Ra-LRz" secondAttribute="bottom" id="T9i-13-V4w"/>
+                                            <constraint firstAttribute="trailing" secondItem="91T-Bv-622" secondAttribute="trailing" id="UXM-FM-8xe"/>
+                                            <constraint firstItem="91T-Bv-622" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="XLK-Vf-Mgn"/>
+                                            <constraint firstItem="91T-Bv-622" firstAttribute="top" secondItem="5O6-EW-93G" secondAttribute="top" id="e9O-xL-sft"/>
+                                            <constraint firstItem="kyh-Ra-LRz" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="h1V-iH-u1g"/>
+                                            <constraint firstAttribute="trailing" secondItem="kyh-Ra-LRz" secondAttribute="trailing" id="nae-vZ-DNo"/>
+                                            <constraint firstAttribute="bottom" secondItem="91T-Bv-622" secondAttribute="bottom" id="rez-nj-b6a"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
+                                            <outlet property="backgroundBlackView" destination="kyh-Ra-LRz" id="11t-Vs-sNI"/>
                                             <outlet property="sessionInfoLabel" destination="ssh-v0-26P" id="F2b-fy-ESH"/>
+                                            <outlet property="sessionInfoLabelCenterYConstraintRelativeToBlackView" destination="RVc-bz-WCv" id="qI7-ap-cRt"/>
+                                            <outlet property="sessionInfoLabelLeadingConstraintRelativeToBlackView" destination="i7k-44-vnV" id="7rt-Z1-1c1"/>
+                                            <outlet property="sessionInfoLabelTrailingConstraintRelativeToBlackView" destination="iD4-t3-dwf" id="iH0-5Q-74j"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -826,7 +850,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Au-1a-SxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="2658.6206896551726"/>
+            <point key="canvasLocation" x="-138" y="2775"/>
         </scene>
     </scenes>
     <resources>

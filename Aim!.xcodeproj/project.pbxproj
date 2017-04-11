@@ -49,7 +49,6 @@
 		9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB013A1E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
-		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
 		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
 		CC755824142A1A3CDDCBDE45 /* Pods_Aim__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */; };
 		F226F6FD778CC7A57CD2E9C9 /* Pods_Aim__Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */; };
@@ -155,7 +154,6 @@
 		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
-		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
 		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
 				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
 				9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */,
-				9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */,
 				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
 				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
 				9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */,
@@ -743,7 +740,6 @@
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
-				9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */,
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
