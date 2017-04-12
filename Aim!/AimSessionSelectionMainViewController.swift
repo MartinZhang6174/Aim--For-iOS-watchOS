@@ -107,7 +107,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
             
             // Remove black view from view hierarchy(spelling check?)
-            // sessionCell.backgroundBlackView.removeFromSuperview()
+            sessionCell.backgroundBlackView.isHidden = true
             
             sessionCell.sessionInfoLabel.text = "+"
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)

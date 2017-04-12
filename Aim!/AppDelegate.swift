@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIApplication.shared.statusBarStyle = .lightContent
         
+        // Configure a FIRApp instance
         FIRApp.configure()
         
         return true
