@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 import Firebase
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
@@ -14,7 +15,7 @@ let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
 let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
 @IBDesignable
-class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
@@ -23,6 +24,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var aimTokenSumLabel: UILabel!
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
     @IBOutlet weak var aimHourSumLabel: UILabel!
+    @IBOutlet weak var uploadProgressView: UIProgressView!
     
     var sessionNameArray = ["Sep 17th, 2017", "May 6th, 2017", "Feb 19th, 2016", "Vocabulary for Engineering", "Aerodynamics Test"]
     
@@ -128,6 +130,72 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         return sessionCell
     }
+    
+    // Testing button for firebase storage
+    @IBAction func addSessionButtonPressed(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        imagePicker.delegate = self
+        self.present(imagePicker, animated: true, completion: nil)
+        
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let mediaType: String = info[UIImagePickerControllerMediaType] as? String else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        if mediaType == (kUTTypeImage as String) {
+            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
+                let imageData = UIImageJPEGRepresentation(originalImage, 0.8) {
+                uploadImageToFirebaseStorage(data: imageData)
+            }
+        } else if mediaType == (kUTTypeMovie as String) {
+            if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
+                uploadMovieToFirebaseStorage(url: movieURL)
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadImageToFirebaseStorage(data: Data) {
+        let storageRef = FIRStorage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
+        let uploadMetadata = FIRStorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        let uploadTask = storageRef.put(data, metadata: uploadMetadata) { (metadata, error) in
+            if (error != nil) {
+                print("\(error?.localizedDescription)")
+            } else {
+                print("\(metadata)")
+            }
+        }
+        uploadTask.observe(.progress) { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            guard let progress = snapshot.progress else { return }
+            strongSelf.uploadProgressView.progress = Float(progress.fractionCompleted)
+        }
+    }
+    
+    func uploadMovieToFirebaseStorage(url: URL) {
+        
+    }
+    
+    @IBAction func resetProgressButtonPressed(_ sender: Any) {
+        self.uploadProgressView.progress = 0.0
+    }
+    
+    
+    
+    
+    
     
     /*
      // MARK: - Navigation

@@ -228,7 +228,7 @@
                                                     <rect key="frame" x="0.0" y="78" width="100" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                            <rect key="frame" x="0.0" y="1.5" width="100" height="19.5"/>
+                                                            <rect key="frame" x="0.0" y="2" width="100" height="19"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                             <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -236,6 +236,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
+                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="top" secondItem="kyh-Ra-LRz" secondAttribute="top" constant="2" id="2LB-1w-zJc"/>
                                                         <constraint firstAttribute="height" constant="22" id="4gw-IE-VsM"/>
                                                         <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="RVc-bz-WCv"/>
                                                         <constraint firstItem="ssh-v0-26P" firstAttribute="leading" secondItem="kyh-Ra-LRz" secondAttribute="leading" id="i7k-44-vnV"/>
@@ -289,29 +290,61 @@
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iJ-Q6-UfJ">
+                                <rect key="frame" x="16" y="95" width="106" height="30"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                <state key="normal" title="Add session YO">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSessionButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="YdH-5e-3Nt"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-re-LMr">
+                                <rect key="frame" x="37" y="147" width="300" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="zHZ-Bb-5LW"/>
+                                </constraints>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
+                                <rect key="frame" x="262" y="109" width="37" height="30"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetProgressButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="eOU-ZZ-q8V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="top" secondItem="sSP-O5-d19" secondAttribute="bottom" constant="16" id="1r1-Uc-CJR"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
+                            <constraint firstItem="6iJ-Q6-UfJ" firstAttribute="top" secondItem="Qau-Bf-Reb" secondAttribute="bottom" constant="8" id="9R0-53-hoY"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Qau-Bf-Reb" secondAttribute="bottom" constant="70" id="D5s-nL-NNo"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="centerX" secondItem="0iR-Zr-eJS" secondAttribute="centerX" id="EnM-aK-iwh"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="leading" secondItem="Qau-Bf-Reb" secondAttribute="trailing" constant="20" id="Fk5-By-XjC"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="baseline" secondItem="g0k-5i-ZEl" secondAttribute="baseline" id="HSh-Yc-jCF"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
+                            <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="41" id="ID1-M7-CEL"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="JVm-Js-r7l"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="18" id="Jph-Jh-xSy"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="top" secondItem="Eai-0I-RGI" secondAttribute="bottom" constant="6" id="KKA-oa-Yaw"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="Kod-y6-yny"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="bottom" secondItem="kbo-Gh-4I7" secondAttribute="top" id="MJc-sm-xsQ"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="8" symbolic="YES" id="P28-X3-Kg1"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="12" id="RLG-AG-ryx"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="U2p-BF-QWj"/>
+                            <constraint firstItem="6iJ-Q6-UfJ" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" id="Uvi-gg-fDf"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="bottom" secondItem="g0k-5i-ZEl" secondAttribute="bottom" id="Xlo-tI-n4q"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="4" id="Ymg-AY-asF"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="leading" secondItem="Qau-Bf-Reb" secondAttribute="trailing" constant="37" id="bsd-fY-D0Y"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="12" id="gG0-dU-qmJ"/>
                             <constraint firstItem="Qau-Bf-Reb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" id="mH9-O9-MB5"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="firstBaseline" secondItem="g0k-5i-ZEl" secondAttribute="firstBaseline" id="nwR-T4-TdI"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="8" id="tN8-Oa-a0Z"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="vIq-at-YkT"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="3" id="z11-bx-9FG"/>
                         </constraints>
@@ -335,6 +368,7 @@
                         <outlet property="aimSessionCollectionView" destination="HOz-8d-Ztb" id="jHW-1S-coo"/>
                         <outlet property="aimTokenHourSeparaterImageView" destination="0iR-Zr-eJS" id="sHK-xK-M1A"/>
                         <outlet property="aimTokenSumLabel" destination="yNA-sf-FvZ" id="fFM-De-ZNs"/>
+                        <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
                         <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                     </connections>
                 </viewController>
