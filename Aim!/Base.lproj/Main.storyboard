@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-2b-O0U">
-                                <rect key="frame" x="87.5" y="520" width="200" height="50"/>
+                                <rect key="frame" x="88" y="520" width="200" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-fh-f0N" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="210" width="220" height="45"/>
+                                <rect key="frame" x="78" y="210" width="220" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="L9G-oe-qMJ"/>
                                     <constraint firstAttribute="width" constant="220" id="YNz-n2-1Gh"/>
@@ -81,19 +81,19 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create your password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-hQ-AG6" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="275" width="220" height="45"/>
+                                <rect key="frame" x="78" y="275" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vbf-fy-DWE" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="340" width="220" height="45"/>
+                                <rect key="frame" x="78" y="340" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="join" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-o4-nNv">
-                                <rect key="frame" x="87.5" y="440" width="200" height="50"/>
+                                <rect key="frame" x="88" y="440" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="DLK-2l-f9S"/>
                                     <constraint firstAttribute="width" constant="200" id="E3C-Uf-uJJ"/>
@@ -224,44 +224,38 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge3" translatesAutoresizingMaskIntoConstraints="NO" id="91T-Bv-622">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
                                                     <rect key="frame" x="0.0" y="78" width="100" height="22"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                            <rect key="frame" x="0.0" y="2" width="100" height="19"/>
-                                                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
-                                                            <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="top" secondItem="kyh-Ra-LRz" secondAttribute="top" constant="2" id="2LB-1w-zJc"/>
                                                         <constraint firstAttribute="height" constant="22" id="4gw-IE-VsM"/>
-                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="RVc-bz-WCv"/>
-                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="leading" secondItem="kyh-Ra-LRz" secondAttribute="leading" id="i7k-44-vnV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ssh-v0-26P" secondAttribute="trailing" id="iD4-t3-dwf"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
+                                                    <rect key="frame" x="8" y="79.5" width="84.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="kyh-Ra-LRz" secondAttribute="bottom" id="T9i-13-V4w"/>
                                             <constraint firstAttribute="trailing" secondItem="91T-Bv-622" secondAttribute="trailing" id="UXM-FM-8xe"/>
+                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerX" secondItem="kyh-Ra-LRz" secondAttribute="centerX" id="Udc-gv-JRV"/>
                                             <constraint firstItem="91T-Bv-622" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="XLK-Vf-Mgn"/>
                                             <constraint firstItem="91T-Bv-622" firstAttribute="top" secondItem="5O6-EW-93G" secondAttribute="top" id="e9O-xL-sft"/>
                                             <constraint firstItem="kyh-Ra-LRz" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="h1V-iH-u1g"/>
                                             <constraint firstAttribute="trailing" secondItem="kyh-Ra-LRz" secondAttribute="trailing" id="nae-vZ-DNo"/>
                                             <constraint firstAttribute="bottom" secondItem="91T-Bv-622" secondAttribute="bottom" id="rez-nj-b6a"/>
+                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="zQj-Tx-Msi"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
                                             <outlet property="backgroundBlackView" destination="kyh-Ra-LRz" id="11t-Vs-sNI"/>
                                             <outlet property="sessionInfoLabel" destination="ssh-v0-26P" id="F2b-fy-ESH"/>
-                                            <outlet property="sessionInfoLabelCenterYConstraintRelativeToBlackView" destination="RVc-bz-WCv" id="qI7-ap-cRt"/>
-                                            <outlet property="sessionInfoLabelLeadingConstraintRelativeToBlackView" destination="i7k-44-vnV" id="7rt-Z1-1c1"/>
-                                            <outlet property="sessionInfoLabelTrailingConstraintRelativeToBlackView" destination="iD4-t3-dwf" id="iH0-5Q-74j"/>
+                                            <outlet property="sessionSnaphotImageView" destination="91T-Bv-622" id="pSM-OT-8aN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

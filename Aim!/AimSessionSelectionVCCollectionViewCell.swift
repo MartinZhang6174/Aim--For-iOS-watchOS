@@ -10,11 +10,9 @@ import UIKit
 
 class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var sessionInfoLabelCenterYConstraintRelativeToBlackView: NSLayoutConstraint!
-    @IBOutlet weak var sessionInfoLabelLeadingConstraintRelativeToBlackView: NSLayoutConstraint!
-    @IBOutlet weak var sessionInfoLabelTrailingConstraintRelativeToBlackView: NSLayoutConstraint!
     @IBOutlet weak var sessionInfoLabel: UILabel!
     @IBOutlet weak var backgroundBlackView: UIView!
+    @IBOutlet weak var sessionSnaphotImageView: UIImageView!
 
     override func awakeFromNib() {
        

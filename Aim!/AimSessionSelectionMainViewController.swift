@@ -95,21 +95,23 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
+        // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
         if indexPath.row == sessionNameArray.count-1 {
-            
+            // Hide black view and move label to centre of cell displaying huge "+"
+            sessionCell.backgroundBlackView.isHidden = true
             
             // Deactivate label constraints relative to black view;
-            sessionCell.sessionInfoLabelCenterYConstraintRelativeToBlackView.isActive = false
-            sessionCell.sessionInfoLabelLeadingConstraintRelativeToBlackView.isActive = false
-            sessionCell.sessionInfoLabelTrailingConstraintRelativeToBlackView.isActive = false
+            // sessionCell.sessionInfoLabelCenterYConstraintRelativeToBlackView.isActive = false
+            // sessionCell.sessionInfoLabelLeadingConstraintRelativeToBlackView.isActive = false
+            // sessionCell.sessionInfoLabelTrailingConstraintRelativeToBlackView.isActive = false
             
-            // Rather, put constraints in relative to the entire cell
-            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor).isActive = true
+            // Put constraints in relative to the entire cell rather than to the black view normally
+            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
             sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
             sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
             
-            // Remove black view from view hierarchy(spelling check?)
-            sessionCell.backgroundBlackView.isHidden = true
+            // Remove cell image, show orange background 
+            sessionCell.sessionSnaphotImageView.image = nil
             
             sessionCell.sessionInfoLabel.text = "+"
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
