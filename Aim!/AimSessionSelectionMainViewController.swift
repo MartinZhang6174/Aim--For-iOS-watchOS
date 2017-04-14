@@ -25,28 +25,31 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
     @IBOutlet weak var aimHourSumLabel: UILabel!
     @IBOutlet weak var uploadProgressView: UIProgressView!
+    @IBOutlet var addSessionPopupView: UIView!
     
-    var sessionNameArray = ["Sep 17th, 2017", "May 6th, 2017", "Feb 19th, 2016", "Vocabulary for Engineering", "Aerodynamics Test"]
+    var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sessionNameArray.append("+")
-        
-        // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
-        self.view.backgroundColor = aimApplicationThemePurpleColor
-        
-        aimTokenSumLabel.textColor = aimApplicationThemeOrangeColor
-        aimTokenHourSeparaterImageView.backgroundColor = aimApplicationThemeOrangeColor
-        aimHourSumLabel.textColor = aimApplicationThemeOrangeColor
-        
-        self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
         // Setting nav bar item colors:
         self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
+       
+        // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
+        self.view.backgroundColor = aimApplicationThemePurpleColor
+        aimTokenSumLabel.textColor = aimApplicationThemeOrangeColor
+        aimTokenHourSeparaterImageView.backgroundColor = aimApplicationThemeOrangeColor
+        aimHourSumLabel.textColor = aimApplicationThemeOrangeColor
+        
+        self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        
+        self.sessionNameArray.append("+")
+        self.aimSessionCollectionView.isUserInteractionEnabled = true
+        // aimSessionCollectionView.delegate = self
         
         // Use custom PhosphatePro-Inline font
         aimTokenSumLabel.font = aimApplicationThemeFont24
@@ -100,19 +103,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // Hide black view and move label to centre of cell displaying huge "+"
             sessionCell.backgroundBlackView.isHidden = true
             
-            // Deactivate label constraints relative to black view;
-            // sessionCell.sessionInfoLabelCenterYConstraintRelativeToBlackView.isActive = false
-            // sessionCell.sessionInfoLabelLeadingConstraintRelativeToBlackView.isActive = false
-            // sessionCell.sessionInfoLabelTrailingConstraintRelativeToBlackView.isActive = false
-            
             // Put constraints in relative to the entire cell rather than to the black view normally
             sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
             sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
             sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
             
             // Remove cell image, show orange background 
-            sessionCell.sessionSnaphotImageView.image = nil
+            // sessionCell.sessionSnaphotImageView.image = nil
             
+            sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
+            sessionCell.backgroundBlackView.isUserInteractionEnabled = false
             sessionCell.sessionInfoLabel.text = "+"
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
             sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
@@ -121,17 +121,32 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.layer.shadowOpacity = 0.7
             sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
         } else {
-            
+            sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
+            sessionCell.backgroundBlackView.isUserInteractionEnabled = false
+            sessionCell.isUserInteractionEnabled = true
             // sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
             // sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
             sessionCell.sessionInfoLabel.text = sessionNameArray[indexPath.row]
-            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
             sessionCell.layer.cornerRadius = 5.0
             sessionCell.layer.shadowOpacity = 0.7
             sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
         }
         return sessionCell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        // print("xxxxxxxxx")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // If this isn't yet the last, do an USUAL configuration:
+        if indexPath.row == sessionNameArray.count-1 {
+            print("Last")
+        } else {
+            print("Nope")
+        }
+    }
+    
     
     // Testing button for firebase storage
     @IBAction func addSessionButtonPressed(_ sender: Any) {
@@ -141,8 +156,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
         
-        let storage = FIRStorage.storage()
-        let storageRef = storage.reference()
+        /*let storage = FIRStorage.storage()
+        let storageRef = storage.reference()*/
         
     }
     
