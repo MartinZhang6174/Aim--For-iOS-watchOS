@@ -15,7 +15,6 @@ let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    
     var loadingViewFrame = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
@@ -214,6 +213,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     

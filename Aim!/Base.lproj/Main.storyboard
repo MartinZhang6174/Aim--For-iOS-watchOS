@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-2b-O0U">
-                                <rect key="frame" x="87.5" y="520" width="200" height="50"/>
+                                <rect key="frame" x="88" y="520" width="200" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-fh-f0N" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="210" width="220" height="45"/>
+                                <rect key="frame" x="78" y="210" width="220" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="L9G-oe-qMJ"/>
                                     <constraint firstAttribute="width" constant="220" id="YNz-n2-1Gh"/>
@@ -81,19 +81,19 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create your password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-hQ-AG6" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="275" width="220" height="45"/>
+                                <rect key="frame" x="78" y="275" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vbf-fy-DWE" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="340" width="220" height="45"/>
+                                <rect key="frame" x="78" y="340" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="join" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-o4-nNv">
-                                <rect key="frame" x="87.5" y="440" width="200" height="50"/>
+                                <rect key="frame" x="88" y="440" width="200" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="DLK-2l-f9S"/>
                                     <constraint firstAttribute="width" constant="200" id="E3C-Uf-uJJ"/>
@@ -179,10 +179,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aim!logo" translatesAutoresizingMaskIntoConstraints="NO" id="sSP-O5-d19">
-                                <rect key="frame" x="124" y="30" width="127" height="67"/>
+                                <rect key="frame" x="124" y="27.5" width="127" height="67"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="141" y="113" width="43" height="26"/>
+                                <rect key="frame" x="141" y="110.5" width="43" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="0mu-IG-9ZM"/>
                                 </constraints>
@@ -191,20 +191,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Zr-eJS">
-                                <rect key="frame" x="187" y="113" width="2" height="26"/>
+                                <rect key="frame" x="187" y="110.5" width="2" height="26"/>
                                 <color key="backgroundColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="cfA-Fi-9F5"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="193" y="113" width="28" height="26"/>
+                                <rect key="frame" x="193" y="110.5" width="28" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HOz-8d-Ztb">
-                                <rect key="frame" x="0.0" y="157" width="375" height="446"/>
+                                <rect key="frame" x="0.0" y="154.5" width="375" height="448.5"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="sjM-yv-Nw2">
@@ -214,53 +214,40 @@
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="aimSessionSelectionCollectionViewCell" id="5O6-EW-93G" customClass="AimSessionSelectionVCCollectionViewCell" customModule="Aim_" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="aimSessionSelectionCollectionViewCell" id="5O6-EW-93G" customClass="AimSessionSelectionVCCollectionViewCell" customModule="Aim_" customModuleProvider="target">
                                         <rect key="frame" x="15" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge3" translatesAutoresizingMaskIntoConstraints="NO" id="91T-Bv-622">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
                                                     <rect key="frame" x="0.0" y="78" width="100" height="22"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                            <rect key="frame" x="0.0" y="1.5" width="100" height="19.5"/>
-                                                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
-                                                            <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="4gw-IE-VsM"/>
-                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="RVc-bz-WCv"/>
-                                                        <constraint firstItem="ssh-v0-26P" firstAttribute="leading" secondItem="kyh-Ra-LRz" secondAttribute="leading" id="i7k-44-vnV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ssh-v0-26P" secondAttribute="trailing" id="iD4-t3-dwf"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
+                                                    <rect key="frame" x="8" y="79" width="85" height="20"/>
+                                                    <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="kyh-Ra-LRz" secondAttribute="bottom" id="T9i-13-V4w"/>
-                                            <constraint firstAttribute="trailing" secondItem="91T-Bv-622" secondAttribute="trailing" id="UXM-FM-8xe"/>
-                                            <constraint firstItem="91T-Bv-622" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="XLK-Vf-Mgn"/>
-                                            <constraint firstItem="91T-Bv-622" firstAttribute="top" secondItem="5O6-EW-93G" secondAttribute="top" id="e9O-xL-sft"/>
+                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerX" secondItem="kyh-Ra-LRz" secondAttribute="centerX" id="Udc-gv-JRV"/>
                                             <constraint firstItem="kyh-Ra-LRz" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="h1V-iH-u1g"/>
                                             <constraint firstAttribute="trailing" secondItem="kyh-Ra-LRz" secondAttribute="trailing" id="nae-vZ-DNo"/>
-                                            <constraint firstAttribute="bottom" secondItem="91T-Bv-622" secondAttribute="bottom" id="rez-nj-b6a"/>
+                                            <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="zQj-Tx-Msi"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
                                             <outlet property="backgroundBlackView" destination="kyh-Ra-LRz" id="11t-Vs-sNI"/>
                                             <outlet property="sessionInfoLabel" destination="ssh-v0-26P" id="F2b-fy-ESH"/>
-                                            <outlet property="sessionInfoLabelCenterYConstraintRelativeToBlackView" destination="RVc-bz-WCv" id="qI7-ap-cRt"/>
-                                            <outlet property="sessionInfoLabelLeadingConstraintRelativeToBlackView" destination="i7k-44-vnV" id="7rt-Z1-1c1"/>
-                                            <outlet property="sessionInfoLabelTrailingConstraintRelativeToBlackView" destination="iD4-t3-dwf" id="iH0-5Q-74j"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -270,7 +257,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-Bf-Reb">
-                                <rect key="frame" x="16" y="46" width="88" height="41"/>
+                                <rect key="frame" x="16" y="43.5" width="88" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="tmq-3x-kcr"/>
                                 </constraints>
@@ -284,34 +271,66 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
-                                <rect key="frame" x="156" y="8" width="63" height="16"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
+                                <rect key="frame" x="16" y="8" width="343" height="13.5"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iJ-Q6-UfJ">
+                                <rect key="frame" x="16" y="92.5" width="106" height="30"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                <state key="normal" title="Add session YO">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSessionButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="YdH-5e-3Nt"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-re-LMr">
+                                <rect key="frame" x="37" y="144.5" width="300" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="zHZ-Bb-5LW"/>
+                                </constraints>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
+                                <rect key="frame" x="262" y="106.5" width="37" height="30"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetProgressButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="eOU-ZZ-q8V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="top" secondItem="sSP-O5-d19" secondAttribute="bottom" constant="16" id="1r1-Uc-CJR"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
+                            <constraint firstItem="6iJ-Q6-UfJ" firstAttribute="top" secondItem="Qau-Bf-Reb" secondAttribute="bottom" constant="8" id="9R0-53-hoY"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Qau-Bf-Reb" secondAttribute="bottom" constant="70" id="D5s-nL-NNo"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="centerX" secondItem="0iR-Zr-eJS" secondAttribute="centerX" id="EnM-aK-iwh"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="leading" secondItem="Qau-Bf-Reb" secondAttribute="trailing" constant="20" id="Fk5-By-XjC"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="baseline" secondItem="g0k-5i-ZEl" secondAttribute="baseline" id="HSh-Yc-jCF"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
+                            <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="41" id="ID1-M7-CEL"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="JVm-Js-r7l"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="18" id="Jph-Jh-xSy"/>
                             <constraint firstItem="sSP-O5-d19" firstAttribute="top" secondItem="Eai-0I-RGI" secondAttribute="bottom" constant="6" id="KKA-oa-Yaw"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="Kod-y6-yny"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="bottom" secondItem="kbo-Gh-4I7" secondAttribute="top" id="MJc-sm-xsQ"/>
-                            <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="12" id="RLG-AG-ryx"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="8" symbolic="YES" id="P28-X3-Kg1"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" id="RLG-AG-ryx"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="U2p-BF-QWj"/>
+                            <constraint firstItem="6iJ-Q6-UfJ" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" id="Uvi-gg-fDf"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="bottom" secondItem="g0k-5i-ZEl" secondAttribute="bottom" id="Xlo-tI-n4q"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="4" id="Ymg-AY-asF"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="leading" secondItem="Qau-Bf-Reb" secondAttribute="trailing" constant="37" id="bsd-fY-D0Y"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="12" id="gG0-dU-qmJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Eai-0I-RGI" secondAttribute="trailing" id="gG0-dU-qmJ"/>
                             <constraint firstItem="Qau-Bf-Reb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" id="mH9-O9-MB5"/>
                             <constraint firstItem="yNA-sf-FvZ" firstAttribute="firstBaseline" secondItem="g0k-5i-ZEl" secondAttribute="firstBaseline" id="nwR-T4-TdI"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="8" id="tN8-Oa-a0Z"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="vIq-at-YkT"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="3" id="z11-bx-9FG"/>
                         </constraints>
@@ -331,14 +350,39 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addSessionPopupView" destination="hbn-Fr-Pna" id="D7h-HN-VgM"/>
                         <outlet property="aimHourSumLabel" destination="g0k-5i-ZEl" id="2c4-IX-nk4"/>
                         <outlet property="aimSessionCollectionView" destination="HOz-8d-Ztb" id="jHW-1S-coo"/>
                         <outlet property="aimTokenHourSeparaterImageView" destination="0iR-Zr-eJS" id="sHK-xK-M1A"/>
                         <outlet property="aimTokenSumLabel" destination="yNA-sf-FvZ" id="fFM-De-ZNs"/>
+                        <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
                         <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-dz-vlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hbn-Fr-Pna" customClass="AimSessionAddingPopUpView" customModule="Aim_" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-x5-1qx">
+                            <rect key="frame" x="0.0" y="41.5" width="240" height="45"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                            <state key="normal" title="close">
+                                <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="closeButtonOnPopupClicked:" destination="z8h-kr-T6C" eventType="touchUpInside" id="AmX-u5-GgL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="centerY" secondItem="hbn-Fr-Pna" secondAttribute="centerY" id="Q1H-H3-JGK"/>
+                        <constraint firstAttribute="trailing" secondItem="XmI-x5-1qx" secondAttribute="trailing" id="Xde-sh-5yG"/>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="leading" secondItem="hbn-Fr-Pna" secondAttribute="leading" id="fGY-Lp-yA4"/>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="centerX" secondItem="hbn-Fr-Pna" secondAttribute="centerX" id="kH5-U5-3Ed"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="-941.60000000000002" y="2381.5592203898054"/>
         </scene>
@@ -540,7 +584,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bcf-hS-JVQ" id="0Kq-mp-2oY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -863,7 +907,6 @@
         <image name="World Cup Filled30" width="16" height="30"/>
         <image name="World Cup Unfilled" width="16" height="30"/>
         <image name="aim!logo" width="127" height="67"/>
-        <image name="knowledge3" width="640" height="480"/>
         <image name="prizeBarButtonItem" width="20" height="28"/>
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
