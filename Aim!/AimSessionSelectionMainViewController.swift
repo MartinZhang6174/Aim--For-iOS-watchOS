@@ -30,7 +30,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var uploadProgressView: UIProgressView!
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     
-    var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
+    // var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
     
     
     var sessionObjectArray = [AimSession]()
@@ -46,12 +46,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let date2 = fmt.date(from: "10.07.2016")
         let date3 = fmt.date(from: "05.02.2017")
         let date4 = fmt.date(from: "16.04.2017")
-
         
         let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
-        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge1")!, priority: false)
-        let session3 = AimSession(sessionTitle: "Programming", dateInitialized: date3!, image: UIImage(named: "knowledge1")!, priority: false)
-        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge1")!, priority: false)
+        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
+        let session3 = AimSession(sessionTitle: "Programming", dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
+        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
 
         
         self.sessionObjectArray.append(session1)
@@ -75,7 +74,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
-        self.sessionNameArray.append("+")
+        let plusObject = AimSession(sessionTitle: "+", dateInitialized: nil, image: nil, priority: false)
+        self.sessionObjectArray.append(plusObject)
+        
         self.aimSessionCollectionView.isUserInteractionEnabled = true
         // aimSessionCollectionView.delegate = self
         
@@ -122,14 +123,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Returning the number of items in sessionDict plus one for the last cell is going to be an ADD button
-        return sessionNameArray.count
+        return sessionObjectArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
+        
+        let selectedAimSessionObject = sessionObjectArray[indexPath.row]
+
+        
         // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
-        if indexPath.row == sessionNameArray.count-1 {
+        if indexPath.row == sessionObjectArray.count-1 {
             // Hide black view and move label to centre of cell displaying huge "+"
             sessionCell.backgroundBlackView.isHidden = true
             
@@ -138,7 +143,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
             sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
             
-            // Remove cell image, show orange background 
+            // Remove cell image, show orange background
             // sessionCell.sessionSnaphotImageView.image = nil
             
             sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
@@ -151,7 +156,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
             sessionCell.backgroundBlackView.isUserInteractionEnabled = false
             sessionCell.isUserInteractionEnabled = true
-            sessionCell.sessionInfoLabel.text = sessionNameArray[indexPath.row]
+            sessionCell.sessionInfoLabel.text = sessionObjectArray[indexPath.row].title
+            sessionCell.sessionSnaphotImageView.image = selectedAimSessionObject.image
         }
         return sessionCell
     }
@@ -208,7 +214,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         // If this isn't yet the last, do an USUAL configuration:
-        if indexPath.row == sessionNameArray.count-1 {
+        if indexPath.row == sessionObjectArray.count-1 {
             print("Last")
             animatePopupIn()
         } else {
