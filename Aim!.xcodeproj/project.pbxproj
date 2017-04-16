@@ -39,6 +39,7 @@
 		9C7160261DC5A940003C7773 /* DurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160241DC5A940003C7773 /* DurationDelegate.swift */; };
 		9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
+		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
 		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
 		9CC013501E458D2200EDC879 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* LoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
@@ -148,6 +149,7 @@
 		9C7160241DC5A940003C7773 /* DurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationDelegate.swift; sourceTree = "<group>"; };
 		9C7160251DC5A940003C7773 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		9C9E49AF1EA0518A00D5D368 /* AimSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSession.swift; sourceTree = "<group>"; };
+		9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopUpView.swift; sourceTree = "<group>"; };
 		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
 		9CC0134F1E458D2200EDC879 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
 				9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */,
 				9CE3C7CC1E6614C700426465 /* LoadingView.swift */,
+				9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */,
 				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
 				1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */,
+				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
 				9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */,
 				9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */,
 			);

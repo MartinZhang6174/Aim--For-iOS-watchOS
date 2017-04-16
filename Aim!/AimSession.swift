@@ -15,13 +15,13 @@ class AimSession: NSObject {
     var currentToken: Int = 0
     var currentTimeAccumulated = TimeInterval()
     var hoursAccumulated: Double = 0.0
-    var image = UIImage()
+    var image: UIImage?
     
     var isPrioritized = Bool()
     
     let dateCreated: Date?
     
-    init(sessionTitle: String, dateInitialized: Date, image: UIImage, priority: Bool) {
+    init(sessionTitle: String, dateInitialized: Date?, image: UIImage?, priority: Bool) {
         self.title = sessionTitle
         self.dateCreated = dateInitialized
         self.image = image

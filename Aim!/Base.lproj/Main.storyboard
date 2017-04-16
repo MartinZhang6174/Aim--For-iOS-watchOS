@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -350,6 +350,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addSessionPopupView" destination="hbn-Fr-Pna" id="D7h-HN-VgM"/>
                         <outlet property="aimHourSumLabel" destination="g0k-5i-ZEl" id="2c4-IX-nk4"/>
                         <outlet property="aimSessionCollectionView" destination="HOz-8d-Ztb" id="jHW-1S-coo"/>
                         <outlet property="aimTokenHourSeparaterImageView" destination="0iR-Zr-eJS" id="sHK-xK-M1A"/>
@@ -359,6 +360,29 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-dz-vlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hbn-Fr-Pna" customClass="AimSessionAddingPopUpView" customModule="Aim_" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-x5-1qx">
+                            <rect key="frame" x="0.0" y="41.5" width="240" height="45"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                            <state key="normal" title="close">
+                                <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="closeButtonOnPopupClicked:" destination="z8h-kr-T6C" eventType="touchUpInside" id="AmX-u5-GgL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="centerY" secondItem="hbn-Fr-Pna" secondAttribute="centerY" id="Q1H-H3-JGK"/>
+                        <constraint firstAttribute="trailing" secondItem="XmI-x5-1qx" secondAttribute="trailing" id="Xde-sh-5yG"/>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="leading" secondItem="hbn-Fr-Pna" secondAttribute="leading" id="fGY-Lp-yA4"/>
+                        <constraint firstItem="XmI-x5-1qx" firstAttribute="centerX" secondItem="hbn-Fr-Pna" secondAttribute="centerX" id="kH5-U5-3Ed"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="-941.60000000000002" y="2381.5592203898054"/>
         </scene>
@@ -560,7 +584,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bcf-hS-JVQ" id="0Kq-mp-2oY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

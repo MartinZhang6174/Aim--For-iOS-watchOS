@@ -19,18 +19,46 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
+    var togglingCell = false
+    var selectedCellIndexPath: IndexPath? = nil
+    
     @IBOutlet weak var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
     @IBOutlet weak var aimTokenSumLabel: UILabel!
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
     @IBOutlet weak var aimHourSumLabel: UILabel!
     @IBOutlet weak var uploadProgressView: UIProgressView!
-    @IBOutlet var addSessionPopupView: UIView!
+    @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     
     var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
     
+    
+    var sessionObjectArray = [AimSession]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Fake data:
+        let fmt = DateFormatter()
+        fmt.dateFormat = "dd.MM.yyyy"
+        
+        let date1 = fmt.date(from: "15.09.2016")
+        let date2 = fmt.date(from: "10.07.2016")
+        let date3 = fmt.date(from: "05.02.2017")
+        let date4 = fmt.date(from: "16.04.2017")
+
+        
+        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
+        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge1")!, priority: false)
+        let session3 = AimSession(sessionTitle: "Programming", dateInitialized: date3!, image: UIImage(named: "knowledge1")!, priority: false)
+        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge1")!, priority: false)
+
+        
+        self.sessionObjectArray.append(session1)
+        self.sessionObjectArray.append(session2)
+        self.sessionObjectArray.append(session3)
+        self.sessionObjectArray.append(session4)
+
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -56,6 +84,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimHourSumLabel.font = aimApplicationThemeFont24
         
         aimSessionCollectionView.backgroundColor = aimApplicationThemePurpleColor
+        
+        // self.addSessionPopupView.layer.cornerRadius = 5.0
         
         // Check user login status
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -117,36 +147,120 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
             sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
             sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-            sessionCell.layer.cornerRadius = 5.0
-            sessionCell.layer.shadowOpacity = 0.7
-            sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
         } else {
             sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
             sessionCell.backgroundBlackView.isUserInteractionEnabled = false
             sessionCell.isUserInteractionEnabled = true
-            // sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-            // sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
             sessionCell.sessionInfoLabel.text = sessionNameArray[indexPath.row]
-            sessionCell.layer.cornerRadius = 5.0
-            sessionCell.layer.shadowOpacity = 0.7
-            sessionCell.layer.shadowOffset = CGSize(width: 7, height: 5)
         }
         return sessionCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        // print("xxxxxxxxx")
+        self.selectedCellIndexPath = indexPath
+        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
+        
+        selectedCell?.layer.shadowOpacity = 1.0
+        selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        selectedCell?.layer.shadowRadius = 3.0
+        
+        UIView.animate(withDuration: 0.3) { 
+            selectedCell?.layoutIfNeeded()
+        }
+        
+        // Disable user interaction so no one can keep clicking cell like crazayyy
+        // self.aimSessionCollectionView.isUserInteractionEnabled = false
+        
+        // togglingCell = true
+        
+        /*
+        if togglingCell {
+            UIView.animate(withDuration: 0.3, animations: {
+                selectedCell?.alpha = 0.5
+            })
+        } else {
+            print("I ain't adding nothing!")
+        }
+        //if indexPath.row == sessionNameArray.count-1 {
+        // self.aimSessionCollectionView.isUserInteractionEnabled = false
+        //}*/
+        // self.addSessionPopupView.isUserInteractionEnabled = false
+        
+        
     }
     
+    var viewAccumulationArrray = [UIView]()
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedCellIndexPath = indexPath
+        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
+        
+        togglingCell = true
+        
+        if togglingCell {
+            UIView.animate(withDuration: 0.3, animations: {
+                selectedCell?.alpha = 0.5
+            }, completion: { (finishedAnimating) in
+                // self.aimSessionCollectionView.isUserInteractionEnabled = false
+                // self.addSessionPopupView.isUserInteractionEnabled = true
+            }) } else {
+            print("I ain't adding nothing!")
+        }
+        
         // If this isn't yet the last, do an USUAL configuration:
         if indexPath.row == sessionNameArray.count-1 {
             print("Last")
+            animatePopupIn()
         } else {
             print("Nope")
+            // selectedCell?.isUserInteractionEnabled = false
+            selectedCell?.alpha = 1.0
         }
     }
     
+    func animatePopupIn() {
+        self.view.addSubview(addSessionPopupView)
+        
+        
+        addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-85, width: 270, height: 170)
+        }, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let selectedCell = collectionView.cellForItem(at: indexPath)
+        selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        selectedCell?.layer.shadowRadius = 5.0
+        selectedCell?.layer.shadowOpacity = 0.7
+        selectedCell?.layer.masksToBounds = false
+        
+        UIView.animate(withDuration: 0.3) {
+            selectedCell?.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func closeButtonOnPopupClicked(_ sender: Any) {
+        togglingCell = false
+        let selectedCell = collectionView(aimSessionCollectionView, cellForItemAt: selectedCellIndexPath!)
+        // Allow user interaction back on
+        // aimSessionCollectionView.isUserInteractionEnabled = true
+        
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -210, width: 270, height: 210)
+        }) { (finishedAnimating) in
+            self.addSessionPopupView.removeFromSuperview()
+            // self.viewAccumulationArrray.append(self.addSessionPopupView)
+            
+            if !self.togglingCell {
+                selectedCell.alpha = 1.0
+            }
+        }
+        
+        selectedCell.layoutIfNeeded()
+        
+        // print(viewAccumulationArrray.count)
+    }
     
     // Testing button for firebase storage
     @IBAction func addSessionButtonPressed(_ sender: Any) {
@@ -208,11 +322,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBAction func resetProgressButtonPressed(_ sender: Any) {
         self.uploadProgressView.progress = 0.0
     }
-    
-    
-    
-    
-    
     
     /*
      // MARK: - Navigation
