@@ -179,10 +179,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aim!logo" translatesAutoresizingMaskIntoConstraints="NO" id="sSP-O5-d19">
-                                <rect key="frame" x="124" y="27.5" width="127" height="67"/>
+                                <rect key="frame" x="124" y="27" width="127" height="67"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="141" y="110.5" width="43" height="26"/>
+                                <rect key="frame" x="141" y="110" width="43" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="0mu-IG-9ZM"/>
                                 </constraints>
@@ -191,20 +191,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Zr-eJS">
-                                <rect key="frame" x="187" y="110.5" width="2" height="26"/>
+                                <rect key="frame" x="187" y="110" width="2" height="26"/>
                                 <color key="backgroundColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="cfA-Fi-9F5"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="193" y="110.5" width="28" height="26"/>
+                                <rect key="frame" x="193" y="110" width="27.5" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HOz-8d-Ztb">
-                                <rect key="frame" x="0.0" y="154.5" width="375" height="448.5"/>
+                                <rect key="frame" x="0.0" y="154" width="375" height="449"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="sjM-yv-Nw2">
@@ -221,9 +221,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-Gh-4B2">
-                                                    <rect key="frame" x="0.0" y="-0.5" width="100" height="100"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge2" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-Gh-4B2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
                                                     <rect key="frame" x="0.0" y="78" width="100" height="22"/>
@@ -233,7 +232,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8" y="79" width="85" height="20"/>
+                                                    <rect key="frame" x="8.5" y="79.5" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -242,8 +241,12 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="Q6h-Gh-4B2" firstAttribute="top" secondItem="5O6-EW-93G" secondAttribute="top" id="D0A-ge-9dC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q6h-Gh-4B2" secondAttribute="trailing" id="HK4-Zh-HFQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Q6h-Gh-4B2" secondAttribute="bottom" id="R1Z-1C-Ifu"/>
                                             <constraint firstAttribute="bottom" secondItem="kyh-Ra-LRz" secondAttribute="bottom" id="T9i-13-V4w"/>
                                             <constraint firstItem="ssh-v0-26P" firstAttribute="centerX" secondItem="kyh-Ra-LRz" secondAttribute="centerX" id="Udc-gv-JRV"/>
+                                            <constraint firstItem="Q6h-Gh-4B2" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="aO9-wD-sjM"/>
                                             <constraint firstItem="kyh-Ra-LRz" firstAttribute="leading" secondItem="5O6-EW-93G" secondAttribute="leading" id="h1V-iH-u1g"/>
                                             <constraint firstAttribute="trailing" secondItem="kyh-Ra-LRz" secondAttribute="trailing" id="nae-vZ-DNo"/>
                                             <constraint firstItem="ssh-v0-26P" firstAttribute="centerY" secondItem="kyh-Ra-LRz" secondAttribute="centerY" id="zQj-Tx-Msi"/>
@@ -262,7 +265,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-Bf-Reb">
-                                <rect key="frame" x="16" y="43.5" width="88" height="41"/>
+                                <rect key="frame" x="16" y="43" width="88" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="tmq-3x-kcr"/>
                                 </constraints>
@@ -276,13 +279,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
-                                <rect key="frame" x="16" y="8" width="343" height="13.5"/>
+                                <rect key="frame" x="16" y="8" width="343" height="13"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iJ-Q6-UfJ">
-                                <rect key="frame" x="16" y="92.5" width="106" height="30"/>
+                                <rect key="frame" x="16" y="92" width="106" height="30"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
                                 <state key="normal" title="Add session YO">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,13 +295,13 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-re-LMr">
-                                <rect key="frame" x="37" y="144.5" width="300" height="2"/>
+                                <rect key="frame" x="37" y="144" width="300" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="zHZ-Bb-5LW"/>
                                 </constraints>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
-                                <rect key="frame" x="262" y="106.5" width="37" height="30"/>
+                                <rect key="frame" x="261.5" y="106" width="37" height="30"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
                                 <state key="normal" title="reset">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -912,6 +915,7 @@
         <image name="World Cup Filled30" width="16" height="30"/>
         <image name="World Cup Unfilled" width="16" height="30"/>
         <image name="aim!logo" width="127" height="67"/>
+        <image name="knowledge2" width="562" height="375"/>
         <image name="prizeBarButtonItem" width="20" height="28"/>
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>

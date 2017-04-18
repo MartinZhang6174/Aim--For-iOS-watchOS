@@ -49,7 +49,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
         let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
-        let session3 = AimSession(sessionTitle: "Programming", dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
+        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
         let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
 
         
@@ -129,9 +129,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
-        
         let selectedAimSessionObject = sessionObjectArray[indexPath.row]
-
         
         // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
         if indexPath.row == sessionObjectArray.count-1 {
@@ -146,18 +144,20 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // Remove cell image, show orange background
             // sessionCell.sessionSnaphotImageView.image = nil
             
-            sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
-            sessionCell.backgroundBlackView.isUserInteractionEnabled = false
             sessionCell.sessionInfoLabel.text = "+"
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
             sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
             sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+            sessionCell.sessionSnaphotImageView.image = nil
         } else {
-            sessionCell.sessionInfoLabel.isUserInteractionEnabled = false
-            sessionCell.backgroundBlackView.isUserInteractionEnabled = false
-            sessionCell.isUserInteractionEnabled = true
-            sessionCell.sessionInfoLabel.text = sessionObjectArray[indexPath.row].title
+            if selectedAimSessionObject.title != nil {
+                sessionCell.sessionInfoLabel.text = sessionObjectArray[indexPath.row].title
+            } else {
+                sessionCell.backgroundBlackView.isHidden = true
+                sessionCell.sessionInfoLabel.isHidden = true
+            }
             sessionCell.sessionSnaphotImageView.image = selectedAimSessionObject.image
+            // sessionCell.layer.masksToBounds = false
         }
         return sessionCell
     }
@@ -166,9 +166,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        selectedCell?.layer.shadowOpacity = 1.0
-        selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        selectedCell?.layer.shadowRadius = 3.0
+        //selectedCell?.layer.shadowOpacity = 1.0
+        //selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        //selectedCell?.layer.shadowRadius = 3.0
         
         UIView.animate(withDuration: 0.3) { 
             selectedCell?.layoutIfNeeded()
@@ -227,7 +227,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func animatePopupIn() {
         self.view.addSubview(addSessionPopupView)
         
-        
         addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
             self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-85, width: 270, height: 170)
@@ -236,14 +235,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath)
-        selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        /*selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
         selectedCell?.layer.shadowRadius = 5.0
         selectedCell?.layer.shadowOpacity = 0.7
-        selectedCell?.layer.masksToBounds = false
+        selectedCell?.layer.masksToBounds = false*/
         
-        UIView.animate(withDuration: 0.3) {
+        //UIView.animate(withDuration: 0.3) {
             selectedCell?.layoutIfNeeded()
-        }
+        //}
     }
     
     @IBAction func closeButtonOnPopupClicked(_ sender: Any) {
