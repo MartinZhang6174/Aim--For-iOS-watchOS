@@ -252,7 +252,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // aimSessionCollectionView.isUserInteractionEnabled = true
         
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
-            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -210, width: 270, height: 210)
+            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -250, width: 270, height: 210)
         }) { (finishedAnimating) in
             self.addSessionPopupView.removeFromSuperview()
             // self.viewAccumulationArrray.append(self.addSessionPopupView)
