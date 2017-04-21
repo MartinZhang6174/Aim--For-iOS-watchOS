@@ -17,6 +17,9 @@ let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 @IBDesignable
 class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
+    var quoteCategory = "success"
+    
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
     var togglingCell = false
@@ -29,6 +32,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var aimHourSumLabel: UILabel!
     @IBOutlet weak var uploadProgressView: UIProgressView!
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
+    @IBOutlet weak var quoteLabel: UILabel!
     
     // var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
     
@@ -37,6 +41,29 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // getting quote:
+        let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)")!
+        let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
+            if error != nil {
+                print("\(error!.localizedDescription)>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            } else {
+                if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                    let json = jsonUnformatted as? [String: AnyObject]
+                    let content = json?["contents"] as? [String: AnyObject]
+                    let quoteString = content?["quote"] as? String
+                    print("\(quoteString)<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                    
+                    if let quote = quoteString {
+                        OperationQueue.main.addOperation {
+                            self.quoteLabel.text = quote
+                        }
+                    }
+                }
+            }
+        }
+        quoteFetchTask.resume()
         
         // Fake data:
         let fmt = DateFormatter()
@@ -51,13 +78,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
         let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
         let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
-
+        
         
         self.sessionObjectArray.append(session1)
         self.sessionObjectArray.append(session2)
         self.sessionObjectArray.append(session3)
         self.sessionObjectArray.append(session4)
-
+        
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -65,7 +92,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting nav bar item colors:
         self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
-       
+        
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
         self.view.backgroundColor = aimApplicationThemePurpleColor
         aimTokenSumLabel.textColor = aimApplicationThemeOrangeColor
@@ -170,7 +197,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         //selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         //selectedCell?.layer.shadowRadius = 3.0
         
-        UIView.animate(withDuration: 0.3) { 
+        UIView.animate(withDuration: 0.3) {
             selectedCell?.layoutIfNeeded()
         }
         
@@ -180,16 +207,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // togglingCell = true
         
         /*
-        if togglingCell {
-            UIView.animate(withDuration: 0.3, animations: {
-                selectedCell?.alpha = 0.5
-            })
-        } else {
-            print("I ain't adding nothing!")
-        }
-        //if indexPath.row == sessionNameArray.count-1 {
-        // self.aimSessionCollectionView.isUserInteractionEnabled = false
-        //}*/
+         if togglingCell {
+         UIView.animate(withDuration: 0.3, animations: {
+         selectedCell?.alpha = 0.5
+         })
+         } else {
+         print("I ain't adding nothing!")
+         }
+         //if indexPath.row == sessionNameArray.count-1 {
+         // self.aimSessionCollectionView.isUserInteractionEnabled = false
+         //}*/
         // self.addSessionPopupView.isUserInteractionEnabled = false
         
         
@@ -236,12 +263,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath)
         /*selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
-        selectedCell?.layer.shadowRadius = 5.0
-        selectedCell?.layer.shadowOpacity = 0.7
-        selectedCell?.layer.masksToBounds = false*/
+         selectedCell?.layer.shadowRadius = 5.0
+         selectedCell?.layer.shadowOpacity = 0.7
+         selectedCell?.layer.masksToBounds = false*/
         
         //UIView.animate(withDuration: 0.3) {
-            selectedCell?.layoutIfNeeded()
+        selectedCell?.layoutIfNeeded()
         //}
     }
     
@@ -276,7 +303,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.present(imagePicker, animated: true, completion: nil)
         
         /*let storage = FIRStorage.storage()
-        let storageRef = storage.reference()*/
+         let storageRef = storage.reference()*/
         
     }
     
