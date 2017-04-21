@@ -65,7 +65,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         quoteFetchTask.resume()
         
-        
         // Fake data:
         let fmt = DateFormatter()
         fmt.dateFormat = "dd.MM.yyyy"

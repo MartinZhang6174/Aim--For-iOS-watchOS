@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -184,12 +184,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
-                                <rect key="frame" x="26" y="8" width="324" height="80"/>
+                                <rect key="frame" x="21" y="8" width="333" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LWi-qi-L4h"/>
                                 </constraints>
                                 <string key="text">Quote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the day</string>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -322,7 +322,7 @@
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="128-9V-qmd"/>
                             <constraint firstItem="ImS-FH-w6q" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="3A1-bZ-LTN"/>
                             <constraint firstItem="ImS-FH-w6q" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="4VS-NV-X0w"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ImS-FH-w6q" secondAttribute="trailing" constant="8" id="5lN-tF-DvN"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ImS-FH-w6q" secondAttribute="trailing" constant="-8" id="5lN-tF-DvN"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="6Mj-yf-L3i"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
@@ -334,7 +334,7 @@
                             <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="25" id="VYk-xL-ci2"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="4" id="bjc-T5-Jo9"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="8" symbolic="YES" id="dwB-wP-F6C"/>
-                            <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="8" id="naH-yA-v93"/>
+                            <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="-8" id="naH-yA-v93"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="0iR-Zr-eJS" secondAttribute="bottom" constant="8" symbolic="YES" id="sKT-88-U9P"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="8" symbolic="YES" id="y5V-Yx-3YV"/>
                         </constraints>
@@ -438,7 +438,7 @@
         <scene sceneID="VOM-VY-OVI">
             <objects>
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bcK-Lu-LtQ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -638,7 +638,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7S3-bH-omt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -657,7 +657,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EaW-TB-bkn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -806,7 +806,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="69u-Dm-86M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -825,7 +825,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrS-fg-Iy3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -844,7 +844,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UvH-t4-RPu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="kA0-Uk-V6h"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YSa-ke-oY5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YSa-ke-oY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -862,7 +862,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -888,7 +888,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2tg-ro-TsN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quM-kW-xZS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quM-kW-xZS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
