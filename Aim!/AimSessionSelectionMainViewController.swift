@@ -23,10 +23,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     // Setting default to true since app loads quote since the beginning of the lifecycle
-//    var isLoadingQuote = true
+    //    var isLoadingQuote = true
     
     var togglingCell = false
     var selectedCellIndexPath: IndexPath? = nil
+    var authorFlipped = false
     
     @IBOutlet weak var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
@@ -36,6 +37,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var uploadProgressView: UIProgressView!
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var quoteAuthorLabel: UILabel!
+    @IBOutlet weak var quoteView: UIView!
+    @IBOutlet weak var quoteAuthorView: UIView!
+    @IBOutlet weak var quoteViewButton: UIButton!
+    @IBOutlet weak var quoteAuthorViewButton: UIButton!
     
     var sessionObjectArray = [AimSession]()
     
@@ -46,8 +52,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
+        self.quoteAuthorLabel.isHidden = true
         
-        // getting quote:
+        // getting quote content & author name:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
@@ -58,6 +65,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     let json = jsonUnformatted as? [String: AnyObject]
                     let content = json?["contents"] as? [String: AnyObject]
                     let quoteString = content?["quote"] as? String
+                    let quoteAuthorName = content?["author"] as? String
                     
                     if let quote = quoteString {
                         OperationQueue.main.addOperation {
@@ -65,12 +73,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             // self.isLoadingQuote = false
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
+                            if quoteAuthorName != nil {
+                                self.quoteAuthorLabel.text = "by  "+quoteAuthorName!
+                            } else {
+                                self.quoteAuthorLabel.text = "Anonymous"
+                            }
                             
-                            UIView.animate(withDuration: 0.4, animations: { 
+                            UIView.animate(withDuration: 0.4, animations: {
                                 self.view.layoutIfNeeded()
-                                
                             }, completion: { (finished) in
                                 print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
+                                self.quoteViewButton.isUserInteractionEnabled = true
                             })
                         }
                     }
@@ -80,9 +93,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         quoteFetchTask.resume()
         
         // Check if loading quote:
-//        if self.isLoadingQuote == true {
-//            moveLoadingView(loadingView: quoteLoadingView)
-//        }
+        //        if self.isLoadingQuote == true {
+        //            moveLoadingView(loadingView: quoteLoadingView)
+        //        }
         
         // Fake data:
         let fmt = DateFormatter()
@@ -98,12 +111,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
         let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
         
-        
         self.sessionObjectArray.append(session1)
         self.sessionObjectArray.append(session2)
         self.sessionObjectArray.append(session3)
         self.sessionObjectArray.append(session4)
-        
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -148,7 +159,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             userLoginStatus = false
         }
-        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(userLoginEmail)"
+        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {
@@ -219,16 +230,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        self.selectedCellIndexPath = indexPath
-        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
-        
-        //selectedCell?.layer.shadowOpacity = 1.0
-        //selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        //selectedCell?.layer.shadowRadius = 3.0
-        
-        UIView.animate(withDuration: 0.3) {
-            selectedCell?.layoutIfNeeded()
-        }
+        //        self.selectedCellIndexPath = indexPath
+        //        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
+        //
+        //        //selectedCell?.layer.shadowOpacity = 1.0
+        //        //selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        //        //selectedCell?.layer.shadowRadius = 3.0
+        //
+        //        UIView.animate(withDuration: 0.3) {
+        //            selectedCell?.layoutIfNeeded()
+        //        }
         
         // Disable user interaction so no one can keep clicking cell like crazayyy
         // self.aimSessionCollectionView.isUserInteractionEnabled = false
@@ -251,17 +262,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
     }
     
-    var viewAccumulationArrray = [UIView]()
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
         togglingCell = true
         
-        if togglingCell {
+        if togglingCell == true {
             UIView.animate(withDuration: 0.3, animations: {
-                selectedCell?.alpha = 0.5
+                // selectedCell?.alpha = 0.7
+                // selectedCell?.alpha = 0.7
             }, completion: { (finishedAnimating) in
                 // self.aimSessionCollectionView.isUserInteractionEnabled = false
                 // self.addSessionPopupView.isUserInteractionEnabled = true
@@ -276,7 +286,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             print("Nope")
             // selectedCell?.isUserInteractionEnabled = false
-            selectedCell?.alpha = 1.0
+            // selectedCell?.alpha = 1.0
         }
     }
     
@@ -290,14 +300,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath)
+        //let selectedCell = collectionView.cellForItem(at: indexPath)
+        
+        //selectedCell?.alpha = 1.0
         /*selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
          selectedCell?.layer.shadowRadius = 5.0
          selectedCell?.layer.shadowOpacity = 0.7
          selectedCell?.layer.masksToBounds = false*/
         
         //UIView.animate(withDuration: 0.3) {
-        selectedCell?.layoutIfNeeded()
+        //selectedCell?.layoutIfNeeded()
         //}
     }
     
@@ -314,7 +326,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // self.viewAccumulationArrray.append(self.addSessionPopupView)
             
             if self.togglingCell == false {
-                selectedCell.alpha = 1.0
+                // selectedCell.alpha = 1.0
             }
         }
         
@@ -382,6 +394,15 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     @IBAction func resetProgressButtonPressed(_ sender: Any) {
         self.uploadProgressView.progress = 0.0
+    }
+    
+    @IBAction func flipQuote(_ sender: UIButton) {
+        authorFlipped = !authorFlipped
+        
+        let fromView = authorFlipped ? quoteLabel : quoteAuthorLabel
+        let toView = authorFlipped ? quoteAuthorLabel : quoteLabel
+        
+        UIView.transition(from: fromView!, to: toView!, duration: 0.4, options: [.transitionFlipFromBottom, .showHideTransitionViews])
     }
     
     /*

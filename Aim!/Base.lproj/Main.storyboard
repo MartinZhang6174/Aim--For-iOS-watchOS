@@ -177,19 +177,69 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tve-L3-zd6" userLabel="QuoteAuthorView">
+                                <rect key="frame" x="0.0" y="8" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                                                                           " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brF-hW-iqW">
+                                        <rect key="frame" x="8" y="7" width="359" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="AQW-rq-yWm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
+                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96K-Tg-FKf">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <connections>
+                                            <action selector="flipQuote:" destination="z8h-kr-T6C" eventType="touchUpInside" id="k04-4j-NXw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="brF-hW-iqW" secondAttribute="trailing" constant="8" id="4uN-nb-cs8"/>
+                                    <constraint firstAttribute="bottom" secondItem="96K-Tg-FKf" secondAttribute="bottom" id="H4H-ZP-Qbj"/>
+                                    <constraint firstItem="brF-hW-iqW" firstAttribute="leading" secondItem="tve-L3-zd6" secondAttribute="leading" constant="8" id="Qmw-tq-VFd"/>
+                                    <constraint firstAttribute="trailing" secondItem="96K-Tg-FKf" secondAttribute="trailing" id="SQn-vK-Xw9"/>
+                                    <constraint firstItem="brF-hW-iqW" firstAttribute="centerY" secondItem="tve-L3-zd6" secondAttribute="centerY" id="bhd-Ez-8vV"/>
+                                    <constraint firstItem="96K-Tg-FKf" firstAttribute="top" secondItem="tve-L3-zd6" secondAttribute="top" id="c4x-QN-iX1"/>
+                                    <constraint firstItem="96K-Tg-FKf" firstAttribute="leading" secondItem="tve-L3-zd6" secondAttribute="leading" id="lpA-7p-8Gp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-kN-Jgu" userLabel="QuoteView">
+                                <rect key="frame" x="0.0" y="8" width="375" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
+                                        <rect key="frame" x="125" y="0.0" width="126" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="viE-yy-HZD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="37"/>
+                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D17-Uc-6QA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                        <connections>
+                                            <action selector="flipQuote:" destination="z8h-kr-T6C" eventType="touchUpInside" id="SJa-cD-9bj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="D17-Uc-6QA" firstAttribute="leading" secondItem="nLZ-kN-Jgu" secondAttribute="leading" id="41z-oK-bRx"/>
+                                    <constraint firstAttribute="bottom" secondItem="D17-Uc-6QA" secondAttribute="bottom" id="BZG-2k-eq0"/>
+                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="centerX" secondItem="nLZ-kN-Jgu" secondAttribute="centerX" id="FLX-o8-7lD"/>
+                                    <constraint firstItem="D17-Uc-6QA" firstAttribute="top" secondItem="nLZ-kN-Jgu" secondAttribute="top" id="Gel-HR-Mfw"/>
+                                    <constraint firstAttribute="trailing" secondItem="D17-Uc-6QA" secondAttribute="trailing" id="H7W-Er-N9d"/>
+                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nLZ-kN-Jgu" secondAttribute="leading" id="lUO-Ml-ox9"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ImS-FH-w6q" secondAttribute="trailing" id="nWV-A4-Bcd"/>
+                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="centerY" secondItem="nLZ-kN-Jgu" secondAttribute="centerY" id="q0r-Hb-Yjr"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="130" y="110" width="49" height="26"/>
+                                <rect key="frame" x="142" y="110" width="37" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                               " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
-                                <rect key="frame" x="97.5" y="8" width="181" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="LWi-qi-L4h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
-                                <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Zr-eJS">
@@ -200,7 +250,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="197" y="110" width="37" height="26"/>
+                                <rect key="frame" x="197" y="110" width="28" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -237,7 +287,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="9.5" y="80" width="83" height="19"/>
+                                                    <rect key="frame" x="8" y="80" width="85" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -287,7 +337,7 @@
                                 </constraints>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
-                                <rect key="frame" x="259" y="110" width="34" height="30"/>
+                                <rect key="frame" x="250" y="110" width="37" height="30"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
                                 <state key="normal" title="reset">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -296,15 +346,14 @@
                                     <action selector="resetProgressButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="eOU-ZZ-q8V"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
-                                <rect key="frame" x="75" y="96" width="53" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
+                                <rect key="frame" x="24" y="96" width="327" height="13"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-Bf-Reb">
-                                <rect key="frame" x="16" y="82" width="51" height="41"/>
+                                <rect key="frame" x="16" y="74" width="51" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
                                 <state key="normal" title="signout">
@@ -319,22 +368,29 @@
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="128-9V-qmd"/>
-                            <constraint firstItem="ImS-FH-w6q" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="3A1-bZ-LTN"/>
-                            <constraint firstItem="ImS-FH-w6q" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="4VS-NV-X0w"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ImS-FH-w6q" secondAttribute="trailing" constant="-8" id="5lN-tF-DvN"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="6Mj-yf-L3i"/>
+                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="8tR-f1-wUO"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="8" id="9aY-hd-mGE"/>
+                            <constraint firstItem="tve-L3-zd6" firstAttribute="width" secondItem="nLZ-kN-Jgu" secondAttribute="width" id="CRk-Kt-NP3"/>
+                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="FNf-S0-gJa"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="8" symbolic="YES" id="JQk-yZ-Ars"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="JVm-Js-r7l"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="bottom" secondItem="kbo-Gh-4I7" secondAttribute="top" id="MJc-sm-xsQ"/>
+                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="Eai-0I-RGI" secondAttribute="bottom" constant="35" id="NHD-Tx-oqk"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Wha-re-LMr" secondAttribute="bottom" constant="7" id="Rec-0Q-fzs"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
                             <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="25" id="VYk-xL-ci2"/>
+                            <constraint firstItem="tve-L3-zd6" firstAttribute="centerY" secondItem="nLZ-kN-Jgu" secondAttribute="centerY" id="Ybm-lf-Sx3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="8" id="bPR-5z-w1t"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="4" id="bjc-T5-Jo9"/>
+                            <constraint firstAttribute="trailing" secondItem="nLZ-kN-Jgu" secondAttribute="trailing" id="doC-Qv-Y4R"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="8" symbolic="YES" id="dwB-wP-F6C"/>
-                            <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="-8" id="naH-yA-v93"/>
+                            <constraint firstItem="Eai-0I-RGI" firstAttribute="top" secondItem="nLZ-kN-Jgu" secondAttribute="bottom" constant="8" id="fkw-fu-Ijb"/>
+                            <constraint firstItem="tve-L3-zd6" firstAttribute="centerX" secondItem="nLZ-kN-Jgu" secondAttribute="centerX" id="i7a-WK-iOv"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="0iR-Zr-eJS" secondAttribute="bottom" constant="8" symbolic="YES" id="sKT-88-U9P"/>
+                            <constraint firstItem="tve-L3-zd6" firstAttribute="height" secondItem="nLZ-kN-Jgu" secondAttribute="height" id="tJa-4M-ySg"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="8" symbolic="YES" id="y5V-Yx-3YV"/>
                         </constraints>
                     </view>
@@ -358,7 +414,12 @@
                         <outlet property="aimSessionCollectionView" destination="HOz-8d-Ztb" id="jHW-1S-coo"/>
                         <outlet property="aimTokenHourSeparaterImageView" destination="0iR-Zr-eJS" id="sHK-xK-M1A"/>
                         <outlet property="aimTokenSumLabel" destination="yNA-sf-FvZ" id="fFM-De-ZNs"/>
+                        <outlet property="quoteAuthorLabel" destination="brF-hW-iqW" id="TDW-zk-fVI"/>
+                        <outlet property="quoteAuthorView" destination="tve-L3-zd6" id="QeR-dv-bDr"/>
+                        <outlet property="quoteAuthorViewButton" destination="96K-Tg-FKf" id="nfg-s9-QHk"/>
                         <outlet property="quoteLabel" destination="ImS-FH-w6q" id="wep-Y7-LnJ"/>
+                        <outlet property="quoteView" destination="nLZ-kN-Jgu" id="cbF-DO-I9Q"/>
+                        <outlet property="quoteViewButton" destination="D17-Uc-6QA" id="eM1-sQ-SKT"/>
                         <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
                         <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                     </connections>
@@ -437,7 +498,7 @@
         <scene sceneID="VOM-VY-OVI">
             <objects>
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -637,7 +698,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -656,7 +717,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -805,7 +866,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -824,7 +885,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrS-fg-Iy3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -843,7 +904,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UvH-t4-RPu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="kA0-Uk-V6h"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YSa-ke-oY5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YSa-ke-oY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -861,7 +922,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -887,7 +948,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2tg-ro-TsN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quM-kW-xZS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quM-kW-xZS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
