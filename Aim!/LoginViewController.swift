@@ -15,7 +15,7 @@ let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    var loadingViewFrame = CGRect()
+    var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
     let loadingViewUIBlockerSize = CGSize(width: 40, height: 40)
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
         
         // Configure loading view data
-        loadingViewFrame = CGRect(x: self.view.center.x - 25, y: aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+        loadingViewFrameRect = CGRect(x: self.view.center.x - 25, y: aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
         
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
@@ -124,7 +124,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else {
         
             // If password confirming tf ISN'T hidden (it's there), handle signup
-        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrame, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
 //        moveLoadingView(loadingView: loginLoadingView)
         
         guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
@@ -171,7 +171,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func logInButtonPressed(_ sender: Any) {
         // If the password confirming textfield isn't hidden, hide it
-        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrame, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         if passwordConfirmEntryTextField.isHidden == false {
             UIView.animate(withDuration: 3.0) {
                 self.passwordCreateEntryTextField.placeholder = "Enter your password"
