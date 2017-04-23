@@ -279,10 +279,20 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             print("I ain't adding nothing!")
         }
         
-        // If this isn't yet the last, do an USUAL configuration:
         if indexPath.row == sessionObjectArray.count-1 {
+            selectedCell?.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                selectedCell?.alpha = 0.4
+            }, completion: { (finished) in
+                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    selectedCell?.alpha = 1.0
+                }, completion: {(done) in
+                    selectedCell?.isUserInteractionEnabled = true
+                })
+            })
             print("Last")
             animatePopupIn()
+            // If this isn't yet the last, do an USUAL configuration:
         } else {
             print("Nope")
             // selectedCell?.isUserInteractionEnabled = false
@@ -297,20 +307,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
             self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-85, width: 270, height: 170)
         }, completion: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        //let selectedCell = collectionView.cellForItem(at: indexPath)
-        
-        //selectedCell?.alpha = 1.0
-        /*selectedCell?.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
-         selectedCell?.layer.shadowRadius = 5.0
-         selectedCell?.layer.shadowOpacity = 0.7
-         selectedCell?.layer.masksToBounds = false*/
-        
-        //UIView.animate(withDuration: 0.3) {
-        //selectedCell?.layoutIfNeeded()
-        //}
     }
     
     @IBAction func closeButtonOnPopupClicked(_ sender: Any) {
@@ -331,8 +327,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         selectedCell.layoutIfNeeded()
-        
-        // print(viewAccumulationArrray.count)
     }
     
     // Testing button for firebase storage
