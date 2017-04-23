@@ -51,14 +51,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
-                print("\(error!.localizedDescription)>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                print("\(error!.localizedDescription)")
                 self.endLoadingView(movingLoadingView: quoteLoadingView)
             } else {
                 if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
                     let json = jsonUnformatted as? [String: AnyObject]
                     let content = json?["contents"] as? [String: AnyObject]
                     let quoteString = content?["quote"] as? String
-                    print("\(quoteString)<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
                     
                     if let quote = quoteString {
                         OperationQueue.main.addOperation {
@@ -66,6 +65,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             // self.isLoadingQuote = false
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
+                            
+                            UIView.animate(withDuration: 0.4, animations: { 
+                                self.view.layoutIfNeeded()
+                                
+                            }, completion: { (finished) in
+                                print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
+                            })
                         }
                     }
                 }
@@ -195,7 +201,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // sessionCell.sessionSnaphotImageView.image = nil
             
             sessionCell.sessionInfoLabel.text = "+"
-            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 78)
+            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
             sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
             sessionCell.backgroundColor = aimApplicationThemeOrangeColor
             sessionCell.sessionSnaphotImageView.image = nil
