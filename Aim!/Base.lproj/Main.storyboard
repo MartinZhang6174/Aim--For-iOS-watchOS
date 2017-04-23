@@ -178,17 +178,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="142" y="110" width="37" height="26"/>
+                                <rect key="frame" x="142.5" y="110" width="36.5" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
-                                <rect key="frame" x="21" y="8" width="333" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                               " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
+                                <rect key="frame" x="122.5" y="8" width="130.5" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LWi-qi-L4h"/>
                                 </constraints>
-                                <string key="text">Quote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the dayQuote of the day</string>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -201,7 +200,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="197" y="110" width="28" height="26"/>
+                                <rect key="frame" x="197" y="110" width="27.5" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -238,7 +237,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8" y="80" width="85" height="19"/>
+                                                    <rect key="frame" x="8.5" y="80" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -288,7 +287,7 @@
                                 </constraints>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
-                                <rect key="frame" x="250" y="110" width="37" height="30"/>
+                                <rect key="frame" x="249.5" y="110" width="37" height="30"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
                                 <state key="normal" title="reset">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -438,7 +437,7 @@
         <scene sceneID="VOM-VY-OVI">
             <objects>
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -638,7 +637,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -657,7 +656,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -806,7 +805,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -825,7 +824,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrS-fg-Iy3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -844,7 +843,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UvH-t4-RPu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="kA0-Uk-V6h"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YSa-ke-oY5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YSa-ke-oY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -862,7 +861,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -888,7 +887,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2tg-ro-TsN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quM-kW-xZS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="quM-kW-xZS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

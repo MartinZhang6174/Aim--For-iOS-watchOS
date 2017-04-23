@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import NVActivityIndicatorView
 import Firebase
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
@@ -17,10 +18,12 @@ let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 @IBDesignable
 class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
+    
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
-    
-    let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
+    // Setting default to true since app loads quote since the beginning of the lifecycle
+//    var isLoadingQuote = true
     
     var togglingCell = false
     var selectedCellIndexPath: IndexPath? = nil
@@ -34,20 +37,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     @IBOutlet weak var quoteLabel: UILabel!
     
-    // var sessionNameArray = ["Physics", "Calculus", "Programming", "Vocabulary", "Aerodynamics"]
-    
-    
     var sessionObjectArray = [AimSession]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
+        
+        let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        self.moveLoadingView(loadingView: quoteLoadingView)
         
         // getting quote:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
                 print("\(error!.localizedDescription)>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                self.endLoadingView(movingLoadingView: quoteLoadingView)
             } else {
                 if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
                     let json = jsonUnformatted as? [String: AnyObject]
@@ -57,6 +62,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     
                     if let quote = quoteString {
                         OperationQueue.main.addOperation {
+                            // QUOTE LOADING DONE
+                            // self.isLoadingQuote = false
+                            self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
                         }
                     }
@@ -64,6 +72,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
+        
+        // Check if loading quote:
+//        if self.isLoadingQuote == true {
+//            moveLoadingView(loadingView: quoteLoadingView)
+//        }
         
         // Fake data:
         let fmt = DateFormatter()
@@ -130,6 +143,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             userLoginStatus = false
         }
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(userLoginEmail)"
+    }
+    
+    func moveLoadingView(loadingView: NVActivityIndicatorView) {
+        self.view.addSubview(loadingView)
+        loadingView.startAnimating()
+    }
+    
+    func endLoadingView(movingLoadingView: NVActivityIndicatorView) {
+        movingLoadingView.stopAnimating()
+        movingLoadingView.removeFromSuperview()
     }
     
     func handleLoginRegister() {
@@ -284,7 +307,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             self.addSessionPopupView.removeFromSuperview()
             // self.viewAccumulationArrray.append(self.addSessionPopupView)
             
-            if !self.togglingCell {
+            if self.togglingCell == false {
                 selectedCell.alpha = 1.0
             }
         }
