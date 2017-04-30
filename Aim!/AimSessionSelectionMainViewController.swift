@@ -47,6 +47,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     var sessionObjectArray = [AimSession]()
     
+    func takeRandomAction() {
+        print("Hey randomness.")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,11 +97,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
-        
-        // Check if loading quote:
-        //        if self.isLoadingQuote == true {
-        //            moveLoadingView(loadingView: quoteLoadingView)
-        //        }
         
         // Fake data:
         let fmt = DateFormatter()
@@ -154,6 +153,26 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // TEST ADDING NAVIGATION ITEM:
+        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
+        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.navigationItem.rightBarButtonItems?.append(randomItem)
+        }, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         var userLoginStatus = false
         let userLoginEmail = FIRAuth.auth()?.currentUser?.email
         if FIRAuth.auth()?.currentUser?.uid != nil {
