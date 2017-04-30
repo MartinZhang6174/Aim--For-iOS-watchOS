@@ -22,6 +22,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
+    var quoteMaxCharRestriction = 120
     // Setting default to true since app loads quote since the beginning of the lifecycle
     //    var isLoadingQuote = true
     
@@ -29,7 +30,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
     
-    @IBOutlet weak var aimSessionCollectionView: UICollectionView!
+    @IBOutlet weak var aimSessionCollectionView: AimSessionSelectionCollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
     @IBOutlet weak var aimTokenSumLabel: UILabel!
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
@@ -42,6 +43,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteAuthorView: UIView!
     @IBOutlet weak var quoteViewButton: UIButton!
     @IBOutlet weak var quoteAuthorViewButton: UIButton!
+    //@IBOutlet weak var aimSessionCell: AimSessionSelectionVCCollectionViewCell!
     
     var sessionObjectArray = [AimSession]()
     
@@ -55,7 +57,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.quoteAuthorLabel.isHidden = true
         
         // getting quote content & author name:
-        let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)")!
+        let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
                 print("\(error!.localizedDescription)")
@@ -398,6 +400,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         UIView.transition(from: fromView!, to: toView!, duration: 0.4, options: [.transitionFlipFromBottom, .showHideTransitionViews])
     }
+    
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesMoved(touches, with: event)
+//        if let touch = touches.first {
+//            if #available(iOS 10.0, *) {
+//                if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//                    let force = touch.force/touch.maximumPossibleForce
+//                    print("Force: \(force)")
+//                }
+//            }
+//        }
+//    }
     
     /*
      // MARK: - Navigation

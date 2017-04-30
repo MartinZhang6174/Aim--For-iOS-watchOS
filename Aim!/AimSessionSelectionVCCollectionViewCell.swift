@@ -55,4 +55,19 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if #available(iOS 10.0, *) {
+            if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+                let force = (touch?.force)!/(touch?.maximumPossibleForce)!
+                print("Force: \(force)")
+                if force == 1.0 {
+                    super.touchesBegan(touches, with: event)
+                }
+            }
+        }
+    }
 }
