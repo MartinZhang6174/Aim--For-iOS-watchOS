@@ -177,65 +177,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tve-L3-zd6" userLabel="QuoteAuthorView">
-                                <rect key="frame" x="0.0" y="8" width="375" height="80"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                                                                           " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brF-hW-iqW">
-                                        <rect key="frame" x="8" y="7" width="359" height="67"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="67" id="AQW-rq-yWm"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
-                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96K-Tg-FKf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                        <connections>
-                                            <action selector="flipQuote:" destination="z8h-kr-T6C" eventType="touchUpInside" id="k04-4j-NXw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="brF-hW-iqW" secondAttribute="trailing" constant="8" id="4uN-nb-cs8"/>
-                                    <constraint firstAttribute="bottom" secondItem="96K-Tg-FKf" secondAttribute="bottom" id="H4H-ZP-Qbj"/>
-                                    <constraint firstItem="brF-hW-iqW" firstAttribute="leading" secondItem="tve-L3-zd6" secondAttribute="leading" constant="8" id="Qmw-tq-VFd"/>
-                                    <constraint firstAttribute="trailing" secondItem="96K-Tg-FKf" secondAttribute="trailing" id="SQn-vK-Xw9"/>
-                                    <constraint firstItem="brF-hW-iqW" firstAttribute="centerY" secondItem="tve-L3-zd6" secondAttribute="centerY" id="bhd-Ez-8vV"/>
-                                    <constraint firstItem="96K-Tg-FKf" firstAttribute="top" secondItem="tve-L3-zd6" secondAttribute="top" id="c4x-QN-iX1"/>
-                                    <constraint firstItem="96K-Tg-FKf" firstAttribute="leading" secondItem="tve-L3-zd6" secondAttribute="leading" id="lpA-7p-8Gp"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-kN-Jgu" userLabel="QuoteView">
-                                <rect key="frame" x="0.0" y="8" width="375" height="80"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
-                                        <rect key="frame" x="125" y="0.0" width="126" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="viE-yy-HZD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="37"/>
-                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D17-Uc-6QA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                        <connections>
-                                            <action selector="flipQuote:" destination="z8h-kr-T6C" eventType="touchUpInside" id="SJa-cD-9bj"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="D17-Uc-6QA" firstAttribute="leading" secondItem="nLZ-kN-Jgu" secondAttribute="leading" id="41z-oK-bRx"/>
-                                    <constraint firstAttribute="bottom" secondItem="D17-Uc-6QA" secondAttribute="bottom" id="BZG-2k-eq0"/>
-                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="centerX" secondItem="nLZ-kN-Jgu" secondAttribute="centerX" id="FLX-o8-7lD"/>
-                                    <constraint firstItem="D17-Uc-6QA" firstAttribute="top" secondItem="nLZ-kN-Jgu" secondAttribute="top" id="Gel-HR-Mfw"/>
-                                    <constraint firstAttribute="trailing" secondItem="D17-Uc-6QA" secondAttribute="trailing" id="H7W-Er-N9d"/>
-                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nLZ-kN-Jgu" secondAttribute="leading" id="lUO-Ml-ox9"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ImS-FH-w6q" secondAttribute="trailing" id="nWV-A4-Bcd"/>
-                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="centerY" secondItem="nLZ-kN-Jgu" secondAttribute="centerY" id="q0r-Hb-Yjr"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
                                 <rect key="frame" x="142.5" y="110" width="36.5" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
@@ -287,7 +228,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8.5" y="80" width="84.5" height="19"/>
+                                                    <rect key="frame" x="8" y="80" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -347,7 +288,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
-                                <rect key="frame" x="24" y="96" width="327" height="13"/>
+                                <rect key="frame" x="24" y="95.5" width="327" height="13.5"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -364,16 +305,45 @@
                                     <segue destination="5gY-TM-HY8" kind="modal" identifier="showLoginPageSegue" id="90Y-3Y-77V"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MARTIN ZHANG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brF-hW-iqW">
+                                <rect key="frame" x="7" y="8" width="360.5" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-kN-Jgu" userLabel="QuoteView" customClass="AimQuoteView" customModule="Aim_" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="358.5" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
+                                        <rect key="frame" x="0.0" y="5.5" width="358.5" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8JY-lF-coG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="37"/>
+                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="centerY" secondItem="nLZ-kN-Jgu" secondAttribute="centerY" id="14u-sC-bU5"/>
+                                    <constraint firstAttribute="trailing" secondItem="ImS-FH-w6q" secondAttribute="trailing" id="B3o-0e-tHj"/>
+                                    <constraint firstItem="ImS-FH-w6q" firstAttribute="leading" secondItem="nLZ-kN-Jgu" secondAttribute="leading" id="N7b-yo-kql"/>
+                                    <constraint firstAttribute="height" constant="70" id="dpk-Ba-xOZ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VHs-ci-TnT" appends="YES" id="XZu-9z-OCi"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="128-9V-qmd"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="6Mj-yf-L3i"/>
-                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="8tR-f1-wUO"/>
                             <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="8" id="9aY-hd-mGE"/>
-                            <constraint firstItem="tve-L3-zd6" firstAttribute="width" secondItem="nLZ-kN-Jgu" secondAttribute="width" id="CRk-Kt-NP3"/>
-                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="FNf-S0-gJa"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="8" symbolic="YES" id="JQk-yZ-Ars"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="JVm-Js-r7l"/>
@@ -382,15 +352,13 @@
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Wha-re-LMr" secondAttribute="bottom" constant="7" id="Rec-0Q-fzs"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
                             <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="25" id="VYk-xL-ci2"/>
-                            <constraint firstItem="tve-L3-zd6" firstAttribute="centerY" secondItem="nLZ-kN-Jgu" secondAttribute="centerY" id="Ybm-lf-Sx3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="8" id="bPR-5z-w1t"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="4" id="bjc-T5-Jo9"/>
-                            <constraint firstAttribute="trailing" secondItem="nLZ-kN-Jgu" secondAttribute="trailing" id="doC-Qv-Y4R"/>
+                            <constraint firstAttribute="trailing" secondItem="nLZ-kN-Jgu" secondAttribute="trailing" constant="8" id="d6E-Zg-AFU"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="8" symbolic="YES" id="dwB-wP-F6C"/>
-                            <constraint firstItem="Eai-0I-RGI" firstAttribute="top" secondItem="nLZ-kN-Jgu" secondAttribute="bottom" constant="8" id="fkw-fu-Ijb"/>
-                            <constraint firstItem="tve-L3-zd6" firstAttribute="centerX" secondItem="nLZ-kN-Jgu" secondAttribute="centerX" id="i7a-WK-iOv"/>
+                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" constant="8" id="gXw-VE-Ud0"/>
+                            <constraint firstItem="nLZ-kN-Jgu" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="nLE-Rm-ubP"/>
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="0iR-Zr-eJS" secondAttribute="bottom" constant="8" symbolic="YES" id="sKT-88-U9P"/>
-                            <constraint firstItem="tve-L3-zd6" firstAttribute="height" secondItem="nLZ-kN-Jgu" secondAttribute="height" id="tJa-4M-ySg"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="8" symbolic="YES" id="y5V-Yx-3YV"/>
                         </constraints>
                     </view>
@@ -415,11 +383,8 @@
                         <outlet property="aimTokenHourSeparaterImageView" destination="0iR-Zr-eJS" id="sHK-xK-M1A"/>
                         <outlet property="aimTokenSumLabel" destination="yNA-sf-FvZ" id="fFM-De-ZNs"/>
                         <outlet property="quoteAuthorLabel" destination="brF-hW-iqW" id="TDW-zk-fVI"/>
-                        <outlet property="quoteAuthorView" destination="tve-L3-zd6" id="QeR-dv-bDr"/>
-                        <outlet property="quoteAuthorViewButton" destination="96K-Tg-FKf" id="nfg-s9-QHk"/>
                         <outlet property="quoteLabel" destination="ImS-FH-w6q" id="wep-Y7-LnJ"/>
                         <outlet property="quoteView" destination="nLZ-kN-Jgu" id="cbF-DO-I9Q"/>
-                        <outlet property="quoteViewButton" destination="D17-Uc-6QA" id="eM1-sQ-SKT"/>
                         <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
                         <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                     </connections>
@@ -447,7 +412,7 @@
                             </constraints>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -483,6 +448,11 @@
                         <constraint firstAttribute="trailing" secondItem="nBk-KC-q4r" secondAttribute="trailing" constant="25" id="oDh-Wd-Tch"/>
                     </constraints>
                 </view>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="VHs-ci-TnT">
+                    <connections>
+                        <action selector="quoteViewDragged:" destination="z8h-kr-T6C" id="Fqj-xE-euu"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-941.60000000000002" y="2381.5592203898054"/>
         </scene>

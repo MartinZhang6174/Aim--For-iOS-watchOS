@@ -39,17 +39,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthorLabel: UILabel!
-    @IBOutlet weak var quoteView: UIView!
-    @IBOutlet weak var quoteAuthorView: UIView!
-    @IBOutlet weak var quoteViewButton: UIButton!
-    @IBOutlet weak var quoteAuthorViewButton: UIButton!
+    @IBOutlet weak var quoteView: AimQuoteView!
+//    @IBOutlet weak var quoteAuthorView: UIView!
+//    @IBOutlet weak var quoteViewButton: UIButton!
+//    @IBOutlet weak var quoteAuthorViewButton: UIButton!
     //@IBOutlet weak var aimSessionCell: AimSessionSelectionVCCollectionViewCell!
     
     var sessionObjectArray = [AimSession]()
-    
-    func takeRandomAction() {
-        print("Hey randomness.")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +54,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
-        self.quoteAuthorLabel.isHidden = true
         
         // getting quote content & author name:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
@@ -89,7 +84,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                 self.view.layoutIfNeeded()
                             }, completion: { (finished) in
                                 print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
-                                self.quoteViewButton.isUserInteractionEnabled = true
+                                //self.quoteViewButton.isUserInteractionEnabled = true
                             })
                         }
                     }
@@ -154,23 +149,20 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     override func viewDidAppear(_ animated: Bool) {
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // TEST ADDING NAVIGATION ITEM:
-        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
-        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.navigationItem.rightBarButtonItems?.append(randomItem)
-        }, completion: nil)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+//        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
+//        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+//            self.navigationItem.rightBarButtonItems?.append(randomItem)
+//        }, completion: nil)
         
         
         var userLoginStatus = false
@@ -280,7 +272,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
          //}*/
         // self.addSessionPopupView.isUserInteractionEnabled = false
         
-        
+        if indexPath.row != sessionObjectArray.count-1 {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -411,15 +409,27 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.uploadProgressView.progress = 0.0
     }
     
-    @IBAction func flipQuote(_ sender: UIButton) {
-        authorFlipped = !authorFlipped
+    @IBAction func quoteViewDragged(_ sender: UIPanGestureRecognizer) {
+        let quoteViewOriginalCentre = CGPoint(x: self.view.center.x, y: 43)
+        let quoteCard = sender.view
+        let point = sender.translation(in: self.view)
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.prepare()
         
-        let fromView = authorFlipped ? quoteLabel : quoteAuthorLabel
-        let toView = authorFlipped ? quoteAuthorLabel : quoteLabel
+        quoteCard?.center = CGPoint(x: quoteViewOriginalCentre.x + point.x, y: quoteViewOriginalCentre.y + point.y)
         
-        UIView.transition(from: fromView!, to: toView!, duration: 0.4, options: [.transitionFlipFromBottom, .showHideTransitionViews])
+        if sender.state == UIGestureRecognizerState.ended {
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.curveLinear, animations: {
+                quoteCard?.center = quoteViewOriginalCentre
+                generator.impactOccurred()
+            }, completion: nil)
+            
+
+//            UIView.animate(withDuration: 0.3, animations: {
+//                quoteCard?.center = quoteViewOriginalCentre
+//            }, completion: nil)
+        }
     }
-    
 //    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        super.touchesMoved(touches, with: event)
 //        if let touch = touches.first {
