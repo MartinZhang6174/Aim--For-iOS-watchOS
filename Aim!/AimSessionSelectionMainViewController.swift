@@ -423,24 +423,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 quoteCard?.center = quoteViewOriginalCentre
                 generator.impactOccurred()
             }, completion: nil)
-            
-
-//            UIView.animate(withDuration: 0.3, animations: {
-//                quoteCard?.center = quoteViewOriginalCentre
-//            }, completion: nil)
         }
     }
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesMoved(touches, with: event)
-//        if let touch = touches.first {
-//            if #available(iOS 10.0, *) {
-//                if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-//                    let force = touch.force/touch.maximumPossibleForce
-//                    print("Force: \(force)")
-//                }
-//            }
-//        }
-//    }
     
     /*
      // MARK: - Navigation
