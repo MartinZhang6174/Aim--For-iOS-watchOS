@@ -57,7 +57,6 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         let touch = touches.first
         
         if #available(iOS 10.0, *) {
