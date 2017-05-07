@@ -465,7 +465,7 @@
                         <viewControllerLayoutGuide type="bottom" id="luL-xq-5rk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gtW-Ip-Re9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -503,7 +503,7 @@
         <scene sceneID="VOM-VY-OVI">
             <objects>
                 <collectionViewController id="j3J-b9-vwj" customClass="AimSessionCollectionViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bcK-Lu-LtQ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bcK-Lu-LtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -703,7 +703,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F4Y-n4-s05" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="17" selectedImage="Goal Filled" id="xaE-d2-f2p"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7S3-bH-omt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7S3-bH-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -722,7 +722,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Chx-JC-fVa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings30" selectedImage="Settings Filled30" id="gPd-Px-nis"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EaW-TB-bkn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EaW-TB-bkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -871,7 +871,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h0G-vy-Ma7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Awards" image="World Cup Unfilled" badgeValue="3" selectedImage="World Cup Filled30" id="FWp-CW-YTJ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="69u-Dm-86M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="69u-Dm-86M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -890,7 +890,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fqr-gq-dhn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Aim!" image="Goal Unfilled" badgeValue="20" selectedImage="Goal Filled" id="8l7-CV-JsF"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrS-fg-Iy3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrS-fg-Iy3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -909,7 +909,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UvH-t4-RPu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="kA0-Uk-V6h"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YSa-ke-oY5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YSa-ke-oY5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -927,7 +927,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -953,9 +953,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2tg-ro-TsN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="quM-kW-xZS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="quM-kW-xZS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

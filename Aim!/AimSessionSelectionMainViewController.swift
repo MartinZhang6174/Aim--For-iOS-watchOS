@@ -125,6 +125,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimTokenHourSeparaterImageView.backgroundColor = aimApplicationThemeOrangeColor
         aimHourSumLabel.textColor = aimApplicationThemeOrangeColor
         
+        // Setting navigation bar tint colour to theme purple(for nav bar only)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
         let plusObject = AimSession(sessionTitle: "+", dateInitialized: nil, image: nil, priority: false)

@@ -14,10 +14,15 @@ class AimSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Set navigation bar bg colour(tintcolor is what apple calls it)
-        self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        // self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
         // Set back groudn view colour
-        self.view.backgroundColor = aimApplicationThemePurpleColor
+        self.view.backgroundColor = aimApplicationThemeOrangeColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 
     @IBAction func doneButtonPressed(_ sender: Any) {
