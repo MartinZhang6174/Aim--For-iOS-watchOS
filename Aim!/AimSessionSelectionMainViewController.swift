@@ -115,8 +115,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
         // Setting nav bar item colors:
-        self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
-        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
+//        self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
+//        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
         self.view.backgroundColor = aimApplicationThemePurpleColor
@@ -138,6 +138,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimHourSumLabel.font = aimApplicationThemeFont24
         
         aimSessionCollectionView.backgroundColor = aimApplicationThemePurpleColor
+        aimSessionCollectionView.alwaysBounceVertical = true
         
         // self.addSessionPopupView.layer.cornerRadius = 5.0
         

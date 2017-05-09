@@ -14,8 +14,9 @@ class AimSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Set navigation bar bg colour(tintcolor is what apple calls it)
-        // self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
-        
+        self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        self.navigationController?.navigationBar.tintColor = aimApplicationThemeOrangeColor
+
         // Set back groudn view colour
         self.view.backgroundColor = aimApplicationThemePurpleColor
     }

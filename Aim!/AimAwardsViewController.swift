@@ -13,7 +13,7 @@ class AimAwardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
     
         self.view.backgroundColor = aimApplicationThemePurpleColor
     }
