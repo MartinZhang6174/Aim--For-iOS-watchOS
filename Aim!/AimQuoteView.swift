@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class AimQuoteView: UIView {
 
     override func awakeFromNib() {

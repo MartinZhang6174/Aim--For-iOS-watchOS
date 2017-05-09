@@ -15,7 +15,6 @@ let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
 let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
-@IBDesignable
 class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)

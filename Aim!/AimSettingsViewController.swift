@@ -17,7 +17,7 @@ class AimSettingsViewController: UIViewController {
         // self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
         // Set back groudn view colour
-        self.view.backgroundColor = aimApplicationThemeOrangeColor
+        self.view.backgroundColor = aimApplicationThemePurpleColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class AimSessionAddingPopUpView: UIView {
 
     override func awakeFromNib() {
