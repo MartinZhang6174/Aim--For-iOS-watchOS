@@ -17,7 +17,7 @@ class AimSessionViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
-        self.view.backgroundColor = aimApplicationThemePurpleColor
+        // self.view.backgroundColor = aimApplicationThemePurpleColor
         // Do any additional setup after loading the view.
     }
     

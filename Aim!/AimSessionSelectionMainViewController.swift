@@ -121,7 +121,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         //        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
-        self.view.backgroundColor = aimApplicationThemePurpleColor
+        // self.view.backgroundColor = aimApplicationThemePurpleColor
         aimTokenSumLabel.textColor = aimApplicationThemeOrangeColor
         aimTokenHourSeparaterImageView.backgroundColor = aimApplicationThemeOrangeColor
         aimHourSumLabel.textColor = aimApplicationThemeOrangeColor
@@ -139,7 +139,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimTokenSumLabel.font = aimApplicationThemeFont24
         aimHourSumLabel.font = aimApplicationThemeFont24
         
-        aimSessionCollectionView.backgroundColor = aimApplicationThemePurpleColor
+        // aimSessionCollectionView.backgroundColor = aimApplicationThemePurpleColor
         aimSessionCollectionView.alwaysBounceVertical = true
         
         // self.addSessionPopupView.layer.cornerRadius = 5.0
