@@ -19,6 +19,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
+    let toSessionSegueIdentifier = "mainMenuToSessionSegue"
+    
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
@@ -39,9 +41,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
-//    @IBOutlet weak var quoteAuthorView: UIView!
-//    @IBOutlet weak var quoteViewButton: UIButton!
-//    @IBOutlet weak var quoteAuthorViewButton: UIButton!
+    //    @IBOutlet weak var quoteAuthorView: UIView!
+    //    @IBOutlet weak var quoteViewButton: UIButton!
+    //    @IBOutlet weak var quoteAuthorViewButton: UIButton!
     //@IBOutlet weak var aimSessionCell: AimSessionSelectionVCCollectionViewCell!
     
     var sessionObjectArray = [AimSession]()
@@ -115,8 +117,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
         // Setting nav bar item colors:
-//        self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
-//        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
+        //        self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
+        //        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
         self.view.backgroundColor = aimApplicationThemePurpleColor
@@ -160,10 +162,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         
         // TEST ADDING NAVIGATION ITEM:
-//        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
-//        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
-//            self.navigationItem.rightBarButtonItems?.append(randomItem)
-//        }, completion: nil)
+        //        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
+        //        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        //            self.navigationItem.rightBarButtonItems?.append(randomItem)
+        //        }, completion: nil)
         
         
         var userLoginStatus = false
@@ -315,6 +317,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // If this isn't yet the last, do an USUAL configuration:
         } else {
             print("Nope")
+            
+            // Segue to specific session
+            performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
+            
             // selectedCell?.isUserInteractionEnabled = false
             // selectedCell?.alpha = 1.0
         }
@@ -427,14 +433,27 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == toSessionSegueIdentifier {
+            let destinationNavigationController = segue.destination as! UINavigationController
+            if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController {
+                print("yay")
+                let path = aimSessionCollectionView.indexPathsForSelectedItems?.first
+                let sessionObject = sessionObjectArray[path!.row]
+                if let existingSessionTitle = sessionObject.title {
+                    destinationViewController.sessionTitleStringValue = existingSessionTitle
+                } else {
+                    destinationViewController.sessionTitleStringValue = "No title"
+                }
+            }
+        }
+    }
+    
     
 }
