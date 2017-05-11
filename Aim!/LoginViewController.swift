@@ -63,7 +63,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else if textField == passwordCreateEntryTextField {
             passwordConfirmEntryTextField.becomeFirstResponder()
         }
-        
         return true
     }
     
