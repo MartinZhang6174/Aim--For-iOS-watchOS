@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="142.5" y="110" width="36.5" height="26"/>
+                                <rect key="frame" x="130" y="110" width="49" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="275" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="197" y="110" width="27.5" height="26"/>
+                                <rect key="frame" x="197" y="110" width="37" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -278,7 +278,7 @@
                                 </constraints>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
-                                <rect key="frame" x="249.5" y="110" width="37" height="30"/>
+                                <rect key="frame" x="259" y="110" width="34" height="30"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
                                 <state key="normal" title="reset">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,7 +396,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-x5-1qx">
-                            <rect key="frame" x="8" y="2" width="46" height="33"/>
+                            <rect key="frame" x="8" y="2" width="41" height="32"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                             <state key="normal" title="close">
                                 <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -413,7 +413,7 @@
                             </constraints>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="41.5" width="89.5" height="27"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -429,7 +429,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J62-6T-ISN">
-                            <rect key="frame" x="25" y="79" width="49" height="28"/>
+                            <rect key="frame" x="25" y="79.5" width="37.5" height="27"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -792,17 +792,49 @@
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-Mq-xSk">
+                                <rect key="frame" x="34" y="374" width="75" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="28"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseSessionButtonClicked:" destination="Ttv-fW-pMR" eventType="touchUpInside" id="NXe-bz-GlD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eU-7P-u2N">
+                                <rect key="frame" x="134" y="80" width="107" height="33"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                <state key="normal" title="Start Aiming!">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSessionButtonPressed:" destination="Ttv-fW-pMR" eventType="touchUpInside" id="lWv-u6-C4v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
+                                <rect key="frame" x="160" y="218.5" width="54.5" height="56.5"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
+                                <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="H3w-SI-BPw" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="DOg-GK-nhU"/>
                             <constraint firstItem="xoS-T2-j88" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="Kh5-8V-hWn"/>
+                            <constraint firstItem="yuK-6q-vAU" firstAttribute="centerY" secondItem="82i-pR-ASD" secondAttribute="centerY" constant="-55" id="V7b-7X-VMY"/>
+                            <constraint firstItem="6eU-7P-u2N" firstAttribute="top" secondItem="xoS-T2-j88" secondAttribute="bottom" constant="50" id="XdA-B5-vPA"/>
+                            <constraint firstItem="yuK-6q-vAU" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="bhd-rX-fqF"/>
+                            <constraint firstItem="6eU-7P-u2N" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="kox-tf-tUo"/>
                             <constraint firstItem="xoS-T2-j88" firstAttribute="top" secondItem="mPn-Qe-4NQ" secondAttribute="bottom" constant="10" id="ujn-f8-Ap8"/>
                             <constraint firstItem="AVm-O4-5ri" firstAttribute="top" secondItem="H3w-SI-BPw" secondAttribute="bottom" constant="120" id="yxF-hv-Vhk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RUg-9k-bNk"/>
                     <connections>
+                        <outlet property="sessionTimerLabel" destination="yuK-6q-vAU" id="VsI-RE-wYq"/>
                         <outlet property="sessionTitleLabel" destination="xoS-T2-j88" id="WGW-VN-qu4"/>
                     </connections>
                 </viewController>

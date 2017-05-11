@@ -10,28 +10,41 @@ import UIKit
 
 class AimSessionViewController: UIViewController {
 
+//    var seconds = 60
+    var aimTimer = Timer()
+    var secondsElapsed = 0
+    
     var sessionTitleStringValue = ""
     @IBOutlet weak var sessionTitleLabel: UILabel!
+    @IBOutlet weak var sessionTimerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
-        // self.view.backgroundColor = aimApplicationThemePurpleColor
-        // Do any additional setup after loading the view.
+        
+        sessionTimerLabel.text = String(secondsElapsed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         sessionTitleLabel.text = sessionTitleStringValue
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func startSessionButtonPressed(_ sender: Any) {
+        aimTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAimSessionTimerLabel), userInfo: nil, repeats: true)
+    }
+    
+    @IBAction func pauseSessionButtonClicked(_ sender: Any) {
+        aimTimer.invalidate()
     }
     
     @IBAction func terminateSessionButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func updateAimSessionTimerLabel() {
+        secondsElapsed += 1
+        sessionTimerLabel.text = String(secondsElapsed)
     }
 
     /*
