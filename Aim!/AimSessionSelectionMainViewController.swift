@@ -153,14 +153,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     override func viewDidAppear(_ animated: Bool) {
         
         
-        
-        
-        
-        
-        
-        
-        
-        
         // TEST ADDING NAVIGATION ITEM:
         //        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
         //        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
