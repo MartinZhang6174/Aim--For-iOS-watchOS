@@ -8,11 +8,13 @@
 
 import UIKit
 
-class AimSessionViewController: UIViewController {
+class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
 
+    var timerManager = TimerManager()
+    
 //    var seconds = 60
-    var aimTimer = Timer()
-    var secondsElapsed = 0
+    // var aimTimer = Timer()
+    // var secondsElapsed = 0
     
     var sessionTitleStringValue = ""
     @IBOutlet weak var sessionTitleLabel: UILabel!
@@ -20,31 +22,59 @@ class AimSessionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
-        sessionTimerLabel.text = String(secondsElapsed)
+        // Add observers to handle timer label update and completed timer.
+        NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.updateTimerLabel), name: NSNotification.Name(rawValue: TimerManager.notificationSecondTick), object: timerManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
+        
+        updateTimerLabel()
+        
+        // sessionTimerLabel.text = String(secondsElapsed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         sessionTitleLabel.text = sessionTitleStringValue
     }
     
+    // MARK: - AimSessionDurationInfoDelegate
+    func getSessionDuration(_ durationInSeconds: TimeInterval) {
+        // sessionTitleLabel.text = "\(Int(durationInSeconds / 60))-Minute-Long Session In Progress!"
+        timerManager.duration = TimeInterval(durationInSeconds)
+        timerManager.startTimer()
+    }
+    
+    func getSessionDurationForSessionWithoutDurationLimits() {
+        sessionTimerLabel.text = "'Forever-long' Session In Progress!"
+        timerManager.startTimer()
+    }
+    
     @IBAction func startSessionButtonPressed(_ sender: Any) {
-        aimTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAimSessionTimerLabel), userInfo: nil, repeats: true)
+        // aimTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAimSessionTimerLabel), userInfo: nil, repeats: true)
     }
     
     @IBAction func pauseSessionButtonClicked(_ sender: Any) {
-        aimTimer.invalidate()
+        // aimTimer.invalidate()
     }
     
     @IBAction func terminateSessionButtonClicked(_ sender: Any) {
+        timerManager.stopTimer()
         dismiss(animated: true, completion: nil)
     }
     
     func updateAimSessionTimerLabel() {
-        secondsElapsed += 1
-        sessionTimerLabel.text = String(secondsElapsed)
+        // secondsElapsed += 1
+        // sessionTimerLabel.text = String(secondsElapsed)
+    }
+    
+    func updateTimerLabel() {
+        let currentTime = timerManager.elapsedTime
+        sessionTimerLabel.text = Utility.convertSecondsToTimeString(currentTime)
+    }
+    
+    func timerComplete() {
+        // Do this when timer completes its full duration.
     }
 
     /*

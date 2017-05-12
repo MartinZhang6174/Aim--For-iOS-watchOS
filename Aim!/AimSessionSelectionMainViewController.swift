@@ -21,6 +21,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     let toSessionSegueIdentifier = "mainMenuToSessionSegue"
     
+    var delegate: AimSessionDurationInfoDelegate?
+    var sessionManager = SessionDurationManager()
+    
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
@@ -238,35 +241,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        //        self.selectedCellIndexPath = indexPath
-        //        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
-        //
-        //        //selectedCell?.layer.shadowOpacity = 1.0
-        //        //selectedCell?.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        //        //selectedCell?.layer.shadowRadius = 3.0
-        //
-        //        UIView.animate(withDuration: 0.3) {
-        //            selectedCell?.layoutIfNeeded()
-        //        }
-        
-        // Disable user interaction so no one can keep clicking cell like crazayyy
-        // self.aimSessionCollectionView.isUserInteractionEnabled = false
-        
-        // togglingCell = true
-        
-        /*
-         if togglingCell {
-         UIView.animate(withDuration: 0.3, animations: {
-         selectedCell?.alpha = 0.5
-         })
-         } else {
-         print("I ain't adding nothing!")
-         }
-         //if indexPath.row == sessionNameArray.count-1 {
-         // self.aimSessionCollectionView.isUserInteractionEnabled = false
-         //}*/
-        // self.addSessionPopupView.isUserInteractionEnabled = false
-        
         if indexPath.row != sessionObjectArray.count-1 {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
@@ -313,6 +287,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             // Segue to specific session
             performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
             
+            if let delegate = self.delegate {
+                // Setting default duration for now, later will need to change to better options
+                delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
+            }
             // selectedCell?.isUserInteractionEnabled = false
             // selectedCell?.alpha = 1.0
         }
@@ -435,6 +413,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         if segue.identifier == toSessionSegueIdentifier {
             let destinationNavigationController = segue.destination as! UINavigationController
             if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController {
+                self.delegate = destinationViewController
+                
                 print("yay")
                 let path = aimSessionCollectionView.indexPathsForSelectedItems?.first
                 let sessionObject = sessionObjectArray[path!.row]

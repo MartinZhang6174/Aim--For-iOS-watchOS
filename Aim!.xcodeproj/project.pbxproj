@@ -10,6 +10,9 @@
 		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
 		305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */; };
 		75659762C66996131985A075 /* Pods_Aim__Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */; };
+		9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
+		9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */; };
+		9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
 		9C32039E1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */; };
 		9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */; };
 		9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */; };
@@ -120,6 +123,9 @@
 		49BD30373DF56C357AC09BF6 /* Pods-Aim! .release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! .release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! /Pods-Aim! .release.xcconfig"; sourceTree = "<group>"; };
 		64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C02AF661EC532F800B0A68F /* TimerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerUtility.swift; sourceTree = "<group>"; };
+		9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDurationManager.swift; sourceTree = "<group>"; };
+		9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionDurationInfoDelegate.swift; sourceTree = "<group>"; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionCollectionView.swift; sourceTree = "<group>"; };
 		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
@@ -237,6 +243,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9C02AF651EC532D700B0A68F /* Utility Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C02AF661EC532F800B0A68F /* TimerUtility.swift */,
+			);
+			name = "Utility Classes";
+			sourceTree = "<group>";
+		};
 		9C646DE01E7884B8007D4578 /* Phosphate Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +302,7 @@
 				9C7F38361DC690050038BC2F /* Protocols */,
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
+				9C02AF651EC532D700B0A68F /* Utility Classes */,
 				9C646DE81E78859A007D4578 /* Supporting Files */,
 			);
 			path = "Aim!";
@@ -340,6 +355,7 @@
 			children = (
 				9C7160241DC5A940003C7773 /* DurationDelegate.swift */,
 				9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */,
+				9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -348,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7160251DC5A940003C7773 /* TimerManager.swift */,
+				9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */,
 			);
 			name = "Manager Classes";
 			sourceTree = "<group>";
@@ -768,10 +785,12 @@
 				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,
 				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */,
+				9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */,
 				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
 				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */,
+				9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */,
 				9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */,
 				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
 				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
@@ -785,6 +804,7 @@
 				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
 				9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */,
 				9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */,
+				9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

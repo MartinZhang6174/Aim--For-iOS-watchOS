@@ -2,13 +2,17 @@
 //  TimerManager.swift
 //  Aim!
 //
-//  Created by Nelson Chow on 2016-10-16.
+//  Created by Martin Zhang on 2016-10-16.
 //  Copyright © 2016 Martin Zhang. All rights reserved.
 //
 
 import UIKit
 
 class TimerManager {
+    
+    // MARK: - Properties
+    static let notificationSecondTick = "TimerNotificationSecondTick"
+    static let notificationComplete = "TimerNotificationComplete"
     
     // MARK: - Properties
     let TIME_INTERVAL: TimeInterval = 1
@@ -50,9 +54,12 @@ class TimerManager {
         elapsedTime += 1
         
         print("\(self.elapsedTime) second.")
+        NotificationCenter.default.post(name: Notification.Name(rawValue: TimerManager.notificationSecondTick), object: self)
+
         
         if self.elapsedTime == self.duration {
             self.stopTimer()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: TimerManager.notificationComplete), object: self)
         }
     }
 }
