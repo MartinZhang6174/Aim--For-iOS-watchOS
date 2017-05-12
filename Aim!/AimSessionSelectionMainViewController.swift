@@ -53,6 +53,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Disable user interaction for now, before a legit quote gets loaded
+        self.quoteView.isUserInteractionEnabled = false
         
         let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
         
@@ -73,9 +75,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     let quoteAuthorName = content?["author"] as? String
                     
                     if let quote = quoteString {
+                        // QUOTE LOADING DONE
                         OperationQueue.main.addOperation {
-                            // QUOTE LOADING DONE
                             // self.isLoadingQuote = false
+                            self.quoteView.isUserInteractionEnabled = true
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
                             if quoteAuthorName != nil {
@@ -301,7 +304,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
-            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-85, width: 270, height: 170)
+            self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-85, width: 270, height: 200)
         }, completion: nil)
     }
     

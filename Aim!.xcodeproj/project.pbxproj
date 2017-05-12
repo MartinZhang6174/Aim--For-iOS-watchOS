@@ -13,6 +13,8 @@
 		9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
 		9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */; };
 		9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
+		9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */; };
+		9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */; };
 		9C32039E1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */; };
 		9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */; };
 		9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */; };
@@ -27,7 +29,6 @@
 		9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
-		9C646DE71E788591007D4578 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
 		9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A11DA5DA8D005CA654 /* Main.storyboard */; };
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
@@ -126,6 +127,8 @@
 		9C02AF661EC532F800B0A68F /* TimerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerUtility.swift; sourceTree = "<group>"; };
 		9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDurationManager.swift; sourceTree = "<group>"; };
 		9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionDurationInfoDelegate.swift; sourceTree = "<group>"; };
+		9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionCollectionView.swift; sourceTree = "<group>"; };
 		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */,
+				9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */,
 				305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +225,8 @@
 		042A268C7D5DC0A3E18646E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */,
+				9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */,
 				EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */,
 				64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */,
 				BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */,
@@ -509,7 +516,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Martin Zhang";
 				TargetAttributes = {
 					9C6890991DA5DA8D005CA654 = {
@@ -564,7 +571,6 @@
 			files = (
 				9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */,
 				9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
-				9C646DE71E788591007D4578 /* Info.plist in Resources */,
 				9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */,
 				9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */,
 				9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
