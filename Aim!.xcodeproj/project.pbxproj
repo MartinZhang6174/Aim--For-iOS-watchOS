@@ -15,6 +15,7 @@
 		9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
 		9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */; };
 		9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */; };
+		9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF701EC7B53700B0A68F /* CoreLocation.framework */; };
 		9C32039E1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */; };
 		9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */; };
 		9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */; };
@@ -129,6 +130,7 @@
 		9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionDurationInfoDelegate.swift; sourceTree = "<group>"; };
 		9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		9C02AF701EC7B53700B0A68F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionCollectionView.swift; sourceTree = "<group>"; };
 		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */,
 				9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */,
 				9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */,
 				305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */,
@@ -225,6 +228,7 @@
 		042A268C7D5DC0A3E18646E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C02AF701EC7B53700B0A68F /* CoreLocation.framework */,
 				9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */,
 				9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */,
 				EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */,
@@ -524,6 +528,11 @@
 						DevelopmentTeam = FD5Z2GLC5U;
 						DevelopmentTeamName = "Martin Zhang (Personal Team)";
 						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					9C6890AD1DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;

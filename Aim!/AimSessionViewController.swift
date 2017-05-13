@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
     
@@ -16,6 +17,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var timerManager = TimerManager()
     
     var motionManager = CMMotionManager()
+    // Initializing a LocationManager to bypass Apple policies on categories of apps that are allowed to update accelerometer data in the background for more than 10 mins:
+    var locationManager = CLLocationManager()
     
     var currentMaxAccX: Double = 0.0
     var currentMaxAccY: Double = 0.0
@@ -44,6 +47,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
                 print("Error: \(error)")
             }
         }
+        
+        locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +77,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     @IBAction func terminateSessionButtonClicked(_ sender: Any) {
         timerManager.stopTimer()
+        motionManager.stopAccelerometerUpdates()
+        locationManager.stopUpdatingLocation()
         dismiss(animated: true, completion: nil)
     }
     
