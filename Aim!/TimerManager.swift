@@ -53,7 +53,7 @@ class TimerManager {
     @objc func secondTick() {
         elapsedTime += 1
         
-        print("\(self.elapsedTime) second.")
+        // print("\(self.elapsedTime) second.")
         NotificationCenter.default.post(name: Notification.Name(rawValue: TimerManager.notificationSecondTick), object: self)
 
         

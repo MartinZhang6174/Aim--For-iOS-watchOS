@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import CoreMotion
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
+    
+    var sessionTitleStringValue = ""
 
     var timerManager = TimerManager()
     
-//    var seconds = 60
-    // var aimTimer = Timer()
-    // var secondsElapsed = 0
+    var motionManager = CMMotionManager()
     
-    var sessionTitleStringValue = ""
+    var currentMaxAccX: Double = 0.0
+    var currentMaxAccY: Double = 0.0
+    var currentMaxAccZ: Double = 0.0
+    
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionTimerLabel: UILabel!
     
@@ -31,7 +35,15 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         
         updateTimerLabel()
         
-        // sessionTimerLabel.text = String(secondsElapsed)
+        motionManager.accelerometerUpdateInterval = 0.5
+        motionManager.gyroUpdateInterval = 0.5
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerometerData: CMAccelerometerData?, error: Error?) in
+            self.outputAccelerometerData(acceleration: (accelerometerData?.acceleration)!)
+            if (error != nil) {
+                print("Error: \(error)")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +87,24 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     func timerComplete() {
         // Do this when timer completes its full duration.
+    }
+    
+    func outputAccelerometerData(acceleration: CMAcceleration) {
+        var xDirectionAccel = acceleration.x
+        var yDirectionAccel = acceleration.y
+        var zDirectionAccel = acceleration.z
+        
+//        || abs(yDirectionAccel)>0.1 || abs(zDirectionAccel)>0.1
+        
+        if abs(xDirectionAccel)>0.5 || abs(yDirectionAccel)>0.5 {
+            print("BIG MOVE BRO!??")
+            
+            // Warn the user to put down the phone:
+            
+        }
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationX: \(acceleration.x).2fg")
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationY: \(acceleration.y).2fg")
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationZ: \(acceleration.z).2fg")
     }
 
     /*
