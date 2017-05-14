@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
-        
+      
+        // CODEREVIEW: Keep your code clean by removing commented code.  If you need to restore this code later, restore it from the repo.
+      
 //        for family: String in UIFont.familyNames
 //        {
 //            print("\(family)")
@@ -36,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+  
+    // CODEREVIEW: Remove any code which you are not using.  All the methods below have empty implementations.
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

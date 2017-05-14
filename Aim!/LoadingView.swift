@@ -9,6 +9,9 @@
 import Foundation
 import NVActivityIndicatorView
 
+// CODEREVIEW: Remove classes that do not do anything.
+
+
 //class loadingView: NVActivityIndicatorView {
 //    init(frame: CGRect, type: NVActivityIndicatorType, color: UIColor, padding: CGFloat) {
 //        super.init(frame: frame, type: type, color: color, padding: padding)

@@ -8,8 +8,12 @@
 
 import UIKit
 
+// CODEREVIEW: This class has an inconsistent name.  Your other classes are named AimXxxx.
 class SettingsViewController: UIViewController {
 
+    // CODEREVIEW: Remove classes that have no new functionality.  Consider replacing this with the standard UIViewController.
+
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 

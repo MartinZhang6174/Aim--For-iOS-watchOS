@@ -16,9 +16,11 @@ class AimSessionCollectionViewController: UICollectionViewController {
     var collectionViewCells = [UICollectionViewCell]()
     var delegate: DurationDelegate?
     
+    // CODEREVIEW: This code has no new functionality.  Cleanup by removing code you don't need.
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -27,7 +29,10 @@ class AimSessionCollectionViewController: UICollectionViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+  
+
+    // CODEREVIEW: This code has no new functionality.  Cleanup by removing code you don't need.
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,15 +49,20 @@ class AimSessionCollectionViewController: UICollectionViewController {
      */
     
     // MARK: UICollectionViewDataSource
-    
+  
+    // CODEREVIEW: What is the purpose of the #warning comments?  The implementation is correct, so considering removing the comment as it may cause more confusion.
+  
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    
+    // CODEREVIEW: What is the purpose of the #warning comments?  The implementation is correct, so considering removing the comment as it may cause more confusion.
+  
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+      
+        // CODEREVIEW: What is so special about 4?  Using literals other than 1 or 0 is typically poor form.  Use a constant (e.g. NumberOfCarModels, NumberOfCarMakers) or use a calculated property related to the data source of the collection view.  (e.g. carModels.count() or carMakers.count() or whatever is appropriate for this collectionView)
         return 4
     }
     
@@ -61,7 +71,9 @@ class AimSessionCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! UICollectionViewCell
         
         // Configure the cell
-        
+      
+        // CODEREVIEW: Remove commented code.  While you're still working on the code it is normal to have commented code.  But when you're ready to have the code reviewed and potentially merged to master, make sure it's cleaned up and all the unneeded code is removed.
+      
         self.collectionViewCells.append(cell)
         // cell.sessionInfoLabel.text = self.aimSessionDurationTexts[indexPath.item]
         // cell.backgroundColor = UIColor.blue
@@ -102,6 +114,9 @@ class AimSessionCollectionViewController: UICollectionViewController {
                 delegate.beginEndlessSession()
             }
         }
+      
+        // CODEREVIEW: Remove commented code.
+      
         //
         //        if collectionViewCells[indexPath.row].anAimSessionButtonLabel.text == "25-Minute-Long Session" {
         //
@@ -122,6 +137,8 @@ class AimSessionCollectionViewController: UICollectionViewController {
         
     }
     
+    // CODEREVIEW: Remove commented code.
+
     /*
      // Uncomment this method to specify if the specified item should be highlighted during tracking
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

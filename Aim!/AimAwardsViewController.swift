@@ -22,6 +22,8 @@ class AimAwardsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    // CODEREVIEW: Remove code you don't need.
+  
     /*
     // MARK: - Navigation
 

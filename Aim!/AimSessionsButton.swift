@@ -8,6 +8,8 @@
 
 import UIKit
 
+// CODEREVIEW: Remove empty classes that do no implement any new functionality.
+
 class AimSessionsButton: UIButton {
 
     /*

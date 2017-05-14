@@ -10,9 +10,12 @@ import UIKit
 import NVActivityIndicatorView
 import Firebase
 
+// CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
+
 let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
 let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
+// CODEREVIEW: This class has an inconsistent name.  Your other classes are named AimXxxx.
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var loadingViewFrameRect = CGRect()
@@ -29,7 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
         UITextField.appearance().tintColor = themeOrangeColor
@@ -37,7 +40,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailAddressEntryTextField.delegate = self
         passwordCreateEntryTextField.delegate = self
         passwordConfirmEntryTextField.delegate = self
-        
+
+        // CODEREVIEW: Consider putting repeated values like 7, 0.7, 5.0 in constants
+      
         // Button corner radius:
         signupButton.layer.cornerRadius = 7
         loginButton.layer.cornerRadius = 7
@@ -57,7 +62,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+      // CODEREVIEW: resignFirstResponder and becomeFirstResponder return bool results which you are ignoring.  What happens if they fail?
+      
+      textField.resignFirstResponder()
         if textField == emailAddressEntryTextField {
             passwordCreateEntryTextField.becomeFirstResponder()
         } else if textField == passwordCreateEntryTextField {
@@ -65,7 +72,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
+  
+    // CODEREVIEW: In the four methods below, you are making the same call to UIView.animate(...) four different times with variations only to the x: and width: parameters.  Consider finding a way to refactor this to reduce code repetition.
+  
     @IBAction func signupButtonPressed(_ sender: Any) {
         let signupButton = sender as! UIButton
         
@@ -122,6 +131,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             passwordConfirmEntryTextField.alpha = 0.7
         } else {
         
+          // CODEREVIEW: Cleanup the commented code in this section
+          
             // If password confirming tf ISN'T hidden (it's there), handle signup
         let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
 //        moveLoadingView(loadingView: loginLoadingView)
@@ -137,6 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
+                    // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
                     print(error)
                     return
                 }
@@ -144,14 +156,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 guard let uid = user?.uid else {
                     return
                 }
-                
+              
+                // CODEREVIEW: What if the hardcoded URL here changes?  Consider reading it from a plist instead of hardcoding it.
                 let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
                 let userReference = reference.child("users").child(uid)
                 let userInfoValues = ["Email" : email, "Password" : pwd1]
                 userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                     if err != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
-                        print(err)
+                        // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
+                          print(err)
                         return
                     }
                     if FIRAuth.auth()?.currentUser?.uid != nil {
@@ -190,6 +204,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
+                    // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
                     print(error)
                 }
                 if FIRAuth.auth()?.currentUser?.uid != nil {
@@ -197,6 +212,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
+      
+        // CODEREVIEW: Cleanup commented code.
+      
 //        if FIRAuth.auth()?.currentUser?.uid != nil {
 //        } else {
 //            endLoadingView(movingLoadingView: loginLoadingView)
@@ -208,8 +226,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-
 extension UIViewController {
+  
+    // CODEREVIEW: This method's name implies that it makes the keyboard disappear when the method is called.  What it actually does is setup a tap gesture recognizer.  Consider renaming it.
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -221,6 +240,8 @@ extension UIViewController {
     }
 }
 
+// CODEREVIEW: Make this method follow Swift naming conventions or put it in an extension of UIColor.
+// E.g. func UIColor(fromHexString:String) -> UIColor
 func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     
