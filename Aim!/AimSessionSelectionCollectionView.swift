@@ -8,6 +8,7 @@
 
 import UIKit
 
+// CODEREVIEW: There is no new functionality being implemented in this class.  Remove it.
 class AimSessionSelectionCollectionView: UICollectionView {
 
     /*

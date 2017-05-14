@@ -16,7 +16,9 @@ class AimSessionAddingPopUpView: UIView {
         self.layer.shadowOffset = CGSize(width: 5, height: 5)
         self.layer.shadowOpacity = 1.0
     }
-    
+  
+    // CODEREVIEW: remove commented code.
+  
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

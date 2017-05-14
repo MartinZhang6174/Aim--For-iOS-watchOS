@@ -10,6 +10,8 @@ import UIKit
 
 class AimSessionCustomizationViewController: UIViewController {
 
+    // CODEREVIEW: Remove classes that have no new functionality.  Consider replacing this with the standard UIViewController.
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 

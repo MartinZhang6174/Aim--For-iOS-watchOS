@@ -10,6 +10,9 @@ import UIKit
 
 class AimViewController: UIViewController {
 
+    // CODEREVIEW: Remove classes that have no new functionality.  Consider replacing this with the standard UIViewController.
+
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 

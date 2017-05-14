@@ -20,7 +20,9 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sessionSnaphotImageView: UIImageView!
     
     override func awakeFromNib() {
-        
+      
+        // CODEREVIEW: remove commented code
+      
         /*let normalShadow = CellShadowConfiguration.normal
          
          switch normalShadow {

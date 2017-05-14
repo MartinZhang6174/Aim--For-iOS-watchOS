@@ -9,7 +9,10 @@
 import Foundation
 
 class Utility {
-    
+  
+  
+    // CODEREVIEW: Make this method follow Swift naming conventions.
+    // E.g. func timeString(fromSeconds:TimeInterval) -> String
     class func convertSecondsToTimeString(_ seconds: TimeInterval) -> String {
         let totalSeconds = Int(seconds)
         

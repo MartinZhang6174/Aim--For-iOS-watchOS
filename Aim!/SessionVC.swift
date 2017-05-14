@@ -8,13 +8,17 @@
 
 import UIKit
 
+// CODEREVIEW: This class has an inconsistent name.  Your other classes are named AimXxxx.
+
 class SessionVC: UIViewController, DurationDelegate {
     
     // MARK: - Properties
     var timerManager = TimerManager()
     
     @IBOutlet weak var timerLabel: UILabel!
-    
+  
+  
+    // CODEREVIEW: Remove code that does not do anything or only calls super.  You haven't introduced any new functionality here, so it should be cleaned up.
     override func viewDidLoad() {
         super.viewDidLoad()
         

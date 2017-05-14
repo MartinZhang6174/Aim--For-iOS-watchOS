@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class AimQuoteView: UIView {
 
+    // CODEREVIEW: remove commented code.
+  
     override func awakeFromNib() {
 //        super.awakeFromNib()
         self.backgroundColor = aimApplicationThemePurpleColor

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// CODEREVIEW: Remove classes that do not do anything.
+
 @IBDesignable
 class LoginViewControllerButton: UIButton {
 

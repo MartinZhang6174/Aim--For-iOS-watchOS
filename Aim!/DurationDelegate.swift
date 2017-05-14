@@ -8,6 +8,7 @@
 
 import Foundation
 
+// CODEREVIEW: This protocol has an inconsistent name.  Your other protocols are named AimXxxx.
 protocol DurationDelegate {
     func beginCustomSession(durationInSeconds: TimeInterval)
     func beginEndlessSession()

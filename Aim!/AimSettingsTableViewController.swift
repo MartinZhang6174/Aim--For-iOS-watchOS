@@ -16,7 +16,9 @@ class AimSettingsTableViewController: UITableViewController {
         // Set navigation bar bg colour(tintcolor is what apple calls it)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.navigationController?.navigationBar.tintColor = aimApplicationThemeOrangeColor
-        
+      
+        // CODEREVIEW: Remove commented code.
+      
         // Set background view colour
         // self.tableView.backgroundColor = aimApplicationThemePurpleColor
         
@@ -39,7 +41,10 @@ class AimSettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+  
+    // CODEREVIEW: Remove commented code you don't need.
+
+  
     // MARK: - Table view data source
     
     //    override func numberOfSections(in tableView: UITableView) -> Int {

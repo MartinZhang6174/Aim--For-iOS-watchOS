@@ -11,7 +11,9 @@ import UIKit
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
 
     var timerManager = TimerManager()
-    
+  
+    // CODEREVIEW: Remove commented code.
+
 //    var seconds = 60
     // var aimTimer = Timer()
     // var secondsElapsed = 0
@@ -30,7 +32,9 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         
         updateTimerLabel()
-        
+      
+        // CODEREVIEW: Remove commented code.
+
         // sessionTimerLabel.text = String(secondsElapsed)
     }
     
@@ -40,6 +44,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     // MARK: - AimSessionDurationInfoDelegate
     func getSessionDuration(_ durationInSeconds: TimeInterval) {
+        // CODEREVIEW: Remove commented code.
+
         // sessionTitleLabel.text = "\(Int(durationInSeconds / 60))-Minute-Long Session In Progress!"
         timerManager.duration = TimeInterval(durationInSeconds)
         timerManager.startTimer()
@@ -49,7 +55,9 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         sessionTimerLabel.text = "'Forever-long' Session In Progress!"
         timerManager.startTimer()
     }
-    
+  
+    // CODEREVIEW: Remove commented code.  Consider removing the IBActions below altogether.  Keeping the code "clean" means this: Everything that is needed is included in the code, Everything that is NOT NEEDED is not in the code.
+
     @IBAction func startSessionButtonPressed(_ sender: Any) {
         // aimTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAimSessionTimerLabel), userInfo: nil, repeats: true)
     }
