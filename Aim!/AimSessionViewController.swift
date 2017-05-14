@@ -7,16 +7,16 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
 
     var timerManager = TimerManager()
     
-//    var seconds = 60
-    // var aimTimer = Timer()
-    // var secondsElapsed = 0
+    let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
     
     var sessionTitleStringValue = ""
+    
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionTimerLabel: UILabel!
     
@@ -74,7 +74,39 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     }
     
     func timerComplete() {
-        // Do this when timer completes its full duration.
+        dismiss(animated: true, completion: nil)
+
+        print("This is where you need to send the users a NOTIFICATION!!!!!")
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Aim! Session Completed!"
+        // content.subtitle = "You have successfully finished your Aim! Session."
+        content.body = "Token earned: 237 🏆"
+        content.sound = UNNotificationSound.default()
+        
+//        //To Present image in notification
+//        if let path = Bundle.main.path(forResource: "monkey", ofType: "png") {
+//            let url = URL(fileURLWithPath: path)
+//            
+//            do {
+//                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
+//                content.attachments = [attachment]
+//            } catch {
+//                print("attachment not found.")
+//            }
+//        }
+        
+        // Deliver the notification in five seconds.
+        // let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
+        let request = UNNotificationRequest(identifier:requestIdentifier, content: content, trigger: nil)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error) in
+            
+            if (error != nil){
+                print(error?.localizedDescription)
+            }
+        }
     }
 
     /*
@@ -87,4 +119,26 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     }
     */
 
+}
+
+extension AimSessionViewController: UNUserNotificationCenterDelegate{
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("Notification being triggered")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier{
+            
+            completionHandler( [.alert,.sound,.badge])
+            
+        }
+    }
 }
