@@ -1,5 +1,5 @@
 //
-//  DurationDelegate.swift
+//  AimDurationDelegate.swift
 //  Aim!
 //
 //  Created by Nelson Chow on 2016-10-18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DurationDelegate {
+protocol AimDurationDelegate {
     func beginCustomSession(durationInSeconds: TimeInterval)
     func beginEndlessSession()
 }

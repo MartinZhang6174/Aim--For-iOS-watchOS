@@ -24,17 +24,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var delegate: AimSessionDurationInfoDelegate?
     var sessionManager = SessionDurationManager()
     
+    // CODEREVIEW: Committing code to a Public repository that contains API Keys is a very bad idea.  Consider placing this info inside a constants file that isn't in the repo or using some other way of hiding it.
     let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
-    // Setting default to true since app loads quote since the beginning of the lifecycle
-    //    var isLoadingQuote = true
     
-    var togglingCell = false
+    var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
     
-    @IBOutlet weak var aimSessionCollectionView: AimSessionSelectionCollectionView!
+    @IBOutlet var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
     @IBOutlet weak var aimTokenSumLabel: UILabel!
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
@@ -44,10 +43,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
-    //    @IBOutlet weak var quoteAuthorView: UIView!
-    //    @IBOutlet weak var quoteViewButton: UIButton!
-    //    @IBOutlet weak var quoteAuthorViewButton: UIButton!
-    //@IBOutlet weak var aimSessionCell: AimSessionSelectionVCCollectionViewCell!
     
     var sessionObjectArray = [AimSession]()
     
@@ -77,7 +72,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     if let quote = quoteString {
                         // QUOTE LOADING DONE
                         OperationQueue.main.addOperation {
-                            // self.isLoadingQuote = false
                             self.quoteView.isUserInteractionEnabled = true
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
@@ -91,7 +85,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                 self.view.layoutIfNeeded()
                             }, completion: { (finished) in
                                 print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
-                                //self.quoteViewButton.isUserInteractionEnabled = true
                             })
                         }
                     }
@@ -99,6 +92,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
+        
+        // CODEREVIEW: Why is the data being hard-coded in a View Controller?  Consider setting up some kind of data source class for the View Controller.  Any "fake" or testing data can be put into an instance or subclass of that data source.  When you're ready to deploy, you replace that class with the real data source.  Set it up in a way that the View Controller code does not change when you switch from fake data to real data.
         
         // Fake data:
         let fmt = DateFormatter()
@@ -122,12 +117,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
-        // Setting nav bar item colors:
-        //        self.navigationItem.leftBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
-        //        self.navigationItem.rightBarButtonItem?.tintColor = aimApplicationThemeOrangeColor
         
         // Set background color: (For some reason I could not match the color I designed in Sketch 3 with the bg color I set in storyboard; therefore, I manually set hex color value onto each UIView element which needs a customized color)
-        // self.view.backgroundColor = aimApplicationThemePurpleColor
         aimTokenSumLabel.textColor = aimApplicationThemeOrangeColor
         aimTokenHourSeparaterImageView.backgroundColor = aimApplicationThemeOrangeColor
         aimHourSumLabel.textColor = aimApplicationThemeOrangeColor
@@ -139,16 +130,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.sessionObjectArray.append(plusObject)
         
         self.aimSessionCollectionView.isUserInteractionEnabled = true
-        // aimSessionCollectionView.delegate = self
         
         // Use custom PhosphatePro-Inline font
         aimTokenSumLabel.font = aimApplicationThemeFont24
         aimHourSumLabel.font = aimApplicationThemeFont24
         
-        // aimSessionCollectionView.backgroundColor = aimApplicationThemePurpleColor
         aimSessionCollectionView.alwaysBounceVertical = true
-        
-        // self.addSessionPopupView.layer.cornerRadius = 5.0
         
         // Check user login status
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -157,22 +144,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        // TEST ADDING NAVIGATION ITEM:
-        //        let randomItem = UIBarButtonItem(image: UIImage(named: "aimBlack"), style: UIBarButtonItemStyle.done, target: self, action: #selector(takeRandomAction))
-        //        UIView.animate(withDuration: 0.3, delay: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
-        //            self.navigationItem.rightBarButtonItems?.append(randomItem)
-        //        }, completion: nil)
-        
-        
+        quoteView.isUserInteractionEnabled = true
         var userLoginStatus = false
         let userLoginEmail = FIRAuth.auth()?.currentUser?.email
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            userLoginStatus = true
-        } else {
-            userLoginStatus = false
-        }
+        
+        FIRAuth.auth()?.currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
+        
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
     }
     
@@ -203,7 +180,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Returning the number of items in sessionDict plus one for the last cell is going to be an ADD button
         return sessionObjectArray.count
     }
     
@@ -222,9 +198,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
             sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
             
-            // Remove cell image, show orange background
-            // sessionCell.sessionSnaphotImageView.image = nil
-            
             sessionCell.sessionInfoLabel.text = "+"
             sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
             sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
@@ -238,7 +211,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 sessionCell.sessionInfoLabel.isHidden = true
             }
             sessionCell.sessionSnaphotImageView.image = selectedAimSessionObject.image
-            // sessionCell.layer.masksToBounds = false
         }
         return sessionCell
     }
@@ -257,20 +229,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        togglingCell = true
-        
-        if togglingCell == true {
-            UIView.animate(withDuration: 0.3, animations: {
-                // selectedCell?.alpha = 0.7
-                // selectedCell?.alpha = 0.7
-            }, completion: { (finishedAnimating) in
-                // self.aimSessionCollectionView.isUserInteractionEnabled = false
-                // self.addSessionPopupView.isUserInteractionEnabled = true
-            }) } else {
-            print("I ain't adding nothing!")
-        }
-        
         if indexPath.row == sessionObjectArray.count-1 {
+            togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 selectedCell?.alpha = 0.4
@@ -281,12 +241,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     selectedCell?.isUserInteractionEnabled = true
                 })
             })
-            print("Last")
+            
+            if togglingLastCell == true {
+                quoteView.isUserInteractionEnabled = false
+            } else {
+                print("I ain't adding no session!")
+            }
+            
+            print("Last item in the collection view has been pressed.")
             animatePopupIn()
             // If this isn't yet the last, do an USUAL configuration:
         } else {
-            print("Nope")
-            
             // Segue to specific session
             performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
             
@@ -294,8 +259,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 // Setting default duration for now, later will need to change to better options
                 delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
             }
-            // selectedCell?.isUserInteractionEnabled = false
-            // selectedCell?.alpha = 1.0
         }
     }
     
@@ -309,23 +272,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     @IBAction func closeButtonOnPopupClicked(_ sender: Any) {
-        togglingCell = false
-        let selectedCell = collectionView(aimSessionCollectionView, cellForItemAt: selectedCellIndexPath!)
-        // Allow user interaction back on
-        // aimSessionCollectionView.isUserInteractionEnabled = true
+        togglingLastCell = false
+        quoteView.isUserInteractionEnabled = true
+        // Commenting out below line for now, may need it to change cell appearance due selection
+        // let selectedCell = collectionView(aimSessionCollectionView, cellForItemAt: selectedCellIndexPath!)
         
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
             self.addSessionPopupView.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -250, width: 270, height: 210)
         }) { (finishedAnimating) in
             self.addSessionPopupView.removeFromSuperview()
-            // self.viewAccumulationArrray.append(self.addSessionPopupView)
-            
-            if self.togglingCell == false {
-                // selectedCell.alpha = 1.0
-            }
         }
-        
-        selectedCell.layoutIfNeeded()
     }
     
     // Testing button for firebase storage
@@ -335,10 +291,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
-        
-        /*let storage = FIRStorage.storage()
-         let storageRef = storage.reference()*/
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -369,18 +321,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         uploadMetadata.contentType = "image/jpeg"
         let uploadTask = storageRef.put(data, metadata: uploadMetadata) { (metadata, error) in
             if (error != nil) {
-                print("\(error?.localizedDescription)")
+                print("\(String(describing: error?.localizedDescription))")
             } else {
-                print("\(metadata)")
+                print("\(String(describing: metadata))")
             }
         }
         uploadTask.observe(.progress) { [weak self] (snapshot) in
-            guard let strongSelf = self else { return }
             guard let progress = snapshot.progress else { return }
-            strongSelf.uploadProgressView.progress = Float(progress.fractionCompleted)
+            self?.uploadProgressView.progress = Float(progress.fractionCompleted)
         }
     }
     
+    // To be implemented(or no):
     func uploadMovieToFirebaseStorage(url: URL) {
         
     }
@@ -406,7 +358,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
-    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -415,12 +366,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Pass the selected object to the new view controller.
         if segue.identifier == toSessionSegueIdentifier {
             let destinationNavigationController = segue.destination as! UINavigationController
-            if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController {
+            if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController, let path = aimSessionCollectionView.indexPathsForSelectedItems?.first {
                 self.delegate = destinationViewController
-                
-                print("yay")
-                let path = aimSessionCollectionView.indexPathsForSelectedItems?.first
-                let sessionObject = sessionObjectArray[path!.row]
+                let sessionObject = sessionObjectArray[path.row]
                 if let existingSessionTitle = sessionObject.title {
                     destinationViewController.sessionTitleStringValue = existingSessionTitle
                 } else {
@@ -429,6 +377,4 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
     }
-    
-    
 }

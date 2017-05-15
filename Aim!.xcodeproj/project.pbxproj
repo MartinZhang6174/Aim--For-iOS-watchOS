@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9F04991DBF006B002054E8 /* SessionVC.swift */; };
 		305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */; };
 		75659762C66996131985A075 /* Pods_Aim__Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */; };
 		9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
@@ -22,11 +21,9 @@
 		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
 		9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */; };
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
-		9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */; };
-		9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */; };
 		9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */; };
 		9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */; };
-		9C62218D1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */; };
+		9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */; };
 		9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
@@ -35,9 +32,6 @@
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
 		9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */; };
 		9C6890B31DA5DA8D005CA654 /* Aim_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890B21DA5DA8D005CA654 /* Aim_Tests.swift */; };
-		9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */; };
-		9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */; };
-		9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */; };
 		9C6890C91DA5E5C0005CA654 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890C71DA5E5C0005CA654 /* Interface.storyboard */; };
 		9C6890CB1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890D21DA5E5C0005CA654 /* Aim! Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -46,22 +40,17 @@
 		9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */; };
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! .app */; };
-		9C7160261DC5A940003C7773 /* DurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160241DC5A940003C7773 /* DurationDelegate.swift */; };
+		9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */; };
 		9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
 		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
-		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
-		9CC013501E458D2200EDC879 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* LoginViewController.swift */; };
+		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
-		9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */; };
-		9CE3C7CD1E6614C700426465 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE3C7CC1E6614C700426465 /* LoadingView.swift */; };
 		9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */; };
 		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB013A1E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
-		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
-		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
 		CC755824142A1A3CDDCBDE45 /* Pods_Aim__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */; };
 		F226F6FD778CC7A57CD2E9C9 /* Pods_Aim__Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */; };
 /* End PBXBuildFile section */
@@ -117,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		0F1D23586B6982792E9372E9 /* Pods-Aim! Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1B9F04991DBF006B002054E8 /* SessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionVC.swift; sourceTree = "<group>"; };
 		25C9E071FCC443A47E84B0C9 /* Pods-Aim! Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		2999EC352E41DCD6F77D65AE /* Pods-Aim! Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		32C09E72C6BCE94C3AEC28A1 /* Pods-Aim! Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,18 +119,16 @@
 		9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
 		9C02AF701EC7B53700B0A68F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim!.entitlements"; sourceTree = "<group>"; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionCollectionView.swift; sourceTree = "<group>"; };
 		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
 		9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimQuoteView.swift; sourceTree = "<group>"; };
 		9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsViewController.swift; sourceTree = "<group>"; };
 		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
-		9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSelectionViewController.swift; sourceTree = "<group>"; };
-		9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTabBarViewController.swift; sourceTree = "<group>"; };
 		9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionViewController.swift; sourceTree = "<group>"; };
-		9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceTouchSelectionSettingsTableViewController.swift; sourceTree = "<group>"; };
+		9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimForceTouchSelectionSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateProInline.otf; sourceTree = "<group>"; };
 		9C646DE61E788591007D4578 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,9 +139,6 @@
 		9C6890AE1DA5DA8D005CA654 /* Aim! Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aim! Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890B21DA5DA8D005CA654 /* Aim_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aim_Tests.swift; sourceTree = "<group>"; };
 		9C6890B41DA5DA8D005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
-		9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimViewController.swift; sourceTree = "<group>"; };
-		9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9C6890C51DA5E5C0005CA654 /* Aim! .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim! .app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890C81DA5E5C0005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,19 +150,14 @@
 		9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890E01DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C7160241DC5A940003C7773 /* DurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationDelegate.swift; sourceTree = "<group>"; };
+		9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimDurationDelegate.swift; sourceTree = "<group>"; };
 		9C7160251DC5A940003C7773 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		9C9E49AF1EA0518A00D5D368 /* AimSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSession.swift; sourceTree = "<group>"; };
 		9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopUpView.swift; sourceTree = "<group>"; };
-		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
-		9CC0134F1E458D2200EDC879 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
-		9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerButton.swift; sourceTree = "<group>"; };
-		9CE3C7CC1E6614C700426465 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
-		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
 		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
 		C375D2CEDC0E5DE05DED8279 /* Pods-Aim!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.release.xcconfig"; sourceTree = "<group>"; };
@@ -273,6 +251,8 @@
 		9C646DE81E78859A007D4578 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */,
+				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
 				9C646DE01E7884B8007D4578 /* Phosphate Font */,
 				9C646DE61E788591007D4578 /* Info.plist */,
 			);
@@ -306,7 +286,7 @@
 		9C68909C1DA5DA8D005CA654 /* Aim! */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
+				9C646DE81E78859A007D4578 /* Supporting Files */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
 				9C9E49AE1EA0517700D5D368 /* Models */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
@@ -314,7 +294,6 @@
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
 				9C02AF651EC532D700B0A68F /* Utility Classes */,
-				9C646DE81E78859A007D4578 /* Supporting Files */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -364,7 +343,7 @@
 		9C7F38361DC690050038BC2F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				9C7160241DC5A940003C7773 /* DurationDelegate.swift */,
+				9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */,
 				9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */,
 				9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */,
 			);
@@ -391,20 +370,12 @@
 		9CFFE2851DB313EE00895C3C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9C618B441E0F1EAB00F0999E /* AimTabBarViewController.swift */,
-				9C618B421E0F1DB100F0999E /* AimSelectionViewController.swift */,
-				9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */,
-				1B9F04991DBF006B002054E8 /* SessionVC.swift */,
-				9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */,
-				9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */,
-				9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */,
-				9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */,
-				9CC0134F1E458D2200EDC879 /* LoginViewController.swift */,
+				9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */,
 				9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */,
 				9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */,
 				9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */,
 				9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */,
-				9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */,
+				9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -415,12 +386,8 @@
 				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
 				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
 				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
-				9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */,
 				9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */,
-				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
 				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
-				9CC013531E45B73F00EDC879 /* LoginViewControllerButton.swift */,
-				9CE3C7CC1E6614C700426465 /* LoadingView.swift */,
 				9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */,
 				9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */,
 			);
@@ -790,35 +757,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CC013501E458D2200EDC879 /* LoginViewController.swift in Sources */,
-				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
+				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
 				9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */,
-				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
 				9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */,
 				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
-				9CE3C7CD1E6614C700426465 /* LoadingView.swift in Sources */,
 				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,
-				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
 				9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */,
 				9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */,
-				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
-				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
 				9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */,
 				9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */,
 				9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */,
 				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
-				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
-				9C7160261DC5A940003C7773 /* DurationDelegate.swift in Sources */,
-				9C32039E1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift in Sources */,
+				9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */,
 				9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */,
-				9C62218D1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift in Sources */,
-				9C618B431E0F1DB100F0999E /* AimSelectionViewController.swift in Sources */,
+				9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */,
 				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
-				1B9F049A1DBF006B002054E8 /* SessionVC.swift in Sources */,
 				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
-				9CC013541E45B73F00EDC879 /* LoginViewControllerButton.swift in Sources */,
-				9C618B451E0F1EAB00F0999E /* AimTabBarViewController.swift in Sources */,
 				9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,10 +947,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1009,10 +965,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
