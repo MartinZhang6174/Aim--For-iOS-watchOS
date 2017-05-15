@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import CoreMotion
+import CoreLocation
 import UserNotifications
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
+    
+    var sessionTitleStringValue = ""
 
     var timerManager = TimerManager()
     
-    let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
+    var motionManager = CMMotionManager()
+    // Initializing a LocationManager to bypass Apple policies on categories of apps that are allowed to update accelerometer data in the background for more than 10 mins:
+    var locationManager = CLLocationManager()
+    
+    var currentMaxAccX: Double = 0.0
+    var currentMaxAccY: Double = 0.0
+    var currentMaxAccZ: Double = 0.0
+
+  let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
 
     var sessionTitleStringValue = ""
     
@@ -30,6 +42,18 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         
         updateTimerLabel()
+        
+        motionManager.accelerometerUpdateInterval = 0.5
+        motionManager.gyroUpdateInterval = 0.5
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerometerData: CMAccelerometerData?, error: Error?) in
+            self.outputAccelerometerData(acceleration: (accelerometerData?.acceleration)!)
+            if (error != nil) {
+                print("Error: \(error)")
+            }
+        }
+        
+        locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +73,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     @IBAction func terminateSessionButtonClicked(_ sender: Any) {
         timerManager.stopTimer()
+        motionManager.stopAccelerometerUpdates()
+        locationManager.stopUpdatingLocation()
         dismiss(animated: true, completion: nil)
     }
     
@@ -96,6 +122,24 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
                 print(error?.localizedDescription)
             }
         }
+    }
+    
+    func outputAccelerometerData(acceleration: CMAcceleration) {
+        var xDirectionAccel = acceleration.x
+        var yDirectionAccel = acceleration.y
+        var zDirectionAccel = acceleration.z
+        
+//        || abs(yDirectionAccel)>0.1 || abs(zDirectionAccel)>0.1
+        
+        if abs(xDirectionAccel)>0.5 || abs(yDirectionAccel)>0.5 {
+            print("BIG MOVE BRO!??")
+            
+            // Warn the user to put down the phone:
+            
+        }
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationX: \(acceleration.x).2fg")
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationY: \(acceleration.y).2fg")
+//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationZ: \(acceleration.z).2fg")
     }
 
     /*
