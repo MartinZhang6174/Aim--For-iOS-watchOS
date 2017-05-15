@@ -55,7 +55,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     func updateTimerLabel() {
         let currentTime = timerManager.elapsedTime
-        sessionTimerLabel.text = Utility.convertSecondsToTimeString(currentTime)
+        sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
     }
     
     func timerComplete() {

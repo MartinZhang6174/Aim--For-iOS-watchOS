@@ -29,7 +29,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
     
-    var togglingCell = false
+    var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
     
@@ -144,6 +144,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        quoteView.isUserInteractionEnabled = true
         var userLoginStatus = false
         let userLoginEmail = FIRAuth.auth()?.currentUser?.email
         
@@ -228,15 +229,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        togglingCell = true
-        
-        if togglingCell == true {
-            quoteView.isUserInteractionEnabled = false
-        } else {
-            print("I ain't adding no session!")
-        }
-        
         if indexPath.row == sessionObjectArray.count-1 {
+            togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 selectedCell?.alpha = 0.4
@@ -247,6 +241,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     selectedCell?.isUserInteractionEnabled = true
                 })
             })
+            
+            if togglingLastCell == true {
+                quoteView.isUserInteractionEnabled = false
+            } else {
+                print("I ain't adding no session!")
+            }
             
             print("Last item in the collection view has been pressed.")
             animatePopupIn()
@@ -272,7 +272,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     @IBAction func closeButtonOnPopupClicked(_ sender: Any) {
-        togglingCell = false
+        togglingLastCell = false
         quoteView.isUserInteractionEnabled = true
         // Commenting out below line for now, may need it to change cell appearance due selection
         // let selectedCell = collectionView(aimSessionCollectionView, cellForItemAt: selectedCellIndexPath!)

@@ -21,7 +21,7 @@
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
 		9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */; };
 		9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */; };
-		9C62218D1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */; };
+		9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */; };
 		9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
@@ -124,7 +124,7 @@
 		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
 		9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionViewController.swift; sourceTree = "<group>"; };
-		9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceTouchSelectionSettingsTableViewController.swift; sourceTree = "<group>"; };
+		9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimForceTouchSelectionSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateProInline.otf; sourceTree = "<group>"; };
 		9C646DE61E788591007D4578 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -368,7 +368,7 @@
 				9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */,
 				9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */,
 				9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */,
-				9C62218C1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift */,
+				9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -759,7 +759,7 @@
 				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
 				9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */,
 				9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */,
-				9C62218D1EC2C78900D38B92 /* ForceTouchSelectionSettingsTableViewController.swift in Sources */,
+				9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */,
 				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
 				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
 				9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ForceTouchSelectionSettingsTableViewController.swift
+//  AimForceTouchSelectionSettingsTableViewController.swift
 //  Aim!
 //
 //  Created by Martin Zhang on 2017-05-09.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-// CODEREVIEW: This class has an inconsistent name.  Your other classes are named AimXxxx.
-class ForceTouchSelectionSettingsTableViewController: UITableViewController {
+class AimForceTouchSelectionSettingsTableViewController: UITableViewController {
 
     // CODEREVIEW: The only thing that this View Controller does is set the background colour for the tableView.  Consider deleting this class, and simply setting the tableView's background in Storyboard.
 
