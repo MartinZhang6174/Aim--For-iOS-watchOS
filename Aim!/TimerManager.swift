@@ -15,8 +15,7 @@ class TimerManager {
     static let notificationComplete = "TimerNotificationComplete"
     
     // MARK: - Properties
-    // CODEREVIEW: Keep your variable names consistent.  In all your other files, you use camelCase for "let" members.  In this one time you use ALL_UPPERCASE style.  Pick one and don't change.
-    let TIME_INTERVAL: TimeInterval = 1
+    let timeInterval: TimeInterval = 0.001
     
     var duration: TimeInterval = 0
     var elapsedTime: TimeInterval = 0
@@ -25,20 +24,14 @@ class TimerManager {
     
     var isOn: Bool {
         get {
-            // CODEREVIEW: You can write if-statements like these in a single line.
-            // e.g. return (aimTimer != nil)
-            if aimTimer != nil {
-                return true
-            } else {
-                return false
-            }
+            return (aimTimer != nil)
         }
     }
     
     // MARK: - Timer Functions
     func startTimer() {
         if !isOn {
-            aimTimer = Timer.scheduledTimer(timeInterval: TIME_INTERVAL, target: self, selector: #selector(self.secondTick), userInfo: nil, repeats: true)
+            aimTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.secondTick), userInfo: nil, repeats: true)
             
             print("Timer started.")
         }

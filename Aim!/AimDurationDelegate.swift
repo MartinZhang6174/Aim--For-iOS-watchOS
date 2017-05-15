@@ -1,5 +1,5 @@
 //
-//  DurationDelegate.swift
+//  AimDurationDelegate.swift
 //  Aim!
 //
 //  Created by Nelson Chow on 2016-10-18.
@@ -9,7 +9,7 @@
 import Foundation
 
 // CODEREVIEW: This protocol has an inconsistent name.  Your other protocols are named AimXxxx.
-protocol DurationDelegate {
+protocol AimDurationDelegate {
     func beginCustomSession(durationInSeconds: TimeInterval)
     func beginEndlessSession()
 }

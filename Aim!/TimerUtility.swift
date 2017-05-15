@@ -9,12 +9,8 @@
 import Foundation
 
 class Utility {
-  
-  
-    // CODEREVIEW: Make this method follow Swift naming conventions.
-    // E.g. func timeString(fromSeconds:TimeInterval) -> String
-    class func convertSecondsToTimeString(_ seconds: TimeInterval) -> String {
-        let totalSeconds = Int(seconds)
+    class func timeString(fromSeconds: TimeInterval) -> String {
+        let totalSeconds = Int(fromSeconds)
         
         let hours = totalSeconds / 3600
         let minutes = (totalSeconds / 60 ) % 60

@@ -10,8 +10,6 @@ import UIKit
 
 @IBDesignable
 class AimQuoteView: UIView {
-
-    // CODEREVIEW: remove commented code.
   
     override func awakeFromNib() {
 //        super.awakeFromNib()
@@ -22,13 +20,4 @@ class AimQuoteView: UIView {
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 3.0
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

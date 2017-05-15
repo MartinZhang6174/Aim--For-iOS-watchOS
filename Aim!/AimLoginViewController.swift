@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  AimLoginViewController.swift
 //  Aim!
 //
 //  Created by Martin Zhang on 2017-02-03.
@@ -15,14 +15,17 @@ import Firebase
 let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
 let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
-// CODEREVIEW: This class has an inconsistent name.  Your other classes are named AimXxxx.
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class AimLoginViewController: UIViewController, UITextFieldDelegate {
     
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
     let loadingViewUIBlockerSize = CGSize(width: 40, height: 40)
-
+    let signUpButtonLayerCornerRadius = CGFloat(7.0)
+    let signUpButtonLayerShadowOpacity = Float(0.7)
+    let logInButtonLayerShadowOffsetWidth = Double(7.0)
+    let logInButtonLayerShadowOffsetHeight = Double(5.0)
+    
     @IBOutlet weak var aimLogoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailAddressEntryTextField: UITextField!
@@ -32,7 +35,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
         UITextField.appearance().tintColor = themeOrangeColor
@@ -40,21 +43,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailAddressEntryTextField.delegate = self
         passwordCreateEntryTextField.delegate = self
         passwordConfirmEntryTextField.delegate = self
-
-        // CODEREVIEW: Consider putting repeated values like 7, 0.7, 5.0 in constants
-      
+        
         // Button corner radius:
-        signupButton.layer.cornerRadius = 7
-        loginButton.layer.cornerRadius = 7
+        signupButton.layer.cornerRadius = signUpButtonLayerCornerRadius
+        loginButton.layer.cornerRadius = signUpButtonLayerCornerRadius
         signupButton.backgroundColor = themePurpleColor
         loginButton.backgroundColor = themePurpleColor
         
-        signupButton.layer.shadowOpacity = 0.7
-        signupButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
-        loginButton.layer.shadowOpacity = 0.7
-        loginButton.layer.shadowOffset = CGSize(width: 7.0, height: 5.0)
+        // Button shadow configurations:
+        signupButton.layer.shadowOpacity = signUpButtonLayerShadowOpacity
+        loginButton.layer.shadowOpacity = signUpButtonLayerShadowOpacity
+        signupButton.layer.shadowOffset = CGSize(width: logInButtonLayerShadowOffsetWidth, height: logInButtonLayerShadowOffsetHeight)
+        loginButton.layer.shadowOffset = CGSize(width: logInButtonLayerShadowOffsetWidth, height: logInButtonLayerShadowOffsetHeight)
         
-        // Configure loading view data
+        // Configure loading view data:
         loadingViewFrameRect = CGRect(x: self.view.center.x - 25, y: aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
         
         // Hide keyboard:
@@ -62,9 +64,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      // CODEREVIEW: resignFirstResponder and becomeFirstResponder return bool results which you are ignoring.  What happens if they fail?
-      
-      textField.resignFirstResponder()
+        // CODEREVIEW: resignFirstResponder and becomeFirstResponder return bool results which you are ignoring.  What happens if they fail?
+        
+        // RESEARCH ON RESIGNFIRSTRESPONDER AND FIND A WAY TO SAFELY CALL METHOD
+        
+        textField.resignFirstResponder()
         if textField == emailAddressEntryTextField {
             passwordCreateEntryTextField.becomeFirstResponder()
         } else if textField == passwordCreateEntryTextField {
@@ -72,16 +76,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-  
+    
     // CODEREVIEW: In the four methods below, you are making the same call to UIView.animate(...) four different times with variations only to the x: and width: parameters.  Consider finding a way to refactor this to reduce code repetition.
-  
+    
+    // NEED TO FIND A WAY TO SHORTEN CODE BELOW:
+    
     @IBAction func signupButtonPressed(_ sender: Any) {
         let signupButton = sender as! UIButton
         
-            let bounds = signupButton.bounds
-            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-                signupButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
-            }, completion: nil)
+        let bounds = signupButton.bounds
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            signupButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
+        }, completion: nil)
     }
     
     @IBAction func signupButtonReleased(_ sender: Any) {
@@ -95,7 +101,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         let loginButton = sender as! UIButton
-
+        
         let bounds = loginButton.bounds
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
             loginButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
@@ -130,54 +136,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             passwordConfirmEntryTextField.isHidden = false
             passwordConfirmEntryTextField.alpha = 0.7
         } else {
-        
-          // CODEREVIEW: Cleanup the commented code in this section
-          
             // If password confirming tf ISN'T hidden (it's there), handle signup
-        let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
-//        moveLoadingView(loadingView: loginLoadingView)
-        
-        guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
-//            print("Enter valid info.")
-            return
-        }
-        
-        if pwd1 != "" && pwd1 == pwd2 {
-            moveLoadingView(loadingView: loginLoadingView)
-            print("Password match, point where loading view needed.")
-            FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
-                if error != nil {
-                    self.endLoadingView(movingLoadingView: loginLoadingView)
-                    // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
-                    print(error)
-                    return
-                }
-                
-                guard let uid = user?.uid else {
-                    return
-                }
-              
-                // CODEREVIEW: What if the hardcoded URL here changes?  Consider reading it from a plist instead of hardcoding it.
-                let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
-                let userReference = reference.child("users").child(uid)
-                let userInfoValues = ["Email" : email, "Password" : pwd1]
-                userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
-                    if err != nil {
+            let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+            
+            guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
+                return
+            }
+            
+            if pwd1 != "" && pwd1 == pwd2 {
+                moveLoadingView(loadingView: loginLoadingView)
+                print("Password match, point where loading view needed.")
+                FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
+                    if error != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
                         // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
-                          print(err)
+                        print(error)
                         return
                     }
-                    if FIRAuth.auth()?.currentUser?.uid != nil {
-                        self.dismiss(animated: true, completion: nil)
+                    
+                    guard let uid = user?.uid else {
+                        return
                     }
-                    print("User creation success.")
+                    
+                    // CODEREVIEW: What if the hardcoded URL here changes?  Consider reading it from a plist instead of hardcoding it.
+                    let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+                    let userReference = reference.child("users").child(uid)
+                    let userInfoValues = ["Email" : email, "Password" : pwd1]
+                    userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
+                        if err != nil {
+                            self.endLoadingView(movingLoadingView: loginLoadingView)
+                            // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
+                            print(err)
+                            return
+                        }
+                        if FIRAuth.auth()?.currentUser?.uid != nil {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        print("User creation success.")
+                    })
+                    print("Registered new user.")
                 })
-                print("Registered new user.")
-            })
-        } else {
-            self.endLoadingView(movingLoadingView: loginLoadingView)
-            print("Invalid info.")
+            } else {
+                self.endLoadingView(movingLoadingView: loginLoadingView)
+                print("Invalid info.")
             }
         }
     }
@@ -204,21 +205,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
-                    // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
-                    print(error)
+                    print(error as Any)
                 }
                 if FIRAuth.auth()?.currentUser?.uid != nil {
                     self.dismiss(animated: true, completion: nil)
                 }
             })
         }
-      
-        // CODEREVIEW: Cleanup commented code.
-      
-//        if FIRAuth.auth()?.currentUser?.uid != nil {
-//        } else {
-//            endLoadingView(movingLoadingView: loginLoadingView)
-//        }
     }
     
     @IBAction func closeWindowButtonPressed(_ sender: Any) {
@@ -227,8 +220,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension UIViewController {
-  
-    // CODEREVIEW: This method's name implies that it makes the keyboard disappear when the method is called.  What it actually does is setup a tap gesture recognizer.  Consider renaming it.
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -240,8 +232,6 @@ extension UIViewController {
     }
 }
 
-// CODEREVIEW: Make this method follow Swift naming conventions or put it in an extension of UIColor.
-// E.g. func UIColor(fromHexString:String) -> UIColor
 func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     
