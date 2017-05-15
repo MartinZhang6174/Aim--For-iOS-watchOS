@@ -116,6 +116,7 @@
 		9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionDurationInfoDelegate.swift; sourceTree = "<group>"; };
 		9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim!.entitlements"; sourceTree = "<group>"; };
 		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
 		9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimQuoteView.swift; sourceTree = "<group>"; };
@@ -245,6 +246,8 @@
 		9C646DE81E78859A007D4578 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */,
+				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
 				9C646DE01E7884B8007D4578 /* Phosphate Font */,
 				9C646DE61E788591007D4578 /* Info.plist */,
 			);
@@ -278,7 +281,7 @@
 		9C68909C1DA5DA8D005CA654 /* Aim! */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
+				9C646DE81E78859A007D4578 /* Supporting Files */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
 				9C9E49AE1EA0517700D5D368 /* Models */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
@@ -286,7 +289,6 @@
 				9CFFE2861DB3140C00895C3C /* UI Files */,
 				9C7F38371DC690200038BC2F /* Manager Classes */,
 				9C02AF651EC532D700B0A68F /* Utility Classes */,
-				9C646DE81E78859A007D4578 /* Supporting Files */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -488,6 +490,11 @@
 						DevelopmentTeam = FD5Z2GLC5U;
 						DevelopmentTeamName = "Martin Zhang (Personal Team)";
 						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					9C6890AD1DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
@@ -935,10 +942,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -952,10 +960,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

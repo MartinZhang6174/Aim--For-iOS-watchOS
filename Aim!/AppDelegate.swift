@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,22 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
-      
-        // CODEREVIEW: Keep your code clean by removing commented code.  If you need to restore this code later, restore it from the repo.
-      
-//        for family: String in UIFont.familyNames
-//        {
-//            print("\(family)")
-//            for names: String in UIFont.fontNames(forFamilyName: family)
-//            {
-//                print("== \(names)")
-//            }
-//        }
-
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        // Register for local push notifications:
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            
+        }
         
         // Configure a FIRApp instance
         FIRApp.configure()

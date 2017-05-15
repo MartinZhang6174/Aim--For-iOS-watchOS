@@ -31,10 +31,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>PhosphateProInline.otf</string>
-	</array>
 	<key>FacebookAppID</key>
 	<string>250018238744690</string>
 	<key>FacebookDisplayName</key>
@@ -48,12 +44,55 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>$(PRODUCT_NAME) media library use</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>$(PRODUCT_NAME) Bluetooth Peripheral use</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(PRODUCT_NAME) calendar events</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) contact use</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>$(PRODUCT_NAME) heath share use</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>$(PRODUCT_NAME) heath update use</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string>$(PRODUCT_NAME) home kit use</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) always uses location </string>
+	<key>NSLocationUsageDescription</key>
+	<string>$(PRODUCT_NAME) location use</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) location use</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>$(PRODUCT_NAME) microphone use</string>
+	<key>NSMotionUsageDescription</key>
+	<string>$(PRODUCT_NAME) motion use</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) will not share any of your photo content with any third party entities.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>$(PRODUCT_NAME) reminder use</string>
+	<key>NSSiriUsageDescription</key>
+	<string>$(PRODUCT_NAME) siri use</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>$(PRODUCT_NAME) speech use</string>
+	<key>NSVideoSubscriberAccountUsageDescription</key>
+	<string>$(PRODUCT_NAME) tvProvider use</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PhosphateProInline.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -62,46 +101,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) photo use</string>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) camera use</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) microphone use</string>
-	<key>NSLocationUsageDescription</key>
-	<string>$(PRODUCT_NAME) location use</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) location use</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) always uses location </string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>$(PRODUCT_NAME) calendar events</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>$(PRODUCT_NAME) reminder use</string>
-	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) contact use</string>
-	<key>NSMotionUsageDescription</key>
-	<string>$(PRODUCT_NAME) motion use</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>$(PRODUCT_NAME) heath update use</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>$(PRODUCT_NAME) heath share use</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>$(PRODUCT_NAME) Bluetooth Peripheral use</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>$(PRODUCT_NAME) media library use</string>
-	<key>NSSiriUsageDescription</key>
-	<string>$(PRODUCT_NAME) siri use</string>
-	<key>NSHomeKitUsageDescription</key>
-	<string>$(PRODUCT_NAME) home kit use</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>$(PRODUCT_NAME) speech use</string>
-	<key>NSVideoSubscriberAccountUsageDescription</key>
-	<string>$(PRODUCT_NAME) tvProvider use</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
