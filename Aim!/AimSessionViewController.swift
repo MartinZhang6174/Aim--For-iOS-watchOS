@@ -14,7 +14,7 @@ import UserNotifications
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
     
     var sessionTitleStringValue = ""
-
+    
     var timerManager = TimerManager()
     
     var motionManager = CMMotionManager()
@@ -24,10 +24,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccX: Double = 0.0
     var currentMaxAccY: Double = 0.0
     var currentMaxAccZ: Double = 0.0
-
-  let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
-
-    var sessionTitleStringValue = ""
+    
+    let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
     
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionTimerLabel: UILabel!
@@ -78,11 +76,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    func updateAimSessionTimerLabel() {
-        // secondsElapsed += 1
-        // sessionTimerLabel.text = String(secondsElapsed)
-    }
-    
     func updateTimerLabel() {
         let currentTime = timerManager.elapsedTime
         sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
@@ -90,26 +83,26 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     func timerComplete() {
         dismiss(animated: true, completion: nil)
-
+        
         print("This is where you need to send the users a NOTIFICATION!!!!!")
         
         let content = UNMutableNotificationContent()
         content.title = "Aim! Session Completed!"
-        // content.subtitle = "You have successfully finished your Aim! Session."
         content.body = "Token earned: 237 🏆"
         content.sound = UNNotificationSound.default()
         
-//        //To Present image in notification
-//        if let path = Bundle.main.path(forResource: "monkey", ofType: "png") {
-//            let url = URL(fileURLWithPath: path)
-//            
-//            do {
-//                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
-//                content.attachments = [attachment]
-//            } catch {
-//                print("attachment not found.")
-//            }
-//        }
+        //   To Present image in notification, this may be needed when my logo is designed:
+        
+        //        if let path = Bundle.main.path(forResource: "monkey", ofType: "png") {
+        //            let url = URL(fileURLWithPath: path)
+        //
+        //            do {
+        //                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
+        //                content.attachments = [attachment]
+        //            } catch {
+        //                print("attachment not found.")
+        //            }
+        //        }
         
         // Deliver the notification in five seconds.
         // let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
@@ -119,39 +112,23 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         UNUserNotificationCenter.current().add(request){(error) in
             
             if (error != nil){
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
             }
         }
     }
     
     func outputAccelerometerData(acceleration: CMAcceleration) {
-        var xDirectionAccel = acceleration.x
-        var yDirectionAccel = acceleration.y
-        var zDirectionAccel = acceleration.z
-        
-//        || abs(yDirectionAccel)>0.1 || abs(zDirectionAccel)>0.1
-        
+        let xDirectionAccel = acceleration.x
+        let yDirectionAccel = acceleration.y
+        // let zDirectionAccel = acceleration.z
+                
         if abs(xDirectionAccel)>0.5 || abs(yDirectionAccel)>0.5 {
             print("BIG MOVE BRO!??")
             
-            // Warn the user to put down the phone:
+            // Warn the user to put down the phone here:
             
         }
-//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationX: \(acceleration.x).2fg")
-//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationY: \(acceleration.y).2fg")
-//        print("<<<<<<<<<<<<<<<<<<<<<<<<<<< AccelerationZ: \(acceleration.z).2fg")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension AimSessionViewController: UNUserNotificationCenterDelegate{
@@ -166,7 +143,7 @@ extension AimSessionViewController: UNUserNotificationCenterDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         print("Notification being triggered")
-        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
         if notification.request.identifier == requestIdentifier{
             
