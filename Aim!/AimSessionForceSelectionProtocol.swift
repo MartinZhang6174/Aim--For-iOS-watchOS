@@ -8,6 +8,8 @@
 
 import Foundation
 
+// CODEREVIEW: This protocol is empty and nothing is using it.  Delete this file.
+
 protocol AimSessionForceSelectionProtocol {
     
 }

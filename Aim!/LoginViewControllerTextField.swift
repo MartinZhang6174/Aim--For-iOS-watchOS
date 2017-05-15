@@ -13,7 +13,7 @@ class LoginViewControllerTextField: UITextField {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+      
         self.layer.backgroundColor = UIColor(red: 26, green: 20, blue: 35).cgColor
         self.layer.cornerRadius = 5.0
     }
@@ -27,6 +27,10 @@ class LoginViewControllerTextField: UITextField {
     }
     
 }
+
+
+// TODO:
+// CODEREVIEW: Consider replacing this UIColor extension with hexStringToUIColor that you use in your other classes.  You can add alpha as an optional parameter to hexStringToUIColor.  Try to keep similar functionality consistent across your classes.
 
 // HEX: 1A1423  RGB: (26,20,35)
 // Extension for the purpleish colour (with alpha: 0.2)

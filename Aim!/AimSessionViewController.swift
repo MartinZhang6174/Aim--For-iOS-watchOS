@@ -14,7 +14,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var timerManager = TimerManager()
     
     let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
-    
+
     var sessionTitleStringValue = ""
     
     @IBOutlet weak var sessionTitleLabel: UILabel!
@@ -30,8 +30,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         
         updateTimerLabel()
-        
-        // sessionTimerLabel.text = String(secondsElapsed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +38,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     // MARK: - AimSessionDurationInfoDelegate
     func getSessionDuration(_ durationInSeconds: TimeInterval) {
-        // sessionTitleLabel.text = "\(Int(durationInSeconds / 60))-Minute-Long Session In Progress!"
         timerManager.duration = TimeInterval(durationInSeconds)
         timerManager.startTimer()
     }
@@ -48,14 +45,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     func getSessionDurationForSessionWithoutDurationLimits() {
         sessionTimerLabel.text = "'Forever-long' Session In Progress!"
         timerManager.startTimer()
-    }
-    
-    @IBAction func startSessionButtonPressed(_ sender: Any) {
-        // aimTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAimSessionTimerLabel), userInfo: nil, repeats: true)
-    }
-    
-    @IBAction func pauseSessionButtonClicked(_ sender: Any) {
-        // aimTimer.invalidate()
     }
     
     @IBAction func terminateSessionButtonClicked(_ sender: Any) {
@@ -70,7 +59,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     func updateTimerLabel() {
         let currentTime = timerManager.elapsedTime
-        sessionTimerLabel.text = Utility.convertSecondsToTimeString(currentTime)
+        sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
     }
     
     func timerComplete() {

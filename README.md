@@ -61,6 +61,10 @@ iOS + watchOS
 
 # Watch App Snapshots:
 
-![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915266/51111c76-a06e-11e6-9a84-0902f0b215ad.jpg)
+### Main VC:
+![Images for README](https://cloud.githubusercontent.com/assets/19420230/26083262/9b1f4cf2-3989-11e7-9e15-9b6aecf62714.PNG)
 
+
+
+### Session Selection:
 ![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915265/50f23590-a06e-11e6-8368-946dc3cbe139.jpg)
