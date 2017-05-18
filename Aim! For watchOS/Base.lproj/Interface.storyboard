@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Interface Controller-->
+        <!--Aim Main Interface Controller-->
         <scene sceneID="4hi-jR-Kag">
             <objects>
-                <controller id="Kcj-o3-Mv4">
+                <controller id="Kcj-o3-Mv4" customClass="AimMainInterfaceController">
                     <items>
                         <group width="147" height="50" alignment="center" radius="7" id="uXT-To-DBm">
                             <items>

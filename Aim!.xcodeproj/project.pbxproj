@@ -15,7 +15,6 @@
 		9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */; };
 		9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */; };
 		9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF701EC7B53700B0A68F /* CoreLocation.framework */; };
-		9C32039E1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32039D1EB5663600FD6746 /* AimSessionSelectionCollectionView.swift */; };
 		9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */; };
 		9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */; };
 		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
@@ -35,7 +34,7 @@
 		9C6890C91DA5E5C0005CA654 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890C71DA5E5C0005CA654 /* Interface.storyboard */; };
 		9C6890CB1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */; };
 		9C6890D21DA5E5C0005CA654 /* Aim! Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9C6890D91DA5E5C0005CA654 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */; };
+		9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */; };
 		9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */; };
 		9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */; };
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
@@ -145,7 +144,7 @@
 		9C6890CC1DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Aim! Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890D71DA5E5C0005CA654 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimMainInterfaceController.swift; sourceTree = "<group>"; };
 		9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -321,7 +320,7 @@
 		9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */,
+				9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */,
 				9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */,
 				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
 				9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */,
@@ -792,7 +791,7 @@
 			files = (
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
 				9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */,
-				9C6890D91DA5E5C0005CA654 /* InterfaceController.swift in Sources */,
+				9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */,
 				9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
