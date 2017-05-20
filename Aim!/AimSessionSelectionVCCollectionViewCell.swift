@@ -13,8 +13,10 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sessionInfoLabel: UILabel!
     @IBOutlet weak var backgroundBlackView: UIView!
     @IBOutlet weak var sessionSnaphotImageView: UIImageView!
+    @IBOutlet weak var addSessionPlusIconLabel: UILabel!
     
     override func awakeFromNib() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
     }
@@ -31,5 +33,13 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
+    }
+    
+    override func prepareForReuse() {
+
+        // Hide the regular text label, plus label and backgroundBlackView
+        sessionInfoLabel.isHidden = true
+        addSessionPlusIconLabel.isHidden = true
+//        backgroundBlackView.isHidden = true
     }
 }

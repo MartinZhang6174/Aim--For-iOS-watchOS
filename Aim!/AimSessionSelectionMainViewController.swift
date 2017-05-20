@@ -36,9 +36,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var authorFlipped = false
     
     // Generating Firebase realtime database reference for reading & writing data
-    var ref: FIRDatabaseReference?
-    var databaseHandle: FIRDatabaseHandle?
-//    var sessionObjectArray = [AimSession]()
+    var ref: DatabaseReference?
+    var databaseHandle: DatabaseHandle?
+    //    var sessionObjectArray = [AimSession]()
     var aimSessionFetchedArray = [AimSession]()
     
     @IBOutlet var aimSessionCollectionView: UICollectionView!
@@ -61,17 +61,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
-//        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
-//        aimSessionFetchedArray.append(addButtonSampleSession)
+        //        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
+        //        aimSessionFetchedArray.append(addButtonSampleSession)
         
         // Setting the database reference:
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         // Setting date format for formatter
         fmt.dateFormat = "dd.MM.yyyy"
         
         // Retrieve sessions:
-        if let currentUserID = FIRAuth.auth()?.currentUser?.uid as String! {
+        if let currentUserID = Auth.auth().currentUser?.uid as String! {
             databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
                 let sessionTitle = snapshot.key
                 let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
@@ -81,7 +81,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     sessionPriority = true
                 }
                 
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: nil, priority: sessionPriority)
+                // Adding image to test imageview on cell display with plus button added  
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: UIImage(named: "knowledge1"), priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 self.aimSessionCollectionView.reloadData()
             })
@@ -129,20 +130,20 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // TODO: Change data source to Firebase user data storage.
         // Hard coded data(need to change data source ASAP):
         
-//        let date1 = fmt.date(from: "15.09.2016")
-//        let date2 = fmt.date(from: "10.07.2016")
-//        let date3 = fmt.date(from: "05.02.2017")
-//        let date4 = fmt.date(from: "16.04.2017")
-//        
-//        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
-//        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
-//        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
-//        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
-//        
-//        self.sessionObjectArray.append(session1)
-//        self.sessionObjectArray.append(session2)
-//        self.sessionObjectArray.append(session3)
-//        self.sessionObjectArray.append(session4)
+        //        let date1 = fmt.date(from: "15.09.2016")
+        //        let date2 = fmt.date(from: "10.07.2016")
+        //        let date3 = fmt.date(from: "05.02.2017")
+        //        let date4 = fmt.date(from: "16.04.2017")
+        //
+        //        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
+        //        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
+        //        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
+        //        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
+        //
+        //        self.sessionObjectArray.append(session1)
+        //        self.sessionObjectArray.append(session2)
+        //        self.sessionObjectArray.append(session3)
+        //        self.sessionObjectArray.append(session4)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -156,7 +157,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting navigation bar tint colour to theme purple(for nav bar only)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
-//        self.aimSessionFetchedArray.append(AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false))
+        //        self.aimSessionFetchedArray.append(AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false))
         
         self.aimSessionCollectionView.isUserInteractionEnabled = true
         
@@ -167,7 +168,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimSessionCollectionView.alwaysBounceVertical = true
         
         // Check user login status
-        if FIRAuth.auth()?.currentUser?.uid == nil {
+        if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLoginRegister), with: nil, afterDelay: 0)
         }
     }
@@ -175,9 +176,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     override func viewDidAppear(_ animated: Bool) {
         quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
-        let userLoginEmail = FIRAuth.auth()?.currentUser?.email
+        let userLoginEmail = Auth.auth().currentUser?.email
         
-        FIRAuth.auth()?.currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
+        Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
         
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
     }
@@ -198,7 +199,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
         } catch let signOutError {
             print(signOutError)
         }
@@ -209,86 +210,123 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return aimSessionFetchedArray.count
+        return aimSessionFetchedArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
-        let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+        //        let aimSessionObject = aimSessionFetchedArray[indexPath.row]
         
         // If the cell that is getting configured is the last cell that's supposed to show up on the collection view
-//        if indexPath.row == aimSessionFetchedArray.count-1 {
-//            // Hide black view and move label to centre of cell displaying huge "+"
-//            sessionCell.backgroundBlackView.isHidden = true
-//            
-//            // Put constraints in relative to the entire cell rather than to the black view normally
-//            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
-//            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
-//            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
-//            sessionCell.sessionInfoLabel.text = "+"
-//            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-//            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-//            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-//            sessionCell.sessionSnaphotImageView.image = nil
-//        } else {
+        //        if indexPath.row == aimSessionFetchedArray.count-1 {
+        //            // Hide black view and move label to centre of cell displaying huge "+"
+        //            sessionCell.backgroundBlackView.isHidden = true
+        //
+        //            // Put constraints in relative to the entire cell rather than to the black view normally
+        //            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
+        //            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
+        //            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
+        //            sessionCell.sessionInfoLabel.text = "+"
+        //            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
+        //            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+        //            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+        //            sessionCell.sessionSnaphotImageView.image = nil
+        //        } else {
         
+        //            if aimSessionObject.title != nil {
+        //                sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
+        //            } else {
+        //                sessionCell.backgroundBlackView.isHidden = true
+        //                sessionCell.sessionInfoLabel.isHidden = true
+        //            }
+        //            sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
+        ////        }
+        //        return sessionCell
+        
+        
+        
+        
+        
+        
+        if (indexPath.row < aimSessionFetchedArray.count) {
+            let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+            
+            print ("Row \(indexPath.row): AimSessionObject \(aimSessionObject)")
+
             if aimSessionObject.title != nil {
+                sessionCell.sessionInfoLabel.isHidden = false
                 sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
             } else {
                 sessionCell.backgroundBlackView.isHidden = true
                 sessionCell.sessionInfoLabel.isHidden = true
             }
+            
             sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
-//        }
+        } else {
+            // The + button here
+            print ("Row \(indexPath.row): PLUS BUTTON")
+            
+            sessionCell.addSessionPlusIconLabel.isHidden = false
+            sessionCell.sessionInfoLabel.isHidden = true
+//            sessionCell.backgroundBlackView.isHidden = true
+            sessionCell.addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
+            sessionCell.sessionSnaphotImageView.image = nil
+            
+//            sessionCell.backgroundBlackView.isHidden = true
+//            sessionCell.sessionInfoLabel.text = "+"
+//            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4)
+//            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
+//            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+        }
         return sessionCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        if indexPath.row != aimSessionFetchedArray.count-1 {
-//            let generator = UIImpactFeedbackGenerator(style: .medium)
-//            generator.impactOccurred()
-//        } else {
-//            let generator = UINotificationFeedbackGenerator()
-//            generator.notificationOccurred(.success)
-//        }
+        if indexPath.row != aimSessionFetchedArray.count-1 {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.selectedCellIndexPath = indexPath
-//        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
-//        
-//        if indexPath.row == aimSessionFetchedArray.count-1 {
-//            togglingLastCell = true
-//            selectedCell?.isUserInteractionEnabled = false
-//            UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//                selectedCell?.alpha = 0.4
-//            }, completion: { (finished) in
-//                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//                    selectedCell?.alpha = 1.0
-//                }, completion: {(done) in
-//                    selectedCell?.isUserInteractionEnabled = true
-//                })
-//            })
-//            
-//            if togglingLastCell == true {
-//                quoteView.isUserInteractionEnabled = false
-//            } else {
-//                print("I ain't adding no session!")
-//            }
-//            
-//            print("Last item in the collection view has been pressed.")
-//            animatePopupIn()
-//            // If this isn't yet the last, do an USUAL configuration:
-//        } else {
-//            // Segue to specific session
-//            performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
-//            
-//            if let delegate = self.delegate {
-//                // Setting default duration for now, later will need to change to better options
-//                delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
-//            }
-//        }
+        self.selectedCellIndexPath = indexPath
+        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
+        
+        if indexPath.row == aimSessionFetchedArray.count-1 {
+            togglingLastCell = true
+            selectedCell?.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                selectedCell?.alpha = 0.4
+            }, completion: { (finished) in
+                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    selectedCell?.alpha = 1.0
+                }, completion: {(done) in
+                    selectedCell?.isUserInteractionEnabled = true
+                })
+            })
+            
+            if togglingLastCell == true {
+                quoteView.isUserInteractionEnabled = false
+            } else {
+                print("I ain't adding no session!")
+            }
+            
+            print("Last item in the collection view has been pressed.")
+            animatePopupIn()
+            // If this isn't yet the last, do an USUAL configuration:
+        } else {
+            // Segue to specific session
+            performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
+            
+            if let delegate = self.delegate {
+                // Setting default duration for now, later will need to change to better options
+                delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
+            }
+        }
     }
     
     func animatePopupIn() {
@@ -359,10 +397,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func uploadImageToFirebaseStorage(data: Data) {
-        let storageRef = FIRStorage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
-        let uploadMetadata = FIRStorageMetadata()
+        let storageRef = Storage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
+        let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
-        let uploadTask = storageRef.put(data, metadata: uploadMetadata) { (metadata, error) in
+        let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
             if (error != nil) {
                 print("\(String(describing: error?.localizedDescription))")
             } else {

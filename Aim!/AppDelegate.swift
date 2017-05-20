@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Configure a FIRApp instance
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         return true
     }

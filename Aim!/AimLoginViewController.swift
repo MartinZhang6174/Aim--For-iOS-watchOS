@@ -146,7 +146,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
             if pwd1 != "" && pwd1 == pwd2 {
                 moveLoadingView(loadingView: loginLoadingView)
                 print("Password match, point where loading view needed.")
-                FIRAuth.auth()?.createUser(withEmail: email, password: pwd1, completion: { (user: FIRUser?, error) in
+                Auth.auth().createUser(withEmail: email, password: pwd1, completion: { (user: User?, error) in
                     if error != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
                         // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
@@ -159,7 +159,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                     // CODEREVIEW: What if the hardcoded URL here changes?  Consider reading it from a plist instead of hardcoding it.
-                    let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+                    let reference = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
                     let userReference = reference.child("users").child(uid)
                     let userInfoValues = ["Email" : email, "Password" : pwd1]
                     userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
@@ -168,7 +168,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                             print(err as Any)
                             return
                         }
-                        if FIRAuth.auth()?.currentUser?.uid != nil {
+                        if Auth.auth().currentUser?.uid != nil {
                             self.dismiss(animated: true, completion: nil)
                         }
                         print("User creation success.")
@@ -201,12 +201,12 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
                     print(error as Any)
                 }
-                if FIRAuth.auth()?.currentUser?.uid != nil {
+                if Auth.auth().currentUser?.uid != nil {
                     self.dismiss(animated: true, completion: nil)
                 }
             })
