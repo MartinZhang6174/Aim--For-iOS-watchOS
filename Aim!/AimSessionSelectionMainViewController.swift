@@ -38,7 +38,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     // Generating Firebase realtime database reference for reading & writing data
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
-    var sessionObjectArray = [AimSession]()
+//    var sessionObjectArray = [AimSession]()
     var aimSessionFetchedArray = [AimSession]()
     
     @IBOutlet var aimSessionCollectionView: UICollectionView!
@@ -56,17 +56,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
-        aimSessionFetchedArray.append(addButtonSampleSession)
-        
         let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
+//        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
+//        aimSessionFetchedArray.append(addButtonSampleSession)
+        
         // Setting the database reference:
         ref = FIRDatabase.database().reference()
         
+        // Setting date format for formatter
         fmt.dateFormat = "dd.MM.yyyy"
         
         // Retrieve sessions:
@@ -76,11 +77,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
                 let sessionDate = self.fmt.date(from: sessionDateString!)
                 var sessionPriority = false
-//                sessionPriority = snapshot.childSnapshot(forPath: "Priority").value as! Bool
                 if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
                     sessionPriority = true
-                } else {
-                    return
                 }
                 
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: nil, priority: sessionPriority)
@@ -129,22 +127,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // CODEREVIEW: Why is the data being hard-coded in a View Controller?  Consider setting up some kind of data source class for the View Controller.  Any "fake" or testing data can be put into an instance or subclass of that data source.  When you're ready to deploy, you replace that class with the real data source.  Set it up in a way that the View Controller code does not change when you switch from fake data to real data.
         
         // TODO: Change data source to Firebase user data storage.
-        // Hard coded data(need to changed data source ASAP):
+        // Hard coded data(need to change data source ASAP):
         
-        let date1 = fmt.date(from: "15.09.2016")
-        let date2 = fmt.date(from: "10.07.2016")
-        let date3 = fmt.date(from: "05.02.2017")
-        let date4 = fmt.date(from: "16.04.2017")
-        
-        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
-        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
-        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
-        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
-        
-        self.sessionObjectArray.append(session1)
-        self.sessionObjectArray.append(session2)
-        self.sessionObjectArray.append(session3)
-        self.sessionObjectArray.append(session4)
+//        let date1 = fmt.date(from: "15.09.2016")
+//        let date2 = fmt.date(from: "10.07.2016")
+//        let date3 = fmt.date(from: "05.02.2017")
+//        let date4 = fmt.date(from: "16.04.2017")
+//        
+//        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
+//        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
+//        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
+//        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
+//        
+//        self.sessionObjectArray.append(session1)
+//        self.sessionObjectArray.append(session2)
+//        self.sessionObjectArray.append(session3)
+//        self.sessionObjectArray.append(session4)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -158,8 +156,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting navigation bar tint colour to theme purple(for nav bar only)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
-        let plusObject = AimSession(sessionTitle: "+", dateInitialized: nil, image: nil, priority: false)
-        self.sessionObjectArray.append(plusObject)
+//        self.aimSessionFetchedArray.append(AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false))
         
         self.aimSessionCollectionView.isUserInteractionEnabled = true
         
@@ -220,22 +217,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         let aimSessionObject = aimSessionFetchedArray[indexPath.row]
         
-        // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
-        if indexPath.row == aimSessionFetchedArray.count-1 {
-            // Hide black view and move label to centre of cell displaying huge "+"
-            sessionCell.backgroundBlackView.isHidden = true
-            
-            // Put constraints in relative to the entire cell rather than to the black view normally
-            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
-            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
-            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
-            
-            sessionCell.sessionInfoLabel.text = "+"
-            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-            sessionCell.sessionSnaphotImageView.image = nil
-        } else {
+        // If the cell that is getting configured is the last cell that's supposed to show up on the collection view
+//        if indexPath.row == aimSessionFetchedArray.count-1 {
+//            // Hide black view and move label to centre of cell displaying huge "+"
+//            sessionCell.backgroundBlackView.isHidden = true
+//            
+//            // Put constraints in relative to the entire cell rather than to the black view normally
+//            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
+//            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
+//            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
+//            sessionCell.sessionInfoLabel.text = "+"
+//            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
+//            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
+//            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
+//            sessionCell.sessionSnaphotImageView.image = nil
+//        } else {
+        
             if aimSessionObject.title != nil {
                 sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
             } else {
@@ -243,55 +240,55 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 sessionCell.sessionInfoLabel.isHidden = true
             }
             sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
-        }
+//        }
         return sessionCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if indexPath.row != aimSessionFetchedArray.count-1 {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
-        } else {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-        }
+//        if indexPath.row != aimSessionFetchedArray.count-1 {
+//            let generator = UIImpactFeedbackGenerator(style: .medium)
+//            generator.impactOccurred()
+//        } else {
+//            let generator = UINotificationFeedbackGenerator()
+//            generator.notificationOccurred(.success)
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedCellIndexPath = indexPath
-        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
-        
-        if indexPath.row == aimSessionFetchedArray.count-1 {
-            togglingLastCell = true
-            selectedCell?.isUserInteractionEnabled = false
-            UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                selectedCell?.alpha = 0.4
-            }, completion: { (finished) in
-                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                    selectedCell?.alpha = 1.0
-                }, completion: {(done) in
-                    selectedCell?.isUserInteractionEnabled = true
-                })
-            })
-            
-            if togglingLastCell == true {
-                quoteView.isUserInteractionEnabled = false
-            } else {
-                print("I ain't adding no session!")
-            }
-            
-            print("Last item in the collection view has been pressed.")
-            animatePopupIn()
-            // If this isn't yet the last, do an USUAL configuration:
-        } else {
-            // Segue to specific session
-            performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
-            
-            if let delegate = self.delegate {
-                // Setting default duration for now, later will need to change to better options
-                delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
-            }
-        }
+//        self.selectedCellIndexPath = indexPath
+//        let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
+//        
+//        if indexPath.row == aimSessionFetchedArray.count-1 {
+//            togglingLastCell = true
+//            selectedCell?.isUserInteractionEnabled = false
+//            UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+//                selectedCell?.alpha = 0.4
+//            }, completion: { (finished) in
+//                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+//                    selectedCell?.alpha = 1.0
+//                }, completion: {(done) in
+//                    selectedCell?.isUserInteractionEnabled = true
+//                })
+//            })
+//            
+//            if togglingLastCell == true {
+//                quoteView.isUserInteractionEnabled = false
+//            } else {
+//                print("I ain't adding no session!")
+//            }
+//            
+//            print("Last item in the collection view has been pressed.")
+//            animatePopupIn()
+//            // If this isn't yet the last, do an USUAL configuration:
+//        } else {
+//            // Segue to specific session
+//            performSegue(withIdentifier: toSessionSegueIdentifier, sender: self)
+//            
+//            if let delegate = self.delegate {
+//                // Setting default duration for now, later will need to change to better options
+//                delegate.getSessionDuration(sessionManager.aimDefaultSessionDuration)
+//            }
+//        }
     }
     
     func animatePopupIn() {
