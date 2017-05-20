@@ -165,8 +165,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                     userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                         if err != nil {
                             self.endLoadingView(movingLoadingView: loginLoadingView)
-                            // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
-                            print(err)
+                            print(err as Any)
                             return
                         }
                         if FIRAuth.auth()?.currentUser?.uid != nil {

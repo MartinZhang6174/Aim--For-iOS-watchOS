@@ -29,9 +29,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
     
+    let fmt = DateFormatter()
+    
     var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
+    
+    // Generating Firebase realtime database reference for reading & writing data
+    var ref: FIRDatabaseReference?
+    var databaseHandle: FIRDatabaseHandle?
+    var sessionObjectArray = [AimSession]()
+    var aimSessionFetchedArray = [AimSession]()
     
     @IBOutlet var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
@@ -44,19 +52,44 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
     
-    var sessionObjectArray = [AimSession]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Disable user interaction for now, before a legit quote gets loaded
-        self.quoteView.isUserInteractionEnabled = false
+        
+        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
+        aimSessionFetchedArray.append(addButtonSampleSession)
         
         let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
-        // getting quote content & author name:
+        // Setting the database reference:
+        ref = FIRDatabase.database().reference()
+        
+        fmt.dateFormat = "dd.MM.yyyy"
+        
+        // Retrieve sessions:
+        if let currentUserID = FIRAuth.auth()?.currentUser?.uid as String! {
+            databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
+                let sessionTitle = snapshot.key
+                let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
+                let sessionDate = self.fmt.date(from: sessionDateString!)
+                var sessionPriority = false
+//                sessionPriority = snapshot.childSnapshot(forPath: "Priority").value as! Bool
+                if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
+                    sessionPriority = true
+                } else {
+                    return
+                }
+                
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: nil, priority: sessionPriority)
+                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+                self.aimSessionCollectionView.reloadData()
+            })
+        }
+        
+        // Getting quote content & author name:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
@@ -70,13 +103,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     let quoteAuthorName = content?["author"] as? String
                     
                     if let quote = quoteString {
-                        // QUOTE LOADING DONE
+                        // Quote loading task completed:
                         OperationQueue.main.addOperation {
                             self.quoteView.isUserInteractionEnabled = true
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
                             if quoteAuthorName != nil {
-                                self.quoteAuthorLabel.text = "by  "+quoteAuthorName!
+                                self.quoteAuthorLabel.text = "by  " + quoteAuthorName!
                             } else {
                                 self.quoteAuthorLabel.text = "Anonymous"
                             }
@@ -97,8 +130,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // TODO: Change data source to Firebase user data storage.
         // Hard coded data(need to changed data source ASAP):
-        let fmt = DateFormatter()
-        fmt.dateFormat = "dd.MM.yyyy"
         
         let date1 = fmt.date(from: "15.09.2016")
         let date2 = fmt.date(from: "10.07.2016")
@@ -145,7 +176,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        quoteView.isUserInteractionEnabled = true
+        quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
         let userLoginEmail = FIRAuth.auth()?.currentUser?.email
         
@@ -181,16 +212,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sessionObjectArray.count
+        return aimSessionFetchedArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
-        let selectedAimSessionObject = sessionObjectArray[indexPath.row]
+        let aimSessionObject = aimSessionFetchedArray[indexPath.row]
         
         // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
-        if indexPath.row == sessionObjectArray.count-1 {
+        if indexPath.row == aimSessionFetchedArray.count-1 {
             // Hide black view and move label to centre of cell displaying huge "+"
             sessionCell.backgroundBlackView.isHidden = true
             
@@ -205,19 +236,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             sessionCell.backgroundColor = aimApplicationThemeOrangeColor
             sessionCell.sessionSnaphotImageView.image = nil
         } else {
-            if selectedAimSessionObject.title != nil {
-                sessionCell.sessionInfoLabel.text = sessionObjectArray[indexPath.row].title
+            if aimSessionObject.title != nil {
+                sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
             } else {
                 sessionCell.backgroundBlackView.isHidden = true
                 sessionCell.sessionInfoLabel.isHidden = true
             }
-            sessionCell.sessionSnaphotImageView.image = selectedAimSessionObject.image
+            sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
         }
         return sessionCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if indexPath.row != sessionObjectArray.count-1 {
+        if indexPath.row != aimSessionFetchedArray.count-1 {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         } else {
@@ -230,7 +261,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        if indexPath.row == sessionObjectArray.count-1 {
+        if indexPath.row == aimSessionFetchedArray.count-1 {
             togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -316,6 +347,20 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addSessionObjectClicked(_ sender: Any) {
+        //        let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+        //        let sessionRef = reference.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Sessions")
+        //        sessionRef.updateChildValues(["Title":"Session01", "Date created":"2017-May-18th"]) { (err, reference) in
+        //            if err != nil {
+        //                print("Error adding session")
+        //                return
+        //            }
+        //
+        //        }
+        //
+        
+    }
+    
     func uploadImageToFirebaseStorage(data: Data) {
         let storageRef = FIRStorage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
         let uploadMetadata = FIRStorageMetadata()
@@ -369,7 +414,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let destinationNavigationController = segue.destination as! UINavigationController
             if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController, let path = aimSessionCollectionView.indexPathsForSelectedItems?.first {
                 self.delegate = destinationViewController
-                let sessionObject = sessionObjectArray[path.row]
+                let sessionObject = aimSessionFetchedArray[path.row]
                 if let existingSessionTitle = sessionObject.title {
                     destinationViewController.sessionTitleStringValue = existingSessionTitle
                 } else {
