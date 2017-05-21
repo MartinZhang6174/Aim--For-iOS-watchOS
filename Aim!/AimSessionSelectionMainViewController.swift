@@ -81,10 +81,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     sessionPriority = true
                 }
                 
-                // Adding image to test imageview on cell display with plus button added  
+                // Adding image to test imageview on cell display with plus button added
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: UIImage(named: "knowledge1"), priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
-                self.aimSessionCollectionView.reloadData()
+                
+                
+                
+                // Trying to find a way to animate collectionview data reloading
+//                self.aimSessionCollectionView.reloadData()
+                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+                let indexSet = IndexSet(integersIn: range)
+                self.aimSessionCollectionView.reloadSections(indexSet)
+                
             })
         }
         
@@ -212,21 +220,21 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return aimSessionFetchedArray.count + 1
     }
-  
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-  
-      let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
-
-      if (indexPath.row < aimSessionFetchedArray.count) {
-          let aimSessionObject = aimSessionFetchedArray[indexPath.row]
-          sessionCell.configure(from: aimSessionObject)
-      } else {
-          sessionCell.configureForNewSession()
-      }
-  
-      return sessionCell
+        
+        let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
+        
+        if (indexPath.row < aimSessionFetchedArray.count) {
+            let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+            sessionCell.configure(from: aimSessionObject)
+        } else {
+            sessionCell.configureForNewSession()
+        }
+        
+        return sessionCell
     }
-  
+    
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         if indexPath.row != aimSessionFetchedArray.count-1 {
             let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -328,17 +336,34 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     @IBAction func addSessionObjectClicked(_ sender: Any) {
-        //        let reference = FIRDatabase.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
-        //        let sessionRef = reference.child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("Sessions")
-        //        sessionRef.updateChildValues(["Title":"Session01", "Date created":"2017-May-18th"]) { (err, reference) in
-        //            if err != nil {
-        //                print("Error adding session")
-        //                return
-        //            }
-        //
-        //        }
-        //
         
+        let currentUserId = Auth.auth().currentUser?.uid
+        let randomNum: UInt32 = arc4random_uniform(1000)
+        let randomYear: UInt32 = arc4random_uniform(2000)
+        let randomMonth: UInt32 = arc4random_uniform(12)
+        let randomDay: UInt32 = arc4random_uniform(31)
+        let randomDateString = "\(randomDay).\(randomMonth).\(randomYear)"
+        
+        //        let sessionDateCreatedDict = ["DateCreated":randomDateString]
+        let sessionInfoDict = ["DateCreated":randomDateString, "Priority":"0"]
+        
+        // self.ref.child("users/(user.uid)/username").setValue(username)
+        let reference = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+        //        reference.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").setValue(["Session\(randomNum)":sessionInfoDict]) { (err, ref) in
+        //            if err != nil {
+        //                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
+        //            } else {
+        //                print("Successfully uploaded session.")
+        //            }
+        //        }
+        reference.child("users/\(currentUserId!)/Sessions/Session\(randomNum)").setValue(sessionInfoDict) { (err, ref) in
+            if err != nil {
+                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
+            } else {
+                print("Successfully uploaded session.")
+                
+            }
+        }
     }
     
     func uploadImageToFirebaseStorage(data: Data) {
