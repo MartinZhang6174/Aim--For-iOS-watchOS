@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -201,7 +202,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowledge2" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-Gh-4B2">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
-                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
+                                                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyh-Ra-LRz">
                                                     <rect key="frame" x="0.0" y="78" width="100" height="22"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
@@ -211,15 +212,23 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
                                                     <rect key="frame" x="8.5" y="80" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT8-Zy-v91">
+                                                    <rect key="frame" x="35.5" y="7.5" width="29.5" height="77"/>
+                                                    <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="64"/>
+                                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="uT8-Zy-v91" firstAttribute="centerY" secondItem="5O6-EW-93G" secondAttribute="centerY" constant="-4" id="B9s-hy-6ie"/>
                                             <constraint firstItem="Q6h-Gh-4B2" firstAttribute="top" secondItem="5O6-EW-93G" secondAttribute="top" id="D0A-ge-9dC"/>
                                             <constraint firstAttribute="trailing" secondItem="Q6h-Gh-4B2" secondAttribute="trailing" id="HK4-Zh-HFQ"/>
+                                            <constraint firstItem="uT8-Zy-v91" firstAttribute="centerX" secondItem="5O6-EW-93G" secondAttribute="centerX" id="HPv-Eg-uyP"/>
                                             <constraint firstAttribute="bottom" secondItem="Q6h-Gh-4B2" secondAttribute="bottom" id="R1Z-1C-Ifu"/>
                                             <constraint firstAttribute="bottom" secondItem="kyh-Ra-LRz" secondAttribute="bottom" id="T9i-13-V4w"/>
                                             <constraint firstItem="ssh-v0-26P" firstAttribute="centerX" secondItem="kyh-Ra-LRz" secondAttribute="centerX" id="Udc-gv-JRV"/>
@@ -230,6 +239,7 @@
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
+                                            <outlet property="addSessionPlusIconLabel" destination="uT8-Zy-v91" id="9Y8-LV-fuR"/>
                                             <outlet property="backgroundBlackView" destination="kyh-Ra-LRz" id="11t-Vs-sNI"/>
                                             <outlet property="sessionInfoLabel" destination="ssh-v0-26P" id="F2b-fy-ESH"/>
                                             <outlet property="sessionSnaphotImageView" destination="Q6h-Gh-4B2" id="H4k-9R-RJT"/>
@@ -237,8 +247,8 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="z8h-kr-T6C" id="xyK-dg-lkc"/>
-                                    <outlet property="delegate" destination="z8h-kr-T6C" id="Ah5-5Q-t2u"/>
+                                    <outlet property="dataSource" destination="z8h-kr-T6C" id="hQJ-We-PKL"/>
+                                    <outlet property="delegate" destination="z8h-kr-T6C" id="Aas-yI-JO0"/>
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iJ-Q6-UfJ">
@@ -350,12 +360,20 @@
                                 <segue destination="q1O-Bp-lZM" kind="show" id="Fse-nS-7Ko"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settingBarButtonItem" id="6up-dK-6bT">
-                            <color key="tintColor" red="1" green="0.18431372549019609" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="3SO-Is-JD5" kind="show" id="exy-9R-tLy"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="settingBarButtonItem" id="6up-dK-6bT">
+                                <color key="tintColor" red="1" green="0.18431372549019609" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="3SO-Is-JD5" kind="show" id="exy-9R-tLy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add Session" style="done" id="0Z5-JU-o8o">
+                                <color key="tintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addSessionObjectClicked:" destination="z8h-kr-T6C" id="5ua-2o-sXB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addSessionPopupView" destination="hbn-Fr-Pna" id="D7h-HN-VgM"/>
@@ -770,13 +788,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoS-T2-j88">
-                                <rect key="frame" x="150.5" y="10" width="75" height="20"/>
+                                <rect key="frame" x="151" y="10" width="75" height="20"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="160" y="218.5" width="54.5" height="56.5"/>
+                                <rect key="frame" x="160" y="219" width="54.5" height="56.5"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -807,7 +825,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -833,7 +851,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3SO-Is-JD5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="iAE-u2-n0m">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="iAE-u2-n0m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -855,7 +873,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RcJ-jj-8za" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="NaT-MH-eWy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="NaT-MH-eWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

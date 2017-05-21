@@ -29,9 +29,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
     
+    let fmt = DateFormatter()
+    
     var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
+    
+    // Generating Firebase realtime database reference for reading & writing data
+    var ref: DatabaseReference?
+    var databaseHandle: DatabaseHandle?
+    //    var sessionObjectArray = [AimSession]()
+    var aimSessionFetchedArray = [AimSession]()
     
     @IBOutlet var aimSessionCollectionView: UICollectionView!
     @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
@@ -44,19 +52,51 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
     
-    var sessionObjectArray = [AimSession]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Disable user interaction for now, before a legit quote gets loaded
-        self.quoteView.isUserInteractionEnabled = false
         
         let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
-        // getting quote content & author name:
+        //        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
+        //        aimSessionFetchedArray.append(addButtonSampleSession)
+        
+        // Setting the database reference:
+        ref = Database.database().reference()
+        
+        // Setting date format for formatter
+        fmt.dateFormat = "dd.MM.yyyy"
+        
+        // Retrieve sessions:
+        if let currentUserID = Auth.auth().currentUser?.uid as String! {
+            databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
+                let sessionTitle = snapshot.key
+                let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
+                let sessionDate = self.fmt.date(from: sessionDateString!)
+                var sessionPriority = false
+                if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
+                    sessionPriority = true
+                }
+                
+                // Adding image to test imageview on cell display with plus button added
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: UIImage(named: "knowledge1"), priority: sessionPriority)
+                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+                
+                
+                
+                // Trying to find a way to animate collectionview data reloading
+//                self.aimSessionCollectionView.reloadData()
+                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+                let indexSet = IndexSet(integersIn: range)
+                self.aimSessionCollectionView.reloadSections(indexSet)
+                
+            })
+        }
+        
+        // Getting quote content & author name:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
         let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
             if error != nil {
@@ -70,13 +110,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     let quoteAuthorName = content?["author"] as? String
                     
                     if let quote = quoteString {
-                        // QUOTE LOADING DONE
+                        // Quote loading task completed:
                         OperationQueue.main.addOperation {
                             self.quoteView.isUserInteractionEnabled = true
                             self.endLoadingView(movingLoadingView: quoteLoadingView)
                             self.quoteLabel.text = quote
                             if quoteAuthorName != nil {
-                                self.quoteAuthorLabel.text = "by  "+quoteAuthorName!
+                                self.quoteAuthorLabel.text = "by  " + quoteAuthorName!
                             } else {
                                 self.quoteAuthorLabel.text = "Anonymous"
                             }
@@ -96,24 +136,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // CODEREVIEW: Why is the data being hard-coded in a View Controller?  Consider setting up some kind of data source class for the View Controller.  Any "fake" or testing data can be put into an instance or subclass of that data source.  When you're ready to deploy, you replace that class with the real data source.  Set it up in a way that the View Controller code does not change when you switch from fake data to real data.
         
         // TODO: Change data source to Firebase user data storage.
-        // Hard coded data(need to changed data source ASAP):
-        let fmt = DateFormatter()
-        fmt.dateFormat = "dd.MM.yyyy"
+        // Hard coded data(need to change data source ASAP):
         
-        let date1 = fmt.date(from: "15.09.2016")
-        let date2 = fmt.date(from: "10.07.2016")
-        let date3 = fmt.date(from: "05.02.2017")
-        let date4 = fmt.date(from: "16.04.2017")
-        
-        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
-        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
-        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
-        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
-        
-        self.sessionObjectArray.append(session1)
-        self.sessionObjectArray.append(session2)
-        self.sessionObjectArray.append(session3)
-        self.sessionObjectArray.append(session4)
+        //        let date1 = fmt.date(from: "15.09.2016")
+        //        let date2 = fmt.date(from: "10.07.2016")
+        //        let date3 = fmt.date(from: "05.02.2017")
+        //        let date4 = fmt.date(from: "16.04.2017")
+        //
+        //        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
+        //        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
+        //        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
+        //        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
+        //
+        //        self.sessionObjectArray.append(session1)
+        //        self.sessionObjectArray.append(session2)
+        //        self.sessionObjectArray.append(session3)
+        //        self.sessionObjectArray.append(session4)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -127,8 +165,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting navigation bar tint colour to theme purple(for nav bar only)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         
-        let plusObject = AimSession(sessionTitle: "+", dateInitialized: nil, image: nil, priority: false)
-        self.sessionObjectArray.append(plusObject)
+        //        self.aimSessionFetchedArray.append(AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false))
         
         self.aimSessionCollectionView.isUserInteractionEnabled = true
         
@@ -139,17 +176,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         aimSessionCollectionView.alwaysBounceVertical = true
         
         // Check user login status
-        if FIRAuth.auth()?.currentUser?.uid == nil {
+        if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLoginRegister), with: nil, afterDelay: 0)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        quoteView.isUserInteractionEnabled = true
+        quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
-        let userLoginEmail = FIRAuth.auth()?.currentUser?.email
+        let userLoginEmail = Auth.auth().currentUser?.email
         
-        FIRAuth.auth()?.currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
+        Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
         
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
     }
@@ -170,7 +207,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
         } catch let signOutError {
             print(signOutError)
         }
@@ -181,43 +218,25 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sessionObjectArray.count
+        return aimSessionFetchedArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
-        let selectedAimSessionObject = sessionObjectArray[indexPath.row]
-        
-        // If the cell that is getting configured is the last cell that's supposed to show up on the collection view,
-        if indexPath.row == sessionObjectArray.count-1 {
-            // Hide black view and move label to centre of cell displaying huge "+"
-            sessionCell.backgroundBlackView.isHidden = true
-            
-            // Put constraints in relative to the entire cell rather than to the black view normally
-            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
-            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
-            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
-            
-            sessionCell.sessionInfoLabel.text = "+"
-            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-            sessionCell.sessionSnaphotImageView.image = nil
+        if (indexPath.row < aimSessionFetchedArray.count) {
+            let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+            sessionCell.configure(from: aimSessionObject)
         } else {
-            if selectedAimSessionObject.title != nil {
-                sessionCell.sessionInfoLabel.text = sessionObjectArray[indexPath.row].title
-            } else {
-                sessionCell.backgroundBlackView.isHidden = true
-                sessionCell.sessionInfoLabel.isHidden = true
-            }
-            sessionCell.sessionSnaphotImageView.image = selectedAimSessionObject.image
+            sessionCell.configureForNewSession()
         }
+        
         return sessionCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if indexPath.row != sessionObjectArray.count-1 {
+        if indexPath.row != aimSessionFetchedArray.count-1 {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         } else {
@@ -230,7 +249,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        if indexPath.row == sessionObjectArray.count-1 {
+        if indexPath.row == aimSessionFetchedArray.count-1 {
             togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
@@ -316,11 +335,42 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addSessionObjectClicked(_ sender: Any) {
+        
+        let currentUserId = Auth.auth().currentUser?.uid
+        let randomNum: UInt32 = arc4random_uniform(1000)
+        let randomYear: UInt32 = arc4random_uniform(2000)
+        let randomMonth: UInt32 = arc4random_uniform(12)
+        let randomDay: UInt32 = arc4random_uniform(31)
+        let randomDateString = "\(randomDay).\(randomMonth).\(randomYear)"
+        
+        //        let sessionDateCreatedDict = ["DateCreated":randomDateString]
+        let sessionInfoDict = ["DateCreated":randomDateString, "Priority":"0"]
+        
+        // self.ref.child("users/(user.uid)/username").setValue(username)
+        let reference = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
+        //        reference.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").setValue(["Session\(randomNum)":sessionInfoDict]) { (err, ref) in
+        //            if err != nil {
+        //                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
+        //            } else {
+        //                print("Successfully uploaded session.")
+        //            }
+        //        }
+        reference.child("users/\(currentUserId!)/Sessions/Session\(randomNum)").setValue(sessionInfoDict) { (err, ref) in
+            if err != nil {
+                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
+            } else {
+                print("Successfully uploaded session.")
+                
+            }
+        }
+    }
+    
     func uploadImageToFirebaseStorage(data: Data) {
-        let storageRef = FIRStorage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
-        let uploadMetadata = FIRStorageMetadata()
+        let storageRef = Storage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
+        let uploadMetadata = StorageMetadata()
         uploadMetadata.contentType = "image/jpeg"
-        let uploadTask = storageRef.put(data, metadata: uploadMetadata) { (metadata, error) in
+        let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
             if (error != nil) {
                 print("\(String(describing: error?.localizedDescription))")
             } else {
@@ -369,7 +419,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let destinationNavigationController = segue.destination as! UINavigationController
             if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController, let path = aimSessionCollectionView.indexPathsForSelectedItems?.first {
                 self.delegate = destinationViewController
-                let sessionObject = sessionObjectArray[path.row]
+                let sessionObject = aimSessionFetchedArray[path.row]
                 if let existingSessionTitle = sessionObject.title {
                     destinationViewController.sessionTitleStringValue = existingSessionTitle
                 } else {
