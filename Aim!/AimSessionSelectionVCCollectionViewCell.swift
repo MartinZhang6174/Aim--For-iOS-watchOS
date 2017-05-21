@@ -19,6 +19,9 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
+      
+        sessionSnaphotImageView.image = nil
+        sessionInfoLabel.text = ""
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -36,10 +39,29 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-
         // Hide the regular text label, plus label and backgroundBlackView
         sessionInfoLabel.isHidden = true
         addSessionPlusIconLabel.isHidden = true
-//        backgroundBlackView.isHidden = true
+        backgroundBlackView.isHidden = true
+        sessionSnaphotImageView.image = nil
     }
+  
+    func configure(from session:AimSession) {
+        if session.title != nil {
+            sessionInfoLabel.isHidden = false
+            sessionInfoLabel.text = session.title
+            backgroundBlackView.isHidden = false
+        }
+    
+        sessionSnaphotImageView.image = session.image
+
+    }
+  
+    func configureForNewSession(){
+    
+        addSessionPlusIconLabel.isHidden = false
+        addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
+    
+    }
+  
 }

@@ -212,76 +212,21 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return aimSessionFetchedArray.count + 1
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
-        
-        //        let aimSessionObject = aimSessionFetchedArray[indexPath.row]
-        
-        // If the cell that is getting configured is the last cell that's supposed to show up on the collection view
-        //        if indexPath.row == aimSessionFetchedArray.count-1 {
-        //            // Hide black view and move label to centre of cell displaying huge "+"
-        //            sessionCell.backgroundBlackView.isHidden = true
-        //
-        //            // Put constraints in relative to the entire cell rather than to the black view normally
-        //            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4).isActive = true
-        //            sessionCell.sessionInfoLabel.leadingAnchor.constraint(equalTo: sessionCell.leadingAnchor).isActive = true
-        //            sessionCell.sessionInfoLabel.trailingAnchor.constraint(equalTo: sessionCell.trailingAnchor).isActive = true
-        //            sessionCell.sessionInfoLabel.text = "+"
-        //            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-        //            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-        //            sessionCell.backgroundColor = aimApplicationThemeOrangeColor
-        //            sessionCell.sessionSnaphotImageView.image = nil
-        //        } else {
-        
-        //            if aimSessionObject.title != nil {
-        //                sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
-        //            } else {
-        //                sessionCell.backgroundBlackView.isHidden = true
-        //                sessionCell.sessionInfoLabel.isHidden = true
-        //            }
-        //            sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
-        ////        }
-        //        return sessionCell
-        
-        
-        
-        
-        
-        
-        if (indexPath.row < aimSessionFetchedArray.count) {
-            let aimSessionObject = aimSessionFetchedArray[indexPath.row]
-            
-            print ("Row \(indexPath.row): AimSessionObject \(aimSessionObject)")
+  
+      let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
 
-            if aimSessionObject.title != nil {
-                sessionCell.sessionInfoLabel.isHidden = false
-                sessionCell.sessionInfoLabel.text = aimSessionFetchedArray[indexPath.row].title
-            } else {
-                sessionCell.backgroundBlackView.isHidden = true
-                sessionCell.sessionInfoLabel.isHidden = true
-            }
-            
-            sessionCell.sessionSnaphotImageView.image = aimSessionObject.image
-        } else {
-            // The + button here
-            print ("Row \(indexPath.row): PLUS BUTTON")
-            
-            sessionCell.addSessionPlusIconLabel.isHidden = false
-            sessionCell.sessionInfoLabel.isHidden = true
-//            sessionCell.backgroundBlackView.isHidden = true
-            sessionCell.addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
-            sessionCell.sessionSnaphotImageView.image = nil
-            
-//            sessionCell.backgroundBlackView.isHidden = true
-//            sessionCell.sessionInfoLabel.text = "+"
-//            sessionCell.sessionInfoLabel.centerYAnchor.constraint(equalTo: sessionCell.centerYAnchor, constant: -4)
-//            sessionCell.sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 64)
-//            sessionCell.sessionInfoLabel.textColor = aimApplicationThemePurpleColor
-        }
-        return sessionCell
+      if (indexPath.row < aimSessionFetchedArray.count) {
+          let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+          sessionCell.configure(from: aimSessionObject)
+      } else {
+          sessionCell.configureForNewSession()
+      }
+  
+      return sessionCell
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         if indexPath.row != aimSessionFetchedArray.count-1 {
             let generator = UIImpactFeedbackGenerator(style: .medium)
