@@ -213,22 +213,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         return aimSessionFetchedArray.count + 1
     }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  
+      let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
 
-    print ("IndexPath: \(indexPath)")
-    print ("DataSource: \(aimSessionFetchedArray.count)")
-    
-    if (indexPath.row < aimSessionFetchedArray.count) {
-      let aimSessionObject = aimSessionFetchedArray[indexPath.row]
-      print ("Row \(indexPath.row): AimSessionObject \(aimSessionObject)")
-      sessionCell.configure(from: aimSessionObject)
-    } else {
-      print ("Row \(indexPath.row): PLUS BUTTON")
-      sessionCell.configureForNewSession()
+      if (indexPath.row < aimSessionFetchedArray.count) {
+          let aimSessionObject = aimSessionFetchedArray[indexPath.row]
+          sessionCell.configure(from: aimSessionObject)
+      } else {
+          sessionCell.configureForNewSession()
+      }
+  
+      return sessionCell
     }
-    return sessionCell
-  }
   
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         if indexPath.row != aimSessionFetchedArray.count-1 {

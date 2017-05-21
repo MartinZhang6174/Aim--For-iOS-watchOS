@@ -39,9 +39,6 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-
-        print ("PREPAREFORREUSE")
-      
         // Hide the regular text label, plus label and backgroundBlackView
         sessionInfoLabel.isHidden = true
         addSessionPlusIconLabel.isHidden = true
@@ -49,22 +46,22 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         sessionSnaphotImageView.image = nil
     }
   
-  func configure(from session:AimSession) {
-    if session.title != nil {
-      sessionInfoLabel.isHidden = false
-      sessionInfoLabel.text = session.title
-      backgroundBlackView.isHidden = false
-    }
+    func configure(from session:AimSession) {
+        if session.title != nil {
+            sessionInfoLabel.isHidden = false
+            sessionInfoLabel.text = session.title
+            backgroundBlackView.isHidden = false
+        }
     
-    sessionSnaphotImageView.image = session.image
+        sessionSnaphotImageView.image = session.image
 
-  }
+    }
   
-  func configureForNewSession(){
+    func configureForNewSession(){
     
-    addSessionPlusIconLabel.isHidden = false
-    addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
+        addSessionPlusIconLabel.isHidden = false
+        addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
     
-  }
+    }
   
 }
