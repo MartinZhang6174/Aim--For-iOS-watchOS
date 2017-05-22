@@ -61,9 +61,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
-        //        let addButtonSampleSession = AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false)
-        //        aimSessionFetchedArray.append(addButtonSampleSession)
-        
         // Setting the database reference:
         ref = Database.database().reference()
         
@@ -88,7 +85,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 
                 // Trying to find a way to animate collectionview data reloading
-//                self.aimSessionCollectionView.reloadData()
+                self.aimSessionCollectionView.reloadData()
                 let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
                 let indexSet = IndexSet(integersIn: range)
                 self.aimSessionCollectionView.reloadSections(indexSet)
@@ -135,24 +132,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // CODEREVIEW: Why is the data being hard-coded in a View Controller?  Consider setting up some kind of data source class for the View Controller.  Any "fake" or testing data can be put into an instance or subclass of that data source.  When you're ready to deploy, you replace that class with the real data source.  Set it up in a way that the View Controller code does not change when you switch from fake data to real data.
         
-        // TODO: Change data source to Firebase user data storage.
-        // Hard coded data(need to change data source ASAP):
-        
-        //        let date1 = fmt.date(from: "15.09.2016")
-        //        let date2 = fmt.date(from: "10.07.2016")
-        //        let date3 = fmt.date(from: "05.02.2017")
-        //        let date4 = fmt.date(from: "16.04.2017")
-        //
-        //        let session1 = AimSession(sessionTitle: "Physics", dateInitialized: date1!, image: UIImage(named: "knowledge1")!, priority: false)
-        //        let session2 = AimSession(sessionTitle: "Calculus", dateInitialized: date2!, image: UIImage(named: "knowledge2")!, priority: false)
-        //        let session3 = AimSession(sessionTitle: nil, dateInitialized: date3!, image: UIImage(named: "knowledge3")!, priority: false)
-        //        let session4 = AimSession(sessionTitle: "Aero", dateInitialized: date4!, image: UIImage(named: "knowledge4")!, priority: false)
-        //
-        //        self.sessionObjectArray.append(session1)
-        //        self.sessionObjectArray.append(session2)
-        //        self.sessionObjectArray.append(session3)
-        //        self.sessionObjectArray.append(session4)
-        
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
@@ -189,6 +168,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
         
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
+        
+        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+        let indexSet = IndexSet(integersIn: range)
+        self.aimSessionCollectionView.reloadSections(indexSet)
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {
@@ -231,7 +214,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             sessionCell.configureForNewSession()
         }
-        
         return sessionCell
     }
     
@@ -249,7 +231,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
-        if indexPath.row == aimSessionFetchedArray.count-1 {
+        if indexPath.row == aimSessionFetchedArray.count {
             togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
