@@ -61,6 +61,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
         
+        self.quoteView.isUserInteractionEnabled = false
+        
         // Setting the database reference:
         ref = Database.database().reference()
         
@@ -161,7 +163,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        quoteView.isUserInteractionEnabled = false
+//        quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
         let userLoginEmail = Auth.auth().currentUser?.email
         
@@ -218,7 +220,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if indexPath.row != aimSessionFetchedArray.count-1 {
+        if indexPath.row != aimSessionFetchedArray.count {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.impactOccurred()
         } else {
