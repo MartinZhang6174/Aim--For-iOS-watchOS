@@ -19,6 +19,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
+    let toPopupVCSegueIdentifier = "segueToPopupViewController"
     let toSessionSegueIdentifier = "mainMenuToSessionSegue"
     
     var delegate: AimSessionDurationInfoDelegate?
@@ -79,7 +80,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
                     sessionPriority = true
                 }
-                
+                                
                 // Adding image to test imageview on cell display with plus button added
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: UIImage(named: "knowledge1"), priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
@@ -253,7 +254,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
             
             print("Last item in the collection view has been pressed.")
-            animatePopupIn()
+            // animatePopupIn()
+            performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
+            
             // If this isn't yet the last, do an USUAL configuration:
         } else {
             // Segue to specific session
@@ -351,19 +354,23 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func uploadImageToFirebaseStorage(data: Data) {
-        let storageRef = Storage.storage().reference(withPath: "myPics/demoPic(\(data.description)).jpg")
-        let uploadMetadata = StorageMetadata()
-        uploadMetadata.contentType = "image/jpeg"
-        let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            if (error != nil) {
-                print("\(String(describing: error?.localizedDescription))")
-            } else {
-                print("\(String(describing: metadata))")
+        if let uid = Auth.auth().currentUser?.uid {
+            let storageRef = Storage.storage().reference(withPath: "Users/SessionImages/\(uid))/(\(data.description)).jpg")
+            let uploadMetadata = StorageMetadata()
+            uploadMetadata.contentType = "image/jpeg"
+            let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
+                if (error != nil) {
+                    print("\(String(describing: error?.localizedDescription))")
+                } else {
+                    print("\(String(describing: metadata))")
+                }
             }
-        }
-        uploadTask.observe(.progress) { [weak self] (snapshot) in
-            guard let progress = snapshot.progress else { return }
-            self?.uploadProgressView.progress = Float(progress.fractionCompleted)
+            uploadTask.observe(.progress) { [weak self] (snapshot) in
+                guard let progress = snapshot.progress else { return }
+                self?.uploadProgressView.progress = Float(progress.fractionCompleted)
+            }
+        } else {
+            print("Please login to use feature.")
         }
     }
     

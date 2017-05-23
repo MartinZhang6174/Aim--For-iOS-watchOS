@@ -210,7 +210,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8" y="80" width="84.5" height="19"/>
+                                                    <rect key="frame" x="8.5" y="80" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -387,6 +387,7 @@
                         <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
                         <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                         <segue destination="RcJ-jj-8za" kind="show" identifier="mainMenuToSessionSegue" id="MNl-z0-Qqr"/>
+                        <segue destination="rbB-dd-3z2" kind="presentation" identifier="segueToPopupViewController" id="Dpg-UN-TaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-dz-vlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -661,7 +662,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baL-Cd-plC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="2776"/>
+            <point key="canvasLocation" x="842" y="2776"/>
         </scene>
         <!--Force Touch Selection-->
         <scene sceneID="yEk-cR-fyb">
@@ -763,7 +764,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpp-0B-mxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="2020"/>
+            <point key="canvasLocation" x="167" y="1492"/>
         </scene>
         <!--Aim Session View Controller-->
         <scene sceneID="1Dl-84-omb">
@@ -788,13 +789,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoS-T2-j88">
-                                <rect key="frame" x="150.5" y="10" width="75" height="20"/>
+                                <rect key="frame" x="150" y="10" width="75" height="20"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="160" y="218.5" width="54.5" height="56.5"/>
+                                <rect key="frame" x="160" y="219" width="54.5" height="56.5"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -846,6 +847,104 @@
             </objects>
             <point key="canvasLocation" x="-1880.8" y="2381.5592203898054"/>
         </scene>
+        <!--Aim Session Adding Popup View Controller-->
+        <scene sceneID="Eua-Ec-ImZ">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="rbB-dd-3z2" customClass="AimSessionAddingPopupViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yM3-rb-riO"/>
+                        <viewControllerLayoutGuide type="bottom" id="ptW-4T-LEI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LD2-3T-VDU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTK-xO-qyl">
+                                <rect key="frame" x="36" y="120" width="303" height="427"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpo-bD-3Ve">
+                                        <rect key="frame" x="0.0" y="383" width="303" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="xLZ-TP-Jmh"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sessionAddingConfirmButtonClicked:" destination="rbB-dd-3z2" eventType="touchUpInside" id="zBX-yQ-VEt"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54f-S4-GiA">
+                                        <rect key="frame" x="31" y="34" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
+                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
+                                        <rect key="frame" x="31" y="111" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
+                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xqG-wN-F1t">
+                                        <rect key="frame" x="187" y="29" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
+                                        <rect key="frame" x="211" y="106" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-kO-7BT">
+                                        <rect key="frame" x="53" y="187" width="51" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="CameraFilled">
+                                            <color key="titleColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sessionImageAddButtonClicked:" destination="rbB-dd-3z2" eventType="touchUpInside" id="uR5-ee-pKD"/>
+                                        </connections>
+                                    </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4hh-o0-prY">
+                                        <rect key="frame" x="72" y="313" width="150" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vpo-bD-3Ve" secondAttribute="trailing" id="ASm-3A-pFA"/>
+                                    <constraint firstItem="vpo-bD-3Ve" firstAttribute="leading" secondItem="iTK-xO-qyl" secondAttribute="leading" id="NIp-ja-huf"/>
+                                    <constraint firstAttribute="bottom" secondItem="vpo-bD-3Ve" secondAttribute="bottom" id="e6D-bY-xgP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.30461824024822692" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iTK-xO-qyl" firstAttribute="leading" secondItem="LD2-3T-VDU" secondAttribute="leadingMargin" constant="20" id="0Kv-QC-ktk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iTK-xO-qyl" secondAttribute="trailing" constant="20" id="MYw-7q-d1c"/>
+                            <constraint firstItem="iTK-xO-qyl" firstAttribute="top" secondItem="yM3-rb-riO" secondAttribute="bottom" constant="100" id="OEU-wG-3Jh"/>
+                            <constraint firstItem="iTK-xO-qyl" firstAttribute="centerY" secondItem="LD2-3T-VDU" secondAttribute="centerY" id="TmT-qP-yZ5"/>
+                            <constraint firstItem="iTK-xO-qyl" firstAttribute="centerX" secondItem="LD2-3T-VDU" secondAttribute="centerX" id="ayc-hW-g2D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aimSessionPrioritySwitch" destination="mlX-8U-KHE" id="AXx-zE-BWX"/>
+                        <outlet property="aimSessionTitleTextField" destination="xqG-wN-F1t" id="5Q1-Lq-mx5"/>
+                        <outlet property="imageUploadProgressView" destination="4hh-o0-prY" id="9eY-lI-CX5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFo-0z-fqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165.59999999999999" y="2139.5802098950526"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="c7V-i2-1XN">
             <objects>
@@ -866,7 +965,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucg-XG-iqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="2776"/>
+            <point key="canvasLocation" x="220" y="2776"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eHN-S4-UVv">
@@ -890,6 +989,7 @@
     </scenes>
     <resources>
         <image name="Already a member?" width="115" height="23"/>
+        <image name="CameraFilled" width="27" height="21"/>
         <image name="CrescentBeachPhoto" width="375" height="667"/>
         <image name="aim!logo" width="127" height="67"/>
         <image name="knowledge2" width="562" height="375"/>
