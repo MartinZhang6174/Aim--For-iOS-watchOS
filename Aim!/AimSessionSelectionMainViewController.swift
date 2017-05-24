@@ -80,9 +80,31 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
                     sessionPriority = true
                 }
-                                
+                let sessionImageID = snapshot.childSnapshot(forPath: "ImageID").value as? String
+                var sessionImage: UIImage?
+                
+                if sessionImageID != nil {
+                    let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageID!)
+                    
+                    storageRef.downloadURL(completion: { (url, err) in
+                        if err != nil {
+                            print("Error occured when communicating with data storage. /n \(String(describing: err?.localizedDescription))")
+                            return
+                        }
+                        
+                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                            if error != nil {
+                                print("Error occured when downloading from data storage.")
+                                return
+                            }
+                            
+                            guard let image = UIImage(data: data!) else { return }
+                            sessionImage = image
+                        }).resume()
+                    })}
+                
                 // Adding image to test imageview on cell display with plus button added
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: UIImage(named: "knowledge1"), priority: sessionPriority)
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: sessionImage, priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 
                 
@@ -164,7 +186,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        quoteView.isUserInteractionEnabled = false
+        //        quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
         let userLoginEmail = Auth.auth().currentUser?.email
         
