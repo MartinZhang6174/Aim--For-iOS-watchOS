@@ -54,7 +54,6 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
             backgroundBlackView.isHidden = false
         }
     
-        
         if let sessionImageURL = session.imageURL {
             let url = URL(string: sessionImageURL)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
@@ -71,19 +70,6 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
                 
             }).resume()
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        // sessionSnaphotImageView.image = session.image
-        
-
     }
   
     func configureForNewSession(){

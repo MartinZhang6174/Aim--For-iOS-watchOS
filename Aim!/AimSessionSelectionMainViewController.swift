@@ -101,7 +101,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             sessionImage = image
                         }).resume()
                     })}*/
-                
+            
                 // Adding image to test imageview on cell display with plus button added
                 
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, url: sessionImageURL, priority: sessionPriority)

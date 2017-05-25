@@ -128,10 +128,13 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
                         
                         let sessionInfoValue = ["DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageURL": sessionImageURL]
                         
-                        self.handleSessionCreationWithImageID(imageID: sessionTitle, values: sessionInfoValue)
+                        if sessionInfoValue["ImageURL"] != nil && sessionTitle != nil {
+                            self.handleSessionCreationWithImageID(imageID: sessionTitle, values: sessionInfoValue)
+                        }
+                        
                     }
-                    
                 })
+                
             }
             
             // (withPath: "Users/\(uid))/SessionImages/(\(identifier.description)).jpg")
@@ -177,6 +180,9 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         
     }
     
+    @IBAction func closeSessionAddingPopupButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
      // MARK: - Navigation
      

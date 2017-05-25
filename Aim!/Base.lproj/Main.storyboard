@@ -210,7 +210,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8" y="80" width="84.5" height="19"/>
+                                                    <rect key="frame" x="8.5" y="80" width="84.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -415,7 +415,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -789,13 +789,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoS-T2-j88">
-                                <rect key="frame" x="150.5" y="10" width="75" height="20"/>
+                                <rect key="frame" x="150" y="10" width="75" height="20"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="160" y="218.5" width="54.5" height="56.5"/>
+                                <rect key="frame" x="160" y="219" width="54.5" height="56.5"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -826,7 +826,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -875,58 +875,80 @@
                                             <action selector="sessionAddingConfirmButtonClicked:" destination="rbB-dd-3z2" eventType="touchUpInside" id="zBX-yQ-VEt"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54f-S4-GiA">
-                                        <rect key="frame" x="31" y="34" width="94" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54f-S4-GiA">
+                                        <rect key="frame" x="50" y="55" width="49" height="28"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31" y="111" width="94" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
+                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xqG-wN-F1t">
-                                        <rect key="frame" x="187" y="29" width="97" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="211" y="106" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
+                                        <rect key="frame" x="196.5" y="110.5" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-kO-7BT">
-                                        <rect key="frame" x="53" y="187" width="51" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="CameraFilled">
-                                            <color key="titleColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-kO-7BT">
+                                        <rect key="frame" x="73.5" y="213.5" width="156" height="23"/>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                                        <state key="normal" title="  Add An Image" image="CameraFilled">
+                                            <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="sessionImageAddButtonClicked:" destination="rbB-dd-3z2" eventType="touchUpInside" id="uR5-ee-pKD"/>
                                         </connections>
                                     </button>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4hh-o0-prY">
-                                        <rect key="frame" x="72" y="313" width="150" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4hh-o0-prY">
+                                        <rect key="frame" x="26.5" y="311" width="250" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="OAK-lq-3YN"/>
+                                        </constraints>
                                     </progressView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCA-Bn-H3d">
+                                        <rect key="frame" x="10" y="10" width="25" height="25"/>
+                                        <state key="normal" image="Cancel">
+                                            <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeSessionAddingPopupButtonClicked:" destination="rbB-dd-3z2" eventType="touchUpInside" id="mH0-ay-stH"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xqG-wN-F1t">
+                                        <rect key="frame" x="169" y="54" width="104" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="vpo-bD-3Ve" firstAttribute="top" secondItem="4hh-o0-prY" secondAttribute="bottom" constant="70" id="3Lh-D0-V3w"/>
+                                    <constraint firstAttribute="trailing" secondItem="xqG-wN-F1t" secondAttribute="trailing" constant="30" id="4GX-qM-5lw"/>
+                                    <constraint firstItem="OCA-Bn-H3d" firstAttribute="top" secondItem="iTK-xO-qyl" secondAttribute="top" constant="10" id="7ZS-SA-ZVS"/>
                                     <constraint firstAttribute="trailing" secondItem="vpo-bD-3Ve" secondAttribute="trailing" id="ASm-3A-pFA"/>
+                                    <constraint firstItem="s5Y-TP-hmg" firstAttribute="top" secondItem="54f-S4-GiA" secondAttribute="bottom" constant="30" id="ElW-4R-cXm"/>
+                                    <constraint firstItem="s5Y-TP-hmg" firstAttribute="centerX" secondItem="54f-S4-GiA" secondAttribute="centerX" id="HH0-7Q-Anr"/>
+                                    <constraint firstItem="mlX-8U-KHE" firstAttribute="centerY" secondItem="s5Y-TP-hmg" secondAttribute="centerY" id="IIl-Al-8kR"/>
                                     <constraint firstItem="vpo-bD-3Ve" firstAttribute="leading" secondItem="iTK-xO-qyl" secondAttribute="leading" id="NIp-ja-huf"/>
+                                    <constraint firstItem="4hh-o0-prY" firstAttribute="centerX" secondItem="iTK-xO-qyl" secondAttribute="centerX" id="aI9-3s-fiT"/>
+                                    <constraint firstItem="mlX-8U-KHE" firstAttribute="centerX" secondItem="xqG-wN-F1t" secondAttribute="centerX" id="dTI-RV-bwo"/>
                                     <constraint firstAttribute="bottom" secondItem="vpo-bD-3Ve" secondAttribute="bottom" id="e6D-bY-xgP"/>
+                                    <constraint firstItem="OCA-Bn-H3d" firstAttribute="leading" secondItem="iTK-xO-qyl" secondAttribute="leading" constant="10" id="fJ8-BC-VhN"/>
+                                    <constraint firstItem="pVz-kO-7BT" firstAttribute="top" secondItem="s5Y-TP-hmg" secondAttribute="bottom" constant="75" id="fke-PE-N7o"/>
+                                    <constraint firstItem="pVz-kO-7BT" firstAttribute="centerX" secondItem="iTK-xO-qyl" secondAttribute="centerX" id="gHt-LM-cdS"/>
+                                    <constraint firstItem="xqG-wN-F1t" firstAttribute="centerY" secondItem="54f-S4-GiA" secondAttribute="centerY" id="k3k-bC-LU7"/>
+                                    <constraint firstItem="xqG-wN-F1t" firstAttribute="leading" secondItem="54f-S4-GiA" secondAttribute="trailing" constant="70" id="qEf-IX-cxc"/>
+                                    <constraint firstItem="54f-S4-GiA" firstAttribute="top" secondItem="OCA-Bn-H3d" secondAttribute="bottom" constant="20" id="ubO-2L-Coc"/>
+                                    <constraint firstItem="54f-S4-GiA" firstAttribute="leading" secondItem="iTK-xO-qyl" secondAttribute="leading" constant="50" id="v1e-dO-goQ"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.30461824024822692" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="0.15717808067375885" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="iTK-xO-qyl" firstAttribute="leading" secondItem="LD2-3T-VDU" secondAttribute="leadingMargin" constant="20" id="0Kv-QC-ktk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iTK-xO-qyl" secondAttribute="trailing" constant="20" id="MYw-7q-d1c"/>
@@ -950,7 +972,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3SO-Is-JD5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="iAE-u2-n0m">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="iAE-u2-n0m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -972,7 +994,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RcJ-jj-8za" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="NaT-MH-eWy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="NaT-MH-eWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -990,6 +1012,7 @@
     <resources>
         <image name="Already a member?" width="115" height="23"/>
         <image name="CameraFilled" width="27" height="21"/>
+        <image name="Cancel" width="25" height="25"/>
         <image name="CrescentBeachPhoto" width="375" height="667"/>
         <image name="aim!logo" width="127" height="67"/>
         <image name="knowledge2" width="562" height="375"/>
