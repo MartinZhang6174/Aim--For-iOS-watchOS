@@ -80,11 +80,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
                     sessionPriority = true
                 }
-                let sessionImageID = snapshot.childSnapshot(forPath: "ImageID").value as? String
-                var sessionImage: UIImage?
+                let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
                 
-                if sessionImageID != nil {
-                    let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageID!)
+                /*if sessionImageURL != nil {
+                    let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageURL!)
                     
                     storageRef.downloadURL(completion: { (url, err) in
                         if err != nil {
@@ -101,13 +100,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             guard let image = UIImage(data: data!) else { return }
                             sessionImage = image
                         }).resume()
-                    })}
+                    })}*/
                 
                 // Adding image to test imageview on cell display with plus button added
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, image: sessionImage, priority: sessionPriority)
+                
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, url: sessionImageURL, priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
-                
-                
                 
                 // Trying to find a way to animate collectionview data reloading
                 self.aimSessionCollectionView.reloadData()

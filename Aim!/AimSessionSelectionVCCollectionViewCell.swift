@@ -47,14 +47,42 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         sessionSnaphotImageView.image = nil
     }
   
-    func configure(from session:AimSession) {
+    func configure(from session: AimSession) {
         if session.title != nil {
             sessionInfoLabel.isHidden = false
             sessionInfoLabel.text = session.title
             backgroundBlackView.isHidden = false
         }
     
-        sessionSnaphotImageView.image = session.image
+        
+        if let sessionImageURL = session.imageURL {
+            let url = URL(string: sessionImageURL)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
+                if err != nil {
+                    print("Error has occured during image fetching: \(String(describing: err))")
+                    return
+                }
+                
+                // Nothing went wrong, continue constructing session object:
+                DispatchQueue.main.async(execute: {
+                    self.sessionSnaphotImageView.image = UIImage(data: data!)
+                })
+                
+                
+            }).resume()
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // sessionSnaphotImageView.image = session.image
+        
 
     }
   

@@ -87,16 +87,14 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     @IBAction func sessionAddingConfirmButtonClicked(_ sender: Any) {
-        handleSessionCreation()
+        handleSessionUpload()
         dismiss(animated: true, completion: nil)
         
     }
     
-    func handleSessionCreation() {
-        let sessionID = NSUUID.init().uuidString
+    func handleSessionUpload() {
         
         let sessionTitle = aimSessionTitleTextField.text
-        
         let sessionPriority = aimSessionPrioritySwitch.isOn
         let sessionPriorityString: String?
         if sessionPriority == true {
@@ -107,46 +105,73 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
             sessionPriorityString = "0"
         }
         
-        let sessionImage = sessionImageSelected
+        // let sessionImage = sessionImageSelected
+        
         let sessionCreationDate = Date()
         let formattedCreationDate = formatter.string(from: sessionCreationDate)
         
-        let sessionInfoValue = ["DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageID": sessionID]
-        
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            databaseRef.child("users/\(currentUserID)/Sessions/Session\(sessionID)").setValue(sessionInfoValue, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    print("Error occured uploading session: \(String(describing: error?.localizedDescription))")
-                } else {
-                    print("Successfully uploaded session.")
-                    
-                    if self.sessionImageSelected != nil {
-                        self.uploadSessionImageToFirebaseStorageWithID(identifier: sessionID)
-                    }
-                }
-            })
-            
-        }
-    }
-    
-    // Check if image selected exists before calling this!!!!!!!!!!!!!!!!
-    private func uploadSessionImageToFirebaseStorageWithID(identifier: String) {
+        let sessionID = NSUUID.init().uuidString
         if let uid = Auth.auth().currentUser?.uid {
-            let storageRef = Storage.storage().reference(withPath: "Users/\(uid))/SessionImages/(\(identifier.description)).jpg")
-            let uploadData = UIImagePNGRepresentation(sessionImageSelected!)
+            let storageRef = Storage.storage().reference().child("Users").child(uid).child("SessionImages").child("\(sessionID).png")
+            
+            
+            
+            if let uploadData = UIImagePNGRepresentation(sessionImageSelected!) {
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    
+                    if error != nil {
+                        print("Error occured when adding image to storage: \(String(describing: error))")
+                        return
+                    }
+                    
+                    if let sessionImageURL = metadata?.downloadURL()?.absoluteString {
+                        
+                        let sessionInfoValue = ["DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageURL": sessionImageURL]
+                        
+                        self.handleSessionCreationWithImageID(imageID: sessionTitle, values: sessionInfoValue)
+                    }
+                    
+                })
+            }
+            
+            // (withPath: "Users/\(uid))/SessionImages/(\(identifier.description)).jpg")
+            
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
             // putData method seems to only take in Data type?
-            let uploadTask = storageRef.putData(uploadData!, metadata: uploadMetadata) { (metadata, error) in
-                if (error != nil) {
-                    print("\(String(describing: error?.localizedDescription))")
-                } else {
-                    print("\(String(describing: metadata))")
-                }
-            }
-            uploadTask.observe(.progress) { [weak self] (snapshot) in
-                guard let progress = snapshot.progress else { return }
-                self?.imageUploadProgressView.progress = Float(progress.fractionCompleted)
+            /*let uploadTask = storageRef.putData(uploadData!, metadata: uploadMetadata) { (metadata, error) in
+             if (error != nil) {
+             print("\(String(describing: error?.localizedDescription))")
+             } else {
+             print("\(String(describing: metadata))")
+             }
+             }
+             uploadTask.observe(.progress) { [weak self] (snapshot) in
+             guard let progress = snapshot.progress else { return }
+             self?.imageUploadProgressView.progress = Float(progress.fractionCompleted)
+             }
+             }*/
+        }
+        
+    }
+    
+    private func handleSessionCreationWithImageID(imageID: String?, values: [String: Any]) {
+        
+        if let sessionTitle = aimSessionTitleTextField.text {
+            
+            if let currentUserID = Auth.auth().currentUser?.uid {
+                databaseRef.child("users/\(currentUserID)/Sessions/\(sessionTitle)").setValue(values, withCompletionBlock: { (error, ref) in
+                    if error != nil {
+                        print("Error occured uploading session: \(String(describing: error?.localizedDescription))")
+                    } else {
+                        print("Successfully uploaded session.")
+                        
+                        /*if self.sessionImageSelected != nil {
+                         self.uploadSessionImageToFirebaseStorageWithID(identifier: sessionID)
+                         }*/
+                    }
+                })
+                
             }
         }
         
