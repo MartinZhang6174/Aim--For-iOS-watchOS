@@ -46,6 +46,7 @@
 		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
+		9CC0B2A11EDA57A7003D65D5 /* AimMainSessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0B2A01EDA57A7003D65D5 /* AimMainSessionSelectionInterfaceController.swift */; };
 		9CED11D11DC3048900204D6D /* SessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */; };
 		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
@@ -157,6 +158,7 @@
 		9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopUpView.swift; sourceTree = "<group>"; };
 		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
+		9CC0B2A01EDA57A7003D65D5 /* AimMainSessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimMainSessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +326,7 @@
 			children = (
 				9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */,
 				9CED11D01DC3048900204D6D /* SessionSelectionInterfaceController.swift */,
+				9CC0B2A01EDA57A7003D65D5 /* AimMainSessionSelectionInterfaceController.swift */,
 				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
 				9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */,
 				9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */,
@@ -773,6 +776,7 @@
 				9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */,
 				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
 				9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */,
+				9CC0B2A11EDA57A7003D65D5 /* AimMainSessionSelectionInterfaceController.swift in Sources */,
 				9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */,
 				9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */,
 				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
