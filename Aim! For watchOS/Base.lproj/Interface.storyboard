@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Interface Controller-->
+        <!--Aim Main Interface Controller-->
         <scene sceneID="4hi-jR-Kag">
             <objects>
-                <controller id="Kcj-o3-Mv4">
+                <controller id="Kcj-o3-Mv4" customClass="AimMainInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="147" height="50" alignment="center" radius="7" id="uXT-To-DBm">
                             <items>
@@ -114,7 +114,7 @@
         <!--Aim Main Session Selection Interface Controller-->
         <scene sceneID="4me-pA-pFC">
             <objects>
-                <controller id="2YE-aA-ly4" customClass="AimMainSessionSelectionInterfaceController" customModule="Aim_">
+                <controller id="2YE-aA-ly4" customClass="AimMainSessionSelectionInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="1" height="30" alignment="left" id="IgH-xa-yuU">
                             <items>
@@ -127,9 +127,9 @@
                         </group>
                         <group width="1" alignment="left" id="S86-xo-TQT">
                             <items>
-                                <table alignment="left" id="GV8-80-drt">
+                                <table alignment="left" spacing="4" id="GV8-80-drt" customClass="AimSessionSelectionTable" customModule="Aim__Extension">
                                     <items>
-                                        <tableRow id="Vzd-7u-pLt">
+                                        <tableRow identifier="AimSessionRowType" id="Vzd-7u-pLt" customClass="AimSessionRowController" customModule="Aim__Extension">
                                             <group key="rootItem" width="1" alignment="left" id="BET-u2-W8K">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="Physics HW" textAlignment="center" minimumScaleFactor="0.69999999999999996" id="oqS-LO-s8w">
@@ -138,9 +138,12 @@
                                                     </label>
                                                 </items>
                                                 <connections>
-                                                    <segue destination="Txb-gJ-Yzy" kind="modal" id="hOR-6B-yaW"/>
+                                                    <segue destination="Txb-gJ-Yzy" kind="modal" identifier="segueFromSessionSelectionToSession" id="hOR-6B-yaW"/>
                                                 </connections>
                                             </group>
+                                            <connections>
+                                                <outlet property="sessionTitleLabel" destination="oqS-LO-s8w" id="doV-Lr-rVc"/>
+                                            </connections>
                                         </tableRow>
                                     </items>
                                 </table>
@@ -149,16 +152,16 @@
                         </group>
                     </items>
                     <connections>
-                        <outlet property="aimSessionTable" destination="GV8-80-drt" id="8Vp-zD-P3b"/>
+                        <outlet property="sessionTable" destination="GV8-80-drt" id="PGf-Pb-JgF"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="454" y="157"/>
+            <point key="canvasLocation" x="454" y="156"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Aim Session Interface Controller-->
         <scene sceneID="0k8-f4-WQd">
             <objects>
-                <controller id="Txb-gJ-Yzy">
+                <controller id="Txb-gJ-Yzy" customClass="AimSessionInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="1" height="45" alignment="left" id="70R-6x-lFP">
                             <items>
@@ -179,6 +182,10 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="sessionTimer" destination="8D6-G6-Ta6" id="VSZ-xp-Z96"/>
+                        <outlet property="sessionTitleLabel" destination="mP7-qS-pkk" id="sRP-xN-ewM"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="717" y="156"/>
