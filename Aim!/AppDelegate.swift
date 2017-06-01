@@ -9,16 +9,21 @@
 import UIKit
 import Firebase
 import UserNotifications
+import WatchConnectivity
+
+let NotificationAddedSessionOnPhone = "AddedSessionOnPhone"
+let NotificationAddedSessionOnWatch = "AddedSessionOnWatch"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -30,6 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configure a FIRApp instance
         FirebaseApp.configure()
+        
+        // Setting up watch connectivity
+        setupWatchConnectivity()
+        
+        setupNotificationCenter()
         
         return true
     }
@@ -57,8 +67,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    private func setupNotificationCenter() {
+        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationAddedSessionOnPhone), object: nil, queue: nil) { (notification:Notification) -> Void in
+            self.sendSessionsToWatch(notification)
+        }
+    }
+}
 
-    // Edited in development branch
+extension AppDelegate: WCSessionDelegate {
+    func setupWatchConnectivity() {
+        if WCSession.isSupported() {
+            let session = WCSession.default()
+            session.delegate = self
+            session.activate()
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("WC Session did become inactive")
+    }
 
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("WC Session did deactivate")
+        WCSession.default().activate()
+    }
+
+    func session(_ session: WCSession, activationDidCompleteWith
+        activationState: WCSessionActivationState, error: Error?) {
+        if let error = error {
+            print("WC Session activation failed with error: " +
+                "\(error.localizedDescription)")
+            return
+        }
+        print("WC Session activated with state: " +
+            "\(activationState.rawValue)")
+    }
+    
+    func sendSessionsToWatch(_ notification: Notification) {
+    
+        if WCSession.isSupported() {
+            
+        }
+    
+    }
 }
 
