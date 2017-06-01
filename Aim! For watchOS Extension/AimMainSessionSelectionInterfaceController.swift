@@ -9,7 +9,6 @@
 import WatchKit
 import Foundation
 
-
 class AimMainSessionSelectionInterfaceController: WKInterfaceController {
 
     @IBOutlet var sessionTable: AimSessionSelectionTable!

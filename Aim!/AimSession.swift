@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+// Unable to import Realm/RealmSwift, unchecking the Aim! Extension target solves the problem, but doesn't Realm support watchOS?!
 
 class AimSession: NSObject {
     // Properties:
