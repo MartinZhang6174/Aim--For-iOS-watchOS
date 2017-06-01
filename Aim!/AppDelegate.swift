@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import UserNotifications
 import WatchConnectivity
+import Realm
 
 let NotificationAddedSessionOnPhone = "AddedSessionOnPhone"
 let NotificationAddedSessionOnWatch = "AddedSessionOnWatch"
@@ -26,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        // Realm
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
+        let realmPath = directory.path.appending("db.realm")
+        
+        let configuration = RLMRealmConfiguration.default()
+        configuration.fileURL = URL(fileURLWithPath: realmPath)
+        RLMRealmConfiguration.setDefault(configuration)
         
         // Register for local push notifications:
         let center = UNUserNotificationCenter.current()

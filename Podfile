@@ -11,6 +11,7 @@ pod ‘Firebase/Database’
 pod ‘Firebase/Auth’
 pod ‘Firebase/Storage’
 pod ‘NVActivityIndicatorView’
+pod ‘RealmSwift’
 
   #target 'Aim! Tests' do
     #inherit! :search_paths
@@ -39,3 +40,12 @@ target 'Aim! Extension' do
   # Pods for Aim! Extension
   
 end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = ‘3.1’
+    end
+  end
+end
+
