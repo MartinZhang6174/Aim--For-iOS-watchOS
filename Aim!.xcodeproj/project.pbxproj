@@ -242,6 +242,8 @@
 		042A268C7D5DC0A3E18646E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C10358C1EE0D9FC00535645 /* Realm.framework */,
+				9C10358D1EE0D9FC00535645 /* RealmSwift.framework */,
 				9C02AF701EC7B53700B0A68F /* CoreLocation.framework */,
 				9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */,
 				9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */,
@@ -298,8 +300,6 @@
 		9C6890911DA5DA8D005CA654 = {
 			isa = PBXGroup;
 			children = (
-				9C10358C1EE0D9FC00535645 /* Realm.framework */,
-				9C10358D1EE0D9FC00535645 /* RealmSwift.framework */,
 				9C68909C1DA5DA8D005CA654 /* Aim! */,
 				9C6890B11DA5DA8D005CA654 /* Aim!Tests */,
 				9C6890C61DA5E5C0005CA654 /* Aim! For watchOS */,

@@ -11,6 +11,7 @@ import RealmSwift
 
 class AimUser: Object {
     dynamic var userName: String = ""
+    let sessions = List<AimSession>()
 // Specify properties to ignore (Realm won't persist these)
     
 //  override static func ignoredProperties() -> [String] {

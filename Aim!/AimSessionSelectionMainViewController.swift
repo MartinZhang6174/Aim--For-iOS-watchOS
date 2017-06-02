@@ -83,28 +83,29 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
                 
                 /*if sessionImageURL != nil {
-                    let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageURL!)
-                    
-                    storageRef.downloadURL(completion: { (url, err) in
-                        if err != nil {
-                            print("Error occured when communicating with data storage. /n \(String(describing: err?.localizedDescription))")
-                            return
-                        }
-                        
-                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                            if error != nil {
-                                print("Error occured when downloading from data storage.")
-                                return
-                            }
-                            
-                            guard let image = UIImage(data: data!) else { return }
-                            sessionImage = image
-                        }).resume()
-                    })}*/
-            
+                 let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageURL!)
+                 
+                 storageRef.downloadURL(completion: { (url, err) in
+                 if err != nil {
+                 print("Error occured when communicating with data storage. /n \(String(describing: err?.localizedDescription))")
+                 return
+                 }
+                 
+                 URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                 if error != nil {
+                 print("Error occured when downloading from data storage.")
+                 return
+                 }
+                 
+                 guard let image = UIImage(data: data!) else { return }
+                 sessionImage = image
+                 }).resume()
+                 })}*/
+                
                 // Adding image to test imageview on cell display with plus button added
                 
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, url: sessionImageURL, priority: sessionPriority)
+                // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 
                 // Trying to find a way to animate collectionview data reloading
@@ -166,8 +167,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // Setting navigation bar tint colour to theme purple(for nav bar only)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
-        
-        //        self.aimSessionFetchedArray.append(AimSession(sessionTitle: nil, dateInitialized: nil, image: nil, priority: false))
         
         self.aimSessionCollectionView.isUserInteractionEnabled = true
         
@@ -431,11 +430,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if let destinationViewController = destinationNavigationController.topViewController as? AimSessionViewController, let path = aimSessionCollectionView.indexPathsForSelectedItems?.first {
                 self.delegate = destinationViewController
                 let sessionObject = aimSessionFetchedArray[path.row]
-                if let existingSessionTitle = sessionObject.title {
-                    destinationViewController.sessionTitleStringValue = existingSessionTitle
-                } else {
-                    destinationViewController.sessionTitleStringValue = "No title"
-                }
+                destinationViewController.sessionTitleStringValue = sessionObject.title
             }
         }
     }

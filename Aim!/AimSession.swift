@@ -8,25 +8,22 @@
 
 import UIKit
 import RealmSwift
-// Unable to import Realm/RealmSwift, unchecking the Aim! Extension target solves the problem, but doesn't Realm support watchOS?!
 
-class AimSession: NSObject {
-    // Properties:
-    // Time frame:------------> When user hits CREATE SESSION, she needs to fill in a TITLE, PRIORITY, and a PHOTO. The system will generate the current time object to fill in the AimSession initializer
-    var title: String?
-    var currentToken: Int = 0
-    var currentTimeAccumulated = TimeInterval()
-    var hoursAccumulated: Double = 0.0
-    var imageURL: String?
+class AimSession: Object {
+    dynamic var title = ""
+    dynamic var imageURL: String? = nil
+    dynamic var currentToken = 0
+    dynamic var hoursAccumulated = 0
+    dynamic var currentTimeAccumulated = TimeInterval()
+    dynamic var dateCreated = Date()
+    dynamic var isPrioritized = false
     
-    var isPrioritized = Bool()
-    
-    let dateCreated: Date?
-    
-    init(sessionTitle: String?, dateInitialized: Date?, url: String?, priority: Bool) {
+    convenience init(sessionTitle: String, dateInitialized: Date, sessionImageURLString: String, priority: Bool) {
+        self.init()
+        
         self.title = sessionTitle
         self.dateCreated = dateInitialized
-        self.imageURL = url
+        self.imageURL = sessionImageURLString
         self.isPrioritized = priority
     }
 }
