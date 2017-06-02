@@ -16,6 +16,14 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         
         // Watch connectivity
         setupWatchConnectivity()
+        
+        do {
+            // TRY SENDING SAMPLE CONTEXT TO PHONE
+            try WCSession.default().updateApplicationContext(["sessions": "123"])
+        } catch {
+            print(error)
+        }
+        
     }
     
     func applicationDidBecomeActive() {
@@ -28,9 +36,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 }
 
+// MARK: - Watch connectivity
 
 extension ExtensionDelegate: WCSessionDelegate {
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WC Session activation failed with error: " +
@@ -46,5 +54,13 @@ extension ExtensionDelegate: WCSessionDelegate {
             let session = WCSession.default()
             session.delegate = self
             session.activate()}
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        if let sessionsArrayFetchedFromContext = applicationContext["Sessions"] as? [AimSession] {
+            for i in 0...sessionsArrayFetchedFromContext.count {
+                print(sessionsArrayFetchedFromContext[i].title)
+            }
+        }
     }
 }

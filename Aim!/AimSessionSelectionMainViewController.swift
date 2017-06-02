@@ -11,6 +11,7 @@ import MobileCoreServices
 import NVActivityIndicatorView
 import Firebase
 import RealmSwift
+import WatchConnectivity
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -94,6 +95,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     try! realm.write {
                         realm.add(sessionObj)
                     }
+                }
+                
+                // Transfer the session loaded to Apple Watch app
+                do {
+                    try WCSession.default().updateApplicationContext(["Sessions": sessionObj])
+                } catch {
+                    print(error)
                 }
 
                 // Trying to find a way to animate collectionview data reloading

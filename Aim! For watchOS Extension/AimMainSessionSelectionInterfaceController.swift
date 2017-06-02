@@ -33,14 +33,18 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
     
     private func updateDisplay() {
         let numberOfSessions = sessionArray.count
+        if numberOfSessions > 0 {
+            for index in 0...(numberOfSessions-1) {
+                if let rowController = sessionTable.rowController(at: index) as? AimSessionRowController {
+                    let session = sessionArray[index]
+                    rowController.session = session
+                }
+            }
+        } else {
+            print("No rows to display here.")
+        }
         sessionTable.setNumberOfRows(numberOfSessions, withRowType: "AimSessionRowType")
         
-        for index in 0...(numberOfSessions-1) {
-            if let rowController = sessionTable.rowController(at: index) as? AimSessionRowController {
-                let session = sessionArray[index]
-                rowController.session = session
-            }
-        }
     }
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
