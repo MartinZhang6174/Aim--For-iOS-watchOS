@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import NVActivityIndicatorView
 import Firebase
+import RealmSwift
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -188,6 +189,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let userLoginEmail = Auth.auth().currentUser?.email
         
         Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
+        
+        if userLoginStatus == true {
+            // Force unwrapping user email since there's no way anyone could be in the app logged in without having an email registered with the account
+            let realm = try! Realm()
+            AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
+        }
         
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
         
