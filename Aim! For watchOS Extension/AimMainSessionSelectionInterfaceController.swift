@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import RealmSwift
 
 class AimMainSessionSelectionInterfaceController: WKInterfaceController {
 
@@ -21,6 +22,9 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        let realm = try! Realm()
+        let dataSource = realm.objects(AimSession.self)
         
 //        sessionArray.append(s1)
 //        sessionArray.append(s2)

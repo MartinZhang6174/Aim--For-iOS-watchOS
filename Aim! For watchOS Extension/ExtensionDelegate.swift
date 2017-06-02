@@ -8,11 +8,20 @@
 
 import WatchKit
 import WatchConnectivity
+import Realm
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
+        // Realm
+        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
+        let realmPath = directory.path.appending("db.realm")
+        
+        let configuration = RLMRealmConfiguration.default()
+        configuration.fileURL = URL(fileURLWithPath: realmPath)
+        RLMRealmConfiguration.setDefault(configuration)
         
         // Watch connectivity
         setupWatchConnectivity()
@@ -53,14 +62,13 @@ extension ExtensionDelegate: WCSessionDelegate {
         if WCSession.isSupported() {
             let session = WCSession.default()
             session.delegate = self
-            session.activate()}
+            session.activate()
+        }
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let sessionsArrayFetchedFromContext = applicationContext["Sessions"] as? [AimSession] {
-            for i in 0...sessionsArrayFetchedFromContext.count {
-                print(sessionsArrayFetchedFromContext[i].title)
-            }
+        if let sessionsArrayFetchedFromContext = applicationContext["Session"] as? AimSession {
+            print(sessionsArrayFetchedFromContext.title)
         }
     }
 }

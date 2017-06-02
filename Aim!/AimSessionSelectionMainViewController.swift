@@ -99,7 +99,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 // Transfer the session loaded to Apple Watch app
                 do {
-                    try WCSession.default().updateApplicationContext(["Sessions": sessionObj])
+                    try WCSession.default().updateApplicationContext(["Session": sessionObj.title])
                 } catch {
                     print(error)
                 }
