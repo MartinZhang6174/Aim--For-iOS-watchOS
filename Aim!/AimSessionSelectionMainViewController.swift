@@ -83,32 +83,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 }
                 let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
                 
-                /*if sessionImageURL != nil {
-                 let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageURL!)
-                 
-                 storageRef.downloadURL(completion: { (url, err) in
-                 if err != nil {
-                 print("Error occured when communicating with data storage. /n \(String(describing: err?.localizedDescription))")
-                 return
-                 }
-                 
-                 URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                 if error != nil {
-                 print("Error occured when downloading from data storage.")
-                 return
-                 }
-                 
-                 guard let image = UIImage(data: data!) else { return }
-                 sessionImage = image
-                 }).resume()
-                 })}*/
-                
-                // Adding image to test imageview on cell display with plus button added
-                
                 // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 
+                // Saving sessions fetched to Realm
+                let realm = try! Realm()
+                
+                if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
+                    try! realm.write {
+                        realm.add(sessionObj)
+                    }
+                }
+
                 // Trying to find a way to animate collectionview data reloading
                 self.aimSessionCollectionView.reloadData()
                 let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))

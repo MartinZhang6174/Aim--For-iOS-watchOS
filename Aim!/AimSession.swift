@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class AimSession: Object {
+    // MARK: - Persisting properties
     dynamic var title = ""
     dynamic var imageURL: String? = nil
     dynamic var currentToken = 0
@@ -26,4 +27,22 @@ class AimSession: Object {
         self.imageURL = sessionImageURLString
         self.isPrioritized = priority
     }
+    
+    // MARK: - Meta
+    override static func primaryKey() -> String? {
+        return "imageURL"
+    }
+    
+//    private static func save(to realm: Realm, with id: String) -> AimSession {
+//    
+//        
+//    
+//    }
+//    
+//    static func persistInRealm(realm: Realm, with id: String) -> AimSession {
+//    
+//        return realm.object(ofType: AimSession.self, forPrimaryKey: id)
+//    
+//    
+//    }
 }
