@@ -13,9 +13,9 @@ iOS + watchOS
 4. ABORTED.   Remove or hide nav bar & tab bar when user in a session.
 5. ONGOING.   Build scoring system.
 6. DONE.   Have settings screen.
-7. ONGOING.   Notifications to user when session ends.
+7. DONE.   Notifications to user when session ends.
 8. ONGOING.   Notifications when user earning awards.
-9. DONE.   Fetch daily quotes about success & hard-work from API to main VC.
+9. DONE.   Fetch daily quotes on success from API to main VC.
 10. DONE.   Allow user to drag the quote view to see the author name underneath.
 11. ONGOING.   Encourage users to swipe on quotes by awrads as incentives.
 12. ONGOING.   Request access to accelerometer of the device to detect motions during sessions.
@@ -26,7 +26,7 @@ iOS + watchOS
 17. ONGOING.   Design artworks for awards.
 18. ONGOING.   Add FaceBook login API.
 19. DONE.   Add Firebase for login.
-20. ONGOING.   Add Firebase for session data storage.
+20. DONE.   Add Firebase for session data storage.
 21. ONGOING.   Use Realm to store session data locally.
 
 # iOS App Snapshots:
