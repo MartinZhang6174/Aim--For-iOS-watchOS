@@ -48,6 +48,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             self.outputAccelerometerData(acceleration: (accelerometerData?.acceleration)!)
             if (error != nil) {
                 print("Error: \(error)")
+                return
             }
         }
         
@@ -113,6 +114,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             
             if (error != nil){
                 print(error?.localizedDescription as Any)
+                return
             }
         }
     }

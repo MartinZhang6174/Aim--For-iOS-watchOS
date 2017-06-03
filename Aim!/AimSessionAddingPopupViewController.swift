@@ -166,12 +166,9 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
                 databaseRef.child("users/\(currentUserID)/Sessions/\(sessionTitle)").setValue(values, withCompletionBlock: { (error, ref) in
                     if error != nil {
                         print("Error occured uploading session: \(String(describing: error?.localizedDescription))")
+                        return
                     } else {
                         print("Successfully uploaded session.")
-                        
-                        /*if self.sessionImageSelected != nil {
-                         self.uploadSessionImageToFirebaseStorageWithID(identifier: sessionID)
-                         }*/
                     }
                 })
                 

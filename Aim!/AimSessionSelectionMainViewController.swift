@@ -82,28 +82,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 }
                 let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
                 
-                /*if sessionImageURL != nil {
-                    let storageRef = Storage.storage().reference(withPath: "https://aim-a3c43.firebaseio.com/").child("Users").child(currentUserID).child("SessionImages").child(sessionImageURL!)
-                    
-                    storageRef.downloadURL(completion: { (url, err) in
-                        if err != nil {
-                            print("Error occured when communicating with data storage. /n \(String(describing: err?.localizedDescription))")
-                            return
-                        }
-                        
-                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                            if error != nil {
-                                print("Error occured when downloading from data storage.")
-                                return
-                            }
-                            
-                            guard let image = UIImage(data: data!) else { return }
-                            sessionImage = image
-                        }).resume()
-                    })}*/
-            
-                // Adding image to test imageview on cell display with plus button added
-                
                 let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate, url: sessionImageURL, priority: sessionPriority)
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 
@@ -122,6 +100,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if error != nil {
                 print("\(error!.localizedDescription)")
                 self.endLoadingView(movingLoadingView: quoteLoadingView)
+                return
             } else {
                 if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
                     let json = jsonUnformatted as? [String: AnyObject]
@@ -366,6 +345,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         reference.child("users/\(currentUserId!)/Sessions/Session\(randomNum)").setValue(sessionInfoDict) { (err, ref) in
             if err != nil {
                 print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
+                return
             } else {
                 print("Successfully uploaded session.")
                 
@@ -381,6 +361,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
                 if (error != nil) {
                     print("\(String(describing: error?.localizedDescription))")
+                    return
                 } else {
                     print("\(String(describing: metadata))")
                 }
