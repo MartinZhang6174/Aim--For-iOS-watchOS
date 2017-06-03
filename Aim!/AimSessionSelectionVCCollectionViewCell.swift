@@ -55,20 +55,23 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         }
     
         if let sessionImageURL = session.imageURL {
-            let url = URL(string: sessionImageURL)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
-                if err != nil {
-                    print("Error has occured during image fetching: \(String(describing: err))")
-                    return
-                }
-                
-                // Nothing went wrong, continue constructing session object:
-                DispatchQueue.main.async(execute: {
-                    self.sessionSnaphotImageView.image = UIImage(data: data!)
-                })
-                
-                
-            }).resume()
+            
+            sessionSnaphotImageView.downloadImageUsingCacheWithUrlString(imageURL: sessionImageURL)
+            
+//            let url = URL(string: sessionImageURL)
+//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
+//                if err != nil {
+//                    print("Error has occured during image fetching: \(String(describing: err))")
+//                    return
+//                }
+//                
+//                // Nothing went wrong, continue constructing session object:
+//                DispatchQueue.main.async(execute: {
+//                    self.sessionSnaphotImageView.image = UIImage(data: data!)
+//                })
+//                
+//                
+//            }).resume()
         }
     }
   

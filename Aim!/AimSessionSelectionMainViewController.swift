@@ -131,9 +131,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
-        
-        // CODEREVIEW: Why is the data being hard-coded in a View Controller?  Consider setting up some kind of data source class for the View Controller.  Any "fake" or testing data can be put into an instance or subclass of that data source.  When you're ready to deploy, you replace that class with the real data source.  Set it up in a way that the View Controller code does not change when you switch from fake data to real data.
-        
+                
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
