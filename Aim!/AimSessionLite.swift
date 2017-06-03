@@ -7,23 +7,22 @@
 //
 
 import UIKit
+import RealmSwift
 
-class AimSessionLite: NSObject {
-    var title = ""
-    var imageURL: String? = nil
-    var currentToken = 0
-    var hoursAccumulated = 0
-    var currentTimeAccumulated = TimeInterval()
-    var dateCreated = Date()
-    var isPrioritized = false
+class AimSessionLite: Object {
+    dynamic var title = ""
+    dynamic var currentToken = 0
+    dynamic var hoursAccumulated = 0
+    dynamic var dateCreated = Date()
+    dynamic var isPrioritized = false
     
-    init(sessionTitle: String, dateInitialized: Date, sessionImageURLString: String, priority: Bool, tokens: Int, hours: Int, interval: TimeInterval) {
+    convenience init(sessionTitle: String, dateInitialized: Date, priority: Bool, tokens: Int, hours: Int) {
+        self.init()
+        
         self.title = sessionTitle
-        self.imageURL = sessionImageURLString
         self.dateCreated = dateInitialized
         self.isPrioritized = priority
         self.currentToken = tokens
         self.hoursAccumulated = hours
-        self.currentTimeAccumulated = interval
     }
 }

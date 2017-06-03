@@ -9,6 +9,7 @@
 import WatchKit
 import WatchConnectivity
 import Realm
+import RealmSwift
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
@@ -67,8 +68,27 @@ extension ExtensionDelegate: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        if let sessionsArrayFetchedFromContext = applicationContext["Session"] as? AimSession {
-            print(sessionsArrayFetchedFromContext.title)
+        let realm = try! Realm()
+        let liteAimSession: AimSessionLite?
+        if let sessionsInfoFetchedFromContext = applicationContext["Session"] as? [String: Any] {
+            if let title = sessionsInfoFetchedFromContext["Title"] as? String,
+                let hours = sessionsInfoFetchedFromContext["Hours"] as? Int,
+                let tokens = sessionsInfoFetchedFromContext["Tokens"] as? Int,
+                let date = sessionsInfoFetchedFromContext["DateCreated"] as? Date,
+                let priority = sessionsInfoFetchedFromContext["Priority"] as? Bool {
+                liteAimSession = AimSessionLite(sessionTitle: title, dateInitialized: date, priority: priority, tokens: tokens, hours: hours)
+                if liteAimSession != nil {
+                    do {
+                        try realm.write {
+                            realm.add(liteAimSession!)
+                        }
+                    } catch let error {
+                        print("Error saving session on watch: \(error)")
+                    }
+                    
+                }
+            }
+            
         }
     }
 }

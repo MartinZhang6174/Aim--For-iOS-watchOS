@@ -56,6 +56,7 @@
 		9C73A4781EDF85D5007C7F1F /* AimSessionCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */; };
 		9C73A47A1EDF943C007C7F1F /* AimSessionCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */; };
 		9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
+		9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
 		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
 		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
@@ -853,6 +854,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */,
 				9C0D6B601EDAA7E900B0542D /* AimSessionSelectionTable.swift in Sources */,
 				9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */,
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
