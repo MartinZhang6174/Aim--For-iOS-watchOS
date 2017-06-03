@@ -19,7 +19,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
-      
+        
         sessionSnaphotImageView.image = nil
         sessionInfoLabel.text = ""
     }
@@ -46,40 +46,22 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         backgroundBlackView.isHidden = true
         sessionSnaphotImageView.image = nil
     }
-  
-    func configure(from session: AimSession) {
-        if session.title != nil {
-            sessionInfoLabel.isHidden = false
-            sessionInfoLabel.text = session.title
-            backgroundBlackView.isHidden = false
-        }
     
+    func configure(from session: AimSession) {
+        sessionInfoLabel.isHidden = false
+        sessionInfoLabel.text = session.title
+        backgroundBlackView.isHidden = false
+        
         if let sessionImageURL = session.imageURL {
-            
             sessionSnaphotImageView.downloadImageUsingCacheWithUrlString(imageURL: sessionImageURL)
-            
-//            let url = URL(string: sessionImageURL)
-//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
-//                if err != nil {
-//                    print("Error has occured during image fetching: \(String(describing: err))")
-//                    return
-//                }
-//                
-//                // Nothing went wrong, continue constructing session object:
-//                DispatchQueue.main.async(execute: {
-//                    self.sessionSnaphotImageView.image = UIImage(data: data!)
-//                })
-//                
-//                
-//            }).resume()
         }
     }
-  
-    func configureForNewSession(){
     
+    func configureForNewSession(){
+        
         addSessionPlusIconLabel.isHidden = false
         addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
-    
+        
     }
-  
+    
 }

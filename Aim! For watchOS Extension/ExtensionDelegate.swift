@@ -8,14 +8,32 @@
 
 import WatchKit
 import WatchConnectivity
+import Realm
+import RealmSwift
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         
+        // Realm
+//        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
+//        let realmPath = directory.path.appending("db.realm")
+//        
+//        let configuration = RLMRealmConfiguration.default()
+//        configuration.fileURL = URL(fileURLWithPath: realmPath)
+//        RLMRealmConfiguration.setDefault(configuration)
+        
         // Watch connectivity
         setupWatchConnectivity()
+        
+        do {
+            // TRY SENDING SAMPLE CONTEXT TO PHONE
+            try WCSession.default().updateApplicationContext(["sessions": "123"])
+        } catch {
+            print(error)
+        }
+        
     }
     
     func applicationDidBecomeActive() {
@@ -28,9 +46,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 }
 
+// MARK: - Watch connectivity
 
 extension ExtensionDelegate: WCSessionDelegate {
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WC Session activation failed with error: " +
@@ -45,6 +63,43 @@ extension ExtensionDelegate: WCSessionDelegate {
         if WCSession.isSupported() {
             let session = WCSession.default()
             session.delegate = self
-            session.activate()}
+            session.activate()
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        let realm = try! Realm()
+        let liteAimSession: AimSessionLite?
+        if let sessionsInfoFetchedFromContext = applicationContext["Session"] as? [String: Any] {
+            if let title = sessionsInfoFetchedFromContext["Title"] as? String,
+                let hours = sessionsInfoFetchedFromContext["Hours"] as? Int,
+                let tokens = sessionsInfoFetchedFromContext["Tokens"] as? Int,
+                let date = sessionsInfoFetchedFromContext["DateCreated"] as? Date,
+                let priority = sessionsInfoFetchedFromContext["Priority"] as? Bool {
+                liteAimSession = AimSessionLite(sessionTitle: title, dateInitialized: date, priority: priority, tokens: tokens, hours: hours)
+                if liteAimSession != nil {
+                    if realm.object(ofType: AimSessionLite.self, forPrimaryKey: title) == nil {
+                        do {
+                            try realm.write {
+                                realm.add(liteAimSession!)
+                            }
+                        } catch let error {
+                            print("Error saving session on watch: \(error).")
+                        }
+                    } else {
+                        print("Session already in place on disk.")
+                        do {
+                            try realm.write {
+                                realm.object(ofType: AimSessionLite.self, forPrimaryKey: title)?.currentToken = tokens
+                            }
+                        } catch let modifyingErr {
+                            print(modifyingErr)
+                        }
+                    }
+                    
+                }
+            }
+            
+        }
     }
 }

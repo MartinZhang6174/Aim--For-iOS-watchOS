@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
 class AimSessionCentral {
 
     static let sharedInstance = AimSessionCentral()
     
-  
+    
 //    var databaseHandle: DatabaseHandle?
 
 //    var allSessions: [AimSession] {

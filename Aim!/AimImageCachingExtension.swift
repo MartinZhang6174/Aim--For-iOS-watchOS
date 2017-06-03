@@ -11,10 +11,7 @@ import UIKit
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
-    
     func downloadImageUsingCacheWithUrlString(imageURL: String) {
-        
-        
         // Check if images have already been downloaded:
         if let cachedImage = imageCache.object(forKey: imageURL as AnyObject) as? UIImage {
         
@@ -22,7 +19,6 @@ extension UIImageView {
             return
         }
         
-    
         let url = URL(string: imageURL)
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
             if err != nil {
@@ -38,13 +34,6 @@ extension UIImageView {
                     self.image = downloadedImage
                 })
             }
-            
-            
-            
         }).resume()
-        
     }
-    
-    
-    
 }
