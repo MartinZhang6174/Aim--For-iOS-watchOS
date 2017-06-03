@@ -549,7 +549,7 @@
 						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -573,7 +573,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1130,7 +1130,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25C9E071FCC443A47E84B0C9 /* Pods-Aim! Extension.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Aim! Extension.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1152,7 +1151,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 32C09E72C6BCE94C3AEC28A1 /* Pods-Aim! Extension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Aim! Extension.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

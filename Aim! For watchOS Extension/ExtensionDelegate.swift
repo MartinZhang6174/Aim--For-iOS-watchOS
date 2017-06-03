@@ -17,12 +17,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Perform any final initialization of your application.
         
         // Realm
-        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
-        let realmPath = directory.path.appending("db.realm")
-        
-        let configuration = RLMRealmConfiguration.default()
-        configuration.fileURL = URL(fileURLWithPath: realmPath)
-        RLMRealmConfiguration.setDefault(configuration)
+//        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
+//        let realmPath = directory.path.appending("db.realm")
+//        
+//        let configuration = RLMRealmConfiguration.default()
+//        configuration.fileURL = URL(fileURLWithPath: realmPath)
+//        RLMRealmConfiguration.setDefault(configuration)
         
         // Watch connectivity
         setupWatchConnectivity()
