@@ -11,7 +11,7 @@ import WatchKit
 class AimSessionRowController: NSObject {
     @IBOutlet var sessionTitleLabel: WKInterfaceLabel!
     
-    var session: AimSession! {
+    var session: AimSessionLite! {
         didSet {
             sessionTitleLabel.setText(session.title)
         }

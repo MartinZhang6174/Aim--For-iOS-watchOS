@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import RealmSwift
+import Realm
 
 class AimMainSessionSelectionInterfaceController: WKInterfaceController {
 
@@ -18,13 +19,14 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
 //    var s2 = AimSession(sessionTitle: "Physics Proj", dateInitialized: nil, url: nil, priority: true)
 //    var s3 = AimSession(sessionTitle: "Math Tutor", dateInitialized: nil, url: nil, priority: false)
 //    var s4 = AimSession(sessionTitle: "iOS Program", dateInitialized: nil, url: nil, priority: true)
-    var sessionArray = [AimSession]()
+//    var sessionArray = [AimSession]()
+    var sessionTableDataSource: Results<AimSessionLite>?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         let realm = try! Realm()
-        let dataSource = realm.objects(AimSession.self)
+        sessionTableDataSource = realm.objects(AimSessionLite.self)
         
 //        sessionArray.append(s1)
 //        sessionArray.append(s2)
@@ -36,19 +38,20 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
     }
     
     private func updateDisplay() {
-        let numberOfSessions = sessionArray.count
-        if numberOfSessions > 0 {
-            for index in 0...(numberOfSessions-1) {
-                if let rowController = sessionTable.rowController(at: index) as? AimSessionRowController {
-                    let session = sessionArray[index]
-                    rowController.session = session
+        if let dataSource = sessionTableDataSource {
+            let numberOfSessions = dataSource.count
+            if numberOfSessions > 0 {
+                sessionTable.setNumberOfRows(numberOfSessions, withRowType: "AimSessionRowType")
+                for index in 0..<(numberOfSessions) {
+                    if let rowController = sessionTable.rowController(at: index) as? AimSessionRowController {
+                        let session = sessionTableDataSource?[index]
+                        rowController.session = session
+                    }
                 }
+            } else {
+                print("No rows to display here.")
             }
-        } else {
-            print("No rows to display here.")
         }
-        sessionTable.setNumberOfRows(numberOfSessions, withRowType: "AimSessionRowType")
-        
     }
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {

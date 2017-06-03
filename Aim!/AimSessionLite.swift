@@ -25,4 +25,8 @@ class AimSessionLite: Object {
         self.currentToken = tokens
         self.hoursAccumulated = hours
     }
+    
+    override static func primaryKey() -> String? {
+        return "title"
+    }
 }

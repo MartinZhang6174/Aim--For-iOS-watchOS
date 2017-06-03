@@ -55,7 +55,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,98 +65,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         self.quoteView.isUserInteractionEnabled = false
         
-        // Setting the database reference:
-        ref = Database.database().reference()
-        
-        // Setting date format for formatter
-        fmt.dateFormat = "dd.MM.yyyy"
-        
-        // Retrieve sessions:
-        if let currentUserID = Auth.auth().currentUser?.uid as String! {
-            databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
-                let sessionTitle = snapshot.key
-                let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
-                let sessionDate = self.fmt.date(from: sessionDateString!)
-                var sessionPriority = false
-                if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
-                    sessionPriority = true
-                }
-                let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
-                
-                
-                
-                
-                // TODO: ADD FUNCTIONALITY IN SESSIONVC TO MODIFY/CREATE SESSION TOKENS IN FIREBASE
-                let sessionTokens: Int?
-                let sessionHours: Int?
-                
-                
-                
-                if let tokens = snapshot.childSnapshot(forPath: "TotalTokens").value as? Int {
-                    sessionTokens = tokens
-                } else {
-                    sessionTokens = 0
-                }
-                
-                if let hours = snapshot.childSnapshot(forPath: "TotalHours").value as? Int {
-                    sessionHours = hours
-                } else {
-                    sessionHours = 0
-                }
-                
-                
-                
-                
-                
-                
-                
-                
-                // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
-                sessionObj.currentToken = sessionTokens!
-                sessionObj.hoursAccumulated = sessionHours!
-                // CONSIDERING DELETING TIME INTERVAL IDEA
-                if let intervals = snapshot.childSnapshot(forPath: "TotalIntervals").value as? TimeInterval {
-                    sessionObj.currentTimeAccumulated = intervals
-                    
-                }
-                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
-                
-                // Saving sessions fetched to Realm
-                let realm = try! Realm()
-                
-                if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
-                    try! realm.write {
-                        realm.add(sessionObj)
-                    }
-                }
-                
-                
-                // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
-                let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
-                
-                
-                
-                
-                
-                
-                
-                
-                // Transfer the session loaded to Apple Watch app
-                do {
-                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])
-                } catch {
-                    print(error)
-                }
 
-                // Trying to find a way to animate collectionview data reloading
-                self.aimSessionCollectionView.reloadData()
-                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-                let indexSet = IndexSet(integersIn: range)
-                self.aimSessionCollectionView.reloadSections(indexSet)
-                
-            })
-        }
         
         // Getting quote content & author name:
         let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
@@ -225,6 +133,79 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // Setting the database reference:
+        ref = Database.database().reference()
+        
+        // Setting date format for formatter
+        fmt.dateFormat = "dd.MM.yyyy"
+        
+        // Retrieve sessions:
+        if let currentUserID = Auth.auth().currentUser?.uid as String! {
+            databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
+                let sessionTitle = snapshot.key
+                let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
+                let sessionDate = self.fmt.date(from: sessionDateString!)
+                var sessionPriority = false
+                if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
+                    sessionPriority = true
+                }
+                let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
+                
+                // TODO: ADD FUNCTIONALITY IN SESSIONVC TO MODIFY/CREATE SESSION TOKENS IN FIREBASE
+                let sessionTokens: Int?
+                let sessionHours: Int?
+ 
+                if let tokens = snapshot.childSnapshot(forPath: "TotalTokens").value as? Int {
+                    sessionTokens = tokens
+                } else {
+                    sessionTokens = 0
+                }
+                
+                if let hours = snapshot.childSnapshot(forPath: "TotalHours").value as? Int {
+                    sessionHours = hours
+                } else {
+                    sessionHours = 0
+                }
+                
+                // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
+                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
+                sessionObj.currentToken = sessionTokens!
+                sessionObj.hoursAccumulated = sessionHours!
+                // CONSIDERING DELETING TIME INTERVAL IDEA
+                if let intervals = snapshot.childSnapshot(forPath: "TotalIntervals").value as? TimeInterval {
+                    sessionObj.currentTimeAccumulated = intervals
+                    
+                }
+                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+                
+                // Saving sessions fetched to Realm
+                let realm = try! Realm()
+                
+                if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
+                    try! realm.write {
+                        realm.add(sessionObj)
+                    }
+                }
+                
+                // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
+                let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
+                
+                // Transfer the session loaded to Apple Watch app
+                do {
+                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])
+                } catch {
+                    print(error)
+                }
+                
+                // Trying to find a way to animate collectionview data reloading
+                self.aimSessionCollectionView.reloadData()
+                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+                let indexSet = IndexSet(integersIn: range)
+                self.aimSessionCollectionView.reloadSections(indexSet)
+                
+            })
+        }
+
         //        quoteView.isUserInteractionEnabled = false
         var userLoginStatus = false
         let userLoginEmail = Auth.auth().currentUser?.email

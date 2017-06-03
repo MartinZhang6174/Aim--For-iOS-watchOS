@@ -78,12 +78,23 @@ extension ExtensionDelegate: WCSessionDelegate {
                 let priority = sessionsInfoFetchedFromContext["Priority"] as? Bool {
                 liteAimSession = AimSessionLite(sessionTitle: title, dateInitialized: date, priority: priority, tokens: tokens, hours: hours)
                 if liteAimSession != nil {
-                    do {
-                        try realm.write {
-                            realm.add(liteAimSession!)
+                    if realm.object(ofType: AimSessionLite.self, forPrimaryKey: title) == nil {
+                        do {
+                            try realm.write {
+                                realm.add(liteAimSession!)
+                            }
+                        } catch let error {
+                            print("Error saving session on watch: \(error).")
                         }
-                    } catch let error {
-                        print("Error saving session on watch: \(error)")
+                    } else {
+                        print("Session already in place on disk.")
+                        do {
+                            try realm.write {
+                                realm.object(ofType: AimSessionLite.self, forPrimaryKey: title)?.currentToken = tokens
+                            }
+                        } catch let modifyingErr {
+                            print(modifyingErr)
+                        }
                     }
                     
                 }
