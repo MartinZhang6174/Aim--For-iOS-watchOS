@@ -13,16 +13,18 @@ import RealmSwift
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
+    //    var userAuthenticationStatus = false
+    
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         
         // Realm
-//        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
-//        let realmPath = directory.path.appending("db.realm")
-//        
-//        let configuration = RLMRealmConfiguration.default()
-//        configuration.fileURL = URL(fileURLWithPath: realmPath)
-//        RLMRealmConfiguration.setDefault(configuration)
+        //        let directory: URL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.martinzhang.Aim")!
+        //        let realmPath = directory.path.appending("db.realm")
+        //
+        //        let configuration = RLMRealmConfiguration.default()
+        //        configuration.fileURL = URL(fileURLWithPath: realmPath)
+        //        RLMRealmConfiguration.setDefault(configuration)
         
         // Watch connectivity
         setupWatchConnectivity()
@@ -67,7 +69,23 @@ extension ExtensionDelegate: WCSessionDelegate {
         }
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        if (message["UserAuthState"] as? Bool) != nil {
+//            userAuthenticationStatus = logInStatus
+//            NotificationCenter.default.post(name: NSNotification.Name.init("Test"), object: nil)
+            let realm = try! Realm()
+            do {
+                try realm.write {
+                    realm.deleteAll()
+                }
+            } catch let error {
+                print("Error deleting items on disk: \(error)")
+            }
+        }
+    }
+    
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        //        if userAuthenticationStatus == true {
         let realm = try! Realm()
         let liteAimSession: AimSessionLite?
         if let sessionsInfoFetchedFromContext = applicationContext["Session"] as? [String: Any] {
@@ -101,5 +119,6 @@ extension ExtensionDelegate: WCSessionDelegate {
             }
             
         }
+        
     }
 }

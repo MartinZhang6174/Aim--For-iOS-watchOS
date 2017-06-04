@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import Firebase
+import WatchConnectivity
 
 // CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
 
@@ -61,6 +62,14 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
         
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser?.uid == nil {
+            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+                print("Could not establish communications to WatchKit app.")
+            })
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

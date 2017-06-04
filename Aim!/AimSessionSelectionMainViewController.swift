@@ -213,10 +213,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
         
+        let realm = try! Realm()
         if userLoginStatus == true {
             // Force unwrapping user email since there's no way anyone could be in the app logged in without having an email registered with the account
-            let realm = try! Realm()
             AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
+        } else {
+            // If the use isn't logged in, delete all session data on WATCH APP
+            
+            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+                print("Could not establish communications to WatchKit app.")
+            })
+            
         }
         
         userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
