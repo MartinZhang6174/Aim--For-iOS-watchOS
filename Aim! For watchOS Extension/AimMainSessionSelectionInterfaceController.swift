@@ -42,6 +42,10 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
         }
     }
     
+    @IBAction func refreshButtonClicked() {
+        updateDisplay()
+    }
+    
 //    @objc private func cleanItemsOnDisk() {
 //        let realm = try! Realm()
 //        realm.deleteAll()

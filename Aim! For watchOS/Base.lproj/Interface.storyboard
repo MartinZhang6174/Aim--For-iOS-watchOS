@@ -125,7 +125,7 @@
                             </items>
                             <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
-                        <group width="1" alignment="left" id="S86-xo-TQT">
+                        <group width="1" alignment="left" layout="vertical" id="S86-xo-TQT">
                             <items>
                                 <table alignment="left" spacing="4" id="GV8-80-drt" customClass="AimSessionSelectionTable" customModule="Aim__Extension">
                                     <items>
@@ -147,6 +147,11 @@
                                         </tableRow>
                                     </items>
                                 </table>
+                                <button width="1" alignment="left" title="Refresh" id="sZa-tb-xPg">
+                                    <connections>
+                                        <action selector="refreshButtonClicked" destination="2YE-aA-ly4" id="HwB-xG-5sV"/>
+                                    </connections>
+                                </button>
                             </items>
                             <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
