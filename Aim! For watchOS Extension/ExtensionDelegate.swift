@@ -71,12 +71,11 @@ extension ExtensionDelegate: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         if (message["UserAuthState"] as? Bool) != nil {
-//            userAuthenticationStatus = logInStatus
-//            NotificationCenter.default.post(name: NSNotification.Name.init("Test"), object: nil)
             let realm = try! Realm()
             do {
                 try realm.write {
                     realm.deleteAll()
+                    print("User logged out, erasing all data from disk.")
                 }
             } catch let error {
                 print("Error deleting items on disk: \(error)")
@@ -85,15 +84,53 @@ extension ExtensionDelegate: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        
         //        if userAuthenticationStatus == true {
+        //        let realm = try! Realm()
+        //        let liteAimSession: AimSessionLite?
+        //        if let sessionsInfoFetchedFromContext = applicationContext["Session"] as? [String: Any] {
+        //            if let title = sessionsInfoFetchedFromContext["Title"] as? String,
+        //                let hours = sessionsInfoFetchedFromContext["Hours"] as? Int,
+        //                let tokens = sessionsInfoFetchedFromContext["Tokens"] as? Int,
+        //                let date = sessionsInfoFetchedFromContext["DateCreated"] as? Date,
+        //                let priority = sessionsInfoFetchedFromContext["Priority"] as? Bool {
+        //                liteAimSession = AimSessionLite(sessionTitle: title, dateInitialized: date, priority: priority, tokens: tokens, hours: hours)
+        //                if liteAimSession != nil {
+        //                    if realm.object(ofType: AimSessionLite.self, forPrimaryKey: title) == nil {
+        //                        do {
+        //                            try realm.write {
+        //                                realm.add(liteAimSession!)
+        //                            }
+        //                        } catch let error {
+        //                            print("Error saving session on watch: \(error).")
+        //                        }
+        //                    } else {
+        //                        print("Session already in place on disk.")
+        //                        do {
+        //                            try realm.write {
+        //                                realm.object(ofType: AimSessionLite.self, forPrimaryKey: title)?.currentToken = tokens
+        //                            }
+        //                        } catch let modifyingErr {
+        //                            print(modifyingErr)
+        //                        }
+        //                    }
+        //
+        //                }
+        //            }
+        //
+        //        }
+        
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
         let realm = try! Realm()
         let liteAimSession: AimSessionLite?
-        if let sessionsInfoFetchedFromContext = applicationContext["Session"] as? [String: Any] {
-            if let title = sessionsInfoFetchedFromContext["Title"] as? String,
-                let hours = sessionsInfoFetchedFromContext["Hours"] as? Int,
-                let tokens = sessionsInfoFetchedFromContext["Tokens"] as? Int,
-                let date = sessionsInfoFetchedFromContext["DateCreated"] as? Date,
-                let priority = sessionsInfoFetchedFromContext["Priority"] as? Bool {
+        if let sessionsInfoFetchedInfo = userInfo["Session"] as? [String: Any] {
+            if let title = sessionsInfoFetchedInfo["Title"] as? String,
+                let hours = sessionsInfoFetchedInfo["Hours"] as? Int,
+                let tokens = sessionsInfoFetchedInfo["Tokens"] as? Int,
+                let date = sessionsInfoFetchedInfo["DateCreated"] as? Date,
+                let priority = sessionsInfoFetchedInfo["Priority"] as? Bool {
                 liteAimSession = AimSessionLite(sessionTitle: title, dateInitialized: date, priority: priority, tokens: tokens, hours: hours)
                 if liteAimSession != nil {
                     if realm.object(ofType: AimSessionLite.self, forPrimaryKey: title) == nil {
@@ -119,6 +156,16 @@ extension ExtensionDelegate: WCSessionDelegate {
             }
             
         }
-        
+        if (userInfo["UserAuthState"] as? Bool) != nil {
+            let realm = try! Realm()
+            do {
+                try realm.write {
+                    realm.deleteAll()
+                    print("User logged out, erasing all data from disk.")
+                }
+            } catch let error {
+                print("Error deleting items on disk: \(error)")
+            }
+        }
     }
 }
