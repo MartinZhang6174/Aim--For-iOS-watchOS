@@ -18,7 +18,7 @@ iOS + watchOS
 9. DONE.   Fetch daily quotes on success from API to main VC.
 10. DONE.   Allow user to drag the quote view to see the author name underneath.
 11. ONGOING.   Encourage users to swipe on quotes by awrads as incentives.
-12. ONGOING.   Request access to accelerometer of the device to detect motions during sessions.
+12. DONE.   Request access to accelerometer of the device to detect motions during sessions.
 13. DONE.   Build internal timer to time users during sessons.
 14. ONGOING.   Draw indicator round circle(or creative shapes) around timer label.
 15. DONE.   Add 3D Touch(force touch) to collection view on main VC to start sessions.
@@ -27,7 +27,7 @@ iOS + watchOS
 18. ONGOING.   Add FaceBook login API.
 19. DONE.   Add Firebase for login.
 20. DONE.   Add Firebase for session data storage.
-21. ONGOING.   Use Realm to store session data locally.
+21. DONE.   Use Realm to store session data locally.
 
 # iOS App Snapshots:
 
