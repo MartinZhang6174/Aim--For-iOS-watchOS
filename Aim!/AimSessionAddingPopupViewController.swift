@@ -15,6 +15,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     @IBOutlet weak var aimSessionTitleTextField: UITextField!
     @IBOutlet weak var aimSessionPrioritySwitch: UISwitch!
     @IBOutlet weak var imageUploadProgressView: UIProgressView!
+    @IBOutlet weak var aimSessionAddingPageView: UIView!
     
     // var sessionObject: AimSession?
     let imagePicker = UIImagePickerController()
@@ -34,6 +35,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
+        
+        self.aimSessionAddingPageView.layer.cornerRadius = 5.0
     }
     
     @IBAction func sessionImageAddButtonClicked(_ sender: Any) {

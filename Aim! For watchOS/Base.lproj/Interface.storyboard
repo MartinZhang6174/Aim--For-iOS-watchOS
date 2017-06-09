@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="455" y="-106"/>
         </scene>
-        <!--Session Selection Interface Controller-->
+        <!--Interface Controller-->
         <scene sceneID="Hxe-QF-jGb">
             <objects>
-                <controller id="l1H-L2-trl" customClass="SessionSelectionInterfaceController" customModule="Aim__Extension">
+                <controller id="l1H-L2-trl">
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="Rny-vL-dRZ">
                             <items>
@@ -148,6 +148,8 @@
                                     </items>
                                 </table>
                                 <button width="1" alignment="left" title="Refresh" id="sZa-tb-xPg">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                                     <connections>
                                         <action selector="refreshButtonClicked" destination="2YE-aA-ly4" id="HwB-xG-5sV"/>
                                     </connections>
@@ -179,9 +181,9 @@
                         </group>
                         <group width="1" height="1" alignment="left" id="YSV-5G-WH9">
                             <items>
-                                <timer alignment="center" verticalAlignment="center" textAlignment="center" previewedSeconds="1350" id="8D6-G6-Ta6">
+                                <timer alignment="center" textAlignment="center" minimumScaleFactor="0.69999999999999996" previewedSeconds="1347" id="8D6-G6-Ta6">
                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="37"/>
                                     <calendarUnit key="units" minute="YES" second="YES"/>
                                 </timer>
                             </items>

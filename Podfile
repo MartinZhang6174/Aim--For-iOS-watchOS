@@ -10,6 +10,8 @@ pod ‘Firebase/Auth’
 pod ‘Firebase/Storage’
 pod ‘NVActivityIndicatorView’
 pod ‘RealmSwift’
+pod ‘BEMCheckBox’
+pod ‘BFPaperButton’
 
   #target 'Aim! Tests' do
     #inherit! :search_paths

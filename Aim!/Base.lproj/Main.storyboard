@@ -39,16 +39,23 @@
                                     <constraint firstAttribute="width" constant="115" id="i5v-39-c52"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-2b-O0U">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-2b-O0U" customClass="AimCustomRaisedButton" customModule="Aim_" customModuleProvider="target">
                                 <rect key="frame" x="88" y="520" width="200" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="touchDownAnimationDuration">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationDuration">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logInButtonPressed:" destination="5gY-TM-HY8" eventType="touchUpInside" id="eSB-h0-WwD"/>
-                                    <action selector="loginButtonPressed:" destination="5gY-TM-HY8" eventType="touchDown" id="Twe-Me-gIb"/>
-                                    <action selector="loginButtonReleased:" destination="5gY-TM-HY8" eventType="touchUpInside" id="i5D-mv-XRU"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-fh-f0N" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
@@ -73,21 +80,62 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="join" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-o4-nNv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-o4-nNv" customClass="AimCustomRaisedButton" customModule="Aim_" customModuleProvider="target">
                                 <rect key="frame" x="88" y="440" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="DLK-2l-f9S"/>
                                     <constraint firstAttribute="width" constant="200" id="E3C-Uf-uJJ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="bdT-oq-HbC"/>
                                     <constraint firstAttribute="height" constant="50" id="sGQ-Z9-h5H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="0.2901960784" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameterStartValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameter">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRaised" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tapCircleColor">
+                                        <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="tapCircleBurstAmount">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleFromTapLocation" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleBeyondBounds" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationDuration">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="touchDownAnimationDuration">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="loweredShadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="liftedShadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="loweredShadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="liftedShadowOffset">
+                                        <size key="value" width="2" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="5gY-TM-HY8" eventType="touchUpInside" id="S8q-7d-9dw"/>
-                                    <action selector="signupButtonPressed:" destination="5gY-TM-HY8" eventType="touchDown" id="1Ix-DE-IBs"/>
                                     <action selector="signupButtonReleased:" destination="5gY-TM-HY8" eventType="touchUpInside" id="wPj-f7-2ft"/>
                                 </connections>
                             </button>
@@ -145,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urP-da-W39" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2820" y="2382"/>
+            <point key="canvasLocation" x="-2820" y="2381.5592203898054"/>
         </scene>
         <!--Aim Session Selection Main View Controller-->
         <scene sceneID="p5s-uI-77h">
@@ -209,14 +257,14 @@
                                                         <constraint firstAttribute="height" constant="22" id="4gw-IE-VsM"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English HW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="8.5" y="80" width="83" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
+                                                    <rect key="frame" x="14.5" y="80" width="71.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT8-Zy-v91">
-                                                    <rect key="frame" x="31" y="8.5" width="38.5" height="75"/>
+                                                    <rect key="frame" x="35.5" y="7.5" width="29.5" height="77"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="64"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -251,33 +299,12 @@
                                     <outlet property="delegate" destination="z8h-kr-T6C" id="Aas-yI-JO0"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iJ-Q6-UfJ">
-                                <rect key="frame" x="16" y="106" width="106" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
-                                <state key="normal" title="Add session YO">
-                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="addSessionButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="YdH-5e-3Nt"/>
-                                </connections>
-                            </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-re-LMr">
                                 <rect key="frame" x="37" y="144" width="300" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="zHZ-Bb-5LW"/>
                                 </constraints>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1H-In-IpF">
-                                <rect key="frame" x="249.5" y="110" width="37" height="30"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
-                                <state key="normal" title="reset">
-                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetProgressButtonPressed:" destination="z8h-kr-T6C" eventType="touchUpInside" id="eOU-ZZ-q8V"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
                                 <rect key="frame" x="24" y="96" width="327" height="13"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
@@ -342,9 +369,7 @@
                             <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="Eai-0I-RGI" secondAttribute="bottom" constant="35" id="NHD-Tx-oqk"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Wha-re-LMr" secondAttribute="bottom" constant="7" id="Rec-0Q-fzs"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
-                            <constraint firstItem="X1H-In-IpF" firstAttribute="leading" secondItem="g0k-5i-ZEl" secondAttribute="trailing" constant="25" id="VYk-xL-ci2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="8" id="bPR-5z-w1t"/>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="X1H-In-IpF" secondAttribute="bottom" constant="4" id="bjc-T5-Jo9"/>
                             <constraint firstAttribute="trailing" secondItem="nLZ-kN-Jgu" secondAttribute="trailing" constant="8" id="d6E-Zg-AFU"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="8" symbolic="YES" id="dwB-wP-F6C"/>
                             <constraint firstItem="nLZ-kN-Jgu" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" constant="8" id="gXw-VE-Ud0"/>
@@ -415,7 +440,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -789,13 +814,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoS-T2-j88">
-                                <rect key="frame" x="150.5" y="10" width="75" height="20"/>
+                                <rect key="frame" x="150" y="10" width="75" height="20"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="160" y="218.5" width="54.5" height="56.5"/>
+                                <rect key="frame" x="160" y="219" width="54.5" height="56.5"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -826,7 +851,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -882,13 +907,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="196.5" y="110.5" width="51" height="31"/>
+                                        <rect key="frame" x="197" y="110.5" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
@@ -958,6 +983,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aimSessionAddingPageView" destination="iTK-xO-qyl" id="YZm-H0-KDl"/>
                         <outlet property="aimSessionPrioritySwitch" destination="mlX-8U-KHE" id="AXx-zE-BWX"/>
                         <outlet property="aimSessionTitleTextField" destination="xqG-wN-F1t" id="5Q1-Lq-mx5"/>
                         <outlet property="imageUploadProgressView" destination="4hh-o0-prY" id="9eY-lI-CX5"/>
@@ -972,7 +998,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3SO-Is-JD5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="iAE-u2-n0m">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="iAE-u2-n0m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -994,7 +1020,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RcJ-jj-8za" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="NaT-MH-eWy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="NaT-MH-eWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

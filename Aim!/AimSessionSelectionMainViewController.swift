@@ -139,6 +139,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Clean up session fetched array to avoid duplications
         aimSessionFetchedArray.removeAll()
         
+        quoteAuthorLabel.isHidden = false
+        quoteView.isHidden = false
+        
         // Retrieve sessions:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
             databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
@@ -215,6 +218,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let userLoginEmail = Auth.auth().currentUser?.email
         
         Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
+        
+        // When user isn't logged in
+        if Auth.auth().currentUser?.uid == nil {
+            self.quoteView.isHidden = true
+            self.quoteAuthorLabel.isHidden = true
+        }
         
         let realm = try! Realm()
         if userLoginStatus == true {

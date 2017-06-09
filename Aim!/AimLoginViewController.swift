@@ -98,37 +98,37 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signupButtonPressed(_ sender: Any) {
         let signupButton = sender as! UIButton
         
-        let bounds = signupButton.bounds
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            signupButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
-        }, completion: nil)
+//        let bounds = signupButton.bounds
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+//            signupButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
+//        }, completion: nil)
     }
     
     @IBAction func signupButtonReleased(_ sender: Any) {
         let signupButton = sender as! UIButton
         
-        let bounds = signupButton.bounds
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            signupButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
-        }, completion: nil)
+//        let bounds = signupButton.bounds
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+//            signupButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
+//        }, completion: nil)
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         let loginButton = sender as! UIButton
         
-        let bounds = loginButton.bounds
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            loginButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
-        }, completion: nil)
+//        let bounds = loginButton.bounds
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+//            loginButton.bounds = CGRect(x: bounds.origin.x - 5, y: bounds.origin.y, width: bounds.size.width + 40, height: bounds.size.height)
+//        }, completion: nil)
     }
     
     @IBAction func loginButtonReleased(_ sender: Any) {
         let loginButton = sender as! UIButton
         
-        let bounds = loginButton.bounds
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            loginButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
-        }, completion: nil)
+//        let bounds = loginButton.bounds
+//        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+//            loginButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
+//        }, completion: nil)
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {
