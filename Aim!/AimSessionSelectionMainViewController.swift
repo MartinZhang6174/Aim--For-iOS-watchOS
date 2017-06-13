@@ -379,7 +379,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         if mediaType == (kUTTypeImage as String) {
             if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-                let imageData = UIImageJPEGRepresentation(originalImage, 0.8) {
+                let imageData = UIImageJPEGRepresentation(originalImage, 0.65) {
                 uploadImageToFirebaseStorage(data: imageData)
             }
         } else if mediaType == (kUTTypeMovie as String) {
@@ -388,38 +388,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func addSessionObjectClicked(_ sender: Any) {
-        
-        let currentUserId = Auth.auth().currentUser?.uid
-        let randomNum: UInt32 = arc4random_uniform(1000)
-        let randomYear: UInt32 = arc4random_uniform(2000)
-        let randomMonth: UInt32 = arc4random_uniform(12)
-        let randomDay: UInt32 = arc4random_uniform(31)
-        let randomDateString = "\(randomDay).\(randomMonth).\(randomYear)"
-        
-        //        let sessionDateCreatedDict = ["DateCreated":randomDateString]
-        let sessionInfoDict = ["DateCreated":randomDateString, "Priority":"0"]
-        
-        // self.ref.child("users/(user.uid)/username").setValue(username)
-        let reference = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
-        //        reference.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").setValue(["Session\(randomNum)":sessionInfoDict]) { (err, ref) in
-        //            if err != nil {
-        //                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
-        //            } else {
-        //                print("Successfully uploaded session.")
-        //            }
-        //        }
-        reference.child("users/\(currentUserId!)/Sessions/Session\(randomNum)").setValue(sessionInfoDict) { (err, ref) in
-            if err != nil {
-                print("Error occured uploading session: \(String(describing: err?.localizedDescription))")
-                return
-            } else {
-                print("Successfully uploaded session.")
-                
-            }
-        }
     }
     
     func uploadImageToFirebaseStorage(data: Data) {

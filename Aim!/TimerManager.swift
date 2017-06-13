@@ -15,7 +15,7 @@ class TimerManager {
     static let notificationComplete = "TimerNotificationComplete"
     
     // MARK: - Properties
-    let timeInterval: TimeInterval = 0.1
+    let timeInterval: TimeInterval = 0.02
     
     var duration: TimeInterval = 0
     var elapsedTime: TimeInterval = 0
