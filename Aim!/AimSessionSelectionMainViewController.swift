@@ -285,6 +285,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             sessionCell.configureForNewSession()
         }
+        
+        sessionCell.layer.shadowRadius = 4.0
+        sessionCell.layer.shadowOpacity = 0.7
+        sessionCell.layer.shadowOffset = CGSize.zero
+        
         return sessionCell
     }
     

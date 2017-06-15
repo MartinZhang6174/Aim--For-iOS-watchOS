@@ -35,8 +35,19 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
+
+//        aimSessionAddingPageView.clipsToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        aimSessionAddingPageView.layer.cornerRadius = 7.0
+        aimSessionAddingPageView.clipsToBounds = true
         
-        self.aimSessionAddingPageView.layer.cornerRadius = 5.0
+        aimSessionAddingPageView.layer.shadowOpacity = 1.0
+        aimSessionAddingPageView.layer.shadowRadius = 5.0
+        aimSessionAddingPageView.layer.shadowColor = UIColor.white.cgColor
+        aimSessionAddingPageView.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
+        aimSessionAddingPageView.layer.shadowPath = CGPath(ellipseIn: CGRect(x: -10, y: -20, width: 50, height: 50), transform: nil)
     }
     
     @IBAction func sessionImageAddButtonClicked(_ sender: Any) {

@@ -11,14 +11,25 @@ import UIKit
 class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sessionInfoLabel: UILabel!
-    @IBOutlet weak var backgroundBlackView: UIView!
-    @IBOutlet weak var sessionSnaphotImageView: UIImageView!
+    @IBOutlet weak var backgroundBlackView: UIView! {
+        didSet {
+            backgroundBlackView.layer.cornerRadius = 5.0
+        }
+    }
+    @IBOutlet weak var sessionSnaphotImageView: UIImageView! {
+        didSet {
+            sessionSnaphotImageView.layer.cornerRadius = 5.0
+            sessionSnaphotImageView.layer.shadowOpacity = 0.7
+            sessionSnaphotImageView.layer.shadowColor = UIColor.black.cgColor
+//            sessionSnaphotImageView.layer.shadowOffset = CGSize.zero
+            sessionSnaphotImageView.layer.shadowRadius = 4.0
+        }
+    }
     @IBOutlet weak var addSessionPlusIconLabel: UILabel!
     
     override func awakeFromNib() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
-        self.layer.masksToBounds = true
         
         sessionSnaphotImageView.image = nil
         sessionInfoLabel.text = ""
@@ -58,10 +69,8 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     }
     
     func configureForNewSession(){
-        
         addSessionPlusIconLabel.isHidden = false
         addSessionPlusIconLabel.textColor = aimApplicationThemePurpleColor
-        
     }
     
 }
