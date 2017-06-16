@@ -193,9 +193,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
                 let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
-                
-                print("Sending info of \(sessionTitle) to watchOS.")
-                
+                                
                 // Transfer the session loaded to Apple Watch app
                 do {
 //                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])

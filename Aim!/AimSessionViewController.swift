@@ -17,6 +17,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     var timerManager = TimerManager()
     
+    var tokenContainer: Float = 0
+    
     var motionManager = CMMotionManager()
     // Initializing a LocationManager to bypass Apple policies on categories of apps that are allowed to update accelerometer data in the background for more than 10 mins:
     var locationManager = CLLocationManager()
@@ -29,6 +31,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionTimerLabel: UILabel!
+    @IBOutlet weak var sessionTokensLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.updateTimerLabel), name: NSNotification.Name(rawValue: TimerManager.notificationSecondTick), object: timerManager)
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.handleTokenIncrements), name: NSNotification.Name(rawValue: TimerManager.notificationOneMinutePoint), object: timerManager)
+        
         updateTimerLabel()
         
         motionManager.accelerometerUpdateInterval = 0.5
@@ -47,11 +52,10 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (accelerometerData: CMAccelerometerData?, error: Error?) in
             self.outputAccelerometerData(acceleration: (accelerometerData?.acceleration)!)
             if (error != nil) {
-                print("Error: \(error)")
+                print("Error: \(String(describing: error))")
                 return
             }
         }
-        
         locationManager.startUpdatingLocation()
     }
     
@@ -82,6 +86,13 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
     }
     
+    func handleTokenIncrements() {
+        tokenContainer += AimTokenConversionManager.sharedInstance.currentTokenFactor()
+        
+        let roundedTokens = Int(tokenContainer.rounded())
+        sessionTokensLabel.text = "\(roundedTokens)"
+    }
+    
     func timerComplete() {
         dismiss(animated: true, completion: nil)
         
@@ -89,7 +100,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         
         let content = UNMutableNotificationContent()
         content.title = "Aim! Session Completed!"
-        content.body = "Token earned: 237 🏆"
+        content.body = "Token earned: \(tokenContainer.rounded()) 🏆"
         content.sound = UNNotificationSound.default()
         
         //   To Present image in notification, this may be needed when my logo is designed:

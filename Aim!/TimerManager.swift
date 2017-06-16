@@ -13,6 +13,7 @@ class TimerManager {
     // MARK: - Properties
     static let notificationSecondTick = "TimerNotificationSecondTick"
     static let notificationComplete = "TimerNotificationComplete"
+    static let notificationOneMinutePoint = "TimerNotificationOneMinutePoint"
     
     // MARK: - Properties
     let timeInterval: TimeInterval = 0.02
@@ -21,6 +22,7 @@ class TimerManager {
     var elapsedTime: TimeInterval = 0
     
     var aimTimer: Timer?
+    var minuteTimer: Timer?
     
     var isOn: Bool {
         get {
@@ -33,6 +35,7 @@ class TimerManager {
         if !isOn {
             aimTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.secondTick), userInfo: nil, repeats: true)
             
+            minuteTimer = Timer.scheduledTimer(timeInterval: timeInterval*60, target: self, selector: #selector(self.minutePoint), userInfo: nil, repeats: true)
             print("Timer started.")
         }
     }
@@ -43,6 +46,8 @@ class TimerManager {
             aimTimer = nil
             
             print("Timer stopped.")
+            
+            
         }
     }
     // MARK: - General Functions
@@ -51,11 +56,15 @@ class TimerManager {
         
         // print("\(self.elapsedTime) second.")
         NotificationCenter.default.post(name: Notification.Name(rawValue: TimerManager.notificationSecondTick), object: self)
-
+        
         
         if self.elapsedTime == self.duration {
             self.stopTimer()
             NotificationCenter.default.post(name: Notification.Name(rawValue: TimerManager.notificationComplete), object: self)
         }
+    }
+    
+    @objc func minutePoint() {
+        NotificationCenter.default.post(name: Notification.Name(TimerManager.notificationOneMinutePoint), object: self)
     }
 }

@@ -159,12 +159,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
             
             if pwd1 != "" && pwd1 == pwd2 {
                 moveLoadingView(loadingView: loginLoadingView)
-                print("Password match, point where loading view needed.")
+                
                 Auth.auth().createUser(withEmail: email, password: pwd1, completion: { (user: User?, error) in
                     if error != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
-                        // CODEREVIEW: In Xcode 8.3.1, the following line produces a warning.  Resolve it using one of the ways suggested by Xcode.
-                        print(error)
+                        print(error as Any)
                         return
                     }
                     
@@ -175,7 +174,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                     // CODEREVIEW: What if the hardcoded URL here changes?  Consider reading it from a plist instead of hardcoding it.
                     let reference = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
                     let userReference = reference.child("users").child(uid)
-                    let userInfoValues = ["Email" : email, "Password" : pwd1]
+                    let userInfoValues = ["Email" : email, "Password" : pwd1, "Tokens" : 0] as [String : Any]
                     userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                         if err != nil {
                             self.endLoadingView(movingLoadingView: loginLoadingView)
