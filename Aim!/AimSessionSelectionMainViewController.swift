@@ -102,7 +102,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
-                
+        
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
@@ -142,8 +142,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         quoteAuthorLabel.isHidden = false
         quoteView.isHidden = false
         
-        // Retrieve sessions:
+        // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
+            // Retrieve sessions:
             databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
                 let sessionTitle = snapshot.key
                 let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
@@ -154,10 +155,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 }
                 let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
                 
-                // TODO: ADD FUNCTIONALITY IN SESSIONVC TO MODIFY/CREATE SESSION TOKENS IN FIREBASE
                 let sessionTokens: Int?
                 let sessionHours: Int?
- 
+                
                 if let tokens = snapshot.childSnapshot(forPath: "TotalTokens").value as? Int {
                     sessionTokens = tokens
                 } else {
@@ -177,7 +177,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 // CONSIDERING DELETING TIME INTERVAL IDEA
                 if let intervals = snapshot.childSnapshot(forPath: "TotalIntervals").value as? TimeInterval {
                     sessionObj.currentTimeAccumulated = intervals
-                    
                 }
                 
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
@@ -186,17 +185,24 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let realm = try! Realm()
                 
                 if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
-                    try! realm.write {
-                        realm.add(sessionObj)
+                    do {
+                        try! realm.write {
+                            realm.add(sessionObj)
+                        }
                     }
+                }
+                
+                if let userInRealm = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
+                    self.aimTokenSumLabel.text = "\(userInRealm.tokenPool.rounded())"
+                    self.ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").setValue(userInRealm.tokenPool)
                 }
                 
                 // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
                 let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
-                                
+                
                 // Transfer the session loaded to Apple Watch app
                 do {
-//                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])
+                    //                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])
                     try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
                 } catch let error {
                     print(error)
@@ -210,8 +216,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
             })
         }
-
-        //        quoteView.isUserInteractionEnabled = false
+        
         var userLoginStatus = false
         let userLoginEmail = Auth.auth().currentUser?.email
         
@@ -255,14 +260,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     func handleLoginRegister() {
         performSegue(withIdentifier: "showLoginPageSegue", sender: self)
-    }
-    
-    @IBAction func signOutButtonPressed(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError {
-            print(signOutError)
-        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

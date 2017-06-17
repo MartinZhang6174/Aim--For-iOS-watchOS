@@ -12,6 +12,7 @@ import RealmSwift
 class AimUser: Object {
     dynamic var userName: String? = nil
     dynamic var email: String = ""
+    dynamic var tokenPool: Float = 0.0
     let sessions = List<AimSession>()
 // Specify properties to ignore (Realm won't persist these)
     

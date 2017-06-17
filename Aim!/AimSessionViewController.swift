@@ -10,6 +10,8 @@ import UIKit
 import CoreMotion
 import CoreLocation
 import UserNotifications
+import RealmSwift
+import Firebase
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
     
@@ -17,6 +19,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     var timerManager = TimerManager()
     
+    var firebaseTokenContainer: Float = 0
     var tokenContainer: Float = 0
     
     var motionManager = CMMotionManager()
@@ -103,21 +106,17 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         content.body = "Token earned: \(tokenContainer.rounded()) 🏆"
         content.sound = UNNotificationSound.default()
         
-        //   To Present image in notification, this may be needed when my logo is designed:
+        let realm = try! Realm()
+        do {
+            let user = try realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)
+            try realm.write {
+                user?.tokenPool += tokenContainer
+                realm.add(user!, update: true)
+            }
+        } catch let error {
+            print(error)
+        }
         
-        //        if let path = Bundle.main.path(forResource: "monkey", ofType: "png") {
-        //            let url = URL(fileURLWithPath: path)
-        //
-        //            do {
-        //                let attachment = try UNNotificationAttachment(identifier: "sampleImage", url: url, options: nil)
-        //                content.attachments = [attachment]
-        //            } catch {
-        //                print("attachment not found.")
-        //            }
-        //        }
-        
-        // Deliver the notification in five seconds.
-        // let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier:requestIdentifier, content: content, trigger: nil)
         
         UNUserNotificationCenter.current().delegate = self
@@ -128,13 +127,30 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
                 return
             }
         }
+        
+        if Auth.auth().currentUser?.uid != nil {
+            syncUserAndSessionInfo(with: tokenContainer)
+        }
+    }
+    
+    func syncUserAndSessionInfo(with tokens: Float) {
+        let fireRef = Database.database().reference()
+        let userIDPath = Auth.auth().currentUser?.uid as String! // Force unwrapping uid because this method is only called within a block where the app is sure about the user's login status.
+        fireRef.child("users").child(userIDPath!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let tokensOnCloud = snapshot.value as? Float {
+                // If user has tokens on cloud, add the amount he just gained
+                self.firebaseTokenContainer = tokensOnCloud + self.tokenContainer
+            }
+            // Create new field "Tokens" if this is his first session
+            fireRef.child("users").child(userIDPath!).child("Tokens").setValue(self.tokenContainer)
+        })
     }
     
     func outputAccelerometerData(acceleration: CMAcceleration) {
         let xDirectionAccel = acceleration.x
         let yDirectionAccel = acceleration.y
         // let zDirectionAccel = acceleration.z
-                
+        
         if abs(xDirectionAccel)>0.5 || abs(yDirectionAccel)>0.5 {
             print("BIG MOVE BRO!??")
             
