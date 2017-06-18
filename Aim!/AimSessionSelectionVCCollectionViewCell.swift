@@ -41,7 +41,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
                 if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
                     let force = (touch.force)/(touch.maximumPossibleForce)
                     print("Force: \(force)")
-                    if force > 0.4 {
+                    if force >= 0.0 {
                         super.touchesBegan(touches, with: event)
                     }
                 }

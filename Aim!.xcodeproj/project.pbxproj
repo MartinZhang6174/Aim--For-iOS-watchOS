@@ -307,8 +307,6 @@
 			children = (
 				9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */,
 				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
-				9C646DE01E7884B8007D4578 /* Phosphate Font */,
-				9C646DE61E788591007D4578 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,6 +342,7 @@
 				9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */,
 				9C646DE81E78859A007D4578 /* Supporting Files */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
+				9C646DE61E788591007D4578 /* Info.plist */,
 				9C9E49AE1EA0517700D5D368 /* Models */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
 				9C7F38361DC690050038BC2F /* Protocols */,
@@ -448,6 +447,7 @@
 		9CFFE2861DB3140C00895C3C /* UI Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C646DE01E7884B8007D4578 /* Phosphate Font */,
 				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
 				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
 				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,

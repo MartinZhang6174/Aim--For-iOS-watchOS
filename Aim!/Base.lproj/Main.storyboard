@@ -207,7 +207,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="135.5" y="110" width="43.5" height="26"/>
+                                <rect key="frame" x="136" y="110" width="43" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -220,7 +220,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="197" y="110" width="43.5" height="26"/>
+                                <rect key="frame" x="197" y="110" width="43" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT8-Zy-v91">
-                                                    <rect key="frame" x="35.5" y="7.5" width="29.5" height="77"/>
+                                                    <rect key="frame" x="35.5" y="8" width="29.5" height="77"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="64"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -298,30 +298,18 @@
                                     <outlet property="delegate" destination="z8h-kr-T6C" id="Aas-yI-JO0"/>
                                 </connections>
                             </collectionView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-re-LMr">
-                                <rect key="frame" x="37" y="144" width="300" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="zHZ-Bb-5LW"/>
-                                </constraints>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eai-0I-RGI">
-                                <rect key="frame" x="24" y="96" width="327" height="13"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="11"/>
-                                <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MARTIN ZHANG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brF-hW-iqW">
-                                <rect key="frame" x="7" y="8" width="360.5" height="70"/>
+                                <rect key="frame" x="7" y="8" width="361" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="24"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-kN-Jgu" userLabel="QuoteView" customClass="AimQuoteView" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="358.5" height="70"/>
+                                <rect key="frame" x="8" y="8" width="359" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="                 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-FH-w6q">
-                                        <rect key="frame" x="0.0" y="5.5" width="358.5" height="60"/>
+                                        <rect key="frame" x="0.0" y="5" width="359" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="8JY-lF-coG"/>
                                         </constraints>
@@ -345,23 +333,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="128-9V-qmd"/>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="centerX" secondItem="MPC-r0-gxY" secondAttribute="centerX" id="5z0-KJ-p90"/>
+                            <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="yNA-sf-FvZ" secondAttribute="bottom" constant="17" id="2oK-eN-BDA"/>
+                            <constraint firstItem="yNA-sf-FvZ" firstAttribute="baseline" secondItem="g0k-5i-ZEl" secondAttribute="baseline" id="3C9-Aw-vja"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="top" id="6Mj-yf-L3i"/>
-                            <constraint firstItem="Eai-0I-RGI" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leadingMargin" constant="8" id="9aY-hd-mGE"/>
                             <constraint firstAttribute="trailing" secondItem="HOz-8d-Ztb" secondAttribute="trailing" id="HXm-U4-ztW"/>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="g0k-5i-ZEl" secondAttribute="bottom" constant="8" symbolic="YES" id="JQk-yZ-Ars"/>
+                            <constraint firstItem="yNA-sf-FvZ" firstAttribute="bottom" secondItem="0iR-Zr-eJS" secondAttribute="bottom" id="IMg-Rm-91i"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" id="JVm-Js-r7l"/>
                             <constraint firstItem="HOz-8d-Ztb" firstAttribute="bottom" secondItem="kbo-Gh-4I7" secondAttribute="top" id="MJc-sm-xsQ"/>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="Eai-0I-RGI" secondAttribute="bottom" constant="35" id="NHD-Tx-oqk"/>
-                            <constraint firstItem="HOz-8d-Ztb" firstAttribute="top" secondItem="Wha-re-LMr" secondAttribute="bottom" constant="7" id="Rec-0Q-fzs"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="centerX" secondItem="HOz-8d-Ztb" secondAttribute="centerX" id="TXE-PL-1MB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Eai-0I-RGI" secondAttribute="trailing" constant="8" id="bPR-5z-w1t"/>
                             <constraint firstAttribute="trailing" secondItem="nLZ-kN-Jgu" secondAttribute="trailing" constant="8" id="d6E-Zg-AFU"/>
                             <constraint firstItem="0iR-Zr-eJS" firstAttribute="leading" secondItem="yNA-sf-FvZ" secondAttribute="trailing" constant="8" symbolic="YES" id="dwB-wP-F6C"/>
                             <constraint firstItem="nLZ-kN-Jgu" firstAttribute="leading" secondItem="MPC-r0-gxY" secondAttribute="leading" constant="8" id="gXw-VE-Ud0"/>
                             <constraint firstItem="nLZ-kN-Jgu" firstAttribute="top" secondItem="CpF-WS-574" secondAttribute="bottom" constant="8" id="nLE-Rm-ubP"/>
-                            <constraint firstItem="Wha-re-LMr" firstAttribute="top" secondItem="0iR-Zr-eJS" secondAttribute="bottom" constant="8" symbolic="YES" id="sKT-88-U9P"/>
                             <constraint firstItem="g0k-5i-ZEl" firstAttribute="leading" secondItem="0iR-Zr-eJS" secondAttribute="trailing" constant="8" symbolic="YES" id="y5V-Yx-3YV"/>
                         </constraints>
                     </view>
@@ -388,8 +371,6 @@
                         <outlet property="quoteAuthorLabel" destination="brF-hW-iqW" id="TDW-zk-fVI"/>
                         <outlet property="quoteLabel" destination="ImS-FH-w6q" id="wep-Y7-LnJ"/>
                         <outlet property="quoteView" destination="nLZ-kN-Jgu" id="cbF-DO-I9Q"/>
-                        <outlet property="uploadProgressView" destination="Wha-re-LMr" id="fQ0-36-ChF"/>
-                        <outlet property="userLoginStatusIndicatorLabel" destination="Eai-0I-RGI" id="sNF-P3-SBt"/>
                         <segue destination="RcJ-jj-8za" kind="show" identifier="mainMenuToSessionSegue" id="MNl-z0-Qqr"/>
                         <segue destination="rbB-dd-3z2" kind="presentation" identifier="segueToPopupViewController" id="Dpg-UN-TaN"/>
                         <segue destination="5gY-TM-HY8" kind="presentation" identifier="showLoginPageSegue" id="TnZ-09-S6k"/>
@@ -798,7 +779,7 @@
                         <color key="separatorColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection id="mZe-VH-FmX">
+                            <tableViewSection footerTitle="After disabling force touch selection on sessions, a gentle tap is required to start or add a session." id="mZe-VH-FmX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="gbD-2w-eKR">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -1209,6 +1190,6 @@
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TnZ-09-S6k"/>
+        <segue reference="vOC-lC-u1O"/>
     </inferredMetricsTieBreakers>
 </document>

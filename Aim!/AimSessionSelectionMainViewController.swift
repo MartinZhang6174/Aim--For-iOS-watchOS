@@ -259,9 +259,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             })
             
         }
-        
-        userLoginStatusIndicatorLabel.text = "\(userLoginStatus)\n\(String(describing: userLoginEmail))"
-        
+                
         let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
         let indexSet = IndexSet(integersIn: range)
         self.aimSessionCollectionView.reloadSections(indexSet)

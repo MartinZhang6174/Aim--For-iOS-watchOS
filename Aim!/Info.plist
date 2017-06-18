@@ -53,20 +53,10 @@
 	<string></string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>$(PRODUCT_NAME) media library use</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>$(PRODUCT_NAME) Bluetooth Peripheral use</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>$(PRODUCT_NAME) calendar events</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
-	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) contact use</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>$(PRODUCT_NAME) heath share use</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>$(PRODUCT_NAME) heath update use</string>
-	<key>NSHomeKitUsageDescription</key>
-	<string>$(PRODUCT_NAME) home kit use</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>$(PRODUCT_NAME) always uses location </string>
 	<key>NSLocationUsageDescription</key>
@@ -83,10 +73,6 @@
 	<string>$(PRODUCT_NAME) reminder use</string>
 	<key>NSSiriUsageDescription</key>
 	<string>$(PRODUCT_NAME) siri use</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>$(PRODUCT_NAME) speech use</string>
-	<key>NSVideoSubscriberAccountUsageDescription</key>
-	<string>$(PRODUCT_NAME) tvProvider use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>PhosphateProInline.otf</string>
