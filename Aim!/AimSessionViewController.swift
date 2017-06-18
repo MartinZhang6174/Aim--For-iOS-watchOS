@@ -92,18 +92,16 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     func handleTokenIncrements() {
         tokenContainer += AimTokenConversionManager.sharedInstance.currentTokenFactor()
         
-        let roundedTokens = Int(tokenContainer.rounded())
+        let roundedTokens = Int(tokenContainer)
         sessionTokensLabel.text = "\(roundedTokens)"
     }
     
     func timerComplete() {
         dismiss(animated: true, completion: nil)
         
-        print("This is where you need to send the users a NOTIFICATION!!!!!")
-        
         let content = UNMutableNotificationContent()
         content.title = "Aim! Session Completed!"
-        content.body = "Token earned: \(tokenContainer.rounded()) 🏆"
+        content.body = "Token earned: \(tokenContainer) 🏆"
         content.sound = UNNotificationSound.default()
         
         let realm = try! Realm()
@@ -142,7 +140,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
                 self.firebaseTokenContainer = tokensOnCloud + self.tokenContainer
             }
             // Create new field "Tokens" if this is his first session
-            fireRef.child("users").child(userIDPath!).child("Tokens").setValue(self.tokenContainer)
+            fireRef.child("users").child(userIDPath!).child("Tokens").setValue(self.firebaseTokenContainer)
         })
     }
     

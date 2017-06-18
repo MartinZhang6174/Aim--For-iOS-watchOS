@@ -144,6 +144,30 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
+            let realm = try! Realm()
+            
+            //            fireRef.child("users").child(userIDPath!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let tokensFetched = snapshot.value as? Float {
+                    let localUserObj = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)
+                    do {
+                        try realm.write {
+                            localUserObj?.tokenPool = tokensFetched
+                            realm.add(localUserObj!, update: true)
+                        }
+                        if let userInRealm = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
+                            self.aimTokenSumLabel.text = "\(userInRealm.tokenPool)"
+                        }
+                    } catch let err {
+                        print(err)
+                    }
+                    
+                }
+            })
+            
+
+            
             // Retrieve sessions:
             databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
                 let sessionTitle = snapshot.key
@@ -182,19 +206,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 self.aimSessionFetchedArray.insert(sessionObj, at: 0)
                 
                 // Saving sessions fetched to Realm
-                let realm = try! Realm()
-                
                 if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
                     do {
                         try! realm.write {
                             realm.add(sessionObj)
                         }
                     }
-                }
-                
-                if let userInRealm = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
-                    self.aimTokenSumLabel.text = "\(userInRealm.tokenPool.rounded())"
-                    self.ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").setValue(userInRealm.tokenPool)
                 }
                 
                 // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
@@ -224,8 +241,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // When user isn't logged in
         if Auth.auth().currentUser?.uid == nil {
-            self.quoteView.isHidden = true
-            self.quoteAuthorLabel.isHidden = true
+//            self.quoteView.isHidden = true
+//            self.quoteAuthorLabel.isHidden = true
+            self.aimTokenSumLabel.text = "0.0"
+            self.aimHourSumLabel.text = "0.0"
         }
         
         let realm = try! Realm()
