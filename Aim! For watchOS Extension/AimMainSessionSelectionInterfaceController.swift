@@ -42,6 +42,11 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
         }
     }
     
+//    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+//        let session = sessionTableDataSource?[rowIndex]
+//        presentController(withName: "Session", context: session)
+//    }
+//    
     @IBAction func refreshButtonClicked() {
         updateDisplay()
     }

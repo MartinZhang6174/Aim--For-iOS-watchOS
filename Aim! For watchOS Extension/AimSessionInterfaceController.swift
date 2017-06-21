@@ -14,18 +14,19 @@ class AimSessionInterfaceController: WKInterfaceController {
     @IBOutlet var sessionTitleLabel: WKInterfaceLabel!
     @IBOutlet var sessionTimer: WKInterfaceTimer!
     
-    var session: AimSession!
+    var session: AimSessionLite!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        if let context = context as? AimSession {
+        if let context = context as? AimSessionLite {
             session = context
             
             setTitle(session.title)
             sessionTitleLabel.setText(session.title)
         }
+        sessionTimer.start()
     }
 
     override func willActivate() {
