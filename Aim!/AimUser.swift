@@ -14,11 +14,7 @@ class AimUser: Object {
     dynamic var email: String = ""
     dynamic var tokenPool: Float = 0.0
     let sessions = List<AimSession>()
-// Specify properties to ignore (Realm won't persist these)
-    
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+
     convenience init(registeredEmail: String) {
         self.init()
         self.email = registeredEmail

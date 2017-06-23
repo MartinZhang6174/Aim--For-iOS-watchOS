@@ -67,6 +67,11 @@
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
 		9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
+		9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
+		9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
+		9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
+		9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
+		9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */; };
 		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
@@ -205,6 +210,7 @@
 		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
 		9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTokenConversionManager.swift; sourceTree = "<group>"; };
+		9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserLite.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 				9C9E49AF1EA0518A00D5D368 /* AimSession.swift */,
 				9C1035881EE0D7E800535645 /* AimUser.swift */,
 				9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */,
+				9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -875,14 +882,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */,
+				9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */,
 				9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */,
 				9C0D6B601EDAA7E900B0542D /* AimSessionSelectionTable.swift in Sources */,
 				9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */,
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
 				9C0D6B631EDAACEA00B0542D /* AimSessionRowController.swift in Sources */,
+				9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */,
 				9C1035931EE0DA0200535645 /* AimUser.swift in Sources */,
 				9C1035871EE0D7C300535645 /* AimSession.swift in Sources */,
+				9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */,
 				9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */,
+				9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */,
 				9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */,
 				9C73A47A1EDF943C007C7F1F /* AimSessionCentral.swift in Sources */,
 				9C0D6B5C1EDAA70D00B0542D /* AimMainSessionSelectionInterfaceController.swift in Sources */,

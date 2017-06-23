@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 import RealmSwift
 import Realm
 
@@ -16,11 +17,11 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
     @IBOutlet var sessionTable: AimSessionSelectionTable!
 
     var sessionTableDataSource: Results<AimSessionLite>?
+    let realm = try! Realm()
     
     override func awake(withContext context: Any?) {
-        super.awake(withContext: context) 
+        super.awake(withContext: context)
         // Configure interface objects here.
-        let realm = try! Realm()
         sessionTableDataSource = realm.objects(AimSessionLite.self)
         updateDisplay()
     }
@@ -38,6 +39,26 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
                 }
             } else {
                 print("No rows to display here.")
+            }
+        }
+    }
+    
+    override func didAppear() {
+        sendTokensInfoToCompanion()
+    }
+    
+    private func sendTokensInfoToCompanion() {
+        // ONLY UPDATING TOKENS, NEED TO IMPLEMENT OTHER ELEMENTS' SYNCHRONIZATION
+        if let user = realm.objects(AimUserLite.self).first {
+            let currentTokensOnWatch = user.tokens
+            let currenHoursOnWatch = user.hours
+            
+            let userValues = ["Tokens": currentTokensOnWatch, "Hours": currenHoursOnWatch] as [String: Any]
+            
+            do {
+                try WCSession.default().transferUserInfo(["UserInfo": userValues])
+            } catch let err {
+                print("Error communicating with ccmpanion device: \(err)")
             }
         }
     }

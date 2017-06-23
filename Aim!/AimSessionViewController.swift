@@ -20,7 +20,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var timerManager = TimerManager()
     
     var firebaseTokenContainer: Float = 0
-    var tokenContainer: Float = 0
+    var tokenContainer: Float = 0.0
     
     var motionManager = CMMotionManager()
     // Initializing a LocationManager to bypass Apple policies on categories of apps that are allowed to update accelerometer data in the background for more than 10 mins:
@@ -44,7 +44,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         // Add observers to handle timer label update and completed timer.
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.updateTimerLabel), name: NSNotification.Name(rawValue: TimerManager.notificationSecondTick), object: timerManager)
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.handleTokenIncrements), name: NSNotification.Name(rawValue: TimerManager.notificationOneMinutePoint), object: timerManager)
         
         updateTimerLabel()

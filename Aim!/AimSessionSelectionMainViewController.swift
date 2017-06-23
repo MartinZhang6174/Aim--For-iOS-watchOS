@@ -17,6 +17,8 @@ let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
 let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
+let NotificationUpdatedTokenFromWatch = "ReceivedUpdatedTokensFromWatchNotification"
+
 class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
@@ -45,11 +47,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var aimSessionFetchedArray = [AimSession]()
     
     @IBOutlet var aimSessionCollectionView: UICollectionView!
-    @IBOutlet weak var userLoginStatusIndicatorLabel: UILabel!
     @IBOutlet weak var aimTokenSumLabel: UILabel!
     @IBOutlet weak var aimTokenHourSeparaterImageView: UIImageView!
     @IBOutlet weak var aimHourSumLabel: UILabel!
-    @IBOutlet weak var uploadProgressView: UIProgressView!
     @IBOutlet var addSessionPopupView: AimSessionAddingPopUpView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthorLabel: UILabel!
@@ -102,6 +102,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
         }
         quoteFetchTask.resume()
+        
+        // Prepare for notifications from apple watch's token update:
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -157,7 +160,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             realm.add(localUserObj!, update: true)
                         }
                         if let userInRealm = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
-                            self.aimTokenSumLabel.text = "\(userInRealm.tokenPool)"
+                            DispatchQueue.main.async {
+                                self.aimTokenSumLabel.text = "\(userInRealm.tokenPool)"
+                            }
+                            // Transfer user info to apple watch app(maybe put this into the token sum label/button action too):
+                            let userInfoValues = ["Email": userInRealm.email, "TotalTokens": userInRealm.tokenPool] as [String : Any]
+                            
+                            do {
+                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
+                            } catch _ {
+                                print("Error sending user info.")
+                            }
                         }
                     } catch let err {
                         print(err)
@@ -219,7 +232,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 // Transfer the session loaded to Apple Watch app
                 do {
-                    //                    try WCSession.default().updateApplicationContext(["Session": sessionInfoValues])
                     try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
                 } catch let error {
                     print(error)
@@ -230,7 +242,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
                 let indexSet = IndexSet(integersIn: range)
                 self.aimSessionCollectionView.reloadSections(indexSet)
-                
             })
         }
         
@@ -253,11 +264,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
         } else {
             // If the use isn't logged in, delete all session data on WATCH APP
-            
             WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
                 print("Could not establish communications to WatchKit app.")
             })
-            
         }
                 
         let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
@@ -297,7 +306,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             sessionCell.configureForNewSession()
         }
-        
         sessionCell.layer.shadowRadius = 4.0
         sessionCell.layer.shadowOpacity = 0.7
         sessionCell.layer.shadowOffset = CGSize.zero
@@ -319,8 +327,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         self.selectedCellIndexPath = indexPath
         let selectedCell = collectionView.cellForItem(at: selectedCellIndexPath!)
         
+        // Last cell pressed:
         if indexPath.row == aimSessionFetchedArray.count {
-            togglingLastCell = true
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 selectedCell?.alpha = 0.4
@@ -331,15 +339,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     selectedCell?.isUserInteractionEnabled = true
                 })
             })
-            
-            if togglingLastCell == true {
-                quoteView.isUserInteractionEnabled = false
-            } else {
-                print("I ain't adding no session!")
-            }
-            
-            print("Last item in the collection view has been pressed.")
-            // animatePopupIn()
             performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
             
             // If this isn't yet the last, do an USUAL configuration:
@@ -412,17 +411,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let storageRef = Storage.storage().reference(withPath: "Users/SessionImages/\(uid))/(\(data.description)).jpg")
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
-            let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
+            storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
                 if (error != nil) {
                     print("\(String(describing: error?.localizedDescription))")
                     return
                 } else {
                     print("\(String(describing: metadata))")
                 }
-            }
-            uploadTask.observe(.progress) { [weak self] (snapshot) in
-                guard let progress = snapshot.progress else { return }
-                self?.uploadProgressView.progress = Float(progress.fractionCompleted)
             }
         } else {
             print("Please login to use feature.")
@@ -432,10 +427,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     // To be implemented(or no):
     func uploadMovieToFirebaseStorage(url: URL) {
         
-    }
-    
-    @IBAction func resetProgressButtonPressed(_ sender: Any) {
-        self.uploadProgressView.progress = 0.0
     }
     
     @IBAction func quoteViewDragged(_ sender: UIPanGestureRecognizer) {
@@ -452,6 +443,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 quoteCard?.center = quoteViewOriginalCentre
                 generator.impactOccurred()
             }, completion: nil)
+        }
+    }
+    
+    func handleTokenSumLabelUpdate() {
+        let realm = try! Realm()
+        if let currentUser = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
+            let currentTokens = currentUser.tokenPool
+            
+            ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").setValue(currentTokens, withCompletionBlock: { (error, databaseRef) in
+                if error != nil {
+                    print("Error updating tokens on Firebase: \(error)")
+                }
+            })
         }
     }
     

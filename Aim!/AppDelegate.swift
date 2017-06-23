@@ -10,13 +10,15 @@ import UIKit
 import Firebase
 import UserNotifications
 import WatchConnectivity
-import Realm
+import RealmSwift
 
-let NotificationAddedSessionOnPhone = "AddedSessionOnPhone"
-let NotificationAddedSessionOnWatch = "AddedSessionOnWatch"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let NotificationAddedSessionOnPhone = "AddedSessionOnPhone"
+    let NotificationAddedSessionOnWatch = "AddedSessionOnWatch"
+    let NotificationUpdatedTokenFromWatch = "ReceivedUpdatedTokensFromWatchNotification"
     
     var window: UIWindow?
     lazy var notificationCenter: NotificationCenter = {
@@ -112,6 +114,24 @@ extension AppDelegate: WCSessionDelegate {
         
         if WCSession.isSupported() {
             
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        if let userInfoFetched = userInfo["UserInfo"] as? [String: Any] {
+            if let tokens = userInfoFetched["Tokens"] as? Float, let hours = userInfoFetched["Hours"] as? Float {
+                let realm = try! Realm()
+                
+                if let currentRealmUser = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
+                    do {
+                        try! realm.write {
+                                currentRealmUser.tokenPool = tokens
+                            realm.add(currentRealmUser, update: true)
+                        }
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationUpdatedTokenFromWatch), object: self)
+                    }
+                }
+            }
         }
     }
     

@@ -44,14 +44,11 @@ class TimerManager {
         if isOn {
             aimTimer?.invalidate()
             aimTimer = nil
-            
-            print("Timer stopped.")
-            
-            
         }
     }
+    
     // MARK: - General Functions
-    @objc func secondTick() {
+    @objc private func secondTick() {
         elapsedTime += 1
         
         // print("\(self.elapsedTime) second.")
@@ -64,7 +61,7 @@ class TimerManager {
         }
     }
     
-    @objc func minutePoint() {
+    @objc private func minutePoint() {
         NotificationCenter.default.post(name: Notification.Name(TimerManager.notificationOneMinutePoint), object: self)
     }
 }
