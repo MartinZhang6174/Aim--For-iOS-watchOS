@@ -149,8 +149,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
             let realm = try! Realm()
             
-            //            fireRef.child("users").child(userIDPath!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
-            
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let tokensFetched = snapshot.value as? Float {
                     let localUserObj = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)
@@ -459,6 +457,21 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
+    func handleTokenSumReadingFromFirebase() {
+        if let userUID = Auth.auth().currentUser?.uid {
+            ref?.child("users").child(userUID).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let tokensFetched = snapshot.value as? Float {
+                    self.aimTokenSumLabel.text = "\(tokensFetched)"
+                } else {
+                    print("Could not refresh tokens.")
+                }
+            })
+        }
+    }
+    
+    @IBAction func refreshTokenButtonClicked(_ sender: Any) {
+        handleTokenSumReadingFromFirebase()
+    }
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -27,9 +27,6 @@ class AimSessionInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        //        let currentUserEmail =
-        //        realm.object(ofType: AimUser.self, forPrimaryKey: "")
-        
         timerManager.duration = sessionTimeInterval*60*25
         timerManager.startTimer()
         
@@ -44,12 +41,13 @@ class AimSessionInterfaceController: WKInterfaceController {
         if let context = context as? AimSessionLite {
             session = context
             
-            setTitle(session.title)
+//            setTitle(session.title)
             sessionTitleLabel.setText(session.title)
         }
     }
     
     @objc private func handleTimerCompletion() {
+        timerManager.stopTimer()
         sessionTokenTimer?.invalidate()
         
         // Saving to realm
@@ -72,8 +70,20 @@ class AimSessionInterfaceController: WKInterfaceController {
         sessionTimerLabel.setText(timerText)
     }
     
+    @IBAction func terminateSessionButtonClicked() {
+        timerManager.stopTimer()
+        sessionTokenTimer?.invalidate()
+        
+        dismiss()
+    }
+    
     @objc private func handleTokenIncrements() {
         sessionTokens += AimTokenConversionManager.sharedInstance.currentTokenFactor()
         sessionTokensLabel.setText("\(sessionTokens)")
+    }
+    
+    override func didDeactivate() {
+        timerManager.stopTimer()
+        sessionTokenTimer?.invalidate()
     }
 }

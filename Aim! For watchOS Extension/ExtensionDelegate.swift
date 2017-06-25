@@ -10,11 +10,22 @@ import WatchKit
 import WatchConnectivity
 import Realm
 import RealmSwift
+import UserNotifications
 
+@available(watchOSApplicationExtension 3.0, *)
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
         
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        
+        let userNotificationCenterObj = UNUserNotificationCenter.current()
+        userNotificationCenterObj.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            if error != nil {
+                print("User notification permission not granted: \(String(describing: error))")
+            } else {
+                print("User notification permission granted.")
+            }
+        }
         
         // Watch connectivity
         setupWatchConnectivity()
@@ -40,6 +51,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
 // MARK: - Watch connectivity
 
+@available(watchOSApplicationExtension 3.0, *)
 extension ExtensionDelegate: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {

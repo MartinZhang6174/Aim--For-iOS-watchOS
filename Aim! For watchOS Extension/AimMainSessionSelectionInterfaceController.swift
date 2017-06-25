@@ -72,10 +72,9 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
         updateDisplay()
     }
     
-//    @objc private func cleanItemsOnDisk() {
-//        let realm = try! Realm()
-//        realm.deleteAll()
-//    }
+    @IBAction func refreshContextMenuItemClicked() {
+        updateDisplay()
+    }
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         if let rowController = sessionTable.rowController(at: rowIndex) as? AimSessionRowController {

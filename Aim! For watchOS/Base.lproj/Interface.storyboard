@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Aim Main Interface Controller-->
+        <!--AimMainInterfaceController-->
         <scene sceneID="4hi-jR-Kag">
             <objects>
-                <controller id="Kcj-o3-Mv4" customClass="AimMainInterfaceController" customModule="Aim__Extension">
+                <controller identifier="AimMainInterfaceController" id="Kcj-o3-Mv4" customClass="AimMainInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="147" height="50" alignment="center" radius="7" id="uXT-To-DBm">
                             <items>
@@ -33,14 +33,14 @@
                         </separator>
                         <group width="1" height="23" alignment="left" id="XIY-yQ-kuI">
                             <items>
-                                <label width="70" alignment="left" verticalAlignment="center" text="3527.6" textAlignment="center" id="aUv-MC-XIt">
+                                <label width="70" alignment="left" verticalAlignment="center" text="N/A" textAlignment="center" id="aUv-MC-XIt">
                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
                                 </label>
                                 <separator alignment="center" verticalAlignment="center" id="pnK-IW-Sv9">
                                     <color key="color" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </separator>
-                                <label width="70" alignment="right" verticalAlignment="center" text="153.5" textAlignment="center" id="oSc-0H-2Wz">
+                                <label width="70" alignment="right" verticalAlignment="center" text="N/A" textAlignment="center" id="oSc-0H-2Wz">
                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
                                 </label>
@@ -59,7 +59,7 @@
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
                                     <connections>
-                                        <segue destination="h1y-vm-7uY" kind="modal" id="CAZ-xa-uKW"/>
+                                        <segue destination="h1y-vm-7uY" kind="push" id="CAZ-xa-uKW"/>
                                     </connections>
                                 </button>
                             </items>
@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="34" y="45.769230769230774"/>
         </scene>
-        <!--Interface Controller-->
+        <!--AimAwardsInterfaceController-->
         <scene sceneID="TbT-bV-o7I">
             <objects>
-                <controller id="h1y-vm-7uY">
+                <controller identifier="AimAwardsInterfaceController" id="h1y-vm-7uY">
                     <items>
                         <group width="1" height="30" alignment="center" id="MVK-Al-b8b">
                             <items>
@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="455" y="-106"/>
         </scene>
-        <!--Aim Main Session Selection Interface Controller-->
+        <!--Main-->
         <scene sceneID="4me-pA-pFC">
             <objects>
-                <controller id="2YE-aA-ly4" customClass="AimMainSessionSelectionInterfaceController" customModule="Aim__Extension">
+                <controller identifier="AimMainSessionSelectionInterfaceController" title="Main" id="2YE-aA-ly4" customClass="AimMainSessionSelectionInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="1" height="30" alignment="left" id="IgH-xa-yuU">
                             <items>
@@ -143,6 +143,16 @@
                             <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                         </group>
                     </items>
+                    <menu key="menu" id="rhq-WT-KdR">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="tyL-Ks-xHP">
+                                <connections>
+                                    <action selector="refreshContextMenuItemClicked" destination="2YE-aA-ly4" id="OkM-8h-6CD"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="User" icon="info" id="VjT-dA-OUH"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="sessionTable" destination="GV8-80-drt" id="PGf-Pb-JgF"/>
                     </connections>
@@ -150,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="454" y="156"/>
         </scene>
-        <!--Aim Session Interface Controller-->
+        <!--Sessions-->
         <scene sceneID="0k8-f4-WQd">
             <objects>
-                <controller id="Txb-gJ-Yzy" customClass="AimSessionInterfaceController" customModule="Aim__Extension">
+                <controller identifier="AimSessionInterfaceControlller" title="Sessions" id="Txb-gJ-Yzy" customClass="AimSessionInterfaceController" customModule="Aim__Extension">
                     <items>
                         <group width="1" height="45" alignment="left" id="70R-6x-lFP">
                             <items>
@@ -186,10 +196,19 @@
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                    <connections>
+                                        <action selector="terminateSessionButtonClicked" destination="Txb-gJ-Yzy" id="FfP-Gf-4v5"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
                     </items>
+                    <menu key="menu" id="UO2-G3-cdW">
+                        <items>
+                            <menuItem title="Terminate" icon="decline" id="Azj-K6-whd"/>
+                            <menuItem title="Pause" icon="pause" id="OoF-a5-TUK"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="sessionTimerLabel" destination="Afs-Au-4rx" id="eob-7v-7Vm"/>
                         <outlet property="sessionTitleLabel" destination="mP7-qS-pkk" id="sRP-xN-ewM"/>
@@ -223,5 +242,51 @@
             </objects>
             <point key="canvasLocation" x="347" y="574"/>
         </scene>
+        <!--Aim User Info Interface Controller-->
+        <scene sceneID="C9p-Z6-7fc">
+            <objects>
+                <controller id="arK-KR-Lgu" customClass="AimUserInfoInterfaceController" customModule="Aim__Extension">
+                    <items>
+                        <group width="1" alignment="left" id="51i-it-z3n">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" semanticContentAttribute="forceLeftToRight" text="martinzhang.development@gmail.com" textAlignment="center" minimumScaleFactor="0.69999999999999996" id="ZaN-vO-bOV">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                </label>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="MkY-Xz-rfN">
+                            <color key="color" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <group width="1" height="37" alignment="left" id="DAz-0f-kJH">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Hours:" textAlignment="center" id="vMk-7I-MIC">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" height="37" alignment="left" id="6u8-pc-n7f">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Tokens:" textAlignment="center" id="C0X-ca-fOu">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" height="37" alignment="left" id="Ybc-Qy-my9">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Awards:" textAlignment="center" id="LAM-gT-Dvi">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="564" y="424"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
