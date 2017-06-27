@@ -32,7 +32,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
     
-    @IBOutlet weak var sessionTitleLabel: UILabel!
     @IBOutlet weak var sessionTimerLabel: UILabel!
     @IBOutlet weak var sessionTokensLabel: UILabel!
     
@@ -40,6 +39,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        self.title = sessionTitleStringValue
         
         // Add observers to handle timer label update and completed timer.
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.updateTimerLabel), name: NSNotification.Name(rawValue: TimerManager.notificationSecondTick), object: timerManager)
@@ -59,10 +59,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             }
         }
         locationManager.startUpdatingLocation()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        sessionTitleLabel.text = sessionTitleStringValue
     }
     
     // MARK: - AimSessionDurationInfoDelegate

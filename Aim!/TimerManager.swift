@@ -16,7 +16,7 @@ class TimerManager {
     static let notificationOneMinutePoint = "TimerNotificationOneMinutePoint"
     
     // MARK: - Properties
-    let timeInterval: TimeInterval = 0.005
+    let timeInterval: TimeInterval = 1.0
     
     var duration: TimeInterval = 0
     var elapsedTime: TimeInterval = 0
