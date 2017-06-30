@@ -28,7 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
-        UIApplication.shared.statusBarStyle = .lightContent
+        
+        // Loading user preferencess and applications of them:
+        let userPrefersLightStatusBarStyle = UserDefaults.standard.bool(forKey: "LightStatusBarStyle")
+        if userPrefersLightStatusBarStyle == true {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
         
         // Register for local push notifications:
         let center = UNUserNotificationCenter.current()

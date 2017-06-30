@@ -16,6 +16,12 @@ class AimSettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
+    @IBOutlet weak var statusBarStyleSwitch: UISwitch!
+    @IBOutlet weak var themeColorSwitch: UISwitch!
+    @IBOutlet weak var socialMediaSharingSwitch: UISwitch!
+    
+    lazy var defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,11 +31,17 @@ class AimSettingsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        let statusBarLightened = defaults.bool(forKey: "LightStatusBarStyle")
+        let themeColorDarkened = defaults.bool(forKey: "DarkenedThemeColor")
+        let socialSharingEnabled = defaults.bool(forKey: "EnabledSocialMediaSharing")
+        
+        statusBarStyleSwitch.setOn(statusBarLightened, animated: true)
+        themeColorSwitch.setOn(themeColorDarkened, animated: true)
+        socialMediaSharingSwitch.setOn(socialSharingEnabled, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.statusBarStyle = .lightContent
         
         if Auth.auth().currentUser?.uid != nil {
             loginButton.isEnabled = false
@@ -55,6 +67,29 @@ class AimSettingsTableViewController: UITableViewController {
             print(signOutError)
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        let statusBarLightened = statusBarStyleSwitch.isOn
+        let themeColorDarkened = themeColorSwitch.isOn
+        let socialSharingEnabled = socialMediaSharingSwitch.isOn
+        
+        defaults.set(statusBarLightened, forKey: "LightStatusBarStyle")
+        defaults.set(themeColorDarkened, forKey: "DarkenedThemeColor")
+        defaults.set(socialSharingEnabled, forKey: "EnabledSocialMediaSharing")
+        
+        saveApplicationPreferences(with: statusBarLightened, darkThemeColor: themeColorDarkened, and: socialSharingEnabled)
+    }
+    
+    private func saveApplicationPreferences(with lightStatusBarStyle: Bool, darkThemeColor: Bool, and socialSharingEnabled: Bool) {
+        if lightStatusBarStyle == true {
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else {
+            UIApplication.shared.statusBarStyle = .default
+        }
+        dismiss(animated: true) { 
+            print("Settings saving completed.")
+        }
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {

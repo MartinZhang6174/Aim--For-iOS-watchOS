@@ -295,7 +295,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
         if (indexPath.row < aimSessionFetchedArray.count) {
@@ -304,10 +303,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         } else {
             sessionCell.configureForNewSession()
         }
-//        sessionCell.layer.shadowRadius = 4.0
-//        sessionCell.layer.shadowOpacity = 0.7
-//        sessionCell.layer.shadowOffset = CGSize.zero
-        
         return sessionCell
     }
     

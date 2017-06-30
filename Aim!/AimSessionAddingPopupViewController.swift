@@ -10,12 +10,14 @@ import UIKit
 import MobileCoreServices
 import Firebase
 
-class AimSessionAddingPopupViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AimSessionAddingPopupViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var aimSessionTitleTextField: UITextField!
     @IBOutlet weak var aimSessionPrioritySwitch: UISwitch!
-    @IBOutlet weak var imageUploadProgressView: UIProgressView!
     @IBOutlet weak var aimSessionAddingPageView: UIView!
+    @IBOutlet weak var sessionDemoView: UIView!
+    @IBOutlet weak var sessionDemoImageView: UIImageView!
+    @IBOutlet weak var sessionDemoLabel: UILabel!
     
     // var sessionObject: AimSession?
     let imagePicker = UIImagePickerController()
@@ -29,6 +31,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
+        aimSessionTitleTextField.delegate = self
+        
         formatter.dateFormat = "dd.MM.yyyy"
         
         // sessionObject = AimSession(sessionTitle: "", dateInitialized: nil, image: nil, priority: false)
@@ -40,6 +44,9 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        sessionDemoView.clipsToBounds = true
+        sessionDemoView.layer.cornerRadius = 5.0
+        
         aimSessionAddingPageView.layer.cornerRadius = 7.0
         aimSessionAddingPageView.clipsToBounds = true
         
@@ -75,6 +82,16 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         present(alert, animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text == nil || textField.text == "" {
+            return false
+        } else {
+            sessionDemoLabel.text = textField.text
+            textField.resignFirstResponder()
+            return true
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         var selectedImageFromPicker: UIImage?
@@ -91,6 +108,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         
         // let picID = NSUUID.
         // uploadSessionImageToFirebaseStorageWithID(identifier: "", values: ["Title":"Chilling"])
+        
+        sessionDemoImageView.image = sessionImageSelected
         
         dismiss(animated: true, completion: nil)
     }
@@ -147,24 +166,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
                 })
                 
             }
-            
-            // (withPath: "Users/\(uid))/SessionImages/(\(identifier.description)).jpg")
-            
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
-            // putData method seems to only take in Data type?
-            /*let uploadTask = storageRef.putData(uploadData!, metadata: uploadMetadata) { (metadata, error) in
-             if (error != nil) {
-             print("\(String(describing: error?.localizedDescription))")
-             } else {
-             print("\(String(describing: metadata))")
-             }
-             }
-             uploadTask.observe(.progress) { [weak self] (snapshot) in
-             guard let progress = snapshot.progress else { return }
-             self?.imageUploadProgressView.progress = Float(progress.fractionCompleted)
-             }
-             }*/
         }
         
     }
