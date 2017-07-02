@@ -30,7 +30,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccY: Double = 0.0
     var currentMaxAccZ: Double = 0.0
     
-    let requestIdentifier = "AimLocalNotificationRequest" //identifier is to cancel the notification request
+    fileprivate let requestIdentifier = "AimSessionCompletionLocalNotificationRequest" //identifier is to cancel the notification request
     
     @IBOutlet weak var sessionTimerLabel: UILabel!
     @IBOutlet weak var sessionTokensLabel: UILabel!

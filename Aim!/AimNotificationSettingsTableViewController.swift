@@ -8,8 +8,10 @@
 
 import UIKit
 import BEMCheckBox
+import Foundation
+import UserNotifications
 
-class AimNotificationSettingsTableViewController: UITableViewController {
+class AimNotificationSettingsTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
     @IBOutlet weak var reminderSwitch: UISwitch!
     
@@ -30,6 +32,8 @@ class AimNotificationSettingsTableViewController: UITableViewController {
     @IBOutlet weak var sunCheckBox: BEMCheckBox!
     
     @IBOutlet weak var reminderTimePicker: UIDatePicker!
+    
+    fileprivate let requestIdentifier = "AimAppUseReminderLocalNotification"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -240,7 +244,193 @@ class AimNotificationSettingsTableViewController: UITableViewController {
     
     @IBAction func saveSettingsButtonClicked(_ sender: Any) {
         // Save reminder settings
+        if reminderSwitch.isOn {
+            let pickedDate = reminderTimePicker.date
+            var calendar = Calendar.current
+            let pickedDateComponents = calendar.dateComponents([.hour, .minute], from: pickedDate)
+            print("\(pickedDateComponents.hour), \(pickedDateComponents.minute)")
+            if monCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 2
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if tueCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 3
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if wedCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 4
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if thuCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 5
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if friCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 6
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if satCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 7
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+            if sunCheckBox.on {
+                var date = DateComponents()
+                date.weekday = 1
+                date.hour = pickedDateComponents.hour!
+                date.minute = pickedDateComponents.minute!
+                
+                let content = UNMutableNotificationContent()
+                content.title = "Time to use Aim!"
+                content.body = "Aim! Boosts Your Productivity."
+                content.sound = UNNotificationSound.default()
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().delegate = self
+                UNUserNotificationCenter.current().add(request){(error) in
+                    
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                }
+            }
+        } else {
+            let userNotificationCentre = UNUserNotificationCenter.current()
+            userNotificationCentre.removePendingNotificationRequests(withIdentifiers: [requestIdentifier])
+        }
+    }
+    
+    // MARK: User Notification Delegate
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
+        print("Notification being triggered")
+        //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier{
+            completionHandler( [.alert,.sound,.badge])
+        }
     }
 }
