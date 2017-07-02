@@ -67,6 +67,7 @@
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
 		9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
+		9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */; };
 		9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
 		9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
@@ -211,6 +212,7 @@
 		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
 		9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTokenConversionManager.swift; sourceTree = "<group>"; };
+		9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCurrentUserRemindersTableViewController.swift; sourceTree = "<group>"; };
 		9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserLite.swift; sourceTree = "<group>"; };
 		9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserInfoInterfaceController.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				9C153F9D1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift */,
 				9C1944161EEF7F3800F9C68D /* AimUserAccountInfoViewController.swift */,
 				9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */,
+				9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */,
 				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
 				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,
+				9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */,
 				9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */,
 				9C73A4781EDF85D5007C7F1F /* AimSessionCentral.swift in Sources */,
 				9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */,

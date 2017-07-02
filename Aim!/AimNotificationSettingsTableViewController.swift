@@ -33,6 +33,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
     
     @IBOutlet weak var reminderTimePicker: UIDatePicker!
     
+    lazy var defaults = UserDefaults.standard
+    
     fileprivate let requestIdentifier = "AimAppUseReminderLocalNotification"
     
     override func viewDidLoad() {
@@ -57,6 +59,30 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
         reminderTimePicker.setValue(aimApplicationThemeOrangeColor, forKey: "textColor")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if defaults.string(forKey: "AimUserMondaysReminderInfo") == nil {
+            monCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserTuesdaysReminderInfo") == nil {
+            tueCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserWednesdaysReminderInfo") == nil {
+            wedCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserThursdaysReminderInfo") == nil {
+            thuCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserFridaysReminderInfo") == nil {
+            friCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserSaturdaysReminderInfo") == nil {
+            satCheckBox.setOn(true, animated: true)
+        }
+        if defaults.string(forKey: "AimUserSundaysReminderInfo") == nil {
+            sunCheckBox.setOn(true, animated: true)
+        }
+    }
+    
     @IBAction func switchClicked(_ sender: Any) {
         if reminderSwitch.isOn {
             monCheckBox.tintColor = aimApplicationThemeOrangeColor
@@ -75,7 +101,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
             friCheckBox.isEnabled = true
             satCheckBox.isEnabled = true
             sunCheckBox.isEnabled = true
-
+            
             reminderTimePicker.setValue(aimApplicationThemeOrangeColor, forKey: "textColor")
             reminderTimePicker.isEnabled = true
             
@@ -246,9 +272,13 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
         // Save reminder settings
         if reminderSwitch.isOn {
             let pickedDate = reminderTimePicker.date
-            var calendar = Calendar.current
+            let calendar = Calendar.current
             let pickedDateComponents = calendar.dateComponents([.hour, .minute], from: pickedDate)
-            print("\(pickedDateComponents.hour), \(pickedDateComponents.minute)")
+            print("\(String(describing: pickedDateComponents.hour)), \(String(describing: pickedDateComponents.minute))")
+            let pickedReminderHourString = String(format: "%02d", pickedDateComponents.hour!)
+            let pickedReminderMinuteString = String(format: "%02d", pickedDateComponents.minute!)
+            let reminderTimeString = " \(pickedReminderHourString):\(pickedReminderMinuteString) "
+
             if monCheckBox.on {
                 var date = DateComponents()
                 date.weekday = 2
@@ -271,6 +301,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserMondaysReminderInfo")
             }
             if tueCheckBox.on {
                 var date = DateComponents()
@@ -294,6 +325,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserTuesdaysReminderInfo")
             }
             if wedCheckBox.on {
                 var date = DateComponents()
@@ -317,6 +349,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserWednesdaysReminderInfo")
             }
             if thuCheckBox.on {
                 var date = DateComponents()
@@ -340,6 +373,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserThursdaysReminderInfo")
             }
             if friCheckBox.on {
                 var date = DateComponents()
@@ -363,6 +397,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserFridaysReminderInfo")
             }
             if satCheckBox.on {
                 var date = DateComponents()
@@ -386,10 +421,12 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserSaturdaysReminderInfo")
             }
             if sunCheckBox.on {
                 var date = DateComponents()
                 date.weekday = 1
+                //                print("Set reminder at \(pickedDateComponents.hour!):\(pickedDateComponents.minute!)")
                 date.hour = pickedDateComponents.hour!
                 date.minute = pickedDateComponents.minute!
                 
@@ -409,10 +446,30 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                         return
                     }
                 }
+                saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserSundaysReminderInfo")
             }
         } else {
             let userNotificationCentre = UNUserNotificationCenter.current()
             userNotificationCentre.removePendingNotificationRequests(withIdentifiers: [requestIdentifier])
+            print("Cancelled all pending lcoal notification requests with identifier 'AimAppUseReminderLocalNotification'")
+            
+            defaults.removeObject(forKey: "AimUserMondaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserTuesdaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserWednesdaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserThursdaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserFridaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserSaturdaysReminderInfo")
+            defaults.removeObject(forKey: "AimUserSundaysReminderInfo")
+        }
+//        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func saveRemindersToUserDefaults(with timeString: String, and key: String) {
+        if let reminderTimeInDefaults = defaults.string(forKey: key) {
+            defaults.set(reminderTimeInDefaults+timeString, forKey: key)
+        } else {
+            defaults.set(timeString, forKey: key)
         }
     }
     
