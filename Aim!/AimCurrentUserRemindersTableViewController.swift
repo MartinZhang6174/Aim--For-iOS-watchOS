@@ -51,15 +51,22 @@ class AimCurrentUserRemindersTableViewController: UITableViewController {
             sundaysReminderLabel.text = "Sundays - \(sundaysReminderInfo)"
         }
     }
+    
     @IBAction func clearAllRemindersButtonClicked(_ sender: Any) {
-        defaults.removeObject(forKey: "AimUserMondaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserTuesdaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserWednesdaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserThursdaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserFridaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserSaturdaysReminderInfo")
-        defaults.removeObject(forKey: "AimUserSundaysReminderInfo")
-        
-        dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: "Alert", message: "Are you sure that you want to remove all existing reminders? Reminders that have been removed cannot be restored.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action) in
+            self.defaults.removeObject(forKey: "AimUserMondaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserTuesdaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserWednesdaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserThursdaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserFridaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserSaturdaysReminderInfo")
+            self.defaults.removeObject(forKey: "AimUserSundaysReminderInfo")
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            return
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

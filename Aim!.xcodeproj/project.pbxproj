@@ -68,6 +68,7 @@
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
 		9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
 		9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */; };
+		9CE036591F0AE03200A26E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
 		9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
 		9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
@@ -635,6 +636,7 @@
 			files = (
 				9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */,
 				9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
+				9CE036591F0AE03200A26E1A /* Info.plist in Resources */,
 				9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */,
 				9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */,
 				9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,

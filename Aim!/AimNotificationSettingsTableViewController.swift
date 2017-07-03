@@ -83,6 +83,10 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     @IBAction func switchClicked(_ sender: Any) {
         if reminderSwitch.isOn {
             monCheckBox.tintColor = aimApplicationThemeOrangeColor
@@ -274,7 +278,9 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
             let pickedDate = reminderTimePicker.date
             let calendar = Calendar.current
             let pickedDateComponents = calendar.dateComponents([.hour, .minute], from: pickedDate)
-            print("\(String(describing: pickedDateComponents.hour)), \(String(describing: pickedDateComponents.minute))")
+            let pickedHour = pickedDateComponents.hour!
+            let pickedMinute = pickedDateComponents.minute!
+            print("\(pickedHour), \(pickedMinute)")
             let pickedReminderHourString = String(format: "%02d", pickedDateComponents.hour!)
             let pickedReminderMinuteString = String(format: "%02d", pickedDateComponents.minute!)
             let reminderTimeString = " \(pickedReminderHourString):\(pickedReminderMinuteString) "
@@ -282,8 +288,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
             if monCheckBox.on {
                 var date = DateComponents()
                 date.weekday = 2
-                date.hour = pickedDateComponents.hour!
-                date.minute = pickedDateComponents.minute!
+                date.hour = pickedHour
+                date.minute = pickedMinute
                 
                 let content = UNMutableNotificationContent()
                 content.title = "Time to use Aim!"
