@@ -35,7 +35,13 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
     
     lazy var defaults = UserDefaults.standard
     
-    fileprivate let requestIdentifier = "AimAppUseReminderLocalNotification"
+    fileprivate let mondaysRequestIdentifier = "AimMondaysAppUseReminderLocalNotification"
+    fileprivate let tuesdaysRequestIdentifier = "AimTuesdaysAppUseReminderLocalNotification"
+    fileprivate let wednesdaysRequestIdentifier = "AimWednesdaysAppUseReminderLocalNotification"
+    fileprivate let thursdaysRequestIdentifier = "AimThursdaysAppUseReminderLocalNotification"
+    fileprivate let fridaysRequestIdentifier = "AimFridaysAppUseReminderLocalNotification"
+    fileprivate let saturdaysRequestIdentifier = "AimSaturdaysAppUseReminderLocalNotification"
+    fileprivate let sundaysRequestIdentifier = "AimSundaysAppUseReminderLocalNotification"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -297,7 +303,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: mondaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -321,7 +327,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: tuesdaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -345,7 +351,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: wednesdaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -369,7 +375,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: thursdaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -393,7 +399,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: fridaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -417,7 +423,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: saturdaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -442,7 +448,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 content.sound = UNNotificationSound.default()
                 
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                let request = UNNotificationRequest(identifier: "AimAppUseReminderLocalNotification", content: content, trigger: trigger)
+                let request = UNNotificationRequest(identifier: sundaysRequestIdentifier, content: content, trigger: trigger)
                 
                 UNUserNotificationCenter.current().delegate = self
                 UNUserNotificationCenter.current().add(request){(error) in
@@ -456,8 +462,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
             }
         } else {
             let userNotificationCentre = UNUserNotificationCenter.current()
-            userNotificationCentre.removePendingNotificationRequests(withIdentifiers: [requestIdentifier])
-            print("Cancelled all pending lcoal notification requests with identifier 'AimAppUseReminderLocalNotification'")
+            userNotificationCentre.removePendingNotificationRequests(withIdentifiers: [mondaysRequestIdentifier, tuesdaysRequestIdentifier, wednesdaysRequestIdentifier, thursdaysRequestIdentifier, fridaysRequestIdentifier, saturdaysRequestIdentifier, sundaysRequestIdentifier])
+            print("Cancelled all pending local notification requests.")
             
             defaults.removeObject(forKey: "AimUserMondaysReminderInfo")
             defaults.removeObject(forKey: "AimUserTuesdaysReminderInfo")
@@ -472,8 +478,9 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
     
     
     func saveRemindersToUserDefaults(with timeString: String, and key: String) {
-        if let reminderTimeInDefaults = defaults.string(forKey: key) {
-            defaults.set(reminderTimeInDefaults+timeString, forKey: key)
+        if defaults.string(forKey: key) != nil {
+            defaults.removeObject(forKey: key)
+            defaults.set(timeString, forKey: key)
         } else {
             defaults.set(timeString, forKey: key)
         }
@@ -492,7 +499,7 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
         print("Notification being triggered")
         //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
-        if notification.request.identifier == requestIdentifier{
+        if notification.request.identifier == mondaysRequestIdentifier || notification.request.identifier == tuesdaysRequestIdentifier || notification.request.identifier == wednesdaysRequestIdentifier || notification.request.identifier ==  thursdaysRequestIdentifier || notification.request.identifier == fridaysRequestIdentifier || notification.request.identifier ==  saturdaysRequestIdentifier || notification.request.identifier == sundaysRequestIdentifier {
             completionHandler( [.alert,.sound,.badge])
         }
     }

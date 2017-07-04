@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AimCurrentUserRemindersTableViewController: UITableViewController {
     
@@ -62,6 +63,9 @@ class AimCurrentUserRemindersTableViewController: UITableViewController {
             self.defaults.removeObject(forKey: "AimUserFridaysReminderInfo")
             self.defaults.removeObject(forKey: "AimUserSaturdaysReminderInfo")
             self.defaults.removeObject(forKey: "AimUserSundaysReminderInfo")
+            let centre = UNUserNotificationCenter.current()
+            centre.removePendingNotificationRequests(withIdentifiers: ["AimMondaysAppUseReminderLocalNotification", "AimTuesdaysAppUseReminderLocalNotification", "AimWednesdaysAppUseReminderLocalNotification", "AimThursdaysAppUseReminderLocalNotification", "AimFridaysAppUseReminderLocalNotification", "AimSaturdaysAppUseReminderLocalNotification", "AimSundaysAppUseReminderLocalNotification"])
+            
             self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
