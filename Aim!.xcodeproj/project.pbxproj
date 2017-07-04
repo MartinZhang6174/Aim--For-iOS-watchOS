@@ -34,6 +34,7 @@
 		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
 		9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */; };
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
+		9C576D4E1F0C2D330086D236 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */; };
 		9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */; };
 		9C62218D1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218C1EC2C78900D38B92 /* AimForceTouchSelectionSettingsTableViewController.swift */; };
@@ -70,7 +71,6 @@
 		9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */; };
 		9CE036591F0AE03200A26E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
 		9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
-		9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
 		9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
 		9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */; };
@@ -898,7 +898,6 @@
 				9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */,
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
 				9C0D6B631EDAACEA00B0542D /* AimSessionRowController.swift in Sources */,
-				9CE0E44B1EFC957B00428B19 /* TimerManager.swift in Sources */,
 				9C1035931EE0DA0200535645 /* AimUser.swift in Sources */,
 				9C1035871EE0D7C300535645 /* AimSession.swift in Sources */,
 				9CE0E4521EFECD9800428B19 /* AimUserInfoInterfaceController.swift in Sources */,
@@ -908,6 +907,7 @@
 				9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */,
 				9C73A47A1EDF943C007C7F1F /* AimSessionCentral.swift in Sources */,
 				9C0D6B5C1EDAA70D00B0542D /* AimMainSessionSelectionInterfaceController.swift in Sources */,
+				9C576D4E1F0C2D330086D236 /* TimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

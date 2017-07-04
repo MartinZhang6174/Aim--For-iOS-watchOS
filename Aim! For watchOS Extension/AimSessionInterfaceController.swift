@@ -65,7 +65,7 @@ class AimSessionInterfaceController: WKInterfaceController {
     }
     
     @objc private func updateTimerLabel() {
-        let currentTime = timerManager.elapsedTime
+        let currentTime = timerManager.totalElapsedTime
         let timerText = Utility.timeString(fromSeconds: currentTime)
         sessionTimerLabel.setText(timerText)
     }
