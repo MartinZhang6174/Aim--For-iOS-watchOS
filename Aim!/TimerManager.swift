@@ -16,12 +16,13 @@ class TimerManager {
     static let notificationOneMinutePoint = "TimerNotificationOneMinutePoint"
     
     // MARK: - Properties
-    let timeInterval: TimeInterval = 0.5
+    let timeInterval: TimeInterval = 1.0
     
     var duration: TimeInterval = 0
     var previousElapsedTime: TimeInterval = 0
     var startTime: Date?
     var lastMinuteNotificationSentAt: TimeInterval = 0
+    var timeEnteredBackground: Date?
     
     weak var aimTimer: Timer?
     var totalElapsedTime: TimeInterval {
@@ -38,17 +39,53 @@ class TimerManager {
             NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
         #endif
+        
+        #if os(watchOS)
+            NotificationCenter.default.addObserver(self, selector: #selector(watchDidEnterBackground), name: NSNotification.Name("AimWatchExtensionDeactivatedNotification"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(watchDidWakeFromBackground), name: NSNotification.Name("AimWatchExtensionReactivatedNotification"), object: nil)
+        #endif
     }
     
     
     @objc func didEnterBackground() {
         self.pauseTimer()
+        timeEnteredBackground = Date()
     }
     
     @objc func willEnterForeground() {
         if self.isOn { self.startTimer() }
+        let t = Date().timeIntervalSince(timeEnteredBackground!)
+        
+        // If the sum of previous time + t < 25, add
+        if previousElapsedTime + t < 25*60*timeInterval {
+            previousElapsedTime.add(t)
+            print(previousElapsedTime)
+        } else {
+            previousElapsedTime = 25*60*timeInterval
+            print(previousElapsedTime)
+        }
     }
-    // MARK: - Timer Functions
+    
+    @objc func watchDidEnterBackground() {
+        self.pauseTimer()
+        timeEnteredBackground = Date()
+    }
+    
+    @objc func watchDidWakeFromBackground() {
+        if self.isOn {
+            self.startTimer()
+        }
+        let t = Date().timeIntervalSince(timeEnteredBackground!)
+        
+        // If the sum of previous time + t < 25, add
+        if previousElapsedTime + t < 25*60*timeInterval {
+            previousElapsedTime.add(t)
+            print(previousElapsedTime)
+        } else {
+            previousElapsedTime = 25*60*timeInterval
+            print(previousElapsedTime)
+        }
+    }
     
     // MARK: - Timer Functions
     func startTimer() {
@@ -66,7 +103,7 @@ class TimerManager {
         self.startTime = nil
         self.aimTimer?.invalidate()
     }
-  
+    
     func resetTimer() {
         self.pauseTimer()
         self.previousElapsedTime = 0

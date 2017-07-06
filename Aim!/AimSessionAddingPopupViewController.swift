@@ -41,6 +41,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         // Do any additional setup after loading the view.
 
 //        aimSessionAddingPageView.clipsToBounds = true
+        
+        sessionImageSelected = sessionDemoImageView.image
     }
     
     override func viewWillAppear(_ animated: Bool) {
