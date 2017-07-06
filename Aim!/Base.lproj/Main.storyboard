@@ -1482,7 +1482,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="149" y="114" width="78" height="36"/>
+                                <rect key="frame" x="148.5" y="114" width="78" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1496,7 +1496,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session tokens:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSC-Ns-3NV">
                                 <rect key="frame" x="177" y="8.5" width="146.5" height="24"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1514,11 +1514,51 @@
                     </view>
                     <navigationItem key="navigationItem" id="RUg-9k-bNk"/>
                     <connections>
+                        <outlet property="movementWarningPopUp" destination="4fg-fT-CMD" id="XOt-Je-Gxq"/>
                         <outlet property="sessionTimerLabel" destination="yuK-6q-vAU" id="VsI-RE-wYq"/>
                         <outlet property="sessionTokensLabel" destination="3EI-Xd-TpI" id="rfj-Ys-vlf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBR-fi-c5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="4fg-fT-CMD" customClass="AimMovementWarningPopUpView" customModule="Aim_" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="270" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHJ-ok-YIO">
+                            <rect key="frame" x="74.5" y="10" width="122.5" height="32.5"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                            <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer does not fire if there is movement detected. Make sure device is flat on a plain." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omt-OA-0tj">
+                            <rect key="frame" x="8.5" y="54.5" width="253.5" height="91.5"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                            <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hrc-YK-IHt">
+                            <rect key="frame" x="90" y="145" width="90" height="45"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                            <state key="normal" title="Resume">
+                                <color key="titleColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="resumeButtonClicked:" destination="Ttv-fW-pMR" eventType="touchUpInside" id="29L-Hy-t6o"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Omt-OA-0tj" firstAttribute="centerY" secondItem="4fg-fT-CMD" secondAttribute="centerY" id="3kd-Fe-sPl"/>
+                        <constraint firstItem="sHJ-ok-YIO" firstAttribute="centerX" secondItem="4fg-fT-CMD" secondAttribute="centerX" id="7tH-NG-R1G"/>
+                        <constraint firstItem="Omt-OA-0tj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4fg-fT-CMD" secondAttribute="leading" constant="8" id="Eo2-AN-Ren"/>
+                        <constraint firstItem="Hrc-YK-IHt" firstAttribute="centerX" secondItem="4fg-fT-CMD" secondAttribute="centerX" id="PkG-yP-whO"/>
+                        <constraint firstAttribute="bottom" secondItem="Hrc-YK-IHt" secondAttribute="bottom" constant="10" id="UXv-bC-rkh"/>
+                        <constraint firstItem="Omt-OA-0tj" firstAttribute="centerX" secondItem="4fg-fT-CMD" secondAttribute="centerX" id="Udd-W5-QaC"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Omt-OA-0tj" secondAttribute="trailing" constant="8" id="cHe-Sb-kla"/>
+                        <constraint firstItem="sHJ-ok-YIO" firstAttribute="top" secondItem="4fg-fT-CMD" secondAttribute="top" constant="10" id="dQ5-VB-gdg"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="2471.1999999999998" y="2344.6776611694154"/>
         </scene>
@@ -1584,13 +1624,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="197" y="111" width="51" height="31"/>
+                                        <rect key="frame" x="196.5" y="111" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
@@ -1733,6 +1773,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>

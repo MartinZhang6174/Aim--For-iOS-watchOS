@@ -67,6 +67,7 @@
 		9CB6401F1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */; };
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
 		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
+		9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */; };
 		9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
 		9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */; };
 		9CE036591F0AE03200A26E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
@@ -212,6 +213,7 @@
 		9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimNotificationSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
 		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
+		9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimMovementWarningPopUpView.swift; sourceTree = "<group>"; };
 		9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTokenConversionManager.swift; sourceTree = "<group>"; };
 		9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCurrentUserRemindersTableViewController.swift; sourceTree = "<group>"; };
 		9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserLite.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */,
 				9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */,
 				9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */,
+				9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1035891EE0D7E800535645 /* AimUser.swift in Sources */,
+				9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */,
 				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
 				9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */,
 				9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */,

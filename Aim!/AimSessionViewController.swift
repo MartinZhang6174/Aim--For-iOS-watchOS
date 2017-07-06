@@ -30,6 +30,9 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccY: Double = 0.0
     var currentMaxAccZ: Double = 0.0
     
+    @IBOutlet var movementWarningPopUp: UIView!
+    var warningPopUpShowing = false
+    
     fileprivate let requestIdentifier = "AimSessionCompletionLocalNotificationRequest" //identifier is to cancel the notification request
     
     @IBOutlet weak var sessionTimerLabel: UILabel!
@@ -39,6 +42,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PhosphatePro-Inline", size: 20)!, NSForegroundColorAttributeName: aimApplicationThemeOrangeColor]
         self.title = sessionTitleStringValue
         
         // Add observers to handle timer label update and completed timer.
@@ -148,29 +152,49 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             print("BIG MOVE BRO!??")
             
             // Warn the user to put down the phone here:
+            timerManager.pauseTimer()
             
+            if warningPopUpShowing == false {
+                animateInWarningPopup()
+            }
         }
     }
-}
-
-extension AimSessionViewController: UNUserNotificationCenterDelegate{
     
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    @IBAction func resumeButtonClicked(_ sender: Any) {
+        timerManager.startTimer()
+        warningPopUpShowing = false
         
-        print("Tapped in notification")
-    }
-    
-    //This is key callback to present notification while the app is in foreground
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        print("Notification being triggered")
-        //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
-        //to distinguish between notifications
-        if notification.request.identifier == requestIdentifier{
-            
-            completionHandler( [.alert,.sound,.badge])
-            
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            self.movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -250, width: 270, height: 210)
+        }) { (finishedAnimating) in
+//            self.movementWarningPopUp.removeFromSuperview()
         }
     }
+        
+        func animateInWarningPopup() {
+            warningPopUpShowing = true
+            self.view.addSubview(movementWarningPopUp)
+            movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+                self.movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-135, width: 270, height: 210)
+            }, completion: nil)
+        }
+    }
+    
+    extension AimSessionViewController: UNUserNotificationCenterDelegate{
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            
+            print("Tapped in notification")
+        }
+        
+        //This is key callback to present notification while the app is in foreground
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            
+            print("Notification being triggered")
+            //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
+            //to distinguish between notifications
+            if notification.request.identifier == requestIdentifier{
+                completionHandler( [.alert,.sound,.badge])
+            }
+        }
 }
