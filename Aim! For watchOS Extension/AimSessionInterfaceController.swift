@@ -16,6 +16,8 @@ class AimSessionInterfaceController: WKInterfaceController {
     @IBOutlet var sessionTokensLabel: WKInterfaceLabel!
     @IBOutlet var sessionTimerLabel: WKInterfaceLabel!
     
+    lazy var notificationCenter = NotificationCenter.default
+    
     let realm = try! Realm()
     var session: AimSessionLite!
     var user: AimUser?
@@ -82,8 +84,8 @@ class AimSessionInterfaceController: WKInterfaceController {
         sessionTokensLabel.setText("\(sessionTokens)")
     }
     
-    override func didDeactivate() {
-        timerManager.stopTimer()
-        sessionTokenTimer?.invalidate()
-    }
+//    override func didDeactivate() {
+//        timerManager.stopTimer()
+//        sessionTokenTimer?.invalidate()
+//    }
 }

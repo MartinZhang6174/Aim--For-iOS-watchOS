@@ -466,6 +466,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
+        
+        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+        let indexSet = IndexSet(integersIn: range)
+        self.aimSessionCollectionView.reloadSections(indexSet)
     }
     // MARK: - Navigation
     

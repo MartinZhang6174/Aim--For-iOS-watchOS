@@ -410,7 +410,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -1356,7 +1356,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-6Y-qJx">
-                                                    <rect key="frame" x="100.5" y="41" width="174.5" height="317.5"/>
+                                                    <rect key="frame" x="100.5" y="42" width="174.5" height="317.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mondays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-eW-vTM">
                                                             <rect key="frame" x="0.0" y="0.0" width="174.5" height="26.5"/>
@@ -1472,8 +1472,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3w-SI-BPw">
-                                <rect key="frame" x="124" y="438" width="127" height="45"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                                <rect key="frame" x="135.5" y="444" width="104" height="39"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <state key="normal" title="Terminate">
                                     <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1481,25 +1481,33 @@
                                     <action selector="terminateSessionButtonClicked:" destination="Ttv-fW-pMR" eventType="touchUpInside" id="b9p-0L-daA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="160.5" y="219" width="54.5" height="56.5"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
+                                <rect key="frame" x="149" y="114" width="78" height="36"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EI-Xd-TpI">
-                                <rect key="frame" x="298" y="8" width="53" height="32.5"/>
-                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EI-Xd-TpI">
+                                <rect key="frame" x="327.5" y="8" width="23.5" height="24"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session tokens:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSC-Ns-3NV">
+                                <rect key="frame" x="177" y="8.5" width="146.5" height="24"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="H3w-SI-BPw" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="DOg-GK-nhU"/>
-                            <constraint firstItem="yuK-6q-vAU" firstAttribute="centerY" secondItem="82i-pR-ASD" secondAttribute="centerY" constant="-55" id="V7b-7X-VMY"/>
+                            <constraint firstItem="cSC-Ns-3NV" firstAttribute="centerY" secondItem="3EI-Xd-TpI" secondAttribute="centerY" id="Fe7-IB-gle"/>
+                            <constraint firstItem="yuK-6q-vAU" firstAttribute="centerY" secondItem="82i-pR-ASD" secondAttribute="centerY" constant="-170" id="V7b-7X-VMY"/>
                             <constraint firstItem="3EI-Xd-TpI" firstAttribute="top" secondItem="mPn-Qe-4NQ" secondAttribute="bottom" constant="8" id="WM0-xl-c4g"/>
                             <constraint firstItem="yuK-6q-vAU" firstAttribute="centerX" secondItem="82i-pR-ASD" secondAttribute="centerX" id="bhd-rX-fqF"/>
+                            <constraint firstItem="3EI-Xd-TpI" firstAttribute="leading" secondItem="cSC-Ns-3NV" secondAttribute="trailing" constant="4" id="ocJ-IX-9mR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3EI-Xd-TpI" secondAttribute="trailing" constant="8" id="rEA-bW-wzI"/>
                             <constraint firstItem="AVm-O4-5ri" firstAttribute="top" secondItem="H3w-SI-BPw" secondAttribute="bottom" constant="120" id="yxF-hv-Vhk"/>
                         </constraints>
@@ -1519,7 +1527,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="dep-SY-F2r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
@@ -1698,7 +1706,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3SO-Is-JD5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="iAE-u2-n0m">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="iAE-u2-n0m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1720,7 +1728,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RcJ-jj-8za" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="NaT-MH-eWy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="NaT-MH-eWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1742,7 +1750,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0i-GU-6Ng" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="IAM-7y-7zL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="IAM-7y-7zL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.13620567321777344" green="0.1051655188202858" blue="0.17277240753173828" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1772,6 +1780,6 @@
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vOC-lC-u1O"/>
+        <segue reference="TnZ-09-S6k"/>
     </inferredMetricsTieBreakers>
 </document>
