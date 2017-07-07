@@ -410,7 +410,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="40.5" width="110.5" height="28"/>
+                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -1356,7 +1356,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-6Y-qJx">
-                                                    <rect key="frame" x="100.5" y="42" width="174.5" height="317.5"/>
+                                                    <rect key="frame" x="100.5" y="41.5" width="174.5" height="317.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mondays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-eW-vTM">
                                                             <rect key="frame" x="0.0" y="0.0" width="174.5" height="26.5"/>
@@ -1451,7 +1451,38 @@
                     <view key="view" contentMode="scaleToFill" id="XEh-3Z-LXa">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aim!-badge-4" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-PZ-eUb">
+                                <rect key="frame" x="8" y="16" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="9NR-Mt-Zqy"/>
+                                    <constraint firstAttribute="width" constant="120" id="O0Z-xk-Yo8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aim!-badge-4" translatesAutoresizingMaskIntoConstraints="NO" id="7pi-K9-LKM">
+                                <rect key="frame" x="127" y="16" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="D4b-7n-rbb"/>
+                                    <constraint firstAttribute="width" constant="120" id="YaU-MY-Td4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aim!-badge-4" translatesAutoresizingMaskIntoConstraints="NO" id="Lha-80-SUB">
+                                <rect key="frame" x="247" y="16" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="4Dd-Kb-HB0"/>
+                                    <constraint firstAttribute="height" constant="120" id="nUI-dY-f79"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7pi-K9-LKM" firstAttribute="centerX" secondItem="XEh-3Z-LXa" secondAttribute="centerX" id="IYk-uo-cSc"/>
+                            <constraint firstItem="dEg-PZ-eUb" firstAttribute="top" secondItem="ahr-Vt-zEm" secondAttribute="bottom" constant="16" id="VZC-iL-JlM"/>
+                            <constraint firstItem="dEg-PZ-eUb" firstAttribute="leading" secondItem="XEh-3Z-LXa" secondAttribute="leadingMargin" constant="-8" id="mW6-bZ-GjA"/>
+                            <constraint firstItem="Lha-80-SUB" firstAttribute="trailing" secondItem="XEh-3Z-LXa" secondAttribute="trailingMargin" constant="8" id="tUU-tg-HVv"/>
+                            <constraint firstItem="7pi-K9-LKM" firstAttribute="top" secondItem="ahr-Vt-zEm" secondAttribute="bottom" constant="16" id="u1P-yg-l2N"/>
+                            <constraint firstItem="Lha-80-SUB" firstAttribute="top" secondItem="ahr-Vt-zEm" secondAttribute="bottom" constant="16" id="yET-px-S4M"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Awards" id="fCW-WM-ze1"/>
                 </viewController>
@@ -1482,7 +1513,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="148.5" y="114" width="78" height="36"/>
+                                <rect key="frame" x="149" y="114" width="78" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1624,13 +1655,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="196.5" y="111" width="51" height="31"/>
+                                        <rect key="frame" x="197" y="111" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
@@ -1810,6 +1841,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Aim!-badge-4" width="200" height="200"/>
         <image name="Already a member?" width="115" height="23"/>
         <image name="CameraFilled" width="27" height="21"/>
         <image name="Cancel" width="25" height="25"/>
