@@ -299,6 +299,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
+        // Roll back each item's configuration to its starting point in order to avoid duplicates
+        sessionCell.sessionSnaphotImageView.image = nil
+        sessionCell.sessionPriorityBadge.isHidden = false
+        sessionCell.sessionInfoLabel.text = ""
+        
         if (indexPath.row < aimSessionFetchedArray.count) {
             let aimSessionObject = aimSessionFetchedArray[indexPath.row]
             sessionCell.configure(from: aimSessionObject)
