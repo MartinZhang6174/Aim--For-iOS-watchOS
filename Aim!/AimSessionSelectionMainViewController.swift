@@ -185,7 +185,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
                 let sessionDate = self.fmt.date(from: sessionDateString!)
                 var sessionPriority = false
-                if snapshot.childSnapshot(forPath: "Priority").value as? String == "true" {
+                if snapshot.childSnapshot(forPath: "Priority").value as? String == "1" {
                     sessionPriority = true
                 }
                 let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
@@ -227,6 +227,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
                 let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
+                
+                
                 
                 // Transfer the session loaded to Apple Watch app
                 do {
@@ -467,9 +469,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
         
-        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-        let indexSet = IndexSet(integersIn: range)
-        self.aimSessionCollectionView.reloadSections(indexSet)
+//        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+//        let indexSet = IndexSet(integersIn: range)
+//        self.aimSessionCollectionView.reloadSections(indexSet)
     }
     // MARK: - Navigation
     

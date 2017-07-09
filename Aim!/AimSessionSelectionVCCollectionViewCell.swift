@@ -14,6 +14,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backgroundBlackView: UIView!
     @IBOutlet weak var sessionSnaphotImageView: UIImageView!
     @IBOutlet weak var addSessionPlusIconLabel: UILabel!
+    @IBOutlet weak var sessionPriorityBadge: UIImageView!
     
     override func awakeFromNib() {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +55,10 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         
         if let sessionImageURL = session.imageURL {
             sessionSnaphotImageView.downloadImageUsingCacheWithUrlString(imageURL: sessionImageURL)
+        }
+        
+        if session.isPrioritized == false {
+            self.sessionPriorityBadge.isHidden = true
         }
     }
     

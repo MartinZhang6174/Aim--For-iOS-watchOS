@@ -76,6 +76,7 @@
 		9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
 		9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */; };
 		9CE0E4521EFECD9800428B19 /* AimUserInfoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */; };
+		9CE7EAA51F11855300615E59 /* AimSessionPieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */; };
 		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
 		9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
@@ -218,6 +219,7 @@
 		9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCurrentUserRemindersTableViewController.swift; sourceTree = "<group>"; };
 		9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserLite.swift; sourceTree = "<group>"; };
 		9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserInfoInterfaceController.swift; sourceTree = "<group>"; };
+		9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionPieView.swift; sourceTree = "<group>"; };
 		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */,
 				9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */,
 				9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */,
+				9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
 				9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */,
 				9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */,
+				9CE7EAA51F11855300615E59 /* AimSessionPieView.swift in Sources */,
 				9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */,
 				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
 				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,

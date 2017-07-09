@@ -38,6 +38,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     @IBOutlet weak var sessionTimerLabel: UILabel!
     @IBOutlet weak var sessionTokensLabel: UILabel!
     
+    @IBOutlet weak var sessionPieView: AimSessionPieView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +88,10 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     func updateTimerLabel() {
         let currentTime = timerManager.totalElapsedTime
         sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
+        
+        var progress = timerManager.totalElapsedTime/1500*100
+        sessionPieView.ringProgress = CGFloat(progress)
+        print(progress)
     }
     
     func handleTokenIncrements() {
