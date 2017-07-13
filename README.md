@@ -8,10 +8,10 @@ iOS + watchOS
 
 ##iOS
 1. DONE.   Hook up session selection buttons on collection view to session or customization screen depends on user selection. 
-2. ONGOING.   Build session screen UI.
+2. DONE.   Build session screen UI.
 3. DONE.   Create "quit" button on session screen.
 4. ABORTED.   Remove or hide nav bar & tab bar when user in a session.
-5. ONGOING.   Build scoring system.
+5. DONE.   Build scoring system.
 6. DONE.   Have settings screen.
 7. DONE.   Notifications to user when session ends.
 8. ONGOING.   Notifications when user earning awards.
@@ -20,7 +20,7 @@ iOS + watchOS
 11. ONGOING.   Encourage users to swipe on quotes by awrads as incentives.
 12. DONE.   Request access to accelerometer of the device to detect motions during sessions.
 13. DONE.   Build internal timer to time users during sessons.
-14. ONGOING.   Draw indicator round circle(or creative shapes) around timer label.
+14. DONE.   Draw indicator round circle(or creative shapes) around timer label.
 15. DONE.   Add 3D Touch(force touch) to collection view on main VC to start sessions.
 16. DONE.   Add popup view when touched on add button on main VC.
 17. ONGOING.   Design artworks for awards.
