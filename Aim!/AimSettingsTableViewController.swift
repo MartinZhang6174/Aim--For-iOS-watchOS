@@ -16,8 +16,9 @@ class AimSettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
+    @IBOutlet weak var forceTouchSelectionSwitch: UISwitch!
     @IBOutlet weak var statusBarStyleSwitch: UISwitch!
-    @IBOutlet weak var themeColorSwitch: UISwitch!
+//    @IBOutlet weak var themeColorSwitch: UISwitch!
     @IBOutlet weak var socialMediaSharingSwitch: UISwitch!
     
     lazy var defaults = UserDefaults.standard
@@ -32,11 +33,18 @@ class AimSettingsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let statusBarLightened = defaults.bool(forKey: "LightStatusBarStyle")
-        let themeColorDarkened = defaults.bool(forKey: "DarkenedThemeColor")
+//        let themeColorDarkened = defaults.bool(forKey: "DarkenedThemeColor")
         let socialSharingEnabled = defaults.bool(forKey: "EnabledSocialMediaSharing")
+        if let forceTouchValue = defaults.float(forKey: "AimSessionForceRequiredToTouch") as? Float {
+            if forceTouchValue == 0.8 {
+                forceTouchSelectionSwitch.setOn(true, animated: true)
+            } else {
+                forceTouchSelectionSwitch.setOn(false, animated: true)
+            }
+        }
         
         statusBarStyleSwitch.setOn(statusBarLightened, animated: true)
-        themeColorSwitch.setOn(themeColorDarkened, animated: true)
+//        themeColorSwitch.setOn(themeColorDarkened, animated: true)
         socialMediaSharingSwitch.setOn(socialSharingEnabled, animated: true)
     }
     
@@ -66,22 +74,28 @@ class AimSettingsTableViewController: UITableViewController {
         } catch let signOutError {
             print(signOutError)
         }
+        defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         let statusBarLightened = statusBarStyleSwitch.isOn
-        let themeColorDarkened = themeColorSwitch.isOn
+//        let themeColorDarkened = themeColorSwitch.isOn
         let socialSharingEnabled = socialMediaSharingSwitch.isOn
         
         defaults.set(statusBarLightened, forKey: "LightStatusBarStyle")
-        defaults.set(themeColorDarkened, forKey: "DarkenedThemeColor")
+//        defaults.set(themeColorDarkened, forKey: "DarkenedThemeColor")
         defaults.set(socialSharingEnabled, forKey: "EnabledSocialMediaSharing")
         
-        saveApplicationPreferences(with: statusBarLightened, darkThemeColor: themeColorDarkened, and: socialSharingEnabled)
+        if forceTouchSelectionSwitch.isOn == true {
+            defaults.set(0.8, forKey: "AimSessionForceRequiredToTouch")
+        } else {
+            defaults.set(0.0, forKey: "AimSessionForceRequiredToTouch")
+        }
+        performSettingChanges(with: statusBarLightened, and: socialSharingEnabled)
     }
     
-    private func saveApplicationPreferences(with lightStatusBarStyle: Bool, darkThemeColor: Bool, and socialSharingEnabled: Bool) {
+    private func performSettingChanges(with lightStatusBarStyle: Bool, and socialSharingEnabled: Bool) {
         if lightStatusBarStyle == true {
             UIApplication.shared.statusBarStyle = .lightContent
         } else {

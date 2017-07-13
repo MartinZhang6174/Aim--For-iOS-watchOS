@@ -16,6 +16,9 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addSessionPlusIconLabel: UILabel!
     @IBOutlet weak var sessionPriorityBadge: UIImageView!
     
+    lazy var defaults = UserDefaults.standard
+    var forceRequiredToTouch: CGFloat = 0.0
+    
     override func awakeFromNib() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
@@ -23,6 +26,8 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         
         sessionSnaphotImageView.image = nil
         sessionInfoLabel.text = ""
+        
+        forceRequiredToTouch = CGFloat(defaults.float(forKey: "AimSessionForceRequiredToTouch"))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,7 +36,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
                 if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
                     let force = (touch.force)/(touch.maximumPossibleForce)
                     print("Force: \(force)")
-                    if force >= 0.0 {
+                    if force >= forceRequiredToTouch {
                         super.touchesBegan(touches, with: event)
                     }
                 }

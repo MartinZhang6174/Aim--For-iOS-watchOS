@@ -132,6 +132,17 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
+    func awardUserThreeBadge() {
+        let fireRef = Database.database().reference()
+        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("ThreeDayBadge") == false {
+                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
+            }
+        })
+            
+    
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         // Setting the database reference:
         ref = Database.database().reference()
@@ -144,6 +155,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         quoteAuthorLabel.isHidden = false
         quoteView.isHidden = false
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: Date())
+        let todayString = "\(components.year!)\(components.month!)\(components.day!)"
+        if Auth.auth().currentUser?.uid != nil {
+            if let numberOfSessionsArray = UserDefaults.standard.array(forKey: todayString) as? [Int] {
+                print(numberOfSessionsArray)
+                if numberOfSessionsArray.count >= 3 {
+                    awardUserThreeBadge()
+                }
+            }
+        }
         
         // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
@@ -176,8 +199,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     
                 }
             })
-            
-
             
             // Retrieve sessions:
             databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in

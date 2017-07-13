@@ -30,6 +30,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccY: Double = 0.0
     var currentMaxAccZ: Double = 0.0
     
+    lazy var defaults = UserDefaults.standard
+    
     @IBOutlet var movementWarningPopUp: UIView!
     var warningPopUpShowing = false
     
@@ -42,6 +44,33 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let fireRef = Database.database().reference()
+//        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
+        
+//        let currentDate = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: Date())
+        let todayString = "\(components.year!)\(components.month!)\(components.day!)"
+        print(todayString)
+        var todayArray = [Int]()
+        if let arrayInDefaults = defaults.array(forKey: todayString) as? [Int] {
+            todayArray = arrayInDefaults
+        }
+        todayArray.append(1)
+        
+        defaults.set(todayArray, forKey: todayString)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PhosphatePro-Inline", size: 20)!, NSForegroundColorAttributeName: aimApplicationThemeOrangeColor]
@@ -133,6 +162,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         
         if Auth.auth().currentUser?.uid != nil {
             syncUserAndSessionInfo(with: tokenContainer)
+            
+
         }
     }
     
@@ -197,8 +228,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
             
             print("Notification being triggered")
-            //May either present alert ,sound or increase badge while the app is in foreground too with ios 10
-            //to distinguish between notifications
             if notification.request.identifier == requestIdentifier{
                 completionHandler( [.alert,.sound,.badge])
             }
