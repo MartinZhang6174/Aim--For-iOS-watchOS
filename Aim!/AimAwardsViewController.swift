@@ -27,15 +27,17 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
         let ref = Database.database().reference()
         if let currentUserID = Auth.auth().currentUser?.uid {
             ref.child("users").child(currentUserID).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-                self.awardStringDict = snapshot.value as! [String : Any]
-                let lazyMapCollection = self.awardStringDict.keys
-                self.awardStringArray = Array(lazyMapCollection)
-                print(self.awardStringArray)
-                
-                self.aimAwardsCollectionView.delegate = self
-                self.aimAwardsCollectionView.dataSource = self
-                
-                self.aimAwardsCollectionView.reloadData()
+                if let awardsDict = snapshot.value as? [String: Any] {
+                    self.awardStringDict = awardsDict
+                    let lazyMapCollection = self.awardStringDict.keys
+                    self.awardStringArray = Array(lazyMapCollection)
+                    print(self.awardStringArray)
+                    
+                    self.aimAwardsCollectionView.delegate = self
+                    self.aimAwardsCollectionView.dataSource = self
+                    
+                    self.aimAwardsCollectionView.reloadData()
+                }
             })
         }
         

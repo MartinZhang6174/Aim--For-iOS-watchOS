@@ -123,9 +123,12 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     @IBAction func sessionAddingConfirmButtonClicked(_ sender: Any) {
-        handleSessionUpload()
-        dismiss(animated: true, completion: nil)
-        
+        if aimSessionTitleTextField.text! != "" {
+            handleSessionUpload()
+            dismiss(animated: true, completion: nil)
+        } else {
+            aimSessionTitleTextField.shake()
+        }
     }
     
     func handleSessionUpload() {

@@ -165,6 +165,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
                         print(error as Any)
                         return
+                    } else {
+                        print("Mismatched info")
                     }
                     
                     guard let uid = user?.uid else {
@@ -190,6 +192,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                 })
             } else {
                 self.endLoadingView(movingLoadingView: loginLoadingView)
+                self.passwordCreateEntryTextField.shake()
+                self.passwordConfirmEntryTextField.shake()
                 print("Invalid info.")
             }
         }
