@@ -23,6 +23,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     let imagePicker = UIImagePickerController()
     let databaseRef = Database.database().reference(fromURL: "https://aim-a3c43.firebaseio.com/")
     var sessionImageSelected: UIImage?
+    var sessionImageCompressed: Data?
     let formatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -95,7 +96,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+//        
         var selectedImageFromPicker: UIImage?
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
@@ -148,7 +149,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         let sessionID = NSUUID.init().uuidString
         if let uid = Auth.auth().currentUser?.uid {
             let storageRef = Storage.storage().reference().child("Users").child(uid).child("SessionImages").child("\(sessionID).png")
-            if let uploadData = UIImagePNGRepresentation(sessionImageSelected!) {
+            if let uploadData = UIImageJPEGRepresentation(sessionImageSelected!, 0.95) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {

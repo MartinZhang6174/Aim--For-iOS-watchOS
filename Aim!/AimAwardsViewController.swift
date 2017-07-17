@@ -15,29 +15,29 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
     
     var awardStringDict = [String: Any]()
     var awardStringArray = [String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.automaticallyAdjustsScrollViewInsets = false
-
+                
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.view.backgroundColor = aimApplicationThemePurpleColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let ref = Database.database().reference()
-        ref.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-            self.awardStringDict = snapshot.value as! [String : Any]
-            let lazyMapCollection = self.awardStringDict.keys
-            self.awardStringArray = Array(lazyMapCollection)
-            print(self.awardStringArray)
-            
-            self.aimAwardsCollectionView.delegate = self
-            self.aimAwardsCollectionView.dataSource = self
-            
-            self.aimAwardsCollectionView.reloadData()
-        })
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            ref.child("users").child(currentUserID).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+                self.awardStringDict = snapshot.value as! [String : Any]
+                let lazyMapCollection = self.awardStringDict.keys
+                self.awardStringArray = Array(lazyMapCollection)
+                print(self.awardStringArray)
+                
+                self.aimAwardsCollectionView.delegate = self
+                self.aimAwardsCollectionView.dataSource = self
+                
+                self.aimAwardsCollectionView.reloadData()
+            })
+        }
         
     }
     
