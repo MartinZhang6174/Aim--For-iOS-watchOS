@@ -28,6 +28,7 @@ iOS + watchOS
 19. DONE.   Add Firebase for login.
 20. DONE.   Add Firebase for session data storage.
 21. DONE.   Use Realm to store session data locally.
+22. ONGOING.   Scale then compress the images before uploading to Firebase Storage.
 
 # iOS App Snapshots:
 
