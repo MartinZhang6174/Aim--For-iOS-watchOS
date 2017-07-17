@@ -19,7 +19,11 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     lazy var defaults = UserDefaults.standard
     var forceRequiredToTouch: CGFloat = 0.0
     
+    
+    
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true

@@ -163,10 +163,9 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                 Auth.auth().createUser(withEmail: email, password: pwd1, completion: { (user: User?, error) in
                     if error != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
+                        self.emailAddressEntryTextField.shake()
                         print(error as Any)
                         return
-                    } else {
-                        print("Mismatched info")
                     }
                     
                     guard let uid = user?.uid else {
@@ -214,13 +213,13 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
             
             guard let email = emailAddressEntryTextField.text, let pwd = passwordCreateEntryTextField.text else {
                 endLoadingView(movingLoadingView: loginLoadingView)
-                print("Enter valid info.")
                 return
             }
             
             Auth.auth().signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
+                    self.passwordCreateEntryTextField.shake()
                     print(error as Any)
                 }
                 if Auth.auth().currentUser?.uid != nil {

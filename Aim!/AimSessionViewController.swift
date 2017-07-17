@@ -186,7 +186,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         // let zDirectionAccel = acceleration.z
         
         if abs(xDirectionAccel)>0.5 || abs(yDirectionAccel)>0.5 {
-            print("BIG MOVE BRO!??")
             
             // Warn the user to put down the phone here:
             timerManager.pauseTimer()
