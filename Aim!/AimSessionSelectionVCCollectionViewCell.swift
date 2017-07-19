@@ -19,7 +19,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     lazy var defaults = UserDefaults.standard
     var forceRequiredToTouch: CGFloat = 0.0
     
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -60,18 +60,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         todayArray.append(1)
         
         defaults.set(todayArray, forKey: todayString)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PhosphatePro-Inline", size: 20)!, NSForegroundColorAttributeName: aimApplicationThemeOrangeColor]
         self.title = sessionTitleStringValue

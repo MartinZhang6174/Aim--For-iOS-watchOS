@@ -132,17 +132,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
-    func awardUserThreeBadge() {
-        let fireRef = Database.database().reference()
-        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild("ThreeDayBadge") == false {
-                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
-            }
-        })
-            
-    
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         // Setting the database reference:
         ref = Database.database().reference()
@@ -235,7 +224,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     sessionObj.currentTimeAccumulated = intervals
                 }
                 
-                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+                if self.shouldInsert(item: sessionObj, into: self.aimSessionFetchedArray) {
+                    self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+                }
                 
                 // Saving sessions fetched to Realm
                 if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
@@ -248,8 +239,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 
                 // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
                 let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
-                
-                
                 
                 // Transfer the session loaded to Apple Watch app
                 do {
@@ -273,8 +262,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // When user isn't logged in
         if Auth.auth().currentUser?.uid == nil {
-//            self.quoteView.isHidden = true
-//            self.quoteAuthorLabel.isHidden = true
+            //            self.quoteView.isHidden = true
+            //            self.quoteAuthorLabel.isHidden = true
             self.aimTokenSumLabel.text = "0.0"
             self.aimHourSumLabel.text = "0.0"
         }
@@ -289,10 +278,24 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 print("Could not establish communications to WatchKit app.")
             })
         }
-                
+        
         let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
         let indexSet = IndexSet(integersIn: range)
         self.aimSessionCollectionView.reloadSections(indexSet)
+    }
+    
+    func shouldInsert(item: AimSession, into list: Array<AimSession>) -> Bool {
+        var shouldInsert = true
+        
+        for listEntry in list {
+            shouldInsert = shouldInsert && (listEntry.imageURL != item.imageURL)
+        }
+        
+        if (!shouldInsert) {
+            return shouldInsert
+        }
+
+        return shouldInsert
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {
@@ -495,10 +498,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
         
-//        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-//        let indexSet = IndexSet(integersIn: range)
-//        self.aimSessionCollectionView.reloadSections(indexSet)
+        //        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+        //        let indexSet = IndexSet(integersIn: range)
+        //        self.aimSessionCollectionView.reloadSections(indexSet)
     }
+    
+    func awardUserThreeBadge() {
+        let fireRef = Database.database().reference()
+        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("ThreeDayBadge") == false {
+                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
+            }
+        })
+        
+        
+    }
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
