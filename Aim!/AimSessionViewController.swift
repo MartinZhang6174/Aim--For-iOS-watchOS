@@ -19,6 +19,9 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     var timerManager = TimerManager()
     
+    var todayArray: [Int]?
+    var todayString: String?
+    
     var firebaseTokenContainer: Float = 0
     var tokenContainer: Float = 0.0
     
@@ -51,16 +54,21 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
 //        let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
-        let todayString = "\(components.year!)\(components.month!)\(components.day!)"
-        print(todayString)
-        var todayArray = [Int]()
-        if let arrayInDefaults = defaults.array(forKey: todayString) as? [Int] {
+        todayString = "\(components.year!)\(components.month!)\(components.day!)"
+        print(todayString!)
+        if let arrayInDefaults = defaults.array(forKey: todayString!) as? [Int] {
             todayArray = arrayInDefaults
         }
-        todayArray.append(1)
         
-        defaults.set(todayArray, forKey: todayString)
-
+        if todayArray == nil {
+            todayArray = [1]
+            defaults.set(todayArray, forKey: todayString!)
+        } else {
+            todayArray?.append(1)
+            print(todayArray!) // nil
+            defaults.set(todayArray, forKey: todayString!)
+        }
+        
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PhosphatePro-Inline", size: 20)!, NSForegroundColorAttributeName: aimApplicationThemeOrangeColor]
         self.title = sessionTitleStringValue
@@ -151,9 +159,10 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         
         if Auth.auth().currentUser?.uid != nil {
             syncUserAndSessionInfo(with: tokenContainer)
-            
-
         }
+        
+        todayArray?.append(1)
+        defaults.set(todayArray, forKey: todayString!)
     }
     
     func syncUserAndSessionInfo(with tokens: Float) {

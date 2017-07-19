@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                <rect key="frame" x="141.5" y="110" width="37.5" height="26"/>
+                                <rect key="frame" x="144" y="110" width="35" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -221,7 +221,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                <rect key="frame" x="197" y="110" width="37.5" height="26"/>
+                                <rect key="frame" x="197" y="110" width="35" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -401,7 +401,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-x5-1qx">
-                            <rect key="frame" x="8" y="2" width="41" height="32"/>
+                            <rect key="frame" x="8" y="2" width="46" height="33"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
                             <state key="normal" title="close">
                                 <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -420,7 +420,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="41.5" width="89.5" height="27"/>
+                            <rect key="frame" x="25" y="41" width="110.5" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -436,7 +436,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J62-6T-ISN">
-                            <rect key="frame" x="25" y="79.5" width="37.5" height="27"/>
+                            <rect key="frame" x="25" y="79" width="49" height="28"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -530,7 +530,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Accessibility" id="epe-if-at8">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="eEK-uy-07A">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="eEK-uy-07A">
                                         <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eEK-uy-07A" id="LJh-gg-9MH">
@@ -1400,7 +1400,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3w-SI-BPw" customClass="BFPaperButton">
-                                <rect key="frame" x="127.5" y="485" width="120" height="38"/>
+                                <rect key="frame" x="127.5" y="484" width="120" height="39"/>
                                 <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="fVr-Hd-Va7"/>
@@ -1455,19 +1455,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="150.5" y="92.5" width="75.5" height="35"/>
+                                <rect key="frame" x="148.5" y="92.5" width="78" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EI-Xd-TpI">
-                                <rect key="frame" x="328.5" y="8" width="22.5" height="24"/>
+                                <rect key="frame" x="327.5" y="8" width="23.5" height="24"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session tokens:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSC-Ns-3NV">
-                                <rect key="frame" x="182.5" y="8.5" width="142" height="24"/>
+                                <rect key="frame" x="177" y="8.5" width="146.5" height="24"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1875,6 +1875,6 @@
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TnZ-09-S6k"/>
+        <segue reference="vOC-lC-u1O"/>
     </inferredMetricsTieBreakers>
 </document>

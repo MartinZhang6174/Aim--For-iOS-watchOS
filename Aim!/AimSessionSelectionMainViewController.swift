@@ -154,6 +154,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 if numberOfSessionsArray.count >= 3 {
                     awardUserThreeBadge()
                 }
+                
+                if numberOfSessionsArray.count >= 4 {
+                    awardUserFourBadge()
+                }
+                
+                if numberOfSessionsArray.count >= 5 {
+                    awardUserFiveBadge()
+                }
             }
         }
         
@@ -294,7 +302,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         if (!shouldInsert) {
             return shouldInsert
         }
-
+        
         return shouldInsert
     }
     
@@ -497,10 +505,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
-        
-        //        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-        //        let indexSet = IndexSet(integersIn: range)
-        //        self.aimSessionCollectionView.reloadSections(indexSet)
     }
     
     func awardUserThreeBadge() {
@@ -510,8 +514,24 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
             }
         })
-        
-        
+    }
+    
+    func awardUserFourBadge() {
+        let fireRef = Database.database().reference()
+        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("FourDayBadge") == false {
+                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("FourDayBadge").setValue(true)
+            }
+        })
+    }
+    
+    func awardUserFiveBadge() {
+        let fireRef = Database.database().reference()
+        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("FiveDayBadge") == false {
+                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("FiveDayBadge").setValue(true)
+            }
+        })
     }
     
     // MARK: - Navigation
