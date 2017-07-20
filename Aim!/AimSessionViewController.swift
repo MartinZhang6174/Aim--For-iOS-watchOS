@@ -48,9 +48,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let fireRef = Database.database().reference()
-//        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
-        
 //        let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
@@ -58,15 +55,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         print(todayString!)
         if let arrayInDefaults = defaults.array(forKey: todayString!) as? [Int] {
             todayArray = arrayInDefaults
-        }
-        
-        if todayArray == nil {
-            todayArray = [1]
-            defaults.set(todayArray, forKey: todayString!)
-        } else {
-            todayArray?.append(1)
-            print(todayArray!) // nil
-            defaults.set(todayArray, forKey: todayString!)
         }
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
@@ -163,6 +151,15 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         
         todayArray?.append(1)
         defaults.set(todayArray, forKey: todayString!)
+        
+        if todayArray == nil {
+            todayArray = [1]
+            defaults.set(todayArray, forKey: todayString!)
+        } else {
+            todayArray?.append(1)
+            print(todayArray!) // nil
+            defaults.set(todayArray, forKey: todayString!)
+        }
     }
     
     func syncUserAndSessionInfo(with tokens: Float) {

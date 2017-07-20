@@ -23,7 +23,7 @@ class AimSessionInterfaceController: WKInterfaceController {
     var user: AimUser?
     var timerManager = TimerManager()
     var sessionTimeInterval: TimeInterval = 1.0
-    var sessionTokenTimer: Timer?
+    // var sessionTokenTimer: Timer?
     var sessionTokens: Float = 0.0
     
     override func awake(withContext context: Any?) {
@@ -37,20 +37,19 @@ class AimSessionInterfaceController: WKInterfaceController {
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionInterfaceController.handleTimerCompletion), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionInterfaceController.handleTokenIncrements), name: NSNotification.Name(rawValue: TimerManager.notificationOneMinutePoint), object: timerManager)
         
-        sessionTokenTimer = Timer.scheduledTimer(timeInterval: sessionTimeInterval*60, target: self, selector: #selector(handleTokenIncrements), userInfo: nil, repeats: true)
+        // sessionTokenTimer = Timer.scheduledTimer(timeInterval: sessionTimeInterval*60, target: self, selector: #selector(handleTokenIncrements), userInfo: nil, repeats: true)
         
         // Configure interface objects here.
         if let context = context as? AimSessionLite {
             session = context
             
-//            setTitle(session.title)
             sessionTitleLabel.setText(session.title)
         }
     }
     
     @objc private func handleTimerCompletion() {
         timerManager.stopTimer()
-        sessionTokenTimer?.invalidate()
+        // sessionTokenTimer?.invalidate()
         
         // Saving to realm
         if let userInRealm = realm.objects(AimUserLite.self).first {
@@ -74,7 +73,7 @@ class AimSessionInterfaceController: WKInterfaceController {
     
     @IBAction func terminateSessionButtonClicked() {
         timerManager.stopTimer()
-        sessionTokenTimer?.invalidate()
+        // sessionTokenTimer?.invalidate()
         
         dismiss()
     }

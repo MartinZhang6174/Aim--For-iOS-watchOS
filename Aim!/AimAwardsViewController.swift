@@ -13,8 +13,13 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var aimAwardsCollectionView: UICollectionView!
     
+    let awardManager = AimAwardManager()
+    
     var awardStringDict = [String: Any]()
     var awardStringArray = [String]()
+    var awardDescriptionsArray = [String]()
+    
+    var awardArray = [AimAwardBadge]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,13 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
                     self.awardStringArray = Array(lazyMapCollection)
                     print(self.awardStringArray)
                     
+                    for awardString in self.awardStringArray {
+                        let awardDescription = self.awardManager.getAwardDescription(for: awardString)
+                        let awardBadgeObj = AimAwardBadge(title: awardString, badgeDesc: awardDescription)
+                        
+                        self.awardArray.insert(awardBadgeObj, at: 0)
+                    }
+                    
                     self.aimAwardsCollectionView.delegate = self
                     self.aimAwardsCollectionView.dataSource = self
                     
@@ -48,16 +60,17 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return awardStringArray.count
+        return awardArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = aimAwardsCollectionView.dequeueReusableCell(withReuseIdentifier: "AwardCell", for: indexPath) as! AimAwardsBadgeCollectionViewCell
         
-        let cellImageName = awardStringArray[indexPath.row]
-        cell.badgeImageView.image = UIImage(named: cellImageName)
-        cell.badgeLabel.text = "Hahaha"
+        let awardObj = awardArray[indexPath.row]
+        
+        cell.badgeImageView.image = UIImage(named: awardObj.badgeTitle!)
+        cell.badgeLabel.text = awardObj.badgeDescription
         
         return cell
     }

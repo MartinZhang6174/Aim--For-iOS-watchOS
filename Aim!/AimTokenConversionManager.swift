@@ -14,7 +14,7 @@ struct AimTokenConversionManager {
     
     // A system built-in conversion factor that measures the number of tokens you get for a minute of Aiming!
     func currentTokenFactor() -> Float {
-        return 3.7459732
+        return 3.0
     }
     
 }
