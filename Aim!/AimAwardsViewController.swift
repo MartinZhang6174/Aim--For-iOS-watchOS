@@ -44,15 +44,16 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
                         
                         self.awardArray.insert(awardBadgeObj, at: 0)
                     }
-                    
                     self.aimAwardsCollectionView.delegate = self
                     self.aimAwardsCollectionView.dataSource = self
                     
                     self.aimAwardsCollectionView.reloadData()
                 }
             })
+        } else {
+            let notification = AimStandardStatusBarNotification()
+            notification.display(withMessage: "Please login to see your achievements!", forDuration: 1.5)
         }
-        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -1,6 +1,7 @@
 PODS:
   - BEMCheckBox (1.4.1)
   - BFPaperButton (2.1.2)
+  - CWStatusBarNotification (2.3.5)
   - Firebase/Auth (4.0.0):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -52,6 +53,7 @@ PODS:
 DEPENDENCIES:
   - BEMCheckBox
   - BFPaperButton
+  - CWStatusBarNotification
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
@@ -61,6 +63,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   BFPaperButton: a25fdd3ff6898bdbd5cc9b1334ca36adb0296b9f
+  CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -74,6 +77,6 @@ SPEC CHECKSUMS:
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
 
-PODFILE CHECKSUM: 11aa28f99dc9115845ae67eb9099e60bcce6e524
+PODFILE CHECKSUM: 6781b8e87baa0c4bda58526abf641ea0b04ccab7
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.1

@@ -66,6 +66,7 @@
 		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
 		9CA11E491F2171AA00DB03F9 /* AimAwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */; };
 		9CA11E4B1F2173CE00DB03F9 /* AimAwardBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */; };
+		9CA11E4D1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */; };
 		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
 		9CB6401F1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */; };
 		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
@@ -216,6 +217,7 @@
 		9C9E49AF1EA0518A00D5D368 /* AimSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSession.swift; sourceTree = "<group>"; };
 		9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardManager.swift; sourceTree = "<group>"; };
 		9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardBadge.swift; sourceTree = "<group>"; };
+		9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimStandardStatusBarNotification.swift; sourceTree = "<group>"; };
 		9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopUpView.swift; sourceTree = "<group>"; };
 		9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimNotificationSettingsTableViewController.swift; sourceTree = "<group>"; };
 		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */,
 				9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */,
 				9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */,
+				9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -732,7 +735,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		36CBCEB42B802E65335B31B4 /* [CP] Copy Pods Resources */ = {
@@ -762,7 +765,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7F5B1B64E771221D7B01EBA2 /* [CP] Check Pods Manifest.lock */ = {
@@ -777,7 +780,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		82DFAB52D7C8C4965A85C643 /* [CP] Embed Pods Frameworks */ = {
@@ -837,7 +840,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ED8156AAEAF196BB459A5694 /* [CP] Embed Pods Frameworks */ = {
@@ -885,6 +888,7 @@
 				9C8BD1BF1EE3400C0026188C /* AimImageCachingExtension.swift in Sources */,
 				9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */,
 				9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */,
+				9CA11E4D1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift in Sources */,
 				9C50B47E1F1D5C0D00924B95 /* UIViewShakeExtension.swift in Sources */,
 				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
 				9CA11E491F2171AA00DB03F9 /* AimAwardManager.swift in Sources */,

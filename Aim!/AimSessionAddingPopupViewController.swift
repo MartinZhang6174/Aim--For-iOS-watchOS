@@ -128,6 +128,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
             dismiss(animated: true, completion: nil)
         } else {
             aimSessionTitleTextField.shake()
+            let statusBarNotification = AimStandardStatusBarNotification()
+            statusBarNotification.display(withMessage: "Invalid session title!", forDuration: 1.5)
         }
     }
     

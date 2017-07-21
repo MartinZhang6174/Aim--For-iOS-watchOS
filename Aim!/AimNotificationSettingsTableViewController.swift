@@ -460,6 +460,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
                 }
                 saveRemindersToUserDefaults(with: reminderTimeString, and: "AimUserSundaysReminderInfo")
             }
+            let statusBarNotification = AimStandardStatusBarNotification()
+            statusBarNotification.display(withMessage: "Saved notification settings.", forDuration: 1.5)
         } else {
             let userNotificationCentre = UNUserNotificationCenter.current()
             userNotificationCentre.removePendingNotificationRequests(withIdentifiers: [mondaysRequestIdentifier, tuesdaysRequestIdentifier, wednesdaysRequestIdentifier, thursdaysRequestIdentifier, fridaysRequestIdentifier, saturdaysRequestIdentifier, sundaysRequestIdentifier])
@@ -472,8 +474,9 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
             defaults.removeObject(forKey: "AimUserFridaysReminderInfo")
             defaults.removeObject(forKey: "AimUserSaturdaysReminderInfo")
             defaults.removeObject(forKey: "AimUserSundaysReminderInfo")
+            let statusBarNotification = AimStandardStatusBarNotification()
+            statusBarNotification.display(withMessage: "Removed all notifications(include pending).", forDuration: 1.5)
         }
-//        dismiss(animated: true, completion: nil)
     }
     
     

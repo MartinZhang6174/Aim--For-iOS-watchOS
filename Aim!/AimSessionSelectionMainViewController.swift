@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 import Firebase
 import RealmSwift
 import WatchConnectivity
+import CWStatusBarNotification
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -58,7 +59,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-25, width: 50, height: 50)
+        let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-20, width: 50, height: 50)
         
         let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         self.moveLoadingView(loadingView: quoteLoadingView)
@@ -71,6 +72,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if error != nil {
                 print("\(error!.localizedDescription)")
                 self.endLoadingView(movingLoadingView: quoteLoadingView)
+                
+                let statusBarNotification = AimStandardStatusBarNotification()
+                OperationQueue.main.addOperation {
+                    statusBarNotification.display(withMessage: "Internet connection is down.", forDuration: 2.0)
+                }
                 return
             } else {
                 if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {

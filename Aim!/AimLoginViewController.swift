@@ -164,6 +164,9 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                     if error != nil {
                         self.endLoadingView(movingLoadingView: loginLoadingView)
                         self.emailAddressEntryTextField.shake()
+                        let statusBarNotification = AimStandardStatusBarNotification()
+                        statusBarNotification.display(withMessage: "The email address entered is in use, please log in instead.", forDuration: 1.5)
+                        
                         print(error as Any)
                         return
                     }
@@ -193,7 +196,9 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                 self.endLoadingView(movingLoadingView: loginLoadingView)
                 self.passwordCreateEntryTextField.shake()
                 self.passwordConfirmEntryTextField.shake()
-                print("Invalid info.")
+                
+                let notification = AimStandardStatusBarNotification()
+                notification.display(withMessage: "Two passwords do not match or are empty.", forDuration: 1.5)
             }
         }
     }
@@ -220,6 +225,9 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
                 if error != nil {
                     self.endLoadingView(movingLoadingView: loginLoadingView)
                     self.passwordCreateEntryTextField.shake()
+                    
+                    let statusBarNotification = AimStandardStatusBarNotification()
+                    statusBarNotification.display(withMessage: "One of your entries is incorrect. Please check again.", forDuration: 1.5)
                     print(error as Any)
                 }
                 if Auth.auth().currentUser?.uid != nil {

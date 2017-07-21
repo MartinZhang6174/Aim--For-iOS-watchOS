@@ -16,7 +16,7 @@ class AimSettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    @IBOutlet weak var forceTouchSelectionSwitch: UISwitch!
+//    @IBOutlet weak var forceTouchSelectionSwitch: UISwitch!
     @IBOutlet weak var statusBarStyleSwitch: UISwitch!
 //    @IBOutlet weak var themeColorSwitch: UISwitch!
     @IBOutlet weak var socialMediaSharingSwitch: UISwitch!
@@ -35,13 +35,13 @@ class AimSettingsTableViewController: UITableViewController {
         let statusBarLightened = defaults.bool(forKey: "LightStatusBarStyle")
 //        let themeColorDarkened = defaults.bool(forKey: "DarkenedThemeColor")
         let socialSharingEnabled = defaults.bool(forKey: "EnabledSocialMediaSharing")
-        if let forceTouchValue = defaults.float(forKey: "AimSessionForceRequiredToTouch") as? Float {
+        /*if let forceTouchValue = defaults.float(forKey: "AimSessionForceRequiredToTouch") as? Float {
             if forceTouchValue == 0.8 {
                 forceTouchSelectionSwitch.setOn(true, animated: true)
             } else {
                 forceTouchSelectionSwitch.setOn(false, animated: true)
             }
-        }
+        }*/
         
         statusBarStyleSwitch.setOn(statusBarLightened, animated: true)
 //        themeColorSwitch.setOn(themeColorDarkened, animated: true)
@@ -87,12 +87,14 @@ class AimSettingsTableViewController: UITableViewController {
 //        defaults.set(themeColorDarkened, forKey: "DarkenedThemeColor")
         defaults.set(socialSharingEnabled, forKey: "EnabledSocialMediaSharing")
         
-        if forceTouchSelectionSwitch.isOn == true {
+        /*if forceTouchSelectionSwitch.isOn == true {
             defaults.set(0.8, forKey: "AimSessionForceRequiredToTouch")
         } else {
             defaults.set(0.0, forKey: "AimSessionForceRequiredToTouch")
-        }
+        }*/
         performSettingChanges(with: statusBarLightened, and: socialSharingEnabled)
+        let notification = AimStandardStatusBarNotification()
+        notification.display(withMessage: "Settings saved and performed!", forDuration: 1.5)
     }
     
     private func performSettingChanges(with lightStatusBarStyle: Bool, and socialSharingEnabled: Bool) {

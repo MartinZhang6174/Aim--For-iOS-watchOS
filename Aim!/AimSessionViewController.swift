@@ -33,6 +33,13 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccY: Double = 0.0
     var currentMaxAccZ: Double = 0.0
     
+    let tokenManager = AimTokenConversionManager()
+    
+    var currentTokenFactor: Float?
+    
+    var timeEnteredBackground: TimeInterval?
+    var timeWokeFromBackground: TimeInterval?
+    
     lazy var defaults = UserDefaults.standard
     
     @IBOutlet var movementWarningPopUp: UIView!
@@ -48,7 +55,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let currentDate = Date()
+        //        let currentDate = Date()
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         todayString = "\(components.year!)\(components.month!)\(components.day!)"
@@ -56,6 +63,8 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         if let arrayInDefaults = defaults.array(forKey: todayString!) as? [Int] {
             todayArray = arrayInDefaults
         }
+        
+        currentTokenFactor = tokenManager.currentTokenFactor()
         
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PhosphatePro-Inline", size: 20)!, NSForegroundColorAttributeName: aimApplicationThemeOrangeColor]
@@ -65,6 +74,10 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.updateTimerLabel), name: NSNotification.Name(rawValue: TimerManager.notificationSecondTick), object: timerManager)
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.timerComplete), name: NSNotification.Name(rawValue: TimerManager.notificationComplete), object: timerManager)
         NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.handleTokenIncrements), name: NSNotification.Name(rawValue: TimerManager.notificationOneMinutePoint), object: timerManager)
+        
+        // Observe application life cycle to record tokens before & after background
+        NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.appEnteredBackground), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AimSessionViewController.appWokeFromBackground), name: .UIApplicationWillEnterForeground, object: nil)
         
         updateTimerLabel()
         
@@ -103,13 +116,12 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         let currentTime = timerManager.totalElapsedTime
         sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
         
-        var progress = timerManager.totalElapsedTime/1500*100
+        let progress = timerManager.totalElapsedTime/1500*100
         sessionPieView.ringProgress = CGFloat(progress)
-        print(progress)
     }
     
     func handleTokenIncrements() {
-        tokenContainer += AimTokenConversionManager.sharedInstance.currentTokenFactor()
+        tokenContainer += currentTokenFactor!
         
         let roundedTokens = Int(tokenContainer)
         sessionTokensLabel.text = "\(roundedTokens)"
@@ -198,32 +210,80 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
             self.movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: -250, width: 270, height: 210)
         }) { (finishedAnimating) in
-//            self.movementWarningPopUp.removeFromSuperview()
-        }
-    }
-        
-        func animateInWarningPopup() {
-            warningPopUpShowing = true
-            self.view.addSubview(movementWarningPopUp)
-            movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
-                self.movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-135, width: 270, height: 210)
-            }, completion: nil)
+            //            self.movementWarningPopUp.removeFromSuperview()
         }
     }
     
-    extension AimSessionViewController: UNUserNotificationCenterDelegate{
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            
-            print("Tapped in notification")
+    func animateInWarningPopup() {
+        warningPopUpShowing = true
+        self.view.addSubview(movementWarningPopUp)
+        movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height, width: 270, height: 210)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            self.movementWarningPopUp.frame = CGRect(x: self.view.bounds.size.width/2-135, y: self.view.bounds.size.height/2-135, width: 270, height: 210)
+        }, completion: nil)
+    }
+    
+    func appEnteredBackground() {
+       // print(tokenContainer)
+        
+        timeEnteredBackground = timerManager.previousElapsedTime
+        
+        let i1 = Int(timeEnteredBackground!.rounded()) % 60
+        
+        print(i1)
+        
+        print(timeEnteredBackground)
+    }
+    
+    func appWokeFromBackground() {
+       // print(tokenContainer)
+        
+        timeWokeFromBackground = timerManager.totalElapsedTime
+        
+        // Do nothing if user returned within the first minute
+        if Int(timeEnteredBackground!.rounded()) <= 60 && Int(timeWokeFromBackground!.rounded()) <= 60 {
+            print("DO NOTHING")
         }
         
-        //This is key callback to present notification while the app is in foreground
-        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Left in the first minute but returned to app after the first minute passed
+        if Int(timeEnteredBackground!.rounded()) <= 60 && Int(timeWokeFromBackground!.rounded()) >= 60 {
+            // let remainderToNextMinuteBeforeBackground = 0
+            let wholeSixtiesBeforeBackground = 0
             
-            print("Notification being triggered")
-            if notification.request.identifier == requestIdentifier{
-                completionHandler( [.alert,.sound,.badge])
-            }
+            let secondsAfterLastMinuteAfterBackground = Int(timeWokeFromBackground!.rounded()) % 60
+            let wholeSixtiesAfterBackground = Int(timeWokeFromBackground!.rounded()) - secondsAfterLastMinuteAfterBackground
+            
+            let timesOwedForTokenIncrements = (wholeSixtiesAfterBackground - wholeSixtiesBeforeBackground) / 60
+
+            tokenContainer += Float(timesOwedForTokenIncrements) * currentTokenFactor!
         }
+        
+        if Int(timeEnteredBackground!.rounded()) >= 60 && Int(timeWokeFromBackground!.rounded()) >= 60 {
+            
+            let secondsAfterLastMinuteBeforeBackground = Int(timeEnteredBackground!.rounded()) % 60
+            let wholeSixtiesBeforeBackground = Int(timeEnteredBackground!.rounded()) - secondsAfterLastMinuteBeforeBackground
+            let secondsAfterLastMinuteAfterBackground = Int(timeWokeFromBackground!.rounded()) % 60
+            let wholeSixtiesAfterBackground = Int(timeWokeFromBackground!.rounded()) - secondsAfterLastMinuteAfterBackground
+            
+            let timesOwedForTokenIncrements = (wholeSixtiesAfterBackground - wholeSixtiesBeforeBackground) / 60
+            
+            tokenContainer += Float(timesOwedForTokenIncrements) * currentTokenFactor!
+        }
+    }
+}
+
+extension AimSessionViewController: UNUserNotificationCenterDelegate{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("Notification being triggered")
+        if notification.request.identifier == requestIdentifier{
+            completionHandler( [.alert,.sound,.badge])
+        }
+    }
 }

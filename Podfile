@@ -12,6 +12,7 @@ pod ‘NVActivityIndicatorView’
 pod ‘RealmSwift’
 pod ‘BEMCheckBox’
 pod ‘BFPaperButton’
+pod ‘CWStatusBarNotification’
 
   #target 'Aim! Tests' do
     #inherit! :search_paths
