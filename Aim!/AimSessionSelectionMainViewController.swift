@@ -65,6 +65,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         self.quoteView.isUserInteractionEnabled = false
         
+        aimTokenHourSeparaterImageView.layer.cornerRadius = 0.50
+        
         var keys: NSDictionary?
         
         if let path = Bundle.main.path(forResource: "AimKeys", ofType: "plist") {
