@@ -76,6 +76,13 @@
             </objects>
             <point key="canvasLocation" x="34" y="45.769230769230774"/>
         </scene>
+        <!--AimUserNotLoggedInWarningInterfaceController-->
+        <scene sceneID="hvP-eA-Rvg">
+            <objects>
+                <controller identifier="AimUserNotLoggedInWarningInterfaceController" id="nlt-lb-GMO"/>
+            </objects>
+            <point key="canvasLocation" x="178" y="338"/>
+        </scene>
         <!--AimAwardsInterfaceController-->
         <scene sceneID="TbT-bV-o7I">
             <objects>

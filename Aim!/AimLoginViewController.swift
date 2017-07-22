@@ -69,11 +69,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
 //            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
 //                print("Could not establish communications to WatchKit app.")
 //            })
-            do {
+            /*do {
                 try WCSession.default().transferUserInfo(["UserAuthState": false])
             } catch let err {
                 print("Failed to delete files on watchOS, check connections. \(err)")
-            }
+            }*/
         }
     }
     

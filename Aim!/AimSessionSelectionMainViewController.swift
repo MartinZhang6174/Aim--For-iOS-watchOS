@@ -30,8 +30,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var delegate: AimSessionDurationInfoDelegate?
     var sessionManager = SessionDurationManager()
     
-    // CODEREVIEW: Committing code to a Public repository that contains API Keys is a very bad idea.  Consider placing this info inside a constants file that isn't in the repo or using some other way of hiding it.
-    let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
+    // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 120
     
@@ -66,48 +65,58 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         self.quoteView.isUserInteractionEnabled = false
         
-        // Getting quote content & author name:
-        let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
-        let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
-            if error != nil {
-                print("\(error!.localizedDescription)")
-                self.endLoadingView(movingLoadingView: quoteLoadingView)
-                
-                let statusBarNotification = AimStandardStatusBarNotification()
-                OperationQueue.main.addOperation {
-                    statusBarNotification.display(withMessage: "Internet connection is down.", forDuration: 2.0)
-                }
-                return
-            } else {
-                if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
-                    let json = jsonUnformatted as? [String: AnyObject]
-                    let content = json?["contents"] as? [String: AnyObject]
-                    let quoteString = content?["quote"] as? String
-                    let quoteAuthorName = content?["author"] as? String
-                    
-                    if let quote = quoteString {
-                        // Quote loading task completed:
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "AimKeys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = keys {
+            if let quotesAPIKey = dict["QuotesAPIKey"] as? String {
+                // Getting quote content & author name:
+                let quoteFetchingURL = URL(string: "http://quotes.rest/quote/search.json?api_key=\(quotesAPIKey)&category=\(quoteCategory)&maxlength=\(quoteMaxCharRestriction)")!
+                let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
+                    if error != nil {
+                        print("\(error!.localizedDescription)")
+                        self.endLoadingView(movingLoadingView: quoteLoadingView)
+                        
+                        let statusBarNotification = AimStandardStatusBarNotification()
                         OperationQueue.main.addOperation {
-                            self.quoteView.isUserInteractionEnabled = true
-                            self.endLoadingView(movingLoadingView: quoteLoadingView)
-                            self.quoteLabel.text = quote
-                            if quoteAuthorName != nil {
-                                self.quoteAuthorLabel.text = "by  " + quoteAuthorName!
-                            } else {
-                                self.quoteAuthorLabel.text = "Anonymous"
-                            }
+                            statusBarNotification.display(withMessage: "Internet connection is down.", forDuration: 2.0)
+                        }
+                        return
+                    } else {
+                        if let jsonUnformatted = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                            let json = jsonUnformatted as? [String: AnyObject]
+                            let content = json?["contents"] as? [String: AnyObject]
+                            let quoteString = content?["quote"] as? String
+                            let quoteAuthorName = content?["author"] as? String
                             
-                            UIView.animate(withDuration: 0.4, animations: {
-                                self.view.layoutIfNeeded()
-                            }, completion: { (finished) in
-                                print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
-                            })
+                            if let quote = quoteString {
+                                // Quote loading task completed:
+                                OperationQueue.main.addOperation {
+                                    self.quoteView.isUserInteractionEnabled = true
+                                    self.endLoadingView(movingLoadingView: quoteLoadingView)
+                                    self.quoteLabel.text = quote
+                                    if quoteAuthorName != nil {
+                                        self.quoteAuthorLabel.text = "by  " + quoteAuthorName!
+                                    } else {
+                                        self.quoteAuthorLabel.text = "Anonymous"
+                                    }
+                                    
+                                    UIView.animate(withDuration: 0.4, animations: {
+                                        self.view.layoutIfNeeded()
+                                    }, completion: { (finished) in
+                                        print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
+                                    })
+                                }
+                            }
                         }
                     }
                 }
+                quoteFetchTask.resume()
             }
-        }
-        quoteFetchTask.resume()
+            }
+        
         
         // Prepare for notifications from apple watch's token update:
         NotificationCenter.default.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)

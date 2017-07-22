@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import WatchConnectivity
 
 class AimSettingsTableViewController: UITableViewController {
     
@@ -16,10 +17,7 @@ class AimSettingsTableViewController: UITableViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-//    @IBOutlet weak var forceTouchSelectionSwitch: UISwitch!
     @IBOutlet weak var statusBarStyleSwitch: UISwitch!
-//    @IBOutlet weak var themeColorSwitch: UISwitch!
-    @IBOutlet weak var socialMediaSharingSwitch: UISwitch!
     
     lazy var defaults = UserDefaults.standard
     
@@ -45,7 +43,6 @@ class AimSettingsTableViewController: UITableViewController {
         
         statusBarStyleSwitch.setOn(statusBarLightened, animated: true)
 //        themeColorSwitch.setOn(themeColorDarkened, animated: true)
-        socialMediaSharingSwitch.setOn(socialSharingEnabled, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,29 +72,34 @@ class AimSettingsTableViewController: UITableViewController {
             print(signOutError)
         }
         defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        
+        /*WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+            print("Could not establish communications to WatchKit app: \(err)")
+        })*/
+        
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         let statusBarLightened = statusBarStyleSwitch.isOn
 //        let themeColorDarkened = themeColorSwitch.isOn
-        let socialSharingEnabled = socialMediaSharingSwitch.isOn
+//        let socialSharingEnabled = socialMediaSharingSwitch.isOn
         
         defaults.set(statusBarLightened, forKey: "LightStatusBarStyle")
 //        defaults.set(themeColorDarkened, forKey: "DarkenedThemeColor")
-        defaults.set(socialSharingEnabled, forKey: "EnabledSocialMediaSharing")
+//        defaults.set(socialSharingEnabled, forKey: "EnabledSocialMediaSharing")
         
         /*if forceTouchSelectionSwitch.isOn == true {
             defaults.set(0.8, forKey: "AimSessionForceRequiredToTouch")
         } else {
             defaults.set(0.0, forKey: "AimSessionForceRequiredToTouch")
         }*/
-        performSettingChanges(with: statusBarLightened, and: socialSharingEnabled)
+        performSettingChanges(with: statusBarLightened)
         let notification = AimStandardStatusBarNotification()
         notification.display(withMessage: "Settings saved and performed!", forDuration: 1.5)
     }
     
-    private func performSettingChanges(with lightStatusBarStyle: Bool, and socialSharingEnabled: Bool) {
+    private func performSettingChanges(with lightStatusBarStyle: Bool) {
         if lightStatusBarStyle == true {
             UIApplication.shared.statusBarStyle = .lightContent
         } else {
@@ -106,6 +108,25 @@ class AimSettingsTableViewController: UITableViewController {
         dismiss(animated: true) { 
             print("Settings saving completed.")
         }
+    }
+    
+    @IBAction func syncDataToWatchAppButtonClicked(_ sender: Any) {
+        // Dismiss the view to go to MainVC; there has code in viewDidAppear to send sessions over to watch app
+        
+        if Auth.auth().currentUser?.uid != nil {
+            let statusBarNotification = AimStandardStatusBarNotification()
+            statusBarNotification.display(withMessage: "Sessions on their way to your watch!", forDuration: 1.5)
+            
+            dismiss(animated: true, completion: nil)
+        } else {
+            let statusBarNotification = AimStandardStatusBarNotification()
+            statusBarNotification.display(withMessage: "Please login to use the watch app.", forDuration: 1.5)
+            
+            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+                print("Could not establish communications to WatchKit app: \(err)")
+            })
+        }
+        
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
