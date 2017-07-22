@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class AimAwardsBadgeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var badgeImageView: UIImageView!
-    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var badgeLabel: MarqueeLabel!
     
 }

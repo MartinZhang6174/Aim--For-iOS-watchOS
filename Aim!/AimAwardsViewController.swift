@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MarqueeLabel
 
 class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -27,7 +28,7 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
         self.view.backgroundColor = aimApplicationThemePurpleColor
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         let ref = Database.database().reference()
         if let currentUserID = Auth.auth().currentUser?.uid {
@@ -71,7 +72,15 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
         let awardObj = awardArray[indexPath.row]
         
         cell.badgeImageView.image = UIImage(named: awardObj.badgeTitle!)
+        
+        cell.badgeLabel.animationCurve = .curveEaseInOut
+        cell.badgeLabel.fadeLength = 5.0
+        cell.badgeLabel.lineBreakMode = .byTruncatingHead
         cell.badgeLabel.text = awardObj.badgeDescription
+        cell.badgeLabel.scrollDuration = 15.0
+        cell.badgeLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+        cell.badgeLabel.marqueeType = .MLContinuous
+        cell.badgeLabel.tapToScroll = true
         
         return cell
     }
