@@ -17,7 +17,7 @@ import FacebookLogin
 let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
 let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
-class AimLoginViewController: UIViewController, UITextFieldDelegate {
+class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButtonDelegate {
     
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
@@ -37,6 +37,15 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configuring Facebook login button
+        let fBLoginButton = LoginButton(readPermissions: [.publicProfile, .email])
+        fBLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(fBLoginButton)
+        let fBLoginTopConstraint = fBLoginButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 17)
+        let fBLoginBottomConstraint = fBLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        
+        NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginBottomConstraint])
         
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
@@ -65,17 +74,12 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillLayoutSubviews() {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser?.uid == nil {
-//            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
-//                print("Could not establish communications to WatchKit app.")
-//            })
-            /*do {
-                try WCSession.default().transferUserInfo(["UserAuthState": false])
-            } catch let err {
-                print("Failed to delete files on watchOS, check connections. \(err)")
-            }*/
-        }
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -130,6 +134,14 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate {
 //        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
 //            loginButton.bounds = CGRect(x: bounds.origin.x + 5, y: bounds.origin.y, width: bounds.size.width - 40, height: bounds.size.height)
 //        }, completion: nil)
+    }
+    
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        print("Did log out from Facebook.")
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {

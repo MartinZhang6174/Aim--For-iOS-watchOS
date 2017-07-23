@@ -11,7 +11,7 @@ import Firebase
 import UserNotifications
 import WatchConnectivity
 import RealmSwift
-
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         // Loading user preferencess and applications of them:
         let userPrefersLightStatusBarStyle = UserDefaults.standard.bool(forKey: "LightStatusBarStyle")
@@ -54,6 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        return handled
+    }
+    
     
     // CODEREVIEW: Remove any code which you are not using.  All the methods below have empty implementations.
     

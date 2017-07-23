@@ -20,6 +20,8 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.24.0):
     - FBSDKCoreKit
+  - Firebase (4.0.4):
+    - Firebase/Core (= 4.0.4)
   - Firebase/Auth (4.0.4):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -85,6 +87,7 @@ DEPENDENCIES:
   - CWStatusBarNotification
   - FacebookCore
   - FacebookLogin
+  - Firebase
   - Firebase/Auth
   - Firebase/Database
   - Firebase/Storage
@@ -116,6 +119,6 @@ SPEC CHECKSUMS:
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
 
-PODFILE CHECKSUM: 51874b428fa82598a5b7afd67bde206368d28679
+PODFILE CHECKSUM: 781bd6c91b6fb6dcca61bdc8da74e5725c89a1c5
 
 COCOAPODS: 1.2.1

@@ -17,10 +17,11 @@ pod ‘MarqueeLabel’
 pod 'FacebookCore'
 pod 'FacebookLogin'
 
-  #target 'Aim! Tests' do
-    #inherit! :search_paths
+  target 'Aim! Tests' do
+    inherit! :search_paths
      #Pods for testing
-  #end
+	pod ‘Firebase’
+  end
 
 end
 
@@ -30,10 +31,10 @@ target 'Aim! ' do
 
   # Pods for Aim! 
 
-  target 'Aim! Tests' do
-    inherit! :search_paths
+  #target 'Aim! Tests' do
+    #inherit! :search_paths
     # Pods for testing
-  end
+  #end
 
 end
 

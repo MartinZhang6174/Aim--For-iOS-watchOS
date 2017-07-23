@@ -604,6 +604,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
 						};
 					};
 					9C6890AD1DA5DA8D005CA654 = {
