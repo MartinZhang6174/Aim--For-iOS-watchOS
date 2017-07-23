@@ -77,7 +77,7 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
         cell.badgeLabel.fadeLength = 5.0
         cell.badgeLabel.lineBreakMode = .byTruncatingHead
         cell.badgeLabel.text = awardObj.badgeDescription
-        cell.badgeLabel.scrollDuration = 15.0
+        cell.badgeLabel.scrollDuration = 9.0
         cell.badgeLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
         cell.badgeLabel.marqueeType = .MLContinuous
         cell.badgeLabel.tapToScroll = true

@@ -10,6 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import Firebase
 import WatchConnectivity
+import FacebookLogin
 
 // CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
 

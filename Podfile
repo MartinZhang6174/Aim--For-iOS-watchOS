@@ -14,6 +14,8 @@ pod ‘BEMCheckBox’
 pod ‘BFPaperButton’
 pod ‘CWStatusBarNotification’
 pod ‘MarqueeLabel’
+pod 'FacebookCore'
+pod 'FacebookLogin'
 
   #target 'Aim! Tests' do
     #inherit! :search_paths

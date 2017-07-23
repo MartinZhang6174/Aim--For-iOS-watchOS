@@ -10,7 +10,7 @@ import Foundation
 
 class AimAwardManager {
     
-    var awardDescriptionsDict = ["ThreeDayBadge": "You earn this badge by completing three Aim! sessions in a single day.", "FourDayBadge": "You earn this badge by completing four Aim! sessions in a single day.", "FiveDayBadge": "You earn this badge by completing five Aim! sessions in a single day."]
+    var awardDescriptionsDict = ["ThreeDayBadge": "Earn this badge by completing 3 Aim! sessions in a day.", "FourDayBadge": "Earn this badge by completing 4 Aim! sessions in a day.", "FiveDayBadge": "Earn this badge by completing 5 Aim! sessions in a day."]
     
     func getAwardDescription(for awardName: String) -> String {
         if let awardDesc = awardDescriptionsDict[awardName] {
