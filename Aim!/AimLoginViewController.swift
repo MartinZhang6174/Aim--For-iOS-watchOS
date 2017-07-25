@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 import Firebase
 import WatchConnectivity
 import FacebookLogin
+import FBSDKLoginKit
 
 // CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
 
@@ -46,6 +47,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         let fBLoginBottomConstraint = fBLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         
         NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginBottomConstraint])
+        
+        fBLoginButton.delegate = self
         
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
@@ -137,7 +140,37 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     }
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        /*let connection = GraphRequestConnection()
+        connection.add(GraphRequest(graphPath: "/me")) { (httpResponse, result) in
+            switch result {
+            case .success(let response):
+                print("Graph Request Succeeded: \(response)")
+            
+            case .failed(let error):
+                print("Graph request failed: \(error)")
+            }
+        }
+            connection.start()*/
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
         
+        Auth.auth().signIn(with: credentials) { (user, err) in
+            if err != nil {
+                print("Failed to create user with Facebook credentials: \(String(describing: err)).")
+                return
+            }
+            print("Login succeeded: \(String(describing: user))!")
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+            if error != nil {
+                print("Graph request failed: \(error)")
+                return
+            }
+                print(result)
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
