@@ -34,6 +34,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccZ: Double = 0.0
     
     let tokenManager = AimTokenConversionManager()
+//    let awardManager: AimAwardManager?
     
     var currentTokenFactor: Float?
     
@@ -92,6 +93,10 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             }
         }
         locationManager.startUpdatingLocation()
+        
+        if ProcessInfo.processInfo.isLowPowerModeEnabled {
+            // awardManager.
+        }
     }
     
     // MARK: - AimSessionDurationInfoDelegate

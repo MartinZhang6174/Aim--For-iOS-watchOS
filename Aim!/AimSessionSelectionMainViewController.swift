@@ -28,7 +28,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     let toSessionSegueIdentifier = "mainMenuToSessionSegue"
     
     var delegate: AimSessionDurationInfoDelegate?
-    var sessionManager = SessionDurationManager()
+    let sessionManager = SessionDurationManager()
+    var awardManager: AimAwardManager?
     
     // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
@@ -153,6 +154,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting the database reference:
         ref = Database.database().reference()
         
+        awardManager = AimAwardManager()
+        
         // Setting date format for formatter
         fmt.dateFormat = "dd.MM.yyyy"
         
@@ -166,18 +169,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let todayString = "\(components.year!)\(components.month!)\(components.day!)"
         if Auth.auth().currentUser?.uid != nil {
+            print(Auth.auth().currentUser?.providerID)
             if let numberOfSessionsArray = UserDefaults.standard.array(forKey: todayString) as? [Int] {
                 print(numberOfSessionsArray)
                 if numberOfSessionsArray.count >= 3 {
-                    awardUserThreeBadge()
+                    awardManager?.awardUserThreeBadge()
                 }
                 
                 if numberOfSessionsArray.count >= 4 {
-                    awardUserFourBadge()
+                    awardManager?.awardUserFourBadge()
                 }
                 
                 if numberOfSessionsArray.count >= 5 {
-                    awardUserFiveBadge()
+                    awardManager?.awardUserFiveBadge()
                 }
             }
         }
@@ -523,34 +527,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
     }
-    
-    func awardUserThreeBadge() {
-        let fireRef = Database.database().reference()
-        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild("ThreeDayBadge") == false {
-                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ThreeDayBadge").setValue(true)
-            }
-        })
-    }
-    
-    func awardUserFourBadge() {
-        let fireRef = Database.database().reference()
-        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild("FourDayBadge") == false {
-                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("FourDayBadge").setValue(true)
-            }
-        })
-    }
-    
-    func awardUserFiveBadge() {
-        let fireRef = Database.database().reference()
-        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild("FiveDayBadge") == false {
-                fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("FiveDayBadge").setValue(true)
-            }
-        })
-    }
-    
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -19,8 +19,6 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     lazy var defaults = UserDefaults.standard
     var forceRequiredToTouch: CGFloat = 0.0
     
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,7 +32,7 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         forceRequiredToTouch = CGFloat(defaults.float(forKey: "AimSessionForceRequiredToTouch"))
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             if #available(iOS 10.0, *) {
                 if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
@@ -48,6 +46,8 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         }
         
     }
+     // Commenting above method out because some of the older devices don't have forcetouch and there's not much implementation of this technology in this VC anyway. 
+     */
     
     override func prepareForReuse() {
         // Hide the regular text label, plus label and backgroundBlackView

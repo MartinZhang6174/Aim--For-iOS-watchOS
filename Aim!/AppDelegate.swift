@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return handled
     }
     
-    
     // CODEREVIEW: Remove any code which you are not using.  All the methods below have empty implementations.
     
     func applicationWillResignActive(_ application: UIApplication) {
