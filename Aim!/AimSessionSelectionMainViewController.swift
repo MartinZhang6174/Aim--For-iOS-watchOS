@@ -11,6 +11,7 @@ import MobileCoreServices
 import NVActivityIndicatorView
 import Firebase
 import RealmSwift
+import FBSDKLoginKit
 import WatchConnectivity
 import CWStatusBarNotification
 
@@ -29,7 +30,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     var delegate: AimSessionDurationInfoDelegate?
     let sessionManager = SessionDurationManager()
-    var awardManager: AimAwardManager?
+    var awardManager = AimAwardManager()
     
     // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
@@ -154,8 +155,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // Setting the database reference:
         ref = Database.database().reference()
         
-        awardManager = AimAwardManager()
-        
         // Setting date format for formatter
         fmt.dateFormat = "dd.MM.yyyy"
         
@@ -169,19 +168,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let todayString = "\(components.year!)\(components.month!)\(components.day!)"
         if Auth.auth().currentUser?.uid != nil {
-            print(Auth.auth().currentUser?.providerID)
+            if let fbAccessToken = FBSDKAccessToken.current() {
+                awardManager.awardUserFacebookBadge()
+            }
+
             if let numberOfSessionsArray = UserDefaults.standard.array(forKey: todayString) as? [Int] {
                 print(numberOfSessionsArray)
                 if numberOfSessionsArray.count >= 3 {
-                    awardManager?.awardUserThreeBadge()
+                    awardManager.awardUserThreeBadge()
                 }
                 
                 if numberOfSessionsArray.count >= 4 {
-                    awardManager?.awardUserFourBadge()
+                    awardManager.awardUserFourBadge()
                 }
                 
                 if numberOfSessionsArray.count >= 5 {
-                    awardManager?.awardUserFiveBadge()
+                    awardManager.awardUserFiveBadge()
                 }
             }
         }
@@ -189,7 +191,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
             let realm = try! Realm()
-            
+                        
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let tokensFetched = snapshot.value as? Float {
                     let localUserObj = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)

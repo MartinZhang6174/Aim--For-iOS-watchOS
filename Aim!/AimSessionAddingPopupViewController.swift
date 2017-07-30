@@ -26,6 +26,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     var sessionImageCompressed: Data?
     let formatter = DateFormatter()
     
+    let awardManager = AimAwardManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,6 +98,8 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        awardManager.awardUserPhotoLibraryBadge()
 //        
         var selectedImageFromPicker: UIImage?
         

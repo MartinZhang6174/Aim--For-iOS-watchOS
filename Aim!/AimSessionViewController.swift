@@ -34,7 +34,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     var currentMaxAccZ: Double = 0.0
     
     let tokenManager = AimTokenConversionManager()
-//    let awardManager: AimAwardManager?
+    let awardManager = AimAwardManager()
     
     var currentTokenFactor: Float?
     
@@ -95,7 +95,23 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         locationManager.startUpdatingLocation()
         
         if ProcessInfo.processInfo.isLowPowerModeEnabled {
-            // awardManager.
+            awardManager.awardUserBatteryBadge()
+        }
+        
+        if Auth.auth().currentUser?.uid != nil {
+            syncUserAndSessionInfo(with: tokenContainer)
+        }
+        
+//        todayArray?.append(1)
+//        defaults.set(todayArray, forKey: todayString!)
+        
+        if todayArray == nil {
+            todayArray = [1]
+            defaults.set(todayArray, forKey: todayString!)
+        } else {
+            todayArray?.append(1)
+            print(todayArray!) // nil
+            defaults.set(todayArray, forKey: todayString!)
         }
     }
     
@@ -160,22 +176,6 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
                 print(error?.localizedDescription as Any)
                 return
             }
-        }
-        
-        if Auth.auth().currentUser?.uid != nil {
-            syncUserAndSessionInfo(with: tokenContainer)
-        }
-        
-        todayArray?.append(1)
-        defaults.set(todayArray, forKey: todayString!)
-        
-        if todayArray == nil {
-            todayArray = [1]
-            defaults.set(todayArray, forKey: todayString!)
-        } else {
-            todayArray?.append(1)
-            print(todayArray!) // nil
-            defaults.set(todayArray, forKey: todayString!)
         }
     }
     

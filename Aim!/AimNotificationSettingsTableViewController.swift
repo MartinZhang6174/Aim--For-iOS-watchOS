@@ -35,6 +35,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
     
     lazy var defaults = UserDefaults.standard
     
+    let awardManager = AimAwardManager()
+    
     fileprivate let mondaysRequestIdentifier = "AimMondaysAppUseReminderLocalNotification"
     fileprivate let tuesdaysRequestIdentifier = "AimTuesdaysAppUseReminderLocalNotification"
     fileprivate let wednesdaysRequestIdentifier = "AimWednesdaysAppUseReminderLocalNotification"
@@ -279,6 +281,8 @@ class AimNotificationSettingsTableViewController: UITableViewController, UNUserN
     }
     
     @IBAction func saveSettingsButtonClicked(_ sender: Any) {
+        awardManager.awardUserReminderBadge()
+        
         // Save reminder settings
         if reminderSwitch.isOn {
             let pickedDate = reminderTimePicker.date

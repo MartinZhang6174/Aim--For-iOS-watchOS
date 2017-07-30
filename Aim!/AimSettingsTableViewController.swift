@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import WatchConnectivity
+import FBSDKLoginKit
+import FacebookLogin
 
 class AimSettingsTableViewController: UITableViewController {
     
@@ -51,9 +53,13 @@ class AimSettingsTableViewController: UITableViewController {
         if Auth.auth().currentUser?.uid != nil {
             loginButton.isEnabled = false
             logoutButton.isEnabled = true
+            loginButton.isUserInteractionEnabled = false
+            logoutButton.isUserInteractionEnabled = true
         } else {
             loginButton.isEnabled = true
             logoutButton.isEnabled = false
+            loginButton.isUserInteractionEnabled = true
+            logoutButton.isUserInteractionEnabled = false
         }
     }
     
@@ -66,6 +72,10 @@ class AimSettingsTableViewController: UITableViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
+        if FBSDKAccessToken.current() != nil {
+            LoginManager.init().logOut()
+        }
+        
         do {
             try Auth.auth().signOut()
         } catch let signOutError {
