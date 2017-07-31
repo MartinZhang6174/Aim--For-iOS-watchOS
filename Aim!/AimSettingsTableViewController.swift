@@ -21,10 +21,27 @@ class AimSettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var statusBarStyleSwitch: UISwitch!
     
+    @IBOutlet weak var profileEditCell: UITableViewCell!
+    @IBOutlet weak var profileEditLabel: UILabel!
+    @IBOutlet weak var passwordChangeCell: UITableViewCell!
+    @IBOutlet weak var passwordChangeLabel: UILabel!
+    
     lazy var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser?.uid == nil {
+            profileEditCell.isUserInteractionEnabled = false
+            passwordChangeCell.isUserInteractionEnabled = false
+            profileEditLabel.isEnabled = false
+            passwordChangeLabel.isEnabled = false
+        } else {
+            profileEditCell.isUserInteractionEnabled = true
+            passwordChangeCell.isUserInteractionEnabled = true
+            profileEditLabel.isEnabled = true
+            passwordChangeLabel.isEnabled = true
+        }
         
         // Set navigation bar bg colour(tintcolor is what apple calls it)
         self.navigationController?.navigationBar.barTintColor = aimApplicationNavBarThemeColor
@@ -141,5 +158,22 @@ class AimSettingsTableViewController: UITableViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingsToPasswordResetConfirmationVCSegue" {
+            let destVC = segue.destination as! AimPasswordResetViewController
+            
+            if FBSDKAccessToken.current() != nil {
+                destVC.passwordResetLabelString = "We are sorry. We cannot reset password for accounts with Facebook login credentials."
+                destVC.emailLabelString = ""
+                destVC.isFBUser = true
+            } else {
+                destVC.passwordResetLabelString = "Success! An email for your password reset has been sent to the following email address:"
+                destVC.emailLabelString = Auth.auth().currentUser?.email!
+                destVC.isFBUser = false
+            }
+            
+        }
     }
 }
