@@ -1,14 +1,14 @@
 //
-//  AimUserAccountInfoViewController.swift
+//  AimEmailChangeFailureViewController.swift
 //  Aim!
 //
-//  Created by Martin Zhang on 2017-06-12.
+//  Created by Martin Zhang on 2017-08-05.
 //  Copyright © 2017 Martin Zhang. All rights reserved.
 //
 
 import UIKit
 
-class AimUserAccountInfoViewController: UIViewController {
+class AimEmailChangeFailureViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +16,9 @@ class AimUserAccountInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func dismissButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    
 
     /*
     // MARK: - Navigation

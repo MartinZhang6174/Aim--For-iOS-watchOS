@@ -165,7 +165,7 @@ class AimSettingsTableViewController: UITableViewController {
             let destVC = segue.destination as! AimPasswordResetViewController
             
             if FBSDKAccessToken.current() != nil {
-                destVC.passwordResetLabelString = "We are sorry. We cannot reset password for accounts with Facebook login credentials."
+                destVC.passwordResetLabelString = "We are sorry. We cannot reset the password for an account with Facebook login credentials."
                 destVC.emailLabelString = ""
                 destVC.isFBUser = true
             } else {

@@ -211,7 +211,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                         self.endLoadingView(movingLoadingView: loginLoadingView)
                         self.emailAddressEntryTextField.shake()
                         let statusBarNotification = AimStandardStatusBarNotification()
-                        statusBarNotification.display(withMessage: "The email address entered is in use, please log in instead.", forDuration: 1.5)
+                        statusBarNotification.display(withMessage: "The email address entered is in use or badly formatted, please check again.", forDuration: 1.5)
                         
                         print(error as Any)
                         return
@@ -289,7 +289,6 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
 }
 
 extension UIViewController {
-    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
