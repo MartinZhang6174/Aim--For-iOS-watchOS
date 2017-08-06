@@ -16,6 +16,7 @@ pod ‘CWStatusBarNotification’
 pod ‘MarqueeLabel’
 pod 'FacebookCore'
 pod 'FacebookLogin'
+pod ‘GoogleSignIn’
 
   target 'Aim! Tests' do
     inherit! :search_paths

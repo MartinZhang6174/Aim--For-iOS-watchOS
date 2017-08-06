@@ -12,13 +12,14 @@ import Firebase
 import WatchConnectivity
 import FacebookLogin
 import FBSDKLoginKit
+import GoogleSignIn
 
 // CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
 
 let themeOrangeColor = hexStringToUIColor(hex: "#FF4A1C")
 let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
-class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButtonDelegate {
+class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButtonDelegate, GIDSignInUIDelegate {
     
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
@@ -44,11 +45,24 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         fBLoginButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(fBLoginButton)
         let fBLoginTopConstraint = fBLoginButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 17)
-        let fBLoginBottomConstraint = fBLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let fBLoginCenterXAnchor = fBLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let fbLoginWidthAnchor = fBLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
+        let fbLoginHeightAnchor = fBLoginButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 0.8)
         
-        NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginBottomConstraint])
-        
+        NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
         fBLoginButton.delegate = self
+        
+        // Configuring Google login button
+        let googleLoginButton = GIDSignInButton()
+        googleLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(googleLoginButton)
+        let googleLoginTopConstraint = googleLoginButton.topAnchor.constraint(equalTo: fBLoginButton.bottomAnchor, constant: 12)
+        let googleLoginCenterXAnchor = googleLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let googleLoginHeightAnchor = googleLoginButton.heightAnchor.constraint(equalTo: googleLoginButton.heightAnchor)
+        let googleLoginWidthAnchor = googleLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
+        
+        NSLayoutConstraint.activate([googleLoginTopConstraint, googleLoginCenterXAnchor, googleLoginHeightAnchor, googleLoginWidthAnchor])
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         // Set text entry rect & text tint:
         // (Call below line in every VC which needs textfield cursors to be theme orange)
@@ -161,7 +175,10 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                 return
             }
             print("Login succeeded: \(String(describing: user))!")
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: { 
+                let banner = AimStandardStatusBarNotification()
+                banner.display(withMessage: "Welcome to Aim!", forDuration: 1.5)
+            })
         }
         
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
@@ -170,6 +187,14 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                 return
             }
                 print(result)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        self.dismiss(animated: true) {
+            let banner = AimStandardStatusBarNotification()
+            banner.display(withMessage: "Welcome to Aim!", forDuration: 1.5)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

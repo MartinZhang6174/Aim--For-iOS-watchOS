@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkz-2b-O0U" customClass="AimCustomRaisedButton" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="520" width="200" height="50"/>
+                                <rect key="frame" x="87.5" y="492" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                                 <state key="normal" title="Log In">
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-fh-f0N" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="210" width="220" height="45"/>
+                                <rect key="frame" x="77.5" y="192" width="220" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="L9G-oe-qMJ"/>
                                     <constraint firstAttribute="width" constant="220" id="YNz-n2-1Gh"/>
@@ -69,19 +69,19 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create your password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HIa-hQ-AG6" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="275" width="220" height="45"/>
+                                <rect key="frame" x="77.5" y="257" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vbf-fy-DWE" customClass="LoginViewControllerTextField" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="340" width="220" height="45"/>
+                                <rect key="frame" x="77.5" y="322" width="220" height="45"/>
                                 <color key="textColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="join" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-o4-nNv" customClass="AimCustomRaisedButton" customModule="Aim_" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="440" width="200" height="50"/>
+                                <rect key="frame" x="87.5" y="412" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="DLK-2l-f9S"/>
@@ -140,7 +140,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Already a member?" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-wk-spW">
-                                <rect key="frame" x="130" y="505" width="115" height="23"/>
+                                <rect key="frame" x="130" y="477" width="115" height="23"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHT-5C-S19">
                                 <rect key="frame" x="16" y="28" width="25" height="25"/>
@@ -155,7 +155,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MHT-5C-S19" firstAttribute="leading" secondItem="Izt-X3-hgt" secondAttribute="leadingMargin" id="5Ho-4t-l0n"/>
-                            <constraint firstItem="nqk-o4-nNv" firstAttribute="top" secondItem="Vbf-fy-DWE" secondAttribute="bottom" constant="55" id="8A9-MV-m0b"/>
+                            <constraint firstItem="nqk-o4-nNv" firstAttribute="top" secondItem="Vbf-fy-DWE" secondAttribute="bottom" constant="45" id="8A9-MV-m0b"/>
                             <constraint firstItem="xkz-2b-O0U" firstAttribute="top" secondItem="nqk-o4-nNv" secondAttribute="bottom" constant="30" id="AHN-ZT-zrM"/>
                             <constraint firstItem="cTd-wk-spW" firstAttribute="centerX" secondItem="Izt-X3-hgt" secondAttribute="centerX" id="BKh-Z3-EPg"/>
                             <constraint firstItem="7hb-zW-brU" firstAttribute="top" secondItem="Izt-X3-hgt" secondAttribute="top" id="Bgu-tl-cM9"/>
@@ -172,7 +172,7 @@
                             <constraint firstItem="xkz-2b-O0U" firstAttribute="top" secondItem="cTd-wk-spW" secondAttribute="bottom" constant="-8" id="VeW-IT-fsJ"/>
                             <constraint firstItem="HIa-hQ-AG6" firstAttribute="leading" secondItem="Dzc-fh-f0N" secondAttribute="leading" id="Wku-Om-BVK"/>
                             <constraint firstItem="xkz-2b-O0U" firstAttribute="leading" secondItem="nqk-o4-nNv" secondAttribute="leading" id="Z0V-wB-cEQ"/>
-                            <constraint firstItem="Dzc-fh-f0N" firstAttribute="top" secondItem="P6N-b7-TNB" secondAttribute="bottom" constant="75" id="Zx5-FS-uex"/>
+                            <constraint firstItem="Dzc-fh-f0N" firstAttribute="top" secondItem="P6N-b7-TNB" secondAttribute="bottom" constant="57" id="Zx5-FS-uex"/>
                             <constraint firstItem="xkz-2b-O0U" firstAttribute="height" secondItem="nqk-o4-nNv" secondAttribute="height" id="dQf-Y3-ZLU"/>
                             <constraint firstItem="MHT-5C-S19" firstAttribute="top" secondItem="JXM-vC-yWo" secondAttribute="bottom" constant="8" id="mab-2G-Xbc"/>
                             <constraint firstItem="HIa-hQ-AG6" firstAttribute="width" secondItem="Dzc-fh-f0N" secondAttribute="width" id="qn7-ou-mbZ"/>
@@ -1700,7 +1700,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-6Y-qJx">
-                                                    <rect key="frame" x="100.5" y="41" width="174.5" height="317.5"/>
+                                                    <rect key="frame" x="100.5" y="41.5" width="174.5" height="317.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mondays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-eW-vTM">
                                                             <rect key="frame" x="0.0" y="0.0" width="174.5" height="26.5"/>
@@ -2154,13 +2154,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="196.5" y="111" width="51" height="31"/>
+                                        <rect key="frame" x="197" y="111" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>

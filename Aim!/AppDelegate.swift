@@ -12,9 +12,10 @@ import UserNotifications
 import WatchConnectivity
 import RealmSwift
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     let NotificationAddedSessionOnPhone = "AddedSessionOnPhone"
     let NotificationAddedSessionOnWatch = "AddedSessionOnWatch"
@@ -55,14 +56,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setting up notification center for future notifications to session syncing
         setupNotificationCenter()
         
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
         return true
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         
         return handled
     }
+    
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//
+//    }
     
     // CODEREVIEW: Remove any code which you are not using.  All the methods below have empty implementations.
     
@@ -92,6 +102,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationAddedSessionOnPhone), object: nil, queue: nil) { (notification:Notification) -> Void in
             self.sendSessionsToWatch(notification)
         }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("Failed to login with Google: \(error)")
+            return
+        }
+        print("Google Success", user)
+        
+        guard let idToken = user.authentication.idToken else { return }
+        guard let accessToken = user.authentication.accessToken else { return }
+        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if let err = error {
+                print("Error creating user with credentials", err)
+                return
+            }
+            guard let uid = user?.uid else { return }
+            print("User login success", uid)
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+        print("Did just sign out of Google.")
     }
 }
 
@@ -141,7 +177,7 @@ extension AppDelegate: WCSessionDelegate {
                 if let currentRealmUser = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
                     do {
                         try! realm.write {
-                                currentRealmUser.tokenPool = tokens
+                            currentRealmUser.tokenPool = tokens
                             realm.add(currentRealmUser, update: true)
                         }
                         NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationUpdatedTokenFromWatch), object: self)
