@@ -17,6 +17,7 @@ pod ‘MarqueeLabel’
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod ‘GoogleSignIn’
+pod 'paper-onboarding'
 
   target 'Aim! Tests' do
     inherit! :search_paths

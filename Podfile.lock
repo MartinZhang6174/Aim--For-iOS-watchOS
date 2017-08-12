@@ -86,6 +86,7 @@ PODS:
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
+  - paper-onboarding (2.2)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
   - Realm/Headers (2.8.3)
@@ -105,6 +106,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - MarqueeLabel
   - NVActivityIndicatorView
+  - paper-onboarding
   - RealmSwift
 
 SPEC CHECKSUMS:
@@ -130,9 +132,10 @@ SPEC CHECKSUMS:
   MarqueeLabel: 17c5148b6f7144498eff5e0d286bd2e7e866f972
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  paper-onboarding: 7fcb8f2737edb32bd345d6e890578fff1a073fef
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
 
-PODFILE CHECKSUM: 9919afce569ec83f12241a4154c054d6ed171cc3
+PODFILE CHECKSUM: ec01a0828d53f84bb56f8efd8384601f2e2bc42b
 
 COCOAPODS: 1.2.1

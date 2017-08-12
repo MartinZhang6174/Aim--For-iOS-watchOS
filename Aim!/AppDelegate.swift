@@ -28,6 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.bool(forKey: "CompletedOnboarding") {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "MainVCNavigation")
+        }
+        
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        
         UINavigationBar.appearance().tintColor = aimApplicationThemeOrangeColor
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -107,6 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print("Failed to login with Google: \(error)")
+            let warning = AimStandardNavigationBarNotification()
+            warning.display(withMessage: "Failed to log in by Google due to error: \(error)", forDuration: 5.0)
             return
         }
         print("Google Success", user)
@@ -117,10 +133,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         Auth.auth().signIn(with: credentials) { (user, error) in
             if let err = error {
                 print("Error creating user with credentials", err)
+                let warning = AimStandardNavigationBarNotification()
+                warning.display(withMessage: "Failed to log in with Google credentials due to error: \(err)", forDuration: 5.0)
                 return
             }
             guard let uid = user?.uid else { return }
             print("User login success", uid)
+            self.notificationCenter.post(name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
         }
     }
     

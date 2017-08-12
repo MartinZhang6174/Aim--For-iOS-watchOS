@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaH-iB-Gu3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,6 +16,53 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Aim Onboarding View Controller-->
+        <scene sceneID="cF7-x3-GqP">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingVC" id="Vxd-8d-pCe" customClass="AimOnboardingViewController" customModule="Aim_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zbl-Yz-8Ao"/>
+                        <viewControllerLayoutGuide type="bottom" id="A50-wv-x2F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VeT-69-bPG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVN-Ch-CJs" customClass="PaperOnboarding" customModule="paper_onboarding">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g75-He-eBQ">
+                                <rect key="frame" x="81.5" y="512" width="212" height="45"/>
+                                <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                                <state key="normal" title="Welcome to Aim!">
+                                    <color key="titleColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getStartedButtonClicked:" destination="Vxd-8d-pCe" eventType="touchUpInside" id="oLG-Vg-UyE"/>
+                                    <segue destination="IaH-iB-Gu3" kind="show" id="63x-NB-xJG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qVN-Ch-CJs" firstAttribute="top" secondItem="Zbl-Yz-8Ao" secondAttribute="bottom" constant="-20" id="2Cl-dk-bN8"/>
+                            <constraint firstItem="g75-He-eBQ" firstAttribute="centerX" secondItem="VeT-69-bPG" secondAttribute="centerX" id="5W0-qJ-doE"/>
+                            <constraint firstAttribute="trailing" secondItem="qVN-Ch-CJs" secondAttribute="trailing" id="Hk3-zJ-SMo"/>
+                            <constraint firstItem="A50-wv-x2F" firstAttribute="top" secondItem="g75-He-eBQ" secondAttribute="bottom" constant="110" id="TkP-7F-a8U"/>
+                            <constraint firstItem="A50-wv-x2F" firstAttribute="top" secondItem="qVN-Ch-CJs" secondAttribute="bottom" id="blj-0V-L40"/>
+                            <constraint firstItem="qVN-Ch-CJs" firstAttribute="leading" secondItem="VeT-69-bPG" secondAttribute="leading" id="cnc-QL-a3s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="getStartedButton" destination="g75-He-eBQ" id="24L-Ci-Psd"/>
+                        <outlet property="onboardingView" destination="qVN-Ch-CJs" id="1A2-yH-5Kq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gs-iv-tcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3588" y="2382"/>
+        </scene>
         <!--Aim Login View Controller-->
         <scene sceneID="I0a-Zl-40b">
             <objects>
@@ -602,7 +649,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-ya-aRq">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-ya-aRq">
                                                     <rect key="frame" x="12" y="5" width="79" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Sync Data">
@@ -624,50 +671,46 @@
                             </tableViewSection>
                             <tableViewSection id="jo9-0z-qcS">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="TN3-1B-mnp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TN3-1B-mnp">
                                         <rect key="frame" x="0.0" y="534.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TN3-1B-mnp" id="ek5-K6-c14">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSp-Mx-Nq5">
-                                                    <rect key="frame" x="12" y="6" width="351" height="30"/>
-                                                    <state key="normal" title="Log In"/>
-                                                    <connections>
-                                                        <action selector="loginButtonPressed:" destination="bpa-Ik-IKv" eventType="touchUpInside" id="vpS-Y7-ZJg"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7x-0y-XSn">
+                                                    <rect key="frame" x="12" y="11" width="355" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LSp-Mx-Nq5" firstAttribute="leading" secondItem="ek5-K6-c14" secondAttribute="leadingMargin" constant="4" id="4LT-mF-mMh"/>
-                                                <constraint firstItem="LSp-Mx-Nq5" firstAttribute="centerY" secondItem="ek5-K6-c14" secondAttribute="centerY" id="Apu-7q-2L0"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="LSp-Mx-Nq5" secondAttribute="trailing" constant="4" id="HQh-ku-uCo"/>
+                                                <constraint firstItem="c7x-0y-XSn" firstAttribute="centerY" secondItem="ek5-K6-c14" secondAttribute="centerY" id="JGS-Ek-aRC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="c7x-0y-XSn" secondAttribute="trailing" id="PXo-bH-kfe"/>
+                                                <constraint firstItem="c7x-0y-XSn" firstAttribute="leading" secondItem="ek5-K6-c14" secondAttribute="leadingMargin" constant="4" id="qZw-lY-NEl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="REd-u3-xhC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="REd-u3-xhC">
                                         <rect key="frame" x="0.0" y="578.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REd-u3-xhC" id="qpA-Lg-iHW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAn-Gd-YcS">
-                                                    <rect key="frame" x="12" y="6" width="351" height="30"/>
-                                                    <state key="normal" title="Log Out">
-                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="logoutButtonPressed:" destination="bpa-Ik-IKv" eventType="touchUpInside" id="Env-Fx-lx4"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aky-jS-sGy">
+                                                    <rect key="frame" x="12" y="11.5" width="355" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UAn-Gd-YcS" firstAttribute="leading" secondItem="qpA-Lg-iHW" secondAttribute="leadingMargin" constant="4" id="8Pn-mQ-iuO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="UAn-Gd-YcS" secondAttribute="trailing" constant="4" id="D03-or-haU"/>
-                                                <constraint firstItem="UAn-Gd-YcS" firstAttribute="centerY" secondItem="qpA-Lg-iHW" secondAttribute="centerY" id="Jm7-Lk-Gzg"/>
+                                                <constraint firstItem="Aky-jS-sGy" firstAttribute="leading" secondItem="qpA-Lg-iHW" secondAttribute="leadingMargin" constant="4" id="3xf-ck-5Qp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Aky-jS-sGy" secondAttribute="trailing" id="Us6-8I-v0l"/>
+                                                <constraint firstItem="Aky-jS-sGy" firstAttribute="centerY" secondItem="qpA-Lg-iHW" secondAttribute="centerY" id="jnX-DM-cwY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -695,9 +738,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="loginButton" destination="LSp-Mx-Nq5" id="I5i-l4-evA"/>
+                        <outlet property="logInLabel" destination="c7x-0y-XSn" id="X7X-Y8-HQC"/>
+                        <outlet property="logOutLabel" destination="Aky-jS-sGy" id="GkJ-Hr-rfc"/>
                         <outlet property="loginCell" destination="TN3-1B-mnp" id="QRS-DA-FVB"/>
-                        <outlet property="logoutButton" destination="UAn-Gd-YcS" id="URg-CM-vkp"/>
                         <outlet property="logoutCell" destination="REd-u3-xhC" id="EBe-Ec-ehK"/>
                         <outlet property="passwordChangeCell" destination="iVD-Pl-mSB" id="tdd-OI-uTn"/>
                         <outlet property="passwordChangeLabel" destination="xbz-LD-YWh" id="7gR-PF-4TK"/>
@@ -756,7 +799,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Change Email Address " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lki-po-iVN">
-                                <rect key="frame" x="68.5" y="54" width="239.5" height="26"/>
+                                <rect key="frame" x="68" y="54" width="239.5" height="26"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1934,7 +1977,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="148.5" y="92" width="78" height="36"/>
+                                <rect key="frame" x="149" y="92" width="78" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2095,7 +2138,7 @@
         <!--Navigation Controller-->
         <scene sceneID="0Py-le-i03">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainVCNavigation" automaticallyAdjustsScrollViewInsets="NO" id="IaH-iB-Gu3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="dep-SY-F2r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2154,13 +2197,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="197" y="111" width="51" height="31"/>
+                                        <rect key="frame" x="196.5" y="111" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>

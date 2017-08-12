@@ -14,10 +14,10 @@ import FacebookLogin
 
 class AimSettingsTableViewController: UITableViewController {
     
+    @IBOutlet weak var logInLabel: UILabel!
+    @IBOutlet weak var logOutLabel: UILabel!
     @IBOutlet weak var loginCell: UITableViewCell!
     @IBOutlet weak var logoutCell: UITableViewCell!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var statusBarStyleSwitch: UISwitch!
     
@@ -68,27 +68,35 @@ class AimSettingsTableViewController: UITableViewController {
 //        UIApplication.shared.statusBarStyle = .lightContent
         
         if Auth.auth().currentUser?.uid != nil {
-            loginButton.isEnabled = false
-            logoutButton.isEnabled = true
-            loginButton.isUserInteractionEnabled = false
-            logoutButton.isUserInteractionEnabled = true
+            logInLabel.textColor = UIColor.gray
+            logOutLabel.textColor = UIColor.init(red: 255/255, green: 0, blue: 0, alpha: 1.0)
+            loginCell.isUserInteractionEnabled = false
+            logoutCell.isUserInteractionEnabled = true
         } else {
-            loginButton.isEnabled = true
-            logoutButton.isEnabled = false
-            loginButton.isUserInteractionEnabled = true
-            logoutButton.isUserInteractionEnabled = false
+            logInLabel.textColor = UIColor.init(red: 0, green: 122/255, blue: 255/255, alpha: 1.0)
+            logOutLabel.textColor = UIColor.gray
+            loginCell.isUserInteractionEnabled = true
+            logoutCell.isUserInteractionEnabled = false
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 4 && indexPath.row == 0 {
+            perform(#selector(loginCellPressed))
+        }
+        
+        if indexPath.section == 4 && indexPath.row == 1 {
+            perform(#selector(logoutCellPressed))
+        }
     }
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    func loginCellPressed() {
         self.performSegue(withIdentifier: "settingsToLoginVCSegue", sender: self)
     }
     
-    @IBAction func logoutButtonPressed(_ sender: Any) {
+    func logoutCellPressed() {
         if FBSDKAccessToken.current() != nil {
             LoginManager.init().logOut()
         }

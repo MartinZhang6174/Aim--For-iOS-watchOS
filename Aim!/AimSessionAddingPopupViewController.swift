@@ -138,7 +138,6 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     }
     
     func handleSessionUpload() {
-        
         let sessionTitle = aimSessionTitleTextField.text
         let sessionPriority = aimSessionPrioritySwitch.isOn
         let sessionPriorityString: String?
@@ -158,7 +157,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         let sessionID = NSUUID.init().uuidString
         if let uid = Auth.auth().currentUser?.uid {
             let storageRef = Storage.storage().reference().child("Users").child(uid).child("SessionImages").child("\(sessionID).png")
-            if let uploadData = UIImageJPEGRepresentation(sessionImageSelected!, 0.90) {
+            if let uploadData = UIImageJPEGRepresentation(sessionImageSelected!, 0.5) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {

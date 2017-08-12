@@ -21,6 +21,10 @@ let themePurpleColor = hexStringToUIColor(hex: "1A1423")
 
 class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButtonDelegate, GIDSignInUIDelegate {
     
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
+    
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
@@ -89,6 +93,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
+        
+        notificationCenter.addObserver(self, selector: #selector(shouldDismiss), name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -172,6 +178,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         Auth.auth().signIn(with: credentials) { (user, err) in
             if err != nil {
                 print("Failed to create user with Facebook credentials: \(String(describing: err)).")
+                let banner = AimStandardNavigationBarNotification()
+//                banner.display(withMessage: "Aha \(err)", forDuration: 3)
+                banner.display(withMessage: "Failed to log in with following error: \(String(describing: err?.localizedDescription))", forDuration: 2.5)
+                let fbLogInManager = FBSDKLoginManager()
+                fbLogInManager.logOut()
                 return
             }
             print("Login succeeded: \(String(describing: user))!")
@@ -203,6 +214,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     }
     
     func moveLoadingView(loadingView: NVActivityIndicatorView) {
+        print(loadingView.isAnimating)
         self.view.addSubview(loadingView)
         loadingView.startAnimating()
     }
@@ -210,6 +222,10 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     func endLoadingView(movingLoadingView: NVActivityIndicatorView) {
         movingLoadingView.stopAnimating()
         movingLoadingView.removeFromSuperview()
+    }
+    
+    func shouldDismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
@@ -258,7 +274,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                         }
                         if Auth.auth().currentUser?.uid != nil {
                             self.dismiss(animated: true, completion: nil)
-                        }
+      }
                         print("User creation success.")
                     })
                     print("Registered new user.")

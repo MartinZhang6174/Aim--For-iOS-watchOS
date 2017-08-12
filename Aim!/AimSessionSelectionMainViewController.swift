@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 import Firebase
 import RealmSwift
 import FBSDKLoginKit
+import GoogleSignIn
 import WatchConnectivity
 import CWStatusBarNotification
 
@@ -171,6 +172,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if let fbAccessToken = FBSDKAccessToken.current() {
                 awardManager.awardUserFacebookBadge()
             }
+            
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+                awardManager.awardUserGoogleBadge()
+            }
 
             if let numberOfSessionsArray = UserDefaults.standard.array(forKey: todayString) as? [Int] {
                 print(numberOfSessionsArray)
@@ -217,6 +222,13 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                         print(err)
                     }
                     
+                }
+            })
+            
+            ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Minutes").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let minutes = snapshot.value as? Int {
+                    let hours = minutes
+                    self.aimHourSumLabel.text = String(hours)
                 }
             })
             

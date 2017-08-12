@@ -75,4 +75,10 @@ class AimAwardManager {
             self.fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("ReminderBadge").setValue(true)
         })
     }
+    
+    func awardUserGoogleBadge () {
+        fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("Awards").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.fireRef.child("users").child((Auth.auth().currentUser?.uid)!).child("Awards").child("GoogleBadge").setValue(true)
+        })
+    }
 }

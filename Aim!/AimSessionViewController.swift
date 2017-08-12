@@ -137,6 +137,7 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         let currentTime = timerManager.totalElapsedTime
         sessionTimerLabel.text = Utility.timeString(fromSeconds: currentTime)
         
+        // Maybe change to timerManager.duration:
         let progress = timerManager.totalElapsedTime/1500*100
         sessionPieView.ringProgress = CGFloat(progress)
     }
@@ -155,6 +156,11 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
         content.title = "Aim! Session Completed!"
         content.body = "Token earned: \(tokenContainer) 🏆"
         content.sound = UNNotificationSound.default()
+        
+        if Auth.auth().currentUser?.uid != nil {
+            syncUserAndSessionInfo(with: tokenContainer)
+            syncUserTimeSpentDurationInfo()
+        }
         
         let realm = try! Realm()
         do {
@@ -190,6 +196,21 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
             // Create new field "Tokens" if this is his first session
             fireRef.child("users").child(userIDPath!).child("Tokens").setValue(self.firebaseTokenContainer)
         })
+    }
+    
+    func syncUserTimeSpentDurationInfo() {
+        let fireRef = Database.database().reference()
+        let userIDPath = Auth.auth().currentUser?.uid as String! // Force unwrapping uid because this method is only called within a block where the app is sure about the user's login status.
+        let timeSpent = Int(timerManager.duration)/60
+        fireRef.child("users").child(userIDPath!).child("Minutes").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let minutesOnCloud = snapshot.value as? Int {
+                let totalMinutes = minutesOnCloud + timeSpent
+                fireRef.child("users").child(userIDPath!).child("Minutes").setValue(totalMinutes)
+            } else {
+                fireRef.child("users").child(userIDPath!).child("Minutes").setValue(timeSpent)
+            }
+        })
+        
     }
     
     func outputAccelerometerData(acceleration: CMAcceleration) {

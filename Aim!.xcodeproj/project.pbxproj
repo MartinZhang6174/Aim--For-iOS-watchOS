@@ -16,6 +16,7 @@
 		9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */; };
 		9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF701EC7B53700B0A68F /* CoreLocation.framework */; };
 		9C03015C1EEA413100D2C0B4 /* AimCustomRaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */; };
+		9C0426311F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */; };
 		9C0D6B5C1EDAA70D00B0542D /* AimMainSessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B5A1EDAA6AA00B0542D /* AimMainSessionSelectionInterfaceController.swift */; };
 		9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B561EDAA3BE00B0542D /* AimSessionInterfaceController.swift */; };
 		9C0D6B601EDAA7E900B0542D /* AimSessionSelectionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B5F1EDAA7E900B0542D /* AimSessionSelectionTable.swift */; };
@@ -64,6 +65,7 @@
 		9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
 		9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
 		9C8BD1BF1EE3400C0026188C /* AimImageCachingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BE1EE3400C0026188C /* AimImageCachingExtension.swift */; };
+		9C90716C1F3D420E004894FA /* AimOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */; };
 		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
 		9CA11E491F2171AA00DB03F9 /* AimAwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */; };
 		9CA11E4B1F2173CE00DB03F9 /* AimAwardBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */; };
@@ -171,6 +173,7 @@
 		9C02AF701EC7B53700B0A68F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim!.entitlements"; sourceTree = "<group>"; };
 		9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCustomRaisedButton.swift; sourceTree = "<group>"; };
+		9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimStandardNavigationBarNotification.swift; sourceTree = "<group>"; };
 		9C0D6B561EDAA3BE00B0542D /* AimSessionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionInterfaceController.swift; sourceTree = "<group>"; };
 		9C0D6B5A1EDAA6AA00B0542D /* AimMainSessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimMainSessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
 		9C0D6B5F1EDAA7E900B0542D /* AimSessionSelectionTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionTable.swift; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 		9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionLite.swift; sourceTree = "<group>"; };
 		9C8BD1BC1EE21D940026188C /* Aim! Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim! Extension.entitlements"; sourceTree = "<group>"; };
 		9C8BD1BE1EE3400C0026188C /* AimImageCachingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimImageCachingExtension.swift; sourceTree = "<group>"; };
+		9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimOnboardingViewController.swift; sourceTree = "<group>"; };
 		9C9E49AF1EA0518A00D5D368 /* AimSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSession.swift; sourceTree = "<group>"; };
 		9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardManager.swift; sourceTree = "<group>"; };
 		9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardBadge.swift; sourceTree = "<group>"; };
@@ -468,6 +472,7 @@
 		9CFFE2851DB313EE00895C3C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */,
 				9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */,
 				9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */,
 				9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */,
@@ -500,6 +505,7 @@
 				9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */,
 				9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */,
 				9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */,
+				9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -882,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1035891EE0D7E800535645 /* AimUser.swift in Sources */,
+				9C0426311F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift in Sources */,
 				9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */,
 				9CE8642B1F33F61E001F9494 /* AimEmailChangeViewController.swift in Sources */,
 				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
@@ -919,6 +926,7 @@
 				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
 				9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */,
 				9CA11E4B1F2173CE00DB03F9 /* AimAwardBadge.swift in Sources */,
+				9C90716C1F3D420E004894FA /* AimOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
