@@ -20,6 +20,7 @@ class AimPasswordResetViewController: UIViewController {
     var passwordResetLabelString: String?
     var emailLabelString: String?
     var isFBUser = true
+    var isGoogleUser = true
     
     override func viewWillAppear(_ animated: Bool) {
         passwordResetLabel.text = passwordResetLabelString!
@@ -29,7 +30,7 @@ class AimPasswordResetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isFBUser {
+        if isFBUser || isGoogleUser {
             successCheckBox.isHidden = true
             successCheckBox.setOn(false, animated: false)
         } else {
@@ -48,7 +49,7 @@ class AimPasswordResetViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if isFBUser {
+        if isFBUser || isGoogleUser {
             successCheckBox.isHidden = true
         } else {
             successCheckBox.isHidden = false

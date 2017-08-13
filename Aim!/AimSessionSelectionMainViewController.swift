@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 import Firebase
 import RealmSwift
 import FBSDKLoginKit
+import FacebookLogin
 import GoogleSignIn
 import WatchConnectivity
 import CWStatusBarNotification
@@ -35,7 +36,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
-    var quoteMaxCharRestriction = 120
+    var quoteMaxCharRestriction = 150
     
     let fmt = DateFormatter()
     
@@ -196,7 +197,26 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
             let realm = try! Realm()
-                        
+            
+            ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Password").observe(.childChanged, with: { (snapshot) in
+                if FBSDKAccessToken.current() != nil {
+                    LoginManager.init().logOut()
+                }
+                
+                if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
+                    GIDSignIn.init().disconnect()
+                }
+                
+                do {
+                    try Auth.auth().signOut()
+                } catch let signOutError {
+                    print(signOutError)
+                }
+            
+                let warning = AimStandardNavigationBarNotification()
+                warning.display(withMessage: "Password change detected, please log in again.", forDuration: 1.7)
+            })
+            
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let tokensFetched = snapshot.value as? Float {
                     let localUserObj = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)

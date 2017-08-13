@@ -11,6 +11,7 @@ import Firebase
 import WatchConnectivity
 import FBSDKLoginKit
 import FacebookLogin
+import GoogleSignIn
 
 class AimSettingsTableViewController: UITableViewController {
     
@@ -101,12 +102,16 @@ class AimSettingsTableViewController: UITableViewController {
             LoginManager.init().logOut()
         }
         
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
+            GIDSignIn.sharedInstance().disconnect()
+        }
+        
         do {
             try Auth.auth().signOut()
         } catch let signOutError {
             print(signOutError)
         }
-        defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+//        defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         
         /*WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
             print("Could not establish communications to WatchKit app: \(err)")
@@ -173,15 +178,28 @@ class AimSettingsTableViewController: UITableViewController {
             let destVC = segue.destination as! AimPasswordResetViewController
             
             if FBSDKAccessToken.current() != nil {
-                destVC.passwordResetLabelString = "We are sorry. We cannot reset the password for an account with Facebook login credentials."
+                destVC.passwordResetLabelString = "We are sorry. We do not reset the password for an account with provider(Facebook) login credentials."
                 destVC.emailLabelString = ""
                 destVC.isFBUser = true
-            } else {
+            }
+            
+            if FBSDKAccessToken.current() == nil {
                 destVC.passwordResetLabelString = "Success! An email for your password reset has been sent to the following email address:"
                 destVC.emailLabelString = Auth.auth().currentUser?.email!
                 destVC.isFBUser = false
             }
+         
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
+                destVC.passwordResetLabelString = "We are sorry. We do not reset the password for an account with provider(Google) login credentials."
+                destVC.emailLabelString = ""
+                destVC.isGoogleUser = true
+            }
             
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() == false {
+                destVC.passwordResetLabelString = "Success! An email for your password reset has been sent to the following email address:"
+                destVC.emailLabelString = Auth.auth().currentUser?.email!
+                destVC.isGoogleUser = false
+            }
         }
     }
 }

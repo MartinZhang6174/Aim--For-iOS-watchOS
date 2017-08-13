@@ -9,11 +9,15 @@
 import UIKit
 
 class AimEmailChangeFailureViewController: UIViewController {
+    
+    @IBOutlet weak var failureTextLabl: UILabel!
+    
+    var displayText = "We're sorry. We cannot reset the email address for an account with provider Login credentials."
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        failureTextLabl.text = displayText
     }
 
     @IBAction func dismissButtonClicked(_ sender: Any) {

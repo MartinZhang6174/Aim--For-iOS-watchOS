@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import GoogleSignIn
 
 class AimUserInfoTableViewController: UITableViewController {
 
@@ -37,10 +38,30 @@ class AimUserInfoTableViewController: UITableViewController {
             print("Gotcha")
             if FBSDKAccessToken.current() != nil {
                 performSegue(withIdentifier: "UserInfoFailedToChangeEmailSegue", sender: self)
-            } else {
+            }
+            
+            if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
+                performSegue(withIdentifier: "UserInfoFailedToChangeEmailSegue", sender: self)
+            }
+            
+            if FBSDKAccessToken.current() == nil && GIDSignIn.sharedInstance().hasAuthInKeychain() == false {
                 performSegue(withIdentifier: "UserInfoVCtoEmailAddressChangeVCSegue", sender: self)
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserInfoFailedToChangeEmailSegue" {
+            if let destVC = segue.destination as? AimEmailChangeFailureViewController {
+                if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
+                    destVC.displayText = "We're sorry. We do not reset the email address for an account with provider(Google) Login credentials."
+                }
+                
+                if FBSDKAccessToken.current() != nil {
+                    destVC.displayText = "We're sorry. We do not reset the email address for an account with provider(Facebook) Login credentials."
+                }
+            }
+        }
     }
 }
