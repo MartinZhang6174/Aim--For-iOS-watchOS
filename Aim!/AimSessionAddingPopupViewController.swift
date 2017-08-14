@@ -157,7 +157,7 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         let sessionID = NSUUID.init().uuidString
         if let uid = Auth.auth().currentUser?.uid {
             let storageRef = Storage.storage().reference().child("Users").child(uid).child("SessionImages").child("\(sessionID).png")
-            if let uploadData = UIImageJPEGRepresentation(sessionImageSelected!, 0.5) {
+            if let uploadData = UIImageJPEGRepresentation(sessionImageSelected!, 0.65) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {
@@ -166,13 +166,11 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
                     }
                     
                     if let sessionImageURL = metadata?.downloadURL()?.absoluteString {
-                        
                         let sessionInfoValue = ["DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageURL": sessionImageURL]
                         
                         if sessionInfoValue["ImageURL"] != nil && sessionTitle != nil {
                             self.handleSessionCreationWithImageID(imageID: sessionTitle, values: sessionInfoValue)
                         }
-                        
                     }
                 })
                 

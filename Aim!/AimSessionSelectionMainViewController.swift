@@ -16,6 +16,7 @@ import FacebookLogin
 import GoogleSignIn
 import WatchConnectivity
 import CWStatusBarNotification
+import AVFoundation
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -23,7 +24,7 @@ let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
 let NotificationUpdatedTokenFromWatch = "ReceivedUpdatedTokensFromWatchNotification"
 
-class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
@@ -43,6 +44,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
     var authorFlipped = false
+    
+    let generator = UIImpactFeedbackGenerator(style: .medium)
+    
+    let imagePicker = UIImagePickerController()
+    
+    var sessionAwaitingChange: AimSession?
     
     // Generating Firebase realtime database reference for reading & writing data
     var ref: DatabaseReference?
@@ -121,8 +128,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 }
                 quoteFetchTask.resume()
             }
-            }
-        
+        }
         
         // Prepare for notifications from apple watch's token update:
         NotificationCenter.default.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
@@ -151,6 +157,15 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLoginRegister), with: nil, afterDelay: 0)
         }
+        
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(presentSessionActionSheet))
+        longPressGestureRecognizer.delegate = self
+        longPressGestureRecognizer.delaysTouchesBegan = true
+        self.aimSessionCollectionView.addGestureRecognizer(longPressGestureRecognizer)
+        generator.prepare()
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -177,7 +192,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if GIDSignIn.sharedInstance().hasAuthInKeychain() {
                 awardManager.awardUserGoogleBadge()
             }
-
+            
             if let numberOfSessionsArray = UserDefaults.standard.array(forKey: todayString) as? [Int] {
                 print(numberOfSessionsArray)
                 if numberOfSessionsArray.count >= 3 {
@@ -212,7 +227,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 } catch let signOutError {
                     print(signOutError)
                 }
-            
+                
                 let warning = AimStandardNavigationBarNotification()
                 warning.display(withMessage: "Password change detected, please log in again.", forDuration: 1.7)
             })
@@ -251,71 +266,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     self.aimHourSumLabel.text = String(hours)
                 }
             })
-            
-            // Retrieve sessions:
-            databaseHandle = ref?.child("users").child(currentUserID).child("Sessions").observe(.childAdded, with: { (snapshot) in
-                let sessionTitle = snapshot.key
-                let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
-                let sessionDate = self.fmt.date(from: sessionDateString!)
-                var sessionPriority = false
-                if snapshot.childSnapshot(forPath: "Priority").value as? String == "1" {
-                    sessionPriority = true
-                }
-                let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
-                
-                let sessionTokens: Int?
-                let sessionHours: Int?
-                
-                if let tokens = snapshot.childSnapshot(forPath: "TotalTokens").value as? Int {
-                    sessionTokens = tokens
-                } else {
-                    sessionTokens = 0
-                }
-                
-                if let hours = snapshot.childSnapshot(forPath: "TotalHours").value as? Int {
-                    sessionHours = hours
-                } else {
-                    sessionHours = 0
-                }
-                
-                // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
-                let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
-                sessionObj.currentToken = sessionTokens!
-                sessionObj.hoursAccumulated = sessionHours!
-                // CONSIDERING DELETING TIME INTERVAL IDEA
-                if let intervals = snapshot.childSnapshot(forPath: "TotalIntervals").value as? TimeInterval {
-                    sessionObj.currentTimeAccumulated = intervals
-                }
-                
-                if self.shouldInsert(item: sessionObj, into: self.aimSessionFetchedArray) {
-                    self.aimSessionFetchedArray.insert(sessionObj, at: 0)
-                }
-                
-                // Saving sessions fetched to Realm
-                if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
-                    do {
-                        try! realm.write {
-                            realm.add(sessionObj)
-                        }
-                    }
-                }
-                
-                // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
-                let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
-                
-                // Transfer the session loaded to Apple Watch app
-                do {
-                    try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
-                } catch let error {
-                    print(error)
-                }
-                
-                // Trying to find a way to animate collectionview data reloading
-                self.aimSessionCollectionView.reloadData()
-                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-                let indexSet = IndexSet(integersIn: range)
-                self.aimSessionCollectionView.reloadSections(indexSet)
-            })
+            retrieveSessions()
         }
         
         var userLoginStatus = false
@@ -342,9 +293,78 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             })
         }
         
-        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-        let indexSet = IndexSet(integersIn: range)
-        self.aimSessionCollectionView.reloadSections(indexSet)
+        //        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+        //        let indexSet = IndexSet(integersIn: range)
+        //        self.aimSessionCollectionView.reloadSections(indexSet)
+    }
+    
+    func retrieveSessions() {
+        // Retrieve sessions:
+        let currentUserID = Auth.auth().currentUser?.uid
+        databaseHandle = ref?.child("users").child(currentUserID!).child("Sessions").observe(.childAdded, with: { (snapshot) in
+            let sessionTitle = snapshot.key
+            let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
+            let sessionDate = self.fmt.date(from: sessionDateString!)
+            var sessionPriority = false
+            if snapshot.childSnapshot(forPath: "Priority").value as? String == "1" {
+                sessionPriority = true
+            }
+            let sessionImageURL = snapshot.childSnapshot(forPath: "ImageURL").value as? String
+            
+            let sessionTokens: Int?
+            let sessionHours: Int?
+            
+            if let tokens = snapshot.childSnapshot(forPath: "TotalTokens").value as? Int {
+                sessionTokens = tokens
+            } else {
+                sessionTokens = 0
+            }
+            
+            if let hours = snapshot.childSnapshot(forPath: "TotalHours").value as? Int {
+                sessionHours = hours
+            } else {
+                sessionHours = 0
+            }
+            
+            // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
+            let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
+            sessionObj.currentToken = sessionTokens!
+            sessionObj.hoursAccumulated = sessionHours!
+            // CONSIDERING DELETING TIME INTERVAL IDEA
+            if let intervals = snapshot.childSnapshot(forPath: "TotalIntervals").value as? TimeInterval {
+                sessionObj.currentTimeAccumulated = intervals
+            }
+            
+            if self.shouldInsert(item: sessionObj, into: self.aimSessionFetchedArray) {
+                self.aimSessionFetchedArray.insert(sessionObj, at: 0)
+            }
+            
+            // Saving sessions fetched to Realm
+            let realm = try! Realm()
+            if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
+                do {
+                    try! realm.write {
+                        realm.add(sessionObj)
+                    }
+                }
+            }
+            
+            // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
+            let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
+            
+            // Transfer the session loaded to Apple Watch app
+            do {
+                try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
+            } catch let error {
+                print(error)
+            }
+            
+            // Trying to find a way to animate collectionview data reloading
+            self.aimSessionCollectionView.reloadData()
+            let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+            let indexSet = IndexSet(integersIn: range)
+            self.aimSessionCollectionView.reloadSections(indexSet)
+        })
     }
     
     func shouldInsert(item: AimSession, into list: Array<AimSession>) -> Bool {
@@ -462,36 +482,82 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
-    // Testing button for firebase storage
-    @IBAction func addSessionButtonPressed(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-        imagePicker.delegate = self
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        awardManager.awardUserPhotoLibraryBadge()
+        
+        var selectedImageFromPicker: UIImage?
+        
         guard let mediaType: String = info[UIImagePickerControllerMediaType] as? String else {
             dismiss(animated: true, completion: nil)
             return
         }
+        
         if mediaType == (kUTTypeImage as String) {
-            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
-                let imageData = UIImageJPEGRepresentation(originalImage, 0.65) {
-                uploadImageToFirebaseStorage(data: imageData)
+            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+                    selectedImageFromPicker = editedImage
+                } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                    selectedImageFromPicker = originalImage
+                }
+                if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
+                    uploadNewImage(withImageData: uploadData)
+                }
             }
         } else if mediaType == (kUTTypeMovie as String) {
             if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
-                uploadMovieToFirebaseStorage(url: movieURL)
+                let warning = AimStandardStatusBarNotification()
+                warning.display(withMessage: "Aim! does not yet accept videos as session thumbnails, expect future updates!", forDuration: 1.5)
             }
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) { 
+            self.aimSessionFetchedArray.removeAll()
+            self.retrieveSessions()
+            
+            let noti = AimStandardStatusBarNotification()
+            noti.display(withMessage: "Image uploading! Tap refresh in a moment.", forDuration: 2.0)
+        }
     }
+    
+    func uploadNewImage(withImageData data: Data) {
+        let sessionID = NSUUID.init().uuidString
+        let storageRef = Storage.storage().reference().child("Users").child((Auth.auth().currentUser?.uid)!).child("SessionImages").child("\(sessionID).png")
+        storageRef.putData(data, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print("Error occured when adding image to storage: \(String(describing: error))")
+                return
+            }
+            
+            if let sessionImageURL = metadata?.downloadURL()?.absoluteString {
+                self.sessionAwaitingChange?.imageURL = sessionImageURL
+                self.ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child((self.sessionAwaitingChange?.title)!).child("ImageURL").setValue(sessionImageURL)
+            }
+            
+        }
+    }
+    
+    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    //        guard let mediaType: String = info[UIImagePickerControllerMediaType] as? String else {
+    //            dismiss(animated: true, completion: nil)
+    //            return
+    //        }
+    //        if mediaType == (kUTTypeImage as String) {
+    //            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage,
+    //                let imageData = UIImageJPEGRepresentation(originalImage, 0.65) {
+    //                uploadImageToFirebaseStorage(data: imageData)
+    //            }
+    //        } else if mediaType == (kUTTypeMovie as String) {
+    //            if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
+    ////                uploadMovieToFirebaseStorage(url: movieURL)
+    //                let warning = AimStandardStatusBarNotification()
+    //                warning.display(withMessage: "Aim! does not yet accept videos as session thumbnails, expect future updates!", forDuration: 1.5)
+    //            }
+    //        }
+    //        dismiss(animated: true, completion: nil)
+    //    }
     
     func uploadImageToFirebaseStorage(data: Data) {
         if let uid = Auth.auth().currentUser?.uid {
@@ -558,10 +624,127 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
     }
     
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let lpgr = gestureRecognizer as? UILongPressGestureRecognizer {
+            generator.impactOccurred()
+            return true
+        }
+        return false
+    }
+    
+    func presentSessionActionSheet(withGesture gesture: UILongPressGestureRecognizer!) {
+        
+        if gesture.state != .ended {
+            return
+        }
+        
+        let gestureLocation = gesture.location(in: self.aimSessionCollectionView)
+        let currentAppUserID = Auth.auth().currentUser?.uid
+        
+        if let indexPath = self.aimSessionCollectionView.indexPathForItem(at: gestureLocation) {
+            if indexPath.row != aimSessionFetchedArray.count {
+                if let sessionBeingManaged = aimSessionFetchedArray[indexPath.row] as? AimSession {
+                    let alert = UIAlertController(title: "Managing Session '\(sessionBeingManaged.title)'.", message: "Choose one of the actions below.", preferredStyle: .actionSheet)
+                    self.sessionAwaitingChange = sessionBeingManaged
+                    
+                    let changeImageAction = UIAlertAction(title: "Change Image", style: .default) { (action) in
+                        let alert = UIAlertController(title: "Please Choose Your New Image for '\(sessionBeingManaged.title)'.", message: "You can either take a picture using your camera or pick one from your photo library.", preferredStyle: UIAlertControllerStyle.actionSheet)
+                        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                            let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+                            if authStatus == AVAuthorizationStatus.denied {
+                                // TODO: MAKE THIS A ALERT VC AND DIRECT USER TO SETTINGS APP LATER
+                                
+                                let alertController = UIAlertController(title: "Camera Access Request Denied", message: "Aim! is currently not allowed to access your camera, please modify your settings in the Settings app.", preferredStyle: .alert)
+                                
+                                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                        return
+                                    }
+                                    
+                                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                            print("Settings opened: \(success)") // Prints true
+                                        })
+                                    }
+                                }
+                                alertController.addAction(settingsAction)
+                                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                                alertController.addAction(cancelAction)
+                                
+                                self.present(alertController, animated: true, completion: nil)
+                                
+                                
+                                
+                                let warning = AimStandardStatusBarNotification()
+                                warning.display(withMessage: "Image access not allowed, turn on in Settings app.", forDuration: 1.5)
+                                return
+                            }
+                            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+                                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                                self.imagePicker.allowsEditing = false
+                                self.present(self.imagePicker, animated: true, completion: nil)
+                            }
+                        }
+                        let libraryAction = UIAlertAction(title: "Photos", style: .default) { (action) in
+                            self.imagePicker.sourceType = .photoLibrary
+                            self.imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+                            self.present(self.imagePicker, animated: true, completion: nil)
+                        }
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+                            alert.dismiss(animated: true, completion: nil)
+                        }
+                        
+                        alert.addAction(cameraAction)
+                        alert.addAction(libraryAction)
+                        alert.addAction(cancelAction)
+                        
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                    let changeTitleAction = UIAlertAction(title: "Change Title", style: .default) { (action) in
+                        print("Should change title")
+                        
+                    }
+                    
+                    let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in
+                        print("Should change priority")
+                        
+                    }
+                    
+                    let deleteSessionAction = UIAlertAction(title: "Remove Session", style: .destructive) { (action) in
+                        // Force unwrapping UID because no user can see their sessions without logging in first(app has UID in that case)
+                        self.ref?.child("users").child(currentAppUserID!).child("Sessions").child(sessionBeingManaged.title).removeValue()
+                        self.aimSessionFetchedArray.removeAll()
+                        self.retrieveSessions()
+                        self.aimSessionCollectionView.reloadData()
+                    }
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                    })
+                    
+                    alert.addAction(changeImageAction)
+                    alert.addAction(changeTitleAction)
+                    alert.addAction(changePriorityAction)
+                    alert.addAction(deleteSessionAction)
+                    alert.addAction(cancelAction)
+                    
+                    present(alert, animated: true, completion: nil)
+                }
+            } else {
+                return
+            }
+        }
+        
+    }
+    
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
         handleTokenSumReadingFromFirebase()
+        aimSessionFetchedArray.removeAll()
+        retrieveSessions()
+        aimSessionCollectionView.reloadData()
     }
-
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

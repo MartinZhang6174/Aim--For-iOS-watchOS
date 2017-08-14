@@ -29,25 +29,27 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         sessionSnaphotImageView.image = nil
         sessionInfoLabel.text = ""
         
-        forceRequiredToTouch = CGFloat(defaults.float(forKey: "AimSessionForceRequiredToTouch"))
+//        forceRequiredToTouch = CGFloat(defaults.float(forKey: "AimSessionForceRequiredToTouch"))
     }
     
-    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            if #available(iOS 10.0, *) {
-                if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-                    let force = (touch.force)/(touch.maximumPossibleForce)
-                    print("Force: \(force)")
-                    if force >= forceRequiredToTouch {
-                        super.touchesBegan(touches, with: event)
-                    }
-                }
-            }
-        }
-        
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let touch = touches.first {
+//            if #available(iOS 10.0, *) {
+//                if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//                    let force = (touch.force)/(touch.maximumPossibleForce)
+//                    print("Force: \(force)")
+//                    if force <= 0.3 {
+//                        super.touchesBegan(touches, with: event)
+//                    }
+//                    
+//                    if force >=
+//                }
+//            }
+//        }
+//        
+//    }
      // Commenting above method out because some of the older devices don't have forcetouch and there's not much implementation of this technology in this VC anyway. 
-     */
+
     
     override func prepareForReuse() {
         // Hide the regular text label, plus label and backgroundBlackView
