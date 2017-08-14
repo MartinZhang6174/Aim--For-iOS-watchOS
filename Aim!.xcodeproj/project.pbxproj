@@ -34,6 +34,8 @@
 		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
 		9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */; };
 		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
+		9C3FB39A1F423E5E00900945 /* AimSessionTitleChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */; };
+		9C3FB39B1F423E5E00900945 /* AimSessionTitleChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */; };
 		9C50B47A1F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */; };
 		9C50B47E1F1D5C0D00924B95 /* UIViewShakeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C50B47D1F1D5C0D00924B95 /* UIViewShakeExtension.swift */; };
 		9C513E151F22CB740039E963 /* AimKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C513E141F22CB740039E963 /* AimKeys.plist */; };
@@ -188,6 +190,8 @@
 		9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsViewController.swift; sourceTree = "<group>"; };
 		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
+		9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionTitleChangeViewController.swift; sourceTree = "<group>"; };
+		9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AimSessionTitleChangeViewController.xib; sourceTree = "<group>"; };
 		9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C50B47D1F1D5C0D00924B95 /* UIViewShakeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewShakeExtension.swift; sourceTree = "<group>"; };
 		9C513E141F22CB740039E963 /* AimKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AimKeys.plist; sourceTree = "<group>"; };
@@ -485,6 +489,8 @@
 				9CE864281F315B18001F9494 /* AimUserInfoTableViewController.swift */,
 				9CE8642A1F33F61E001F9494 /* AimEmailChangeViewController.swift */,
 				9CE8642C1F365840001F9494 /* AimEmailChangeFailureViewController.swift */,
+				9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */,
+				9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 			files = (
 				9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */,
 				9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
+				9C3FB39B1F423E5E00900945 /* AimSessionTitleChangeViewController.xib in Resources */,
 				9C513E151F22CB740039E963 /* AimKeys.plist in Resources */,
 				9CE036591F0AE03200A26E1A /* Info.plist in Resources */,
 				9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */,
@@ -892,6 +899,7 @@
 				9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */,
 				9CE8642B1F33F61E001F9494 /* AimEmailChangeViewController.swift in Sources */,
 				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
+				9C3FB39A1F423E5E00900945 /* AimSessionTitleChangeViewController.swift in Sources */,
 				9C50B47A1F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift in Sources */,
 				9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */,
 				9CE8642D1F365840001F9494 /* AimEmailChangeFailureViewController.swift in Sources */,

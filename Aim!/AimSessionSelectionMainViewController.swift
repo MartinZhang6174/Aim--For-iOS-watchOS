@@ -17,6 +17,7 @@ import GoogleSignIn
 import WatchConnectivity
 import CWStatusBarNotification
 import AVFoundation
+import PopupDialog
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -702,8 +703,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changeTitleAction = UIAlertAction(title: "Change Title", style: .default) { (action) in
-                        print("Should change title")
+
+                        let sessionTitleChangeController = AimSessionTitleChangeViewController(nibName: "AimSessionTitleChangeViewController", bundle: nil)
                         
+                        sessionTitleChangeController.currentSession = sessionBeingManaged
+                        
+                        let popup = PopupDialog(viewController: sessionTitleChangeController, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true, completion: nil)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
                     
                     let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in
