@@ -1,40 +1,299 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11163.2" systemVersion="16A323" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kcj-o3-Mv4">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11064"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PhosphateProInline.otf">
+            <string>PhosphatePro-Inline</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
+        <!--AimMainInterfaceController-->
+        <scene sceneID="4hi-jR-Kag">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Aim__For_watchOS" customModuleProvider="target"/>
+                <controller identifier="AimMainInterfaceController" id="Kcj-o3-Mv4" customClass="AimMainInterfaceController" customModule="Aim__Extension">
+                    <items>
+                        <group width="147" height="50" alignment="center" radius="7" id="uXT-To-DBm">
+                            <items>
+                                <label width="1" height="54" alignment="center" text="Aim!" textAlignment="center" id="bA6-tC-Ylm">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <separator alignment="center" hidden="YES" id="fHM-rM-zom">
+                            <color key="color" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <group width="1" height="23" alignment="left" id="XIY-yQ-kuI">
+                            <items>
+                                <label width="70" alignment="left" verticalAlignment="center" text="N/A" textAlignment="center" id="aUv-MC-XIt">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                                </label>
+                                <separator alignment="center" verticalAlignment="center" id="pnK-IW-Sv9">
+                                    <color key="color" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </separator>
+                                <label width="70" alignment="right" verticalAlignment="center" text="N/A" textAlignment="center" id="oSc-0H-2Wz">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" height="60" alignment="center" id="XKG-ub-hko">
+                            <items>
+                                <button width="0.5" height="60" alignment="left" title="Sessions" id="ZOT-Sz-ZnS">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
+                                    <connections>
+                                        <segue destination="2YE-aA-ly4" kind="push" id="OBb-ei-bhC"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="right" title="Awards" id="tvU-5d-t87">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="13"/>
+                                    <connections>
+                                        <segue destination="h1y-vm-7uY" kind="push" id="CAZ-xa-uKW"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="toAwardsButton" destination="tvU-5d-t87" id="hJS-O4-1r6"/>
+                        <outlet property="toSessionsButton" destination="ZOT-Sz-ZnS" id="4QD-bB-KnV"/>
+                        <outlet property="userHourSumLabel" destination="oSc-0H-2Wz" id="T85-In-YyF"/>
+                        <outlet property="userTokenSumLabel" destination="aUv-MC-XIt" id="pih-26-uhA"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="34" y="45.769230769230774"/>
+        </scene>
+        <!--AimUserNotLoggedInWarningInterfaceController-->
+        <scene sceneID="hvP-eA-Rvg">
+            <objects>
+                <controller identifier="AimUserNotLoggedInWarningInterfaceController" id="nlt-lb-GMO"/>
+            </objects>
+            <point key="canvasLocation" x="178" y="338"/>
+        </scene>
+        <!--AimAwardsInterfaceController-->
+        <scene sceneID="TbT-bV-o7I">
+            <objects>
+                <controller identifier="AimAwardsInterfaceController" id="h1y-vm-7uY">
+                    <items>
+                        <group width="1" height="30" alignment="center" id="MVK-Al-b8b">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Awards" textAlignment="center" id="XnV-ef-O2Y">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="455" y="-106"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="4me-pA-pFC">
+            <objects>
+                <controller identifier="AimMainSessionSelectionInterfaceController" title="Main" id="2YE-aA-ly4" customClass="AimMainSessionSelectionInterfaceController" customModule="Aim__Extension">
+                    <items>
+                        <group width="1" height="30" alignment="left" id="IgH-xa-yuU">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Sessions" id="8WJ-Zt-fer">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="S86-xo-TQT">
+                            <items>
+                                <table alignment="left" spacing="4" id="GV8-80-drt" customClass="AimSessionSelectionTable" customModule="Aim__Extension">
+                                    <items>
+                                        <tableRow identifier="AimSessionRowType" id="Vzd-7u-pLt" customClass="AimSessionRowController" customModule="Aim__Extension">
+                                            <group key="rootItem" width="1" alignment="left" id="BET-u2-W8K">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Physics HW" textAlignment="center" minimumScaleFactor="0.69999999999999996" id="oqS-LO-s8w">
+                                                        <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                                    </label>
+                                                </items>
+                                                <connections>
+                                                    <segue destination="Txb-gJ-Yzy" kind="modal" identifier="segueFromSessionSelectionToSession" id="hOR-6B-yaW"/>
+                                                </connections>
+                                            </group>
+                                            <connections>
+                                                <outlet property="sessionTitleLabel" destination="oqS-LO-s8w" id="doV-Lr-rVc"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                                <button width="1" alignment="left" title="Refresh" id="sZa-tb-xPg">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="0.59139516839999995" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                    <connections>
+                                        <action selector="refreshButtonClicked" destination="2YE-aA-ly4" id="HwB-xG-5sV"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                    <menu key="menu" id="rhq-WT-KdR">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="tyL-Ks-xHP">
+                                <connections>
+                                    <action selector="refreshContextMenuItemClicked" destination="2YE-aA-ly4" id="OkM-8h-6CD"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="User" icon="info" id="VjT-dA-OUH"/>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="sessionTable" destination="GV8-80-drt" id="PGf-Pb-JgF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="454" y="156"/>
+        </scene>
+        <!--Sessions-->
+        <scene sceneID="0k8-f4-WQd">
+            <objects>
+                <controller identifier="AimSessionInterfaceControlller" title="Sessions" id="Txb-gJ-Yzy" customClass="AimSessionInterfaceController" customModule="Aim__Extension">
+                    <items>
+                        <group width="1" height="45" alignment="left" id="70R-6x-lFP">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Physics HW" textAlignment="center" minimumScaleFactor="0.29999999999999999" id="mP7-qS-pkk">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="155" height="18" alignment="left" id="mh3-ea-F5i">
+                            <items>
+                                <label alignment="right" text="0.0" id="OcH-1c-TMi">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="center" id="YSV-5G-WH9">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="00:00" textAlignment="center" id="Afs-Au-4rx">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="center" verticalAlignment="bottom" id="pHS-hp-9gi">
+                            <items>
+                                <button width="1" widthAdjustment="-17" alignment="center" verticalAlignment="center" title="Terminate" id="jYG-IX-IrH">
+                                    <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.10196078431372549" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="15"/>
+                                    <connections>
+                                        <action selector="terminateSessionButtonClicked" destination="Txb-gJ-Yzy" id="FfP-Gf-4v5"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="UO2-G3-cdW">
+                        <items>
+                            <menuItem title="Terminate" icon="decline" id="Azj-K6-whd"/>
+                            <menuItem title="Pause" icon="pause" id="OoF-a5-TUK"/>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="sessionTimerLabel" destination="Afs-Au-4rx" id="eob-7v-7Vm"/>
+                        <outlet property="sessionTitleLabel" destination="mP7-qS-pkk" id="sRP-xN-ewM"/>
+                        <outlet property="sessionTokensLabel" destination="OcH-1c-TMi" id="hSB-c1-qeq"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="716.61538461538464" y="155.61538461538461"/>
         </scene>
         <!--Static Interface-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
-                <notificationController backgroundImage="Insta Like Color" id="YCC-NB-fut" userLabel="Static Interface">
+                <notificationController animationDuration="1" id="YCC-NB-fut" userLabel="Static Interface">
                     <items>
-                        <label alignment="left" text="Session Finished!" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Session Completed!" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <edgeInsets key="margins" left="1" right="1" top="0.0" bottom="0.0"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="3R2-e1-rLh" kind="relationship" relationship="dynamicNotificationInterface" id="YrH-6U-O5I"/>
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="47" y="574"/>
         </scene>
-        <!--Dynamic Interface-->
-        <scene sceneID="ZPc-GJ-vnh">
+        <!--Dynamic Notification Interface Controller-->
+        <scene sceneID="Eo4-41-kgx">
             <objects>
-                <controller backgroundImage="Insta Like Color" id="4sK-HA-Art" userLabel="Dynamic Interface" customClass="NotificationController" customModule="Aim__For_watchOS" customModuleProvider="target"/>
+                <controller id="3R2-e1-rLh"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="347" y="574"/>
+        </scene>
+        <!--Aim User Info Interface Controller-->
+        <scene sceneID="C9p-Z6-7fc">
+            <objects>
+                <controller id="arK-KR-Lgu" customClass="AimUserInfoInterfaceController" customModule="Aim__Extension">
+                    <items>
+                        <group width="1" alignment="left" id="51i-it-z3n">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" semanticContentAttribute="forceLeftToRight" text="martinzhang.development@gmail.com" textAlignment="center" minimumScaleFactor="0.69999999999999996" id="ZaN-vO-bOV">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="17"/>
+                                </label>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="MkY-Xz-rfN">
+                            <color key="color" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <group width="1" height="37" alignment="left" id="DAz-0f-kJH">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Hours:" textAlignment="center" id="vMk-7I-MIC">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" height="37" alignment="left" id="6u8-pc-n7f">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Tokens:" textAlignment="center" id="C0X-ca-fOu">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <group width="1" height="37" alignment="left" id="Ybc-Qy-my9">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Awards:" textAlignment="center" id="LAM-gT-Dvi">
+                                    <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="564" y="424"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

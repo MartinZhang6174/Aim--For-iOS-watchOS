@@ -7,26 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */; };
+		75659762C66996131985A075 /* Pods_Aim__Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */; };
+		9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
+		9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */; };
+		9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
+		9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */; };
+		9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */; };
+		9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02AF701EC7B53700B0A68F /* CoreLocation.framework */; };
+		9C03015C1EEA413100D2C0B4 /* AimCustomRaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */; };
+		9C0426311F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */; };
+		9C0D6B5C1EDAA70D00B0542D /* AimMainSessionSelectionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B5A1EDAA6AA00B0542D /* AimMainSessionSelectionInterfaceController.swift */; };
+		9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B561EDAA3BE00B0542D /* AimSessionInterfaceController.swift */; };
+		9C0D6B601EDAA7E900B0542D /* AimSessionSelectionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B5F1EDAA7E900B0542D /* AimSessionSelectionTable.swift */; };
+		9C0D6B631EDAACEA00B0542D /* AimSessionRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D6B621EDAACEA00B0542D /* AimSessionRowController.swift */; };
+		9C1035871EE0D7C300535645 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
+		9C1035891EE0D7E800535645 /* AimUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1035881EE0D7E800535645 /* AimUser.swift */; };
+		9C10358E1EE0D9FC00535645 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C10358C1EE0D9FC00535645 /* Realm.framework */; };
+		9C10358F1EE0D9FC00535645 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C10358C1EE0D9FC00535645 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C1035901EE0D9FC00535645 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C10358D1EE0D9FC00535645 /* RealmSwift.framework */; };
+		9C1035911EE0D9FC00535645 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C10358D1EE0D9FC00535645 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C1035931EE0DA0200535645 /* AimUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1035881EE0D7E800535645 /* AimUser.swift */; };
+		9C153F9E1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C153F9D1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift */; };
+		9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */; };
+		9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */; };
+		9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */; };
+		9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */; };
+		9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */; };
+		9C3FB39A1F423E5E00900945 /* AimSessionTitleChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */; };
+		9C3FB39B1F423E5E00900945 /* AimSessionTitleChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */; };
+		9C50B47A1F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */; };
+		9C50B47E1F1D5C0D00924B95 /* UIViewShakeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C50B47D1F1D5C0D00924B95 /* UIViewShakeExtension.swift */; };
+		9C513E151F22CB740039E963 /* AimKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C513E141F22CB740039E963 /* AimKeys.plist */; };
+		9C54F83B1F2E50F8000A7BE3 /* AimPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C54F83A1F2E50F8000A7BE3 /* AimPasswordResetViewController.swift */; };
+		9C576D4E1F0C2D330086D236 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
+		9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */; };
+		9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */; };
+		9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
+		9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
+		9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */; };
 		9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */; };
 		9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A11DA5DA8D005CA654 /* Main.storyboard */; };
 		9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A41DA5DA8D005CA654 /* Assets.xcassets */; };
 		9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */; };
 		9C6890B31DA5DA8D005CA654 /* Aim_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890B21DA5DA8D005CA654 /* Aim_Tests.swift */; };
-		9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */; };
-		9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */; };
-		9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */; };
 		9C6890C91DA5E5C0005CA654 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890C71DA5E5C0005CA654 /* Interface.storyboard */; };
 		9C6890CB1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */; };
-		9C6890D21DA5E5C0005CA654 /* Aim! For watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9C6890D11DA5E5C0005CA654 /* Aim! For watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9C6890D91DA5E5C0005CA654 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */; };
+		9C6890D21DA5E5C0005CA654 /* Aim! Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */; };
 		9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */; };
 		9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */; };
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
-		9C6890E31DA5E5C0005CA654 /* Aim! For watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */; };
-		9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */; };
-		9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */; };
-		9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */; };
-		9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */; };
+		9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! .app */; };
+		9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */; };
+		9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
+		9C73A4781EDF85D5007C7F1F /* AimSessionCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */; };
+		9C73A47A1EDF943C007C7F1F /* AimSessionCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */; };
+		9C89F7171EE3504A008AE8CC /* AimSessionFetchedArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C89F7161EE3504A008AE8CC /* AimSessionFetchedArrayExtension.swift */; };
+		9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
+		9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */; };
+		9C8BD1BF1EE3400C0026188C /* AimImageCachingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD1BE1EE3400C0026188C /* AimImageCachingExtension.swift */; };
+		9C90716C1F3D420E004894FA /* AimOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */; };
+		9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E49AF1EA0518A00D5D368 /* AimSession.swift */; };
+		9CA11E491F2171AA00DB03F9 /* AimAwardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */; };
+		9CA11E4B1F2173CE00DB03F9 /* AimAwardBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */; };
+		9CA11E4D1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */; };
+		9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */; };
+		9CB6401F1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */; };
+		9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */; };
+		9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */; };
+		9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */; };
+		9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
+		9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */; };
+		9CE036591F0AE03200A26E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C646DE61E788591007D4578 /* Info.plist */; };
+		9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */; };
+		9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF661EC532F800B0A68F /* TimerUtility.swift */; };
+		9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */; };
+		9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */; };
+		9CE0E4521EFECD9800428B19 /* AimUserInfoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */; };
+		9CE7EAA51F11855300615E59 /* AimSessionPieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */; };
+		9CE864291F315B18001F9494 /* AimUserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE864281F315B18001F9494 /* AimUserInfoTableViewController.swift */; };
+		9CE8642B1F33F61E001F9494 /* AimEmailChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8642A1F33F61E001F9494 /* AimEmailChangeViewController.swift */; };
+		9CE8642D1F365840001F9494 /* AimEmailChangeFailureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8642C1F365840001F9494 /* AimEmailChangeFailureViewController.swift */; };
+		9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
+		9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
+		9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
+		9CFB013A1E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */; };
+		CC755824142A1A3CDDCBDE45 /* Pods_Aim__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */; };
+		F226F6FD778CC7A57CD2E9C9 /* Pods_Aim__Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +122,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		9C1035921EE0D9FD00535645 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9C1035911EE0D9FC00535645 /* RealmSwift.framework in Embed Frameworks */,
+				9C10358F1EE0D9FC00535645 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C6890E91DA5E5C0005CA654 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				9C6890D21DA5E5C0005CA654 /* Aim! For watchOS Extension.appex in Embed App Extensions */,
+				9C6890D21DA5E5C0005CA654 /* Aim! Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +151,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				9C6890E31DA5E5C0005CA654 /* Aim! For watchOS.app in Embed Watch Content */,
+				9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,33 +159,96 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F1D23586B6982792E9372E9 /* Pods-Aim! Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests.release.xcconfig"; sourceTree = "<group>"; };
+		25C9E071FCC443A47E84B0C9 /* Pods-Aim! Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		2999EC352E41DCD6F77D65AE /* Pods-Aim! Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		32C09E72C6BCE94C3AEC28A1 /* Pods-Aim! Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension.release.xcconfig"; sourceTree = "<group>"; };
+		32CE82B4047DCFFE94E09643 /* Pods-Aim! .debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! .debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! /Pods-Aim! .debug.xcconfig"; sourceTree = "<group>"; };
+		49BD30373DF56C357AC09BF6 /* Pods-Aim! .release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim! .release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim! /Pods-Aim! .release.xcconfig"; sourceTree = "<group>"; };
+		64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C02AF661EC532F800B0A68F /* TimerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerUtility.swift; sourceTree = "<group>"; };
+		9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDurationManager.swift; sourceTree = "<group>"; };
+		9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionDurationInfoDelegate.swift; sourceTree = "<group>"; };
+		9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSpotlight.framework; path = System/Library/Frameworks/CoreSpotlight.framework; sourceTree = SDKROOT; };
+		9C02AF701EC7B53700B0A68F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim!.entitlements"; sourceTree = "<group>"; };
+		9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCustomRaisedButton.swift; sourceTree = "<group>"; };
+		9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimStandardNavigationBarNotification.swift; sourceTree = "<group>"; };
+		9C0D6B561EDAA3BE00B0542D /* AimSessionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionInterfaceController.swift; sourceTree = "<group>"; };
+		9C0D6B5A1EDAA6AA00B0542D /* AimMainSessionSelectionInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimMainSessionSelectionInterfaceController.swift; sourceTree = "<group>"; };
+		9C0D6B5F1EDAA7E900B0542D /* AimSessionSelectionTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionTable.swift; sourceTree = "<group>"; };
+		9C0D6B621EDAACEA00B0542D /* AimSessionRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionRowController.swift; sourceTree = "<group>"; };
+		9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aim!-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		9C1035881EE0D7E800535645 /* AimUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUser.swift; sourceTree = "<group>"; };
+		9C10358C1EE0D9FC00535645 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		9C10358D1EE0D9FC00535645 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		9C153F9D1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopupViewController.swift; sourceTree = "<group>"; };
+		9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionForceSelectionProtocol.swift; sourceTree = "<group>"; };
+		9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimQuoteView.swift; sourceTree = "<group>"; };
+		9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionVCCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsViewController.swift; sourceTree = "<group>"; };
+		9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionSelectionMainViewController.swift; sourceTree = "<group>"; };
+		9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionTitleChangeViewController.swift; sourceTree = "<group>"; };
+		9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AimSessionTitleChangeViewController.xib; sourceTree = "<group>"; };
+		9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardsBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C50B47D1F1D5C0D00924B95 /* UIViewShakeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewShakeExtension.swift; sourceTree = "<group>"; };
+		9C513E141F22CB740039E963 /* AimKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AimKeys.plist; sourceTree = "<group>"; };
+		9C54F83A1F2E50F8000A7BE3 /* AimPasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimPasswordResetViewController.swift; sourceTree = "<group>"; };
+		9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSettingsTableViewController.swift; sourceTree = "<group>"; };
+		9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionViewController.swift; sourceTree = "<group>"; };
+		9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhosphateProInline.otf; sourceTree = "<group>"; };
+		9C646DE61E788591007D4578 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C68909A1DA5DA8D005CA654 /* Aim!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C6890A21DA5DA8D005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C6890A41DA5DA8D005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890A71DA5DA8D005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9C6890A91DA5DA8D005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6890AE1DA5DA8D005CA654 /* Aim!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aim!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C6890AE1DA5DA8D005CA654 /* Aim! Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aim! Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890B21DA5DA8D005CA654 /* Aim_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aim_Tests.swift; sourceTree = "<group>"; };
 		9C6890B41DA5DA8D005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
-		9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimViewController.swift; sourceTree = "<group>"; };
-		9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim! For watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C6890C51DA5E5C0005CA654 /* Aim! .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aim! .app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890C81DA5E5C0005CA654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890CC1DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C6890D11DA5E5C0005CA654 /* Aim! For watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Aim! For watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Aim! Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6890D71DA5E5C0005CA654 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AimMainInterfaceController.swift; sourceTree = "<group>"; };
 		9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C6890E01DA5E5C0005CA654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCustomizationViewController.swift; sourceTree = "<group>"; };
-		9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCollectionViewController.swift; sourceTree = "<group>"; };
-		9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsCollectionViewCell.swift; sourceTree = "<group>"; };
-		9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionsButton.swift; sourceTree = "<group>"; };
+		9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimDurationDelegate.swift; sourceTree = "<group>"; };
+		9C7160251DC5A940003C7773 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionCentral.swift; sourceTree = "<group>"; };
+		9C89F7161EE3504A008AE8CC /* AimSessionFetchedArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionFetchedArrayExtension.swift; sourceTree = "<group>"; };
+		9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionLite.swift; sourceTree = "<group>"; };
+		9C8BD1BC1EE21D940026188C /* Aim! Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aim! Extension.entitlements"; sourceTree = "<group>"; };
+		9C8BD1BE1EE3400C0026188C /* AimImageCachingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimImageCachingExtension.swift; sourceTree = "<group>"; };
+		9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimOnboardingViewController.swift; sourceTree = "<group>"; };
+		9C9E49AF1EA0518A00D5D368 /* AimSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSession.swift; sourceTree = "<group>"; };
+		9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardManager.swift; sourceTree = "<group>"; };
+		9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimAwardBadge.swift; sourceTree = "<group>"; };
+		9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimStandardStatusBarNotification.swift; sourceTree = "<group>"; };
+		9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionAddingPopUpView.swift; sourceTree = "<group>"; };
+		9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimNotificationSettingsTableViewController.swift; sourceTree = "<group>"; };
+		9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimLoginViewController.swift; sourceTree = "<group>"; };
+		9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextField.swift; sourceTree = "<group>"; };
+		9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimMovementWarningPopUpView.swift; sourceTree = "<group>"; };
+		9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimTokenConversionManager.swift; sourceTree = "<group>"; };
+		9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimCurrentUserRemindersTableViewController.swift; sourceTree = "<group>"; };
+		9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserLite.swift; sourceTree = "<group>"; };
+		9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserInfoInterfaceController.swift; sourceTree = "<group>"; };
+		9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimSessionPieView.swift; sourceTree = "<group>"; };
+		9CE864281F315B18001F9494 /* AimUserInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimUserInfoTableViewController.swift; sourceTree = "<group>"; };
+		9CE8642A1F33F61E001F9494 /* AimEmailChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimEmailChangeViewController.swift; sourceTree = "<group>"; };
+		9CE8642C1F365840001F9494 /* AimEmailChangeFailureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AimEmailChangeFailureViewController.swift; sourceTree = "<group>"; };
+		9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim__Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.debug.xcconfig"; sourceTree = "<group>"; };
+		C375D2CEDC0E5DE05DED8279 /* Pods-Aim!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aim!.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aim!/Pods-Aim!.release.xcconfig"; sourceTree = "<group>"; };
+		EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aim_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +256,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C02AF711EC7B53700B0A68F /* CoreLocation.framework in Frameworks */,
+				9C02AF6F1EC6729500B0A68F /* CoreSpotlight.framework in Frameworks */,
+				9C02AF6D1EC6728300B0A68F /* CoreMotion.framework in Frameworks */,
+				305C18356C44AEABDF3105AC /* Pods_Aim_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +267,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F226F6FD778CC7A57CD2E9C9 /* Pods_Aim__Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,20 +275,93 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C10358E1EE0D9FC00535645 /* Realm.framework in Frameworks */,
+				75659762C66996131985A075 /* Pods_Aim__Extension.framework in Frameworks */,
+				9C1035901EE0D9FC00535645 /* RealmSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDE089E74B7CD90930647D8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC755824142A1A3CDDCBDE45 /* Pods_Aim__.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042A268C7D5DC0A3E18646E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C10358C1EE0D9FC00535645 /* Realm.framework */,
+				9C10358D1EE0D9FC00535645 /* RealmSwift.framework */,
+				9C02AF701EC7B53700B0A68F /* CoreLocation.framework */,
+				9C02AF6E1EC6729500B0A68F /* CoreSpotlight.framework */,
+				9C02AF6C1EC6728300B0A68F /* CoreMotion.framework */,
+				EB7433A6F6591F15CE8DD57F /* Pods_Aim_.framework */,
+				64416062BBC5FEAD97CD4E6F /* Pods_Aim__.framework */,
+				BC579E14087983E2E7125488 /* Pods_Aim__Extension.framework */,
+				9A8C154FCF40464363F5363D /* Pods_Aim__Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C3EFACE547162E3A4F4A25D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */,
+				C375D2CEDC0E5DE05DED8279 /* Pods-Aim!.release.xcconfig */,
+				32CE82B4047DCFFE94E09643 /* Pods-Aim! .debug.xcconfig */,
+				49BD30373DF56C357AC09BF6 /* Pods-Aim! .release.xcconfig */,
+				25C9E071FCC443A47E84B0C9 /* Pods-Aim! Extension.debug.xcconfig */,
+				32C09E72C6BCE94C3AEC28A1 /* Pods-Aim! Extension.release.xcconfig */,
+				2999EC352E41DCD6F77D65AE /* Pods-Aim! Tests.debug.xcconfig */,
+				0F1D23586B6982792E9372E9 /* Pods-Aim! Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C02AF651EC532D700B0A68F /* Utility Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C02AF661EC532F800B0A68F /* TimerUtility.swift */,
+				9C8BD1BE1EE3400C0026188C /* AimImageCachingExtension.swift */,
+				9C89F7161EE3504A008AE8CC /* AimSessionFetchedArrayExtension.swift */,
+				9C50B47D1F1D5C0D00924B95 /* UIViewShakeExtension.swift */,
+			);
+			name = "Utility Classes";
+			sourceTree = "<group>";
+		};
+		9C646DE01E7884B8007D4578 /* Phosphate Font */ = {
+			isa = PBXGroup;
+			children = (
+				9C646DE11E7884DB007D4578 /* PhosphateProInline.otf */,
+			);
+			name = "Phosphate Font";
+			sourceTree = "<group>";
+		};
+		9C646DE81E78859A007D4578 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C02AF741EC7D97A00B0A68F /* Aim!.entitlements */,
+				9C0DE43A1E176AE6006EA06D /* Aim!-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9C6890911DA5DA8D005CA654 = {
 			isa = PBXGroup;
 			children = (
+				9C8BD1BC1EE21D940026188C /* Aim! Extension.entitlements */,
 				9C68909C1DA5DA8D005CA654 /* Aim! */,
 				9C6890B11DA5DA8D005CA654 /* Aim!Tests */,
 				9C6890C61DA5E5C0005CA654 /* Aim! For watchOS */,
 				9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */,
 				9C68909B1DA5DA8D005CA654 /* Products */,
+				6C3EFACE547162E3A4F4A25D /* Pods */,
+				042A268C7D5DC0A3E18646E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,9 +369,9 @@
 			isa = PBXGroup;
 			children = (
 				9C68909A1DA5DA8D005CA654 /* Aim!.app */,
-				9C6890AE1DA5DA8D005CA654 /* Aim!Tests.xctest */,
-				9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */,
-				9C6890D11DA5E5C0005CA654 /* Aim! For watchOS Extension.appex */,
+				9C6890AE1DA5DA8D005CA654 /* Aim! Tests.xctest */,
+				9C6890C51DA5E5C0005CA654 /* Aim! .app */,
+				9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,10 +379,17 @@
 		9C68909C1DA5DA8D005CA654 /* Aim! */ = {
 			isa = PBXGroup;
 			children = (
+				9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */,
+				9C646DE81E78859A007D4578 /* Supporting Files */,
 				9C68909D1DA5DA8D005CA654 /* AppDelegate.swift */,
-				9CFFE2861DB3140C00895C3C /* UI Files */,
+				9C513E141F22CB740039E963 /* AimKeys.plist */,
+				9C646DE61E788591007D4578 /* Info.plist */,
+				9C9E49AE1EA0517700D5D368 /* Models */,
 				9CFFE2851DB313EE00895C3C /* Controllers */,
-				9C6890A91DA5DA8D005CA654 /* Info.plist */,
+				9C7F38361DC690050038BC2F /* Protocols */,
+				9CFFE2861DB3140C00895C3C /* UI Files */,
+				9C7F38371DC690200038BC2F /* Manager Classes */,
+				9C02AF651EC532D700B0A68F /* Utility Classes */,
 			);
 			path = "Aim!";
 			sourceTree = "<group>";
@@ -181,6 +409,7 @@
 				9C6890C71DA5E5C0005CA654 /* Interface.storyboard */,
 				9C6890CA1DA5E5C0005CA654 /* Assets.xcassets */,
 				9C6890CC1DA5E5C0005CA654 /* Info.plist */,
+				9CFB01361E65431B00D0AAA4 /* GoogleService-Info.plist */,
 			);
 			path = "Aim! For watchOS";
 			sourceTree = "<group>";
@@ -188,9 +417,14 @@
 		9C6890D51DA5E5C0005CA654 /* Aim! For watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9C6890D81DA5E5C0005CA654 /* InterfaceController.swift */,
-				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
+				9C6890D81DA5E5C0005CA654 /* AimMainInterfaceController.swift */,
+				9C0D6B5A1EDAA6AA00B0542D /* AimMainSessionSelectionInterfaceController.swift */,
+				9C0D6B621EDAACEA00B0542D /* AimSessionRowController.swift */,
+				9C0D6B561EDAA3BE00B0542D /* AimSessionInterfaceController.swift */,
+				9CE0E4511EFECD9800428B19 /* AimUserInfoInterfaceController.swift */,
 				9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */,
+				9C0D6B5F1EDAA7E900B0542D /* AimSessionSelectionTable.swift */,
+				9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */,
 				9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */,
 				9C6890E01DA5E5C0005CA654 /* Info.plist */,
 				9C6890D61DA5E5C0005CA654 /* Supporting Files */,
@@ -206,14 +440,57 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9C7F38361DC690050038BC2F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */,
+				9C3203A01EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift */,
+				9C02AF6A1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		9C7F38371DC690200038BC2F /* Manager Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C7160251DC5A940003C7773 /* TimerManager.swift */,
+				9C02AF681EC5350000B0A68F /* SessionDurationManager.swift */,
+				9CD69A661EF357F800521877 /* AimTokenConversionManager.swift */,
+				9CA11E481F2171AA00DB03F9 /* AimAwardManager.swift */,
+			);
+			name = "Manager Classes";
+			sourceTree = "<group>";
+		};
+		9C9E49AE1EA0517700D5D368 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C9E49AF1EA0518A00D5D368 /* AimSession.swift */,
+				9C1035881EE0D7E800535645 /* AimUser.swift */,
+				9C8BD1BA1EE214C30026188C /* AimSessionLite.swift */,
+				9CE0E44E1EFCB0A600428B19 /* AimUserLite.swift */,
+				9CA11E4A1F2173CE00DB03F9 /* AimAwardBadge.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		9CFFE2851DB313EE00895C3C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9CFFE25F1DB2E6A400895C3C /* AimSessionCollectionViewController.swift */,
-				9CB527641DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift */,
-				9C6890BD1DA5E3C5005CA654 /* AwardsViewController.swift */,
-				9C6890C11DA5E3F8005CA654 /* SettingsViewController.swift */,
-				9C6890BF1DA5E3E7005CA654 /* AimViewController.swift */,
+				9C90716B1F3D420E004894FA /* AimOnboardingViewController.swift */,
+				9CC0134F1E458D2200EDC879 /* AimLoginViewController.swift */,
+				9C3E31D31E677B2400963631 /* AimSessionSelectionMainViewController.swift */,
+				9C3A3A021E7DE7320053D8AC /* AimAwardsViewController.swift */,
+				9C6221881EC16D2D00D38B92 /* AimSettingsTableViewController.swift */,
+				9C62218A1EC280DA00D38B92 /* AimSessionViewController.swift */,
+				9C153F9D1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift */,
+				9CB6401E1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift */,
+				9CE036571F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift */,
+				9C54F83A1F2E50F8000A7BE3 /* AimPasswordResetViewController.swift */,
+				9CE864281F315B18001F9494 /* AimUserInfoTableViewController.swift */,
+				9CE8642A1F33F61E001F9494 /* AimEmailChangeViewController.swift */,
+				9CE8642C1F365840001F9494 /* AimEmailChangeFailureViewController.swift */,
+				9C3FB3981F423E5E00900945 /* AimSessionTitleChangeViewController.swift */,
+				9C3FB3991F423E5E00900945 /* AimSessionTitleChangeViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -221,11 +498,20 @@
 		9CFFE2861DB3140C00895C3C /* UI Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C646DE01E7884B8007D4578 /* Phosphate Font */,
 				9C6890A11DA5DA8D005CA654 /* Main.storyboard */,
 				9C6890A61DA5DA8D005CA654 /* LaunchScreen.storyboard */,
 				9C6890A41DA5DA8D005CA654 /* Assets.xcassets */,
-				9CFFE2811DB3136C00895C3C /* AimSessionsCollectionViewCell.swift */,
-				9CFFE2831DB313DF00895C3C /* AimSessionsButton.swift */,
+				9C356B401E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift */,
+				9CC013511E459EE500EDC879 /* LoginViewControllerTextField.swift */,
+				9CB1592C1EA3019F000039F0 /* AimSessionAddingPopUpView.swift */,
+				9C3203A31EB6A24300FD6746 /* AimQuoteView.swift */,
+				9C03015B1EEA413100D2C0B4 /* AimCustomRaisedButton.swift */,
+				9CD2DECD1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift */,
+				9CE7EAA41F11855300615E59 /* AimSessionPieView.swift */,
+				9C50B4791F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift */,
+				9CA11E4C1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift */,
+				9C0426301F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift */,
 			);
 			name = "UI Files";
 			sourceTree = "<group>";
@@ -237,10 +523,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C6890B71DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim!" */;
 			buildPhases = (
+				51A7ADB76467B6718F712529 /* [CP] Check Pods Manifest.lock */,
 				9C6890961DA5DA8D005CA654 /* Sources */,
 				9C6890971DA5DA8D005CA654 /* Frameworks */,
 				9C6890981DA5DA8D005CA654 /* Resources */,
 				9C6890EB1DA5E5C0005CA654 /* Embed Watch Content */,
+				ED8156AAEAF196BB459A5694 /* [CP] Embed Pods Frameworks */,
+				D6D27FB671A64BD30A09C85D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,56 +541,66 @@
 			productReference = 9C68909A1DA5DA8D005CA654 /* Aim!.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9C6890AD1DA5DA8D005CA654 /* Aim!Tests */ = {
+		9C6890AD1DA5DA8D005CA654 /* Aim! Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C6890BA1DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim!Tests" */;
+			buildConfigurationList = 9C6890BA1DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim! Tests" */;
 			buildPhases = (
+				34B88BA92DFA9E00AF75321A /* [CP] Check Pods Manifest.lock */,
 				9C6890AA1DA5DA8D005CA654 /* Sources */,
 				9C6890AB1DA5DA8D005CA654 /* Frameworks */,
 				9C6890AC1DA5DA8D005CA654 /* Resources */,
+				82DFAB52D7C8C4965A85C643 /* [CP] Embed Pods Frameworks */,
+				C8FC612420CC011923100B57 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				9C6890B01DA5DA8D005CA654 /* PBXTargetDependency */,
 			);
-			name = "Aim!Tests";
+			name = "Aim! Tests";
 			productName = "Aim!Tests";
-			productReference = 9C6890AE1DA5DA8D005CA654 /* Aim!Tests.xctest */;
+			productReference = 9C6890AE1DA5DA8D005CA654 /* Aim! Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9C6890C41DA5E5C0005CA654 /* Aim! For watchOS */ = {
+		9C6890C41DA5E5C0005CA654 /* Aim!  */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C6890EA1DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! For watchOS" */;
+			buildConfigurationList = 9C6890EA1DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! " */;
 			buildPhases = (
+				7F5B1B64E771221D7B01EBA2 /* [CP] Check Pods Manifest.lock */,
 				9C6890C31DA5E5C0005CA654 /* Resources */,
 				9C6890E91DA5E5C0005CA654 /* Embed App Extensions */,
+				BDE089E74B7CD90930647D8A /* Frameworks */,
+				36CBCEB42B802E65335B31B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				9C6890D41DA5E5C0005CA654 /* PBXTargetDependency */,
 			);
-			name = "Aim! For watchOS";
+			name = "Aim! ";
 			productName = "Aim! For watchOS";
-			productReference = 9C6890C51DA5E5C0005CA654 /* Aim! For watchOS.app */;
+			productReference = 9C6890C51DA5E5C0005CA654 /* Aim! .app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		9C6890D01DA5E5C0005CA654 /* Aim! For watchOS Extension */ = {
+		9C6890D01DA5E5C0005CA654 /* Aim! Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C6890E81DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! For watchOS Extension" */;
+			buildConfigurationList = 9C6890E81DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! Extension" */;
 			buildPhases = (
+				DF8A6CAC5F5D241A4DF4F4FF /* [CP] Check Pods Manifest.lock */,
 				9C6890CD1DA5E5C0005CA654 /* Sources */,
 				9C6890CE1DA5E5C0005CA654 /* Frameworks */,
 				9C6890CF1DA5E5C0005CA654 /* Resources */,
+				265813E64F7F08076C9D302D /* [CP] Embed Pods Frameworks */,
+				2AAA4F4458C476D24751734D /* [CP] Copy Pods Resources */,
+				9C1035921EE0D9FD00535645 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Aim! For watchOS Extension";
+			name = "Aim! Extension";
 			productName = "Aim! For watchOS Extension";
-			productReference = 9C6890D11DA5E5C0005CA654 /* Aim! For watchOS Extension.appex */;
+			productReference = 9C6890D11DA5E5C0005CA654 /* Aim! Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -311,14 +610,25 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Martin Zhang";
 				TargetAttributes = {
 					9C6890991DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeam = FD5Z2GLC5U;
 						DevelopmentTeamName = "Martin Zhang (Personal Team)";
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					9C6890AD1DA5DA8D005CA654 = {
 						CreatedOnToolsVersion = 7.3;
@@ -327,13 +637,19 @@
 					};
 					9C6890C41DA5E5C0005CA654 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = FD5Z2GLC5U;
 						LastSwiftMigration = 0800;
 					};
 					9C6890D01DA5E5C0005CA654 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = P5MV78SBAE;
+						DevelopmentTeam = FD5Z2GLC5U;
 						DevelopmentTeamName = "Martin Zhang (Personal Team)";
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -351,9 +667,9 @@
 			projectRoot = "";
 			targets = (
 				9C6890991DA5DA8D005CA654 /* Aim! */,
-				9C6890AD1DA5DA8D005CA654 /* Aim!Tests */,
-				9C6890C41DA5E5C0005CA654 /* Aim! For watchOS */,
-				9C6890D01DA5E5C0005CA654 /* Aim! For watchOS Extension */,
+				9C6890AD1DA5DA8D005CA654 /* Aim! Tests */,
+				9C6890C41DA5E5C0005CA654 /* Aim!  */,
+				9C6890D01DA5E5C0005CA654 /* Aim! Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -364,8 +680,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6890A81DA5DA8D005CA654 /* LaunchScreen.storyboard in Resources */,
+				9C646DE21E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
+				9C3FB39B1F423E5E00900945 /* AimSessionTitleChangeViewController.xib in Resources */,
+				9C513E151F22CB740039E963 /* AimKeys.plist in Resources */,
+				9CE036591F0AE03200A26E1A /* Info.plist in Resources */,
 				9C6890A51DA5DA8D005CA654 /* Assets.xcassets in Resources */,
 				9C6890A31DA5DA8D005CA654 /* Main.storyboard in Resources */,
+				9CFB01371E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CFB01381E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +703,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6890CB1DA5E5C0005CA654 /* Assets.xcassets in Resources */,
+				9C646DE51E7884E8007D4578 /* PhosphateProInline.otf in Resources */,
+				9CFB01391E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 				9C6890C91DA5E5C0005CA654 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,25 +713,228 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C646DE41E7884DB007D4578 /* PhosphateProInline.otf in Resources */,
 				9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */,
+				9CFB013A1E65431B00D0AAA4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		265813E64F7F08076C9D302D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2AAA4F4458C476D24751734D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim! Extension/Pods-Aim! Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34B88BA92DFA9E00AF75321A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		36CBCEB42B802E65335B31B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim! /Pods-Aim! -resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51A7ADB76467B6718F712529 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7F5B1B64E771221D7B01EBA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		82DFAB52D7C8C4965A85C643 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8FC612420CC011923100B57 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim! Tests/Pods-Aim! Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D27FB671A64BD30A09C85D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim!/Pods-Aim!-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF8A6CAC5F5D241A4DF4F4FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED8156AAEAF196BB459A5694 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aim!/Pods-Aim!-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C6890961DA5DA8D005CA654 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CFFE2841DB313DF00895C3C /* AimSessionsButton.swift in Sources */,
-				9CB527651DBC5F7A00BCA2EB /* AimSessionCustomizationViewController.swift in Sources */,
-				9CFFE2601DB2E6A400895C3C /* AimSessionCollectionViewController.swift in Sources */,
-				9C6890BE1DA5E3C5005CA654 /* AwardsViewController.swift in Sources */,
-				9C6890C01DA5E3E7005CA654 /* AimViewController.swift in Sources */,
-				9CFFE2821DB3136C00895C3C /* AimSessionsCollectionViewCell.swift in Sources */,
+				9C1035891EE0D7E800535645 /* AimUser.swift in Sources */,
+				9C0426311F3A87AD00329A98 /* AimStandardNavigationBarNotification.swift in Sources */,
+				9CD2DECE1F0ECE4D0082BD03 /* AimMovementWarningPopUpView.swift in Sources */,
+				9CE8642B1F33F61E001F9494 /* AimEmailChangeViewController.swift in Sources */,
+				9CC013501E458D2200EDC879 /* AimLoginViewController.swift in Sources */,
+				9C3FB39A1F423E5E00900945 /* AimSessionTitleChangeViewController.swift in Sources */,
+				9C50B47A1F16EA2C00924B95 /* AimAwardsBadgeCollectionViewCell.swift in Sources */,
+				9C3203A11EB57AD300FD6746 /* AimSessionForceSelectionProtocol.swift in Sources */,
+				9CE8642D1F365840001F9494 /* AimEmailChangeFailureViewController.swift in Sources */,
+				9C3E31D41E677B2400963631 /* AimSessionSelectionMainViewController.swift in Sources */,
+				9CE7EAA51F11855300615E59 /* AimSessionPieView.swift in Sources */,
+				9C8BD1BB1EE214C30026188C /* AimSessionLite.swift in Sources */,
+				9CE864291F315B18001F9494 /* AimUserInfoTableViewController.swift in Sources */,
+				9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */,
+				9C356B411E7DBAC6008C1BEE /* AimSessionSelectionVCCollectionViewCell.swift in Sources */,
+				9CE036581F099F6500A26E1A /* AimCurrentUserRemindersTableViewController.swift in Sources */,
+				9C3203A41EB6A24300FD6746 /* AimQuoteView.swift in Sources */,
+				9C73A4781EDF85D5007C7F1F /* AimSessionCentral.swift in Sources */,
+				9C02AF671EC532F800B0A68F /* TimerUtility.swift in Sources */,
+				9C89F7171EE3504A008AE8CC /* AimSessionFetchedArrayExtension.swift in Sources */,
 				9C68909E1DA5DA8D005CA654 /* AppDelegate.swift in Sources */,
-				9C6890C21DA5E3F8005CA654 /* SettingsViewController.swift in Sources */,
+				9C03015C1EEA413100D2C0B4 /* AimCustomRaisedButton.swift in Sources */,
+				9C153F9E1ED4C65800DE3BC8 /* AimSessionAddingPopupViewController.swift in Sources */,
+				9CC013521E459EE500EDC879 /* LoginViewControllerTextField.swift in Sources */,
+				9C02AF6B1EC53A1500B0A68F /* AimSessionDurationInfoDelegate.swift in Sources */,
+				9C8BD1BF1EE3400C0026188C /* AimImageCachingExtension.swift in Sources */,
+				9C9E49B01EA0518A00D5D368 /* AimSession.swift in Sources */,
+				9CD69A671EF357F800521877 /* AimTokenConversionManager.swift in Sources */,
+				9CA11E4D1F217E2E00DB03F9 /* AimStandardStatusBarNotification.swift in Sources */,
+				9C50B47E1F1D5C0D00924B95 /* UIViewShakeExtension.swift in Sources */,
+				9C6221891EC16D2D00D38B92 /* AimSettingsTableViewController.swift in Sources */,
+				9CA11E491F2171AA00DB03F9 /* AimAwardManager.swift in Sources */,
+				9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */,
+				9C62218B1EC280DA00D38B92 /* AimSessionViewController.swift in Sources */,
+				9CB6401F1EF89914009EB61E /* AimNotificationSettingsTableViewController.swift in Sources */,
+				9C54F83B1F2E50F8000A7BE3 /* AimPasswordResetViewController.swift in Sources */,
+				9C3A3A031E7DE7320053D8AC /* AimAwardsViewController.swift in Sources */,
+				9CB1592D1EA3019F000039F0 /* AimSessionAddingPopUpView.swift in Sources */,
+				9C02AF691EC5350000B0A68F /* SessionDurationManager.swift in Sources */,
+				9CA11E4B1F2173CE00DB03F9 /* AimAwardBadge.swift in Sources */,
+				9C90716C1F3D420E004894FA /* AimOnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,9 +950,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE0E4501EFCB0A900428B19 /* AimUserLite.swift in Sources */,
+				9CE0E44D1EFC992900428B19 /* AimSessionDurationInfoDelegate.swift in Sources */,
+				9C8BD1BD1EE238320026188C /* AimSessionLite.swift in Sources */,
+				9C0D6B601EDAA7E900B0542D /* AimSessionSelectionTable.swift in Sources */,
+				9C0D6B5E1EDAA78300B0542D /* AimSessionInterfaceController.swift in Sources */,
 				9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */,
+				9C0D6B631EDAACEA00B0542D /* AimSessionRowController.swift in Sources */,
+				9C1035931EE0DA0200535645 /* AimUser.swift in Sources */,
+				9C1035871EE0D7C300535645 /* AimSession.swift in Sources */,
+				9CE0E4521EFECD9800428B19 /* AimUserInfoInterfaceController.swift in Sources */,
+				9CE0E4481EFC806A00428B19 /* AimTokenConversionManager.swift in Sources */,
 				9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */,
-				9C6890D91DA5E5C0005CA654 /* InterfaceController.swift in Sources */,
+				9CE0E44C1EFC970D00428B19 /* TimerUtility.swift in Sources */,
+				9C6890D91DA5E5C0005CA654 /* AimMainInterfaceController.swift in Sources */,
+				9C73A47A1EDF943C007C7F1F /* AimSessionCentral.swift in Sources */,
+				9C0D6B5C1EDAA70D00B0542D /* AimMainSessionSelectionInterfaceController.swift in Sources */,
+				9C576D4E1F0C2D330086D236 /* TimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,12 +980,12 @@
 		};
 		9C6890D41DA5E5C0005CA654 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9C6890D01DA5E5C0005CA654 /* Aim! For watchOS Extension */;
+			target = 9C6890D01DA5E5C0005CA654 /* Aim! Extension */;
 			targetProxy = 9C6890D31DA5E5C0005CA654 /* PBXContainerItemProxy */;
 		};
 		9C6890E21DA5E5C0005CA654 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9C6890C41DA5E5C0005CA654 /* Aim! For watchOS */;
+			target = 9C6890C41DA5E5C0005CA654 /* Aim!  */;
 			targetProxy = 9C6890E11DA5E5C0005CA654 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -491,8 +1032,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -500,6 +1043,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/martinzhang/Documents/FacebookSDKs/Bolts.framework,
+					/Users/martinzhang/Documents/FacebookSDKs,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -514,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -536,8 +1083,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -545,6 +1094,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/martinzhang/Documents/FacebookSDKs/Bolts.framework,
+					/Users/martinzhang/Documents/FacebookSDKs,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -553,41 +1106,60 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		9C6890B81DA5DA8D005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCDCC97A35C9C7089B5DBCEC /* Pods-Aim!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		9C6890B91DA5DA8D005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C375D2CEDC0E5DE05DED8279 /* Pods-Aim!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aim!-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		9C6890BB1DA5DA8D005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2999EC352E41DCD6F77D65AE /* Pods-Aim! Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/martinzhang/Documents/FacebookSDKs/Bolts.framework,
+					/Users/martinzhang/Documents/FacebookSDKs,
+					"\"$(SRCROOT)/../Frameworks/Realm.framework\"",
+					"\"$(SRCROOT)/../Frameworks/RealmSwift.framework\"",
+				);
 				INFOPLIST_FILE = "Aim!Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-Tests";
@@ -599,8 +1171,15 @@
 		};
 		9C6890BC1DA5DA8D005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F1D23586B6982792E9372E9 /* Pods-Aim! Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Users/martinzhang/Documents/FacebookSDKs/Bolts.framework,
+					/Users/martinzhang/Documents/FacebookSDKs,
+					"\"$(SRCROOT)/../Frameworks/Realm.framework\"",
+					"\"$(SRCROOT)/../Frameworks/RealmSwift.framework\"",
+				);
 				INFOPLIST_FILE = "Aim!Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-Tests";
@@ -612,9 +1191,11 @@
 		};
 		9C6890E41DA5E5C0005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32CE82B4047DCFFE94E09643 /* Pods-Aim! .debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				IBSC_MODULE = Aim__For_watchOS_Extension;
 				INFOPLIST_FILE = "Aim! For watchOS/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-.watchkitapp";
@@ -629,9 +1210,11 @@
 		};
 		9C6890E51DA5E5C0005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BD30373DF56C357AC09BF6 /* Pods-Aim! .release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				IBSC_MODULE = Aim__For_watchOS_Extension;
 				INFOPLIST_FILE = "Aim! For watchOS/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-.watchkitapp";
@@ -646,7 +1229,13 @@
 		};
 		9C6890E61DA5E5C0005CA654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25C9E071FCC443A47E84B0C9 /* Pods-Aim! Extension.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Aim! For watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-.watchkitapp.watchkitextension";
@@ -661,7 +1250,13 @@
 		};
 		9C6890E71DA5E5C0005CA654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32C09E72C6BCE94C3AEC28A1 /* Pods-Aim! Extension.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FD5Z2GLC5U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Aim! For watchOS Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.martinzhang.Aim-.watchkitapp.watchkitextension";
@@ -695,7 +1290,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C6890BA1DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim!Tests" */ = {
+		9C6890BA1DA5DA8D005CA654 /* Build configuration list for PBXNativeTarget "Aim! Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C6890BB1DA5DA8D005CA654 /* Debug */,
@@ -704,7 +1299,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C6890E81DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! For watchOS Extension" */ = {
+		9C6890E81DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C6890E61DA5E5C0005CA654 /* Debug */,
@@ -713,7 +1308,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C6890EA1DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! For watchOS" */ = {
+		9C6890EA1DA5E5C0005CA654 /* Build configuration list for PBXNativeTarget "Aim! " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C6890E41DA5E5C0005CA654 /* Debug */,

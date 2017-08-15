@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0830"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-               BuildableName = "Aim! For watchOS.app"
-               BlueprintName = "Aim! For watchOS"
+               BuildableName = "Aim! .app"
+               BlueprintName = "Aim! "
                ReferencedContainer = "container:Aim!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9C6890D01DA5E5C0005CA654"
-               BuildableName = "Aim! For watchOS Extension.appex"
-               BlueprintName = "Aim! For watchOS Extension"
+               BuildableName = "Aim! Extension.appex"
+               BlueprintName = "Aim! Extension"
                ReferencedContainer = "container:Aim!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-            BuildableName = "Aim! For watchOS.app"
-            BlueprintName = "Aim! For watchOS"
+            BuildableName = "Aim! .app"
+            BlueprintName = "Aim! "
             ReferencedContainer = "container:Aim!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -88,8 +88,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-            BuildableName = "Aim! For watchOS.app"
-            BlueprintName = "Aim! For watchOS"
+            BuildableName = "Aim! .app"
+            BlueprintName = "Aim! "
             ReferencedContainer = "container:Aim!.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -97,8 +97,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-            BuildableName = "Aim! For watchOS.app"
-            BlueprintName = "Aim! For watchOS"
+            BuildableName = "Aim! .app"
+            BlueprintName = "Aim! "
             ReferencedContainer = "container:Aim!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -120,8 +120,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-            BuildableName = "Aim! For watchOS.app"
-            BlueprintName = "Aim! For watchOS"
+            BuildableName = "Aim! .app"
+            BlueprintName = "Aim! "
             ReferencedContainer = "container:Aim!.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -129,8 +129,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C6890C41DA5E5C0005CA654"
-            BuildableName = "Aim! For watchOS.app"
-            BlueprintName = "Aim! For watchOS"
+            BuildableName = "Aim! .app"
+            BlueprintName = "Aim! "
             ReferencedContainer = "container:Aim!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -74,3 +74,4 @@ Build/Intermediates/Aim!.build/Debug-watchsimulator
 Aim!.xcodeproj/project.xcworkspace/xcuserdata/martinzhang.xcuserdatad/UserInterfaceState.xcuserstate
 Build/Products/Debug-iphonesimulator
 Build/Products/Debug-watchsimulator
+Aim!/AimKeys.plist
