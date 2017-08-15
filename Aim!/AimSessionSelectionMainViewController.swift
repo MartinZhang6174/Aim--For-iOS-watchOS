@@ -17,6 +17,7 @@ import GoogleSignIn
 import WatchConnectivity
 import CWStatusBarNotification
 import AVFoundation
+import PopupDialog
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -40,6 +41,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var quoteMaxCharRestriction = 150
     
     let fmt = DateFormatter()
+    
+    let realm = try! Realm()
     
     var togglingLastCell = false
     var selectedCellIndexPath: IndexPath? = nil
@@ -65,6 +68,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var quoteView: AimQuoteView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,7 +189,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         let components = calendar.dateComponents([.year, .month, .day], from: Date())
         let todayString = "\(components.year!)\(components.month!)\(components.day!)"
         if Auth.auth().currentUser?.uid != nil {
-            if let fbAccessToken = FBSDKAccessToken.current() {
+            if (FBSDKAccessToken.current()) != nil {
                 awardManager.awardUserFacebookBadge()
             }
             
@@ -207,40 +211,22 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     awardManager.awardUserFiveBadge()
                 }
             }
+            refreshButton.isEnabled = true
         }
         
         // If user is logged in:
         if let currentUserID = Auth.auth().currentUser?.uid as String! {
-            let realm = try! Realm()
             
-            ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Password").observe(.childChanged, with: { (snapshot) in
-                if FBSDKAccessToken.current() != nil {
-                    LoginManager.init().logOut()
-                }
-                
-                if GIDSignIn.sharedInstance().hasAuthInKeychain() == true {
-                    GIDSignIn.init().disconnect()
-                }
-                
-                do {
-                    try Auth.auth().signOut()
-                } catch let signOutError {
-                    print(signOutError)
-                }
-                
-                let warning = AimStandardNavigationBarNotification()
-                warning.display(withMessage: "Password change detected, please log in again.", forDuration: 1.7)
-            })
-            
+            // TODO: Add something here to force user out when password gets changed
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let tokensFetched = snapshot.value as? Float {
-                    let localUserObj = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)
+                    let localUserObj = self.realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email)
                     do {
-                        try realm.write {
+                        try self.realm.write {
                             localUserObj?.tokenPool = tokensFetched
-                            realm.add(localUserObj!, update: true)
+                            self.realm.add(localUserObj!, update: true)
                         }
-                        if let userInRealm = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
+                        if let userInRealm = self.realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
                             DispatchQueue.main.async {
                                 self.aimTokenSumLabel.text = "\(userInRealm.tokenPool)"
                             }
@@ -267,6 +253,16 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 }
             })
             retrieveSessions()
+        } else {
+            refreshButton.isEnabled = false
+            UserDefaults.standard.removeObject(forKey: todayString)
+            aimSessionFetchedArray.removeAll()
+            try! realm.write {
+                self.realm.deleteAll()
+            }
+            aimSessionCollectionView.reloadData()
+            aimTokenSumLabel.text = "N/A"
+            aimHourSumLabel.text = "N/A"
         }
         
         var userLoginStatus = false
@@ -274,15 +270,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         Auth.auth().currentUser?.uid != nil ? (userLoginStatus = true) : (userLoginStatus = false)
         
-        // When user isn't logged in
-        if Auth.auth().currentUser?.uid == nil {
-            //            self.quoteView.isHidden = true
-            //            self.quoteAuthorLabel.isHidden = true
-            self.aimTokenSumLabel.text = "0.0"
-            self.aimHourSumLabel.text = "0.0"
-        }
-        
-        let realm = try! Realm()
         if userLoginStatus == true {
             // Force unwrapping user email since there's no way anyone could be in the app logged in without having an email registered with the account
             AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
@@ -292,17 +279,15 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 print("Could not establish communications to WatchKit app.")
             })
         }
-        
-        //        let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-        //        let indexSet = IndexSet(integersIn: range)
-        //        self.aimSessionCollectionView.reloadSections(indexSet)
     }
     
     func retrieveSessions() {
         // Retrieve sessions:
         let currentUserID = Auth.auth().currentUser?.uid
         databaseHandle = ref?.child("users").child(currentUserID!).child("Sessions").observe(.childAdded, with: { (snapshot) in
-            let sessionTitle = snapshot.key
+            // FORCE UNWRAPPING TITLE HERE BECAUSE USERS CANNOT ENTER INVALID TITLES TO CREATE SESSIONS
+            let sessionID = snapshot.key
+            let sessionTitle = snapshot.childSnapshot(forPath: "Title").value as! String
             let sessionDateString = snapshot.childSnapshot(forPath: "DateCreated").value as? String
             let sessionDate = self.fmt.date(from: sessionDateString!)
             var sessionPriority = false
@@ -327,7 +312,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
             
             // FORCE UNWRAPPING DATE HERE BECAUSE EVERY SESSION IS SUPPOSED TO BE INITIALIZED WITH A DATE AND IMAGE URL
-            let sessionObj = AimSession(sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
+            let sessionObj = AimSession(sessionID: sessionID, sessionTitle: sessionTitle, dateInitialized: sessionDate!, sessionImageURLString: sessionImageURL!, priority: sessionPriority)
             sessionObj.currentToken = sessionTokens!
             sessionObj.hoursAccumulated = sessionHours!
             // CONSIDERING DELETING TIME INTERVAL IDEA
@@ -340,11 +325,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
             
             // Saving sessions fetched to Realm
-            let realm = try! Realm()
-            if realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.imageURL) == nil {
+            if self.realm.object(ofType: AimSession.self, forPrimaryKey: sessionObj.id) == nil {
                 do {
-                    try! realm.write {
-                        realm.add(sessionObj)
+                    try! self.realm.write {
+                        self.realm.add(sessionObj)
                     }
                 }
             }
@@ -497,7 +481,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         if mediaType == (kUTTypeImage as String) {
-            if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
                     selectedImageFromPicker = editedImage
                 } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
@@ -506,7 +489,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
                     uploadNewImage(withImageData: uploadData)
                 }
-            }
         } else if mediaType == (kUTTypeMovie as String) {
             if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
                 let warning = AimStandardStatusBarNotification()
@@ -533,7 +515,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             
             if let sessionImageURL = metadata?.downloadURL()?.absoluteString {
                 self.sessionAwaitingChange?.imageURL = sessionImageURL
-                self.ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child((self.sessionAwaitingChange?.title)!).child("ImageURL").setValue(sessionImageURL)
+                self.ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child((self.sessionAwaitingChange?.id)!).child("ImageURL").setValue(sessionImageURL)
             }
             
         }
@@ -600,7 +582,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func handleTokenSumLabelUpdate() {
-        let realm = try! Realm()
         if let currentUser = realm.object(ofType: AimUser.self, forPrimaryKey: Auth.auth().currentUser?.email) {
             let currentTokens = currentUser.tokenPool
             
@@ -673,8 +654,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                 
                                 self.present(alertController, animated: true, completion: nil)
                                 
-                                
-                                
                                 let warning = AimStandardStatusBarNotification()
                                 warning.display(withMessage: "Image access not allowed, turn on in Settings app.", forDuration: 1.5)
                                 return
@@ -702,8 +681,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changeTitleAction = UIAlertAction(title: "Change Title", style: .default) { (action) in
-                        print("Should change title")
+
+                        let sessionTitleChangeController = AimSessionTitleChangeViewController(nibName: "AimSessionTitleChangeViewController", bundle: nil)
                         
+                        sessionTitleChangeController.currentSession = sessionBeingManaged
+                        
+                        let popup = PopupDialog(viewController: sessionTitleChangeController, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true, completion: nil)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
                     
                     let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in

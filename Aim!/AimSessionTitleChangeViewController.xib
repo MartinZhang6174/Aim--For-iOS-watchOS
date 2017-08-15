@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PhosphateProInline.otf">
+            <string>PhosphatePro-Inline</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AimSessionTitleChangeViewController" customModule="Aim_" customModuleProvider="target">
+            <connections>
+                <outlet property="renamingLabel" destination="rGS-n8-LE7" id="CR1-AY-pa3"/>
+                <outlet property="sessionTitleChangeTextField" destination="1Db-Xb-LlN" id="AEB-ZL-yfT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-p7-TPD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a new title for this session:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGS-n8-LE7">
+                            <rect key="frame" x="6" y="15" width="363" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="gkN-hk-yLt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
+                            <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VT4-XC-FBs" customClass="BFPaperButton">
+                            <rect key="frame" x="147" y="172" width="80" height="34"/>
+                            <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="18"/>
+                            <state key="normal" title=" Confirm ">
+                                <color key="titleColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="loweredShadowOpacity">
+                                    <real key="value" value="0.69999999999999996"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="loweredShadowOffset">
+                                    <size key="value" width="0.0" height="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="liftedShadowOpacity">
+                                    <real key="value" value="0.69999999999999996"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="liftedShadowOffset">
+                                    <size key="value" width="2" height="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="touchDownAnimationDuration">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationDuration">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameterStartValue">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameter">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleBurstAmount">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRaised" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rippleBeyondBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rippleFromTapLocation" value="NO"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="tapCircleColor">
+                                    <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="confirmButtonClicked:" destination="-1" eventType="touchUpInside" id="Hqp-e1-JvW"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Db-Xb-LlN">
+                            <rect key="frame" x="127" y="95" width="120" height="32"/>
+                            <color key="backgroundColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="9Jd-rY-sZI"/>
+                                <constraint firstAttribute="height" constant="32" id="up3-id-9TE"/>
+                            </constraints>
+                            <color key="textColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="1Db-Xb-LlN" firstAttribute="top" secondItem="rGS-n8-LE7" secondAttribute="bottom" constant="20" id="0k4-GK-8RY"/>
+                        <constraint firstItem="rGS-n8-LE7" firstAttribute="centerX" secondItem="ad4-p7-TPD" secondAttribute="centerX" id="7gQ-Cq-xdP"/>
+                        <constraint firstItem="VT4-XC-FBs" firstAttribute="centerX" secondItem="ad4-p7-TPD" secondAttribute="centerX" id="942-ae-jp4"/>
+                        <constraint firstAttribute="trailing" secondItem="rGS-n8-LE7" secondAttribute="trailing" constant="6" id="9w6-dM-dpM"/>
+                        <constraint firstAttribute="height" constant="235" id="HWI-Nf-1WU"/>
+                        <constraint firstItem="VT4-XC-FBs" firstAttribute="top" secondItem="1Db-Xb-LlN" secondAttribute="bottom" constant="45" id="Kzs-Wc-los"/>
+                        <constraint firstAttribute="width" constant="375" id="Yyh-VU-PMQ"/>
+                        <constraint firstItem="rGS-n8-LE7" firstAttribute="top" secondItem="ad4-p7-TPD" secondAttribute="top" constant="15" id="abe-Uc-a2r"/>
+                        <constraint firstItem="rGS-n8-LE7" firstAttribute="leading" secondItem="ad4-p7-TPD" secondAttribute="leading" constant="6" id="gUV-Yq-x4U"/>
+                        <constraint firstItem="1Db-Xb-LlN" firstAttribute="centerX" secondItem="ad4-p7-TPD" secondAttribute="centerX" id="tTz-6f-seV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ad4-p7-TPD" secondAttribute="bottom" id="XKC-1x-Gps"/>
+                <constraint firstItem="ad4-p7-TPD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a9F-V1-0DW"/>
+                <constraint firstAttribute="trailing" secondItem="ad4-p7-TPD" secondAttribute="trailing" id="kUV-OF-VjM"/>
+                <constraint firstItem="ad4-p7-TPD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="w9c-BM-4gO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-19.5" y="11.5"/>
+        </view>
+    </objects>
+</document>

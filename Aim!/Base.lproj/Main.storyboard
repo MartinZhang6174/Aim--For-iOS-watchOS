@@ -345,24 +345,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-8G-HbB">
-                                <rect key="frame" x="141.5" y="86" width="92" height="59"/>
+                                <rect key="frame" x="146" y="86" width="83" height="59"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
-                                        <rect key="frame" x="0.0" y="16.5" width="35" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-sf-FvZ">
+                                        <rect key="frame" x="0.0" y="16.5" width="30.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                         <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Zr-eJS">
-                                        <rect key="frame" x="45" y="9.5" width="2" height="40"/>
+                                        <rect key="frame" x="40.5" y="9.5" width="2" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.29019607843137252" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="2" id="Cgg-aS-7su"/>
                                             <constraint firstAttribute="height" constant="40" id="vC7-fK-Cgd"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
-                                        <rect key="frame" x="57" y="16.5" width="35" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-5i-ZEl">
+                                        <rect key="frame" x="52.5" y="16.5" width="30.5" height="26.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                         <color key="textColor" red="1" green="0.18556438200280109" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -442,6 +442,7 @@
                         <outlet property="quoteAuthorLabel" destination="brF-hW-iqW" id="TDW-zk-fVI"/>
                         <outlet property="quoteLabel" destination="ImS-FH-w6q" id="wep-Y7-LnJ"/>
                         <outlet property="quoteView" destination="nLZ-kN-Jgu" id="cbF-DO-I9Q"/>
+                        <outlet property="refreshButton" destination="BXz-3o-L7s" id="jOe-AF-Vau"/>
                         <segue destination="RcJ-jj-8za" kind="show" identifier="mainMenuToSessionSegue" id="MNl-z0-Qqr"/>
                         <segue destination="rbB-dd-3z2" kind="presentation" identifier="segueToPopupViewController" id="Dpg-UN-TaN"/>
                         <segue destination="5gY-TM-HY8" kind="presentation" identifier="showLoginPageSegue" id="TnZ-09-S6k"/>
@@ -1980,7 +1981,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="148.5" y="92" width="78" height="36"/>
+                                <rect key="frame" x="149" y="92" width="78" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2200,13 +2201,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5Y-TP-hmg">
-                                        <rect key="frame" x="31.5" y="113" width="87.5" height="25.5"/>
+                                        <rect key="frame" x="31" y="113" width="87.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="21"/>
                                         <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-8U-KHE">
-                                        <rect key="frame" x="197" y="111" width="51" height="31"/>
+                                        <rect key="frame" x="196.5" y="111" width="51" height="31"/>
                                         <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
@@ -2401,6 +2402,6 @@
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WVp-5S-bFM"/>
+        <segue reference="TnZ-09-S6k"/>
     </inferredMetricsTieBreakers>
 </document>

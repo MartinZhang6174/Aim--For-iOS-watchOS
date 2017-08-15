@@ -87,6 +87,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
   - paper-onboarding (2.2)
+  - PopupDialog (0.5.4)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
   - Realm/Headers (2.8.3)
@@ -107,6 +108,7 @@ DEPENDENCIES:
   - MarqueeLabel
   - NVActivityIndicatorView
   - paper-onboarding
+  - PopupDialog
   - RealmSwift
 
 SPEC CHECKSUMS:
@@ -133,9 +135,10 @@ SPEC CHECKSUMS:
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   paper-onboarding: 7fcb8f2737edb32bd345d6e890578fff1a073fef
+  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
 
-PODFILE CHECKSUM: ec01a0828d53f84bb56f8efd8384601f2e2bc42b
+PODFILE CHECKSUM: 66ce006cfa8e75c07da424aa815aa8d975028073
 
 COCOAPODS: 1.2.1
