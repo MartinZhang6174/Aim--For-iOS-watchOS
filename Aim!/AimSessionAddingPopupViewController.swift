@@ -166,10 +166,10 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
                     }
                     
                     if let sessionImageURL = metadata?.downloadURL()?.absoluteString {
-                        let sessionInfoValue = ["DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageURL": sessionImageURL]
+                        let sessionInfoValue = ["Title": sessionTitle, "DateCreated": formattedCreationDate, "Priority": sessionPriorityString, "ImageURL": sessionImageURL]
                         
                         if sessionInfoValue["ImageURL"] != nil && sessionTitle != nil {
-                            self.handleSessionCreationWithImageID(imageID: sessionTitle, values: sessionInfoValue)
+                            self.handleSessionCreationWithSessionID(id: sessionID, values: sessionInfoValue)
                         }
                     }
                 })
@@ -181,12 +181,11 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
         
     }
     
-    private func handleSessionCreationWithImageID(imageID: String?, values: [String: Any]) {
+    private func handleSessionCreationWithSessionID(id: String, values: [String: Any]) {
         
-        if let sessionTitle = aimSessionTitleTextField.text {
-            
+        if aimSessionTitleTextField.text != nil {
             if let currentUserID = Auth.auth().currentUser?.uid {
-                databaseRef.child("users/\(currentUserID)/Sessions/\(sessionTitle)").setValue(values, withCompletionBlock: { (error, ref) in
+                databaseRef.child("users/\(currentUserID)/Sessions/\(id)").setValue(values, withCompletionBlock: { (error, ref) in
                     if error != nil {
                         print("Error occured uploading session: \(String(describing: error?.localizedDescription))")
                         return

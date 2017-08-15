@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VT4-XC-FBs" customClass="BFPaperButton">
-                            <rect key="frame" x="149.5" y="172" width="75" height="33"/>
+                            <rect key="frame" x="147" y="172" width="80" height="34"/>
                             <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="18"/>
                             <state key="normal" title=" Confirm ">

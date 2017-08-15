@@ -19,6 +19,8 @@ class AimSessionTitleChangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
 
         if currentSession != nil {
             let sessionCurrentTitle = currentSession?.title
@@ -28,8 +30,9 @@ class AimSessionTitleChangeViewController: UIViewController {
     
     @IBAction func confirmButtonClicked(_ sender: Any) {
         if let session = currentSession {
+            print(session.id)
             if sessionTitleChangeTextField.text != nil && sessionTitleChangeTextField.text != "" {
-                ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child(session.title).setValue(sessionTitleChangeTextField.text!)
+                ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child(session.id).child("Title").setValue(sessionTitleChangeTextField.text!)
                 dismiss(animated: true, completion: nil)
             } else {
                 sessionTitleChangeTextField.shake()

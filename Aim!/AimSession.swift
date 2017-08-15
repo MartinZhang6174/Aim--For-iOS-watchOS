@@ -11,6 +11,7 @@ import RealmSwift
 
 class AimSession: Object {
     // MARK: - Persisting properties
+    dynamic var id = ""
     dynamic var title = ""
     dynamic var imageURL: String? = nil
     dynamic var currentToken = 0
@@ -19,9 +20,10 @@ class AimSession: Object {
     dynamic var dateCreated = Date()
     dynamic var isPrioritized = false
     
-    convenience init(sessionTitle: String, dateInitialized: Date, sessionImageURLString: String, priority: Bool) {
+    convenience init(sessionID: String, sessionTitle: String, dateInitialized: Date, sessionImageURLString: String, priority: Bool) {
         self.init()
         
+        self.id = sessionID
         self.title = sessionTitle
         self.dateCreated = dateInitialized
         self.imageURL = sessionImageURLString
@@ -30,7 +32,7 @@ class AimSession: Object {
     
     // MARK: - Meta
     override static func primaryKey() -> String? {
-        return "imageURL"
+        return "id"
     }
     
 //    private static func save(to realm: Realm, with id: String) -> AimSession {
