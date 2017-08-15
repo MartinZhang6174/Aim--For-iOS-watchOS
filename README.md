@@ -7,6 +7,7 @@ iOS + watchOS
 # To-do: 
 
 ##iOS
+<<<<<<< HEAD
 1. DONE.   Hook up session selection buttons on collection view to session or customization screen depends on user selection. 
 2. DONE.   Build session screen UI.
 3. DONE.   Create "quit" button on session screen.
@@ -52,6 +53,16 @@ iOS + watchOS
 ### Future improvements in Sketch
 ![Images for README](https://cloud.githubusercontent.com/assets/19420230/26019834/71f235fa-372d-11e7-99b6-aa8e99f16212.PNG)
 ![Images for README](https://cloud.githubusercontent.com/assets/19420230/26019835/71f48bde-372d-11e7-90dd-16d09ace1ffa.PNG)
+=======
+1. Hook up session selection buttons on collection view to session or customization screen depends on user selection.
+2. Build session screen UI.
+3. Create "quit" button on session screen.
+4. Remove or hide nav bar & tab bar when user in a session.
+5. Build scoring system.
+6. Have settings screen.
+7. Notifications to user when session ends.
+8. Notifications when user earning awards.
+>>>>>>> master
 
 ##watchOS
 1. Learn about watchOS + iOS connectivity, how to sync up data.
@@ -62,6 +73,7 @@ iOS + watchOS
 
 # Watch App Snapshots:
 
+<<<<<<< HEAD
 ### Main VC:
 ![Images for README](https://cloud.githubusercontent.com/assets/19420230/26083262/9b1f4cf2-3989-11e7-9e15-9b6aecf62714.PNG)
 
@@ -69,3 +81,9 @@ iOS + watchOS
 
 ### Session Selection:
 ![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915265/50f23590-a06e-11e6-8368-946dc3cbe139.jpg)
+=======
+![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915266/51111c76-a06e-11e6-9a84-0902f0b215ad.jpg)
+
+![Images for README](https://cloud.githubusercontent.com/assets/19420230/19915265/50f23590-a06e-11e6-8368-946dc3cbe139.jpg)
+
+>>>>>>> master
