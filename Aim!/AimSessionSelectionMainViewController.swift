@@ -498,9 +498,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         dismiss(animated: true) { 
             self.aimSessionFetchedArray.removeAll()
             self.retrieveSessions()
+            self.aimSessionCollectionView.reloadData()
             
             let noti = AimStandardStatusBarNotification()
-            noti.display(withMessage: "Image uploading! Tap refresh in a moment.", forDuration: 2.0)
+            noti.display(withMessage: "Updating image, please refresh in a moment!", forDuration: 1.5)
         }
     }
     
@@ -692,13 +693,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in
-                        print("Should change priority")
+
+                        let sessionPriorityChangeController = AimSessionPriorityChangeViewController(nibName: "AimSessionPriorityChangeViewController", bundle: nil)
+
+                        sessionPriorityChangeController.currentSession = sessionBeingManaged
                         
+                        let popup = PopupDialog(viewController: sessionPriorityChangeController, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true, completion: nil)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
                     
                     let deleteSessionAction = UIAlertAction(title: "Remove Session", style: .destructive) { (action) in
                         // Force unwrapping UID because no user can see their sessions without logging in first(app has UID in that case)
-                        self.ref?.child("users").child(currentAppUserID!).child("Sessions").child(sessionBeingManaged.title).removeValue()
+                        self.ref?.child("users").child(currentAppUserID!).child("Sessions").child(sessionBeingManaged.id).removeValue()
                         self.aimSessionFetchedArray.removeAll()
                         self.retrieveSessions()
                         self.aimSessionCollectionView.reloadData()

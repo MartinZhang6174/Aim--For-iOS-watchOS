@@ -14,10 +14,10 @@ pod ‘BEMCheckBox’
 pod ‘BFPaperButton’
 pod ‘CWStatusBarNotification’
 pod ‘MarqueeLabel’
-pod 'FacebookCore'
-pod 'FacebookLogin'
+pod ‘FacebookCore‘
+pod ‘FacebookLogin‘
 pod ‘GoogleSignIn’
-pod 'paper-onboarding'
+pod ‘paper-onboarding‘
 pod ‘PopupDialog’
 
   target 'Aim! Tests' do
