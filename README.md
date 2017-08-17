@@ -14,17 +14,17 @@ iOS + watchOS
 5. DONE.   Build scoring system.
 6. DONE.   Have settings screen.
 7. DONE.   Notifications to user when session ends.
-8. ONGOING.   Notifications when user earning awards.
+8. POSTPONED.   Notifications when user earning awards.
 9. DONE.   Fetch daily quotes on success from API to main VC.
 10. DONE.   Allow user to drag the quote view to see the author name underneath.
-11. ONGOING.   Encourage users to swipe on quotes by awrads as incentives.
+11. POSTPONED.   Encourage users to swipe on quotes by awrads as incentives.
 12. DONE.   Request access to accelerometer of the device to detect motions during sessions.
 13. DONE.   Build internal timer to time users during sessons.
 14. DONE.   Draw indicator round circle(or creative shapes) around timer label.
 15. DONE.   Add 3D Touch(force touch) to collection view on main VC to start sessions.
 16. DONE.   Add popup view when touched on add button on main VC.
-17. ONGOING.   Design artworks for awards.
-18. ONGOING.   Add FaceBook login API.
+17. DONE BUT MORE ARE COMING.   Design artworks for awards.
+18. DONE.   Add FaceBook login API.
 19. DONE.   Add Firebase for login.
 20. DONE.   Add Firebase for session data storage.
 21. DONE.   Use Realm to store session data locally.
