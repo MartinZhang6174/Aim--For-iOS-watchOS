@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             guard let uid = user?.uid else { return }
             print("User login success", uid)
-            self.notificationCenter.post(name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
+            self.notificationCenter.post(name: NSNotification.Name(rawValue: "ShouldReevaluateUserLogin"), object: nil)
         }
     }
     

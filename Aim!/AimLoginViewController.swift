@@ -94,7 +94,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         // Hide keyboard:
         self.hideKeyboardWhenTappedAround()
         
-        notificationCenter.addObserver(self, selector: #selector(shouldDismiss), name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
+//        notificationCenter.addObserver(self, selector: #selector(shouldDismiss), name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
     }
     
     override func viewWillLayoutSubviews() {

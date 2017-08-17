@@ -40,6 +40,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 150
     
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
+    
     let fmt = DateFormatter()
     
     let realm = try! Realm()
@@ -122,9 +126,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                     
                                     UIView.animate(withDuration: 0.4, animations: {
                                         self.view.layoutIfNeeded()
-                                    }, completion: { (finished) in
-                                        print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
-                                    })
+                                    }, completion: nil)
                                 }
                             }
                         }
@@ -135,7 +137,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         // Prepare for notifications from apple watch's token update:
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
+        notificationCenter.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
+        
+        notificationCenter.addObserver(self, selector: #selector(shouldReevaluateUserLogin), name: NSNotification.Name(rawValue: "ShouldReevaluateUserLogin"), object: nil)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -215,7 +219,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         // If user is logged in:
-        if let currentUserID = Auth.auth().currentUser?.uid as String! {
+        if (Auth.auth().currentUser?.uid) != nil {
             
             // TODO: Add something here to force user out when password gets changed
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -405,12 +409,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let feedbackGenerator1 = UIImpactFeedbackGenerator(style: .medium)
+        let feedbackGenerator2 = UINotificationFeedbackGenerator()
+        feedbackGenerator1.prepare()
+        feedbackGenerator2.prepare()
         if indexPath.row != aimSessionFetchedArray.count {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            feedbackGenerator1.impactOccurred()
         } else {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            if Auth.auth().currentUser?.uid != nil {
+                feedbackGenerator2.notificationOccurred(.success)
+            } else {
+                feedbackGenerator2.notificationOccurred(.error)
+            }
         }
     }
     
@@ -420,6 +430,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // Last cell pressed:
         if indexPath.row == aimSessionFetchedArray.count {
+            
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 selectedCell?.alpha = 0.4
@@ -430,7 +441,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     selectedCell?.isUserInteractionEnabled = true
                 })
             })
-            performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
+            if Auth.auth().currentUser?.uid != nil {
+                performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
+            } else {
+                let warning = AimStandardStatusBarNotification()
+                warning.display(withMessage: "Please log into your account before adding a session.", forDuration: 1.5)
+            }
             
             // If this isn't yet the last, do an USUAL configuration:
         } else {
@@ -481,21 +497,21 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         if mediaType == (kUTTypeImage as String) {
-                if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-                    selectedImageFromPicker = editedImage
-                } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-                    selectedImageFromPicker = originalImage
-                }
-                if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
-                    uploadNewImage(withImageData: uploadData)
-                }
+            if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+                selectedImageFromPicker = editedImage
+            } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                selectedImageFromPicker = originalImage
+            }
+            if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
+                uploadNewImage(withImageData: uploadData)
+            }
         } else if mediaType == (kUTTypeMovie as String) {
             if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
                 let warning = AimStandardStatusBarNotification()
                 warning.display(withMessage: "Aim! does not yet accept videos as session thumbnails, expect future updates!", forDuration: 1.5)
             }
         }
-        dismiss(animated: true) { 
+        dismiss(animated: true) {
             self.aimSessionFetchedArray.removeAll()
             self.retrieveSessions()
             self.aimSessionCollectionView.reloadData()
@@ -555,8 +571,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     print("\(String(describing: metadata))")
                 }
             }
-        } else {
-            print("Please login to use feature.")
         }
     }
     
@@ -601,6 +615,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     self.aimTokenSumLabel.text = "\(tokensFetched)"
                 } else {
                     print("Could not refresh tokens.")
+                }
+            })
+        }
+    }
+    
+    func handleMinutesSumReadingFromFirebase() {
+        if let userUID = Auth.auth().currentUser?.uid {
+            ref?.child("users").child(userUID).child("Minutes").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let minutes = snapshot.value as? Float {
+                    self.aimHourSumLabel.text = "\(minutes)"
+                } else {
+                    print("Could not refresh minutes.")
                 }
             })
         }
@@ -682,7 +708,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changeTitleAction = UIAlertAction(title: "Change Title", style: .default) { (action) in
-
+                        
                         let sessionTitleChangeController = AimSessionTitleChangeViewController(nibName: "AimSessionTitleChangeViewController", bundle: nil)
                         
                         sessionTitleChangeController.currentSession = sessionBeingManaged
@@ -693,9 +719,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in
-
+                        
                         let sessionPriorityChangeController = AimSessionPriorityChangeViewController(nibName: "AimSessionPriorityChangeViewController", bundle: nil)
-
+                        
                         sessionPriorityChangeController.currentSession = sessionBeingManaged
                         
                         let popup = PopupDialog(viewController: sessionPriorityChangeController, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true, completion: nil)
@@ -730,11 +756,23 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
     }
     
+    func shouldReevaluateUserLogin() {
+        if Auth.auth().currentUser?.uid != nil {
+            retrieveSessions()
+            refreshButton.isEnabled = true
+            handleTokenSumReadingFromFirebase()
+            handleMinutesSumReadingFromFirebase()
+        }
+    }
+    
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
-        handleTokenSumReadingFromFirebase()
-        aimSessionFetchedArray.removeAll()
-        retrieveSessions()
-        aimSessionCollectionView.reloadData()
+        if Auth.auth().currentUser?.uid != nil {
+            handleTokenSumReadingFromFirebase()
+            handleMinutesSumReadingFromFirebase()
+            aimSessionFetchedArray.removeAll()
+            retrieveSessions()
+            aimSessionCollectionView.reloadData()
+        }
     }
     
     // MARK: - Navigation

@@ -1131,6 +1131,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1149,6 +1150,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Aim!/Aim!.entitlements";
 				DEVELOPMENT_TEAM = FD5Z2GLC5U;
 				INFOPLIST_FILE = "Aim!/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinzhang.Aim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
