@@ -8,6 +8,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - CWStatusBarNotification (2.3.5)
+  - DeviceKit (1.2.3)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -98,6 +99,7 @@ DEPENDENCIES:
   - BEMCheckBox
   - BFPaperButton
   - CWStatusBarNotification
+  - DeviceKit (~> 1.0)
   - FacebookCore
   - FacebookLogin
   - Firebase
@@ -116,6 +118,7 @@ SPEC CHECKSUMS:
   BFPaperButton: a25fdd3ff6898bdbd5cc9b1334ca36adb0296b9f
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
+  DeviceKit: f33cbc6e67d9bb416e42dedc647557c7c2f6d3d7
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
@@ -139,6 +142,6 @@ SPEC CHECKSUMS:
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
 
-PODFILE CHECKSUM: dd40fb72233d838de8bf918d9c04f0dfc9b45557
+PODFILE CHECKSUM: 05fcf7b7dd04123373c958e5cd641ca86b51c526
 
 COCOAPODS: 1.2.1

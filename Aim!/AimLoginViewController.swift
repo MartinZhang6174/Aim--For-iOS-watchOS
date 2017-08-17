@@ -13,6 +13,7 @@ import WatchConnectivity
 import FacebookLogin
 import FBSDKLoginKit
 import GoogleSignIn
+import DeviceKit
 
 // CODEREVIEW: These colours are used in other places.  Consider creating a Palette class or a UIColor extension to hold all the colours you use in one place.
 
@@ -34,6 +35,12 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     let logInButtonLayerShadowOffsetWidth = Double(7.0)
     let logInButtonLayerShadowOffsetHeight = Double(5.0)
     
+    @IBOutlet weak var aimLogoTopAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topTextFieldTopAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topButtonTopAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topTextFieldWidthAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topButtonHeightAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topButtonWidthAnchorConstraint: NSLayoutConstraint!
     @IBOutlet weak var aimLogoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailAddressEntryTextField: UITextField!
@@ -44,6 +51,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Configuring Facebook login button
         let fBLoginButton = LoginButton(readPermissions: [.publicProfile, .email])
         fBLoginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +61,6 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         let fbLoginWidthAnchor = fBLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
         let fbLoginHeightAnchor = fBLoginButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 0.8)
         
-        NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
-        fBLoginButton.delegate = self
         
         // Configuring Google login button
         let googleLoginButton = GIDSignInButton()
@@ -65,6 +71,18 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         let googleLoginHeightAnchor = googleLoginButton.heightAnchor.constraint(equalTo: googleLoginButton.heightAnchor)
         let googleLoginWidthAnchor = googleLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
         
+        let currentDevice = Device()
+        if currentDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            aimLogoTopAnchorConstraint.constant = 40
+            topTextFieldTopAnchorConstraint.constant = 20
+            topTextFieldWidthAnchorConstraint.constant = 170
+            topButtonTopAnchorConstraint.constant = 20
+            topButtonHeightAnchorConstraint.constant = 40
+            topButtonWidthAnchorConstraint.constant = 140
+        }
+        
+        NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
+        fBLoginButton.delegate = self
         NSLayoutConstraint.activate([googleLoginTopConstraint, googleLoginCenterXAnchor, googleLoginHeightAnchor, googleLoginWidthAnchor])
         GIDSignIn.sharedInstance().uiDelegate = self
         

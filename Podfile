@@ -19,6 +19,7 @@ pod ‘FacebookLogin‘
 pod ‘GoogleSignIn’
 pod ‘paper-onboarding‘
 pod ‘PopupDialog’
+pod 'DeviceKit', '~> 1.0'
 
   target 'Aim! Tests' do
     inherit! :search_paths
