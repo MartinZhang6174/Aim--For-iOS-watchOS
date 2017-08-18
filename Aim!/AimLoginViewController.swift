@@ -50,8 +50,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         // Configuring Facebook login button
         let fBLoginButton = LoginButton(readPermissions: [.publicProfile, .email])
         fBLoginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +59,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         let fBLoginCenterXAnchor = fBLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         let fbLoginWidthAnchor = fBLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
         let fbLoginHeightAnchor = fBLoginButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor, multiplier: 0.8)
-        
-        
+
         // Configuring Google login button
         let googleLoginButton = GIDSignInButton()
         googleLoginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +77,10 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             topButtonTopAnchorConstraint.constant = 20
             topButtonHeightAnchorConstraint.constant = 40
             topButtonWidthAnchorConstraint.constant = 140
+            signupButton.titleLabel?.font = UIFont(name: "PhosphatePro-Inline", size: 17)
+            loginButton.titleLabel?.font = UIFont(name: "PhosphatePro-Inline", size: 17)
+            fBLoginTopConstraint.constant = 10
+            googleLoginTopConstraint.constant = 5
         }
         
         NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])

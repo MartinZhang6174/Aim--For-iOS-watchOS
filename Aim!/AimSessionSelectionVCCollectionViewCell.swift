@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DeviceKit
 
 class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
     
@@ -28,6 +29,12 @@ class AimSessionSelectionVCCollectionViewCell: UICollectionViewCell {
         
         sessionSnaphotImageView.image = nil
         sessionInfoLabel.text = ""
+        
+        let userDevice = Device()
+        if userDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            sessionInfoLabel.font = UIFont(name: "PhosphatePro-Inline", size: 12)
+            addSessionPlusIconLabel.font = UIFont(name: "PhosphatePro-Inline", size: 52)
+        }
         
 //        forceRequiredToTouch = CGFloat(defaults.float(forKey: "AimSessionForceRequiredToTouch"))
     }

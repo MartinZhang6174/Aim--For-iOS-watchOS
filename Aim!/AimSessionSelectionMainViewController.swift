@@ -18,6 +18,7 @@ import WatchConnectivity
 import CWStatusBarNotification
 import AVFoundation
 import PopupDialog
+import DeviceKit
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -25,7 +26,7 @@ let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
 let NotificationUpdatedTokenFromWatch = "ReceivedUpdatedTokensFromWatchNotification"
 
-class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
+class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
@@ -389,6 +390,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return aimSessionFetchedArray.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let userDevice = Device()
+        if userDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            return CGSize(width: 84, height: 100)
+        }
+        return CGSize(width:105, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -69,13 +69,13 @@ class AimSettingsTableViewController: UITableViewController {
 //        UIApplication.shared.statusBarStyle = .lightContent
         
         if Auth.auth().currentUser?.uid != nil {
-            logInLabel.textColor = UIColor.gray
+            logInLabel.textColor = UIColor.darkGray
             logOutLabel.textColor = UIColor.init(red: 255/255, green: 0, blue: 0, alpha: 1.0)
             loginCell.isUserInteractionEnabled = false
             logoutCell.isUserInteractionEnabled = true
         } else {
             logInLabel.textColor = UIColor.init(red: 0, green: 122/255, blue: 255/255, alpha: 1.0)
-            logOutLabel.textColor = UIColor.gray
+            logOutLabel.textColor = UIColor.darkGray
             loginCell.isUserInteractionEnabled = true
             logoutCell.isUserInteractionEnabled = false
         }

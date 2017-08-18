@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import MarqueeLabel
 
-class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var aimAwardsCollectionView: UICollectionView!
     
