@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PhosphateProInline.otf">
+            <string>PhosphatePro-Inline</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AimSessionPriorityChangeViewController" customModule="Aim_" customModuleProvider="target">
+            <connections>
+                <outlet property="sessionPriorityLabel" destination="D5E-xc-vD3" id="i8N-28-C7B"/>
+                <outlet property="sessionPrioritySwitch" destination="ukV-zF-K6I" id="jD5-Re-R1r"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8A-5T-EN5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                    <subviews>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ukV-zF-K6I">
+                            <rect key="frame" x="163" y="95" width="51" height="31"/>
+                            <color key="onTintColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changing Priority for this session:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5E-xc-vD3">
+                            <rect key="frame" x="4" y="15" width="367" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="FSi-Xu-89S"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
+                            <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIz-nt-kMc" customClass="BFPaperButton">
+                            <rect key="frame" x="147.5" y="171" width="80" height="34"/>
+                            <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="18"/>
+                            <state key="normal" title=" Confirm ">
+                                <color key="titleColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="loweredShadowOpacity">
+                                    <real key="value" value="0.69999999999999996"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="loweredShadowOffset">
+                                    <size key="value" width="0.0" height="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="liftedShadowOpacity">
+                                    <real key="value" value="0.69999999999999996"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="liftedShadowOffset">
+                                    <size key="value" width="2" height="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="touchDownAnimationDuration">
+                                    <real key="value" value="0.20000000000000001"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationDuration">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameterStartValue">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleDiameter">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="tapCircleBurstAmount">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRaised" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rippleBeyondBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rippleFromTapLocation" value="NO"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="tapCircleColor">
+                                    <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="confirmButtonClicked:" destination="-1" eventType="touchUpInside" id="iWg-Kj-iKJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="1D3-Vy-YTW"/>
+                        <constraint firstItem="D5E-xc-vD3" firstAttribute="leading" secondItem="a8A-5T-EN5" secondAttribute="leading" constant="4" id="Fk4-Qs-BQu"/>
+                        <constraint firstItem="D5E-xc-vD3" firstAttribute="centerX" secondItem="a8A-5T-EN5" secondAttribute="centerX" id="KQe-Yq-wYo"/>
+                        <constraint firstItem="IIz-nt-kMc" firstAttribute="centerX" secondItem="a8A-5T-EN5" secondAttribute="centerX" id="ND0-gi-ycK"/>
+                        <constraint firstAttribute="height" constant="225" id="V8f-Rm-o2Y"/>
+                        <constraint firstItem="IIz-nt-kMc" firstAttribute="top" secondItem="ukV-zF-K6I" secondAttribute="bottom" constant="45" id="d4L-tK-i0f"/>
+                        <constraint firstItem="ukV-zF-K6I" firstAttribute="top" secondItem="D5E-xc-vD3" secondAttribute="bottom" constant="20" id="dod-fS-7XH"/>
+                        <constraint firstAttribute="trailing" secondItem="D5E-xc-vD3" secondAttribute="trailing" constant="4" id="khP-Gm-N8C"/>
+                        <constraint firstItem="D5E-xc-vD3" firstAttribute="top" secondItem="a8A-5T-EN5" secondAttribute="top" constant="15" id="r75-XR-wf7"/>
+                        <constraint firstItem="ukV-zF-K6I" firstAttribute="centerX" secondItem="a8A-5T-EN5" secondAttribute="centerX" id="u2n-h8-24g"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a8A-5T-EN5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8lw-pf-729"/>
+                <constraint firstAttribute="trailing" secondItem="a8A-5T-EN5" secondAttribute="trailing" id="Vg5-3h-mpd"/>
+                <constraint firstItem="a8A-5T-EN5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="be6-V2-vmo"/>
+                <constraint firstAttribute="bottom" secondItem="a8A-5T-EN5" secondAttribute="bottom" id="ikj-Ch-8st"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="7.5" y="48.5"/>
+        </view>
+    </objects>
+</document>

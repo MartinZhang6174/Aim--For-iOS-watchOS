@@ -12,6 +12,7 @@ import CoreLocation
 import UserNotifications
 import RealmSwift
 import Firebase
+import DeviceKit
 
 class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate {
     
@@ -50,11 +51,17 @@ class AimSessionViewController: UIViewController, AimSessionDurationInfoDelegate
     
     @IBOutlet weak var sessionTimerLabel: UILabel!
     @IBOutlet weak var sessionTokensLabel: UILabel!
+    @IBOutlet weak var timerLabelTopAnchorConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var sessionPieView: AimSessionPieView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userDevice = Device()
+        if userDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            timerLabelTopAnchorConstraint.constant = 30
+        }
         
         //        let currentDate = Date()
         let calendar = Calendar.current

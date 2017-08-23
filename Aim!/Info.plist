@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>See all your awards</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>achievementsShortcutIcon</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Achievements</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.martinzhang.Aim.awards</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Create a new session</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>newSessionShortcutIcon</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New Session</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.martinzhang.Aim.new-session</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -71,16 +94,12 @@
 	<string>$(PRODUCT_NAME) location use</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) location use</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) microphone use</string>
 	<key>NSMotionUsageDescription</key>
 	<string>$(PRODUCT_NAME) motion use</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) will not share any of your photo content with any third party entities.</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>$(PRODUCT_NAME) reminder use</string>
-	<key>NSSiriUsageDescription</key>
-	<string>$(PRODUCT_NAME) siri use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>PhosphateProInline.otf</string>

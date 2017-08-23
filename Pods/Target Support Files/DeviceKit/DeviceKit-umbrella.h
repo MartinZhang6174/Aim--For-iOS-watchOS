@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double RealmSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char RealmSwiftVersionString[];
+FOUNDATION_EXPORT double DeviceKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char DeviceKitVersionString[];
 

@@ -24,7 +24,7 @@ class AimSessionTitleChangeViewController: UIViewController {
 
         if currentSession != nil {
             let sessionCurrentTitle = currentSession?.title
-            renamingLabel.text = "Renaming session '\(sessionCurrentTitle!)'"
+            renamingLabel.text = "Renaming session '\(sessionCurrentTitle!)':"
         }
     }
     
@@ -33,7 +33,10 @@ class AimSessionTitleChangeViewController: UIViewController {
             print(session.id)
             if sessionTitleChangeTextField.text != nil && sessionTitleChangeTextField.text != "" {
                 ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Sessions").child(session.id).child("Title").setValue(sessionTitleChangeTextField.text!)
-                dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: { 
+                    let noti = AimStandardStatusBarNotification()
+                    noti.display(withMessage: "Updating title, please refresh in a moment!", forDuration: 1.5)
+                })
             } else {
                 sessionTitleChangeTextField.shake()
                 let warning = AimStandardStatusBarNotification()

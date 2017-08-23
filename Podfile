@@ -14,11 +14,12 @@ pod ‘BEMCheckBox’
 pod ‘BFPaperButton’
 pod ‘CWStatusBarNotification’
 pod ‘MarqueeLabel’
-pod 'FacebookCore'
-pod 'FacebookLogin'
+pod ‘FacebookCore‘
+pod ‘FacebookLogin‘
 pod ‘GoogleSignIn’
-pod 'paper-onboarding'
+pod ‘paper-onboarding‘
 pod ‘PopupDialog’
+pod 'DeviceKit', '~> 1.0'
 
   target 'Aim! Tests' do
     inherit! :search_paths

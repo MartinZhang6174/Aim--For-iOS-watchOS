@@ -14,10 +14,11 @@ import RealmSwift
 import FBSDKLoginKit
 import FacebookLogin
 import GoogleSignIn
-import WatchConnectivity
+//import WatchConnectivity
 import CWStatusBarNotification
 import AVFoundation
 import PopupDialog
+import DeviceKit
 
 let aimApplicationThemeOrangeColor = hexStringToUIColor(hex: "FF4A1C")
 let aimApplicationThemePurpleColor = hexStringToUIColor(hex: "1A1423")
@@ -25,7 +26,7 @@ let aimApplicationNavBarThemeColor = hexStringToUIColor(hex: "1A1421")
 
 let NotificationUpdatedTokenFromWatch = "ReceivedUpdatedTokensFromWatchNotification"
 
-class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
+class AimSessionSelectionMainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout {
     
     let aimApplicationThemeFont24 = UIFont(name: "PhosphatePro-Inline", size: 24)
     
@@ -39,6 +40,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 150
+    
+    lazy var notificationCenter: NotificationCenter = {
+        return NotificationCenter.default
+    }()
     
     let fmt = DateFormatter()
     
@@ -122,9 +127,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                     
                                     UIView.animate(withDuration: 0.4, animations: {
                                         self.view.layoutIfNeeded()
-                                    }, completion: { (finished) in
-                                        print("Finished animating. <<<<<<<<<<<<<<<<<<<<<<<")
-                                    })
+                                    }, completion: nil)
                                 }
                             }
                         }
@@ -135,7 +138,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         // Prepare for notifications from apple watch's token update:
-        NotificationCenter.default.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
+        notificationCenter.addObserver(self, selector: #selector(handleTokenSumLabelUpdate), name: Notification.Name(NotificationUpdatedTokenFromWatch), object: UIApplication.shared.delegate)
+        
+        notificationCenter.addObserver(self, selector: #selector(shouldReevaluateUserLogin), name: NSNotification.Name(rawValue: "ShouldReevaluateUserLogin"), object: nil)
+        
+        notificationCenter.addObserver(self, selector: #selector(shouldSegueToNewSessionVC), name: NSNotification.Name(rawValue: "MainVCShouldSegueToNewSessionVC"), object: nil)
         
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
@@ -215,7 +222,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         // If user is logged in:
-        if let currentUserID = Auth.auth().currentUser?.uid as String! {
+        if (Auth.auth().currentUser?.uid) != nil {
             
             // TODO: Add something here to force user out when password gets changed
             ref?.child("users").child((Auth.auth().currentUser?.uid)!).child("Tokens").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -233,11 +240,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             // Transfer user info to apple watch app(maybe put this into the token sum label/button action too):
                             let userInfoValues = ["Email": userInRealm.email, "TotalTokens": userInRealm.tokenPool] as [String : Any]
                             
-                            do {
-                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
-                            } catch _ {
-                                print("Error sending user info.")
-                            }
+//                            do {
+//                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
+//                            } catch _ {
+//                                print("Error sending user info.")
+//                            }
                         }
                     } catch let err {
                         print(err)
@@ -275,9 +282,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
         } else {
             // If the use isn't logged in, delete all session data on WATCH APP
-            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
-                print("Could not establish communications to WatchKit app.")
-            })
+//            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+//                print("Could not establish communications to WatchKit app.")
+//            })
         }
     }
     
@@ -337,11 +344,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
             
             // Transfer the session loaded to Apple Watch app
-            do {
-                try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
-            } catch let error {
-                print(error)
-            }
+//            do {
+//                try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
+//            } catch let error {
+//                print(error)
+//            }
             
             // Trying to find a way to animate collectionview data reloading
             self.aimSessionCollectionView.reloadData()
@@ -387,6 +394,14 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         return aimSessionFetchedArray.count + 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let userDevice = Device()
+        if userDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            return CGSize(width: 84, height: 100)
+        }
+        return CGSize(width:105, height: 125)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sessionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aimSessionSelectionCollectionViewCell", for: indexPath) as! AimSessionSelectionVCCollectionViewCell
         
@@ -405,12 +420,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let feedbackGenerator1 = UIImpactFeedbackGenerator(style: .medium)
+        let feedbackGenerator2 = UINotificationFeedbackGenerator()
+        feedbackGenerator1.prepare()
+        feedbackGenerator2.prepare()
         if indexPath.row != aimSessionFetchedArray.count {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            feedbackGenerator1.impactOccurred()
         } else {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
+            if Auth.auth().currentUser?.uid != nil {
+                feedbackGenerator2.notificationOccurred(.success)
+            } else {
+                feedbackGenerator2.notificationOccurred(.error)
+            }
         }
     }
     
@@ -420,6 +441,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         // Last cell pressed:
         if indexPath.row == aimSessionFetchedArray.count {
+            
             selectedCell?.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.1, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
                 selectedCell?.alpha = 0.4
@@ -430,7 +452,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     selectedCell?.isUserInteractionEnabled = true
                 })
             })
-            performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
+            if Auth.auth().currentUser?.uid != nil {
+                performSegue(withIdentifier: toPopupVCSegueIdentifier, sender: self)
+            } else {
+                let warning = AimStandardStatusBarNotification()
+                warning.display(withMessage: "Please log into your account before adding a session.", forDuration: 1.5)
+            }
             
             // If this isn't yet the last, do an USUAL configuration:
         } else {
@@ -481,26 +508,27 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         }
         
         if mediaType == (kUTTypeImage as String) {
-                if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-                    selectedImageFromPicker = editedImage
-                } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-                    selectedImageFromPicker = originalImage
-                }
-                if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
-                    uploadNewImage(withImageData: uploadData)
-                }
+            if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+                selectedImageFromPicker = editedImage
+            } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+                selectedImageFromPicker = originalImage
+            }
+            if let uploadData = UIImageJPEGRepresentation(selectedImageFromPicker!, 0.65) {
+                uploadNewImage(withImageData: uploadData)
+            }
         } else if mediaType == (kUTTypeMovie as String) {
             if let movieURL = info[UIImagePickerControllerMediaURL] as? URL {
                 let warning = AimStandardStatusBarNotification()
                 warning.display(withMessage: "Aim! does not yet accept videos as session thumbnails, expect future updates!", forDuration: 1.5)
             }
         }
-        dismiss(animated: true) { 
+        dismiss(animated: true) {
             self.aimSessionFetchedArray.removeAll()
             self.retrieveSessions()
+            self.aimSessionCollectionView.reloadData()
             
             let noti = AimStandardStatusBarNotification()
-            noti.display(withMessage: "Image uploading! Tap refresh in a moment.", forDuration: 2.0)
+            noti.display(withMessage: "Updating image, please refresh in a moment!", forDuration: 1.5)
         }
     }
     
@@ -554,8 +582,6 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     print("\(String(describing: metadata))")
                 }
             }
-        } else {
-            print("Please login to use feature.")
         }
     }
     
@@ -600,6 +626,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     self.aimTokenSumLabel.text = "\(tokensFetched)"
                 } else {
                     print("Could not refresh tokens.")
+                }
+            })
+        }
+    }
+    
+    func handleMinutesSumReadingFromFirebase() {
+        if let userUID = Auth.auth().currentUser?.uid {
+            ref?.child("users").child(userUID).child("Minutes").observeSingleEvent(of: .value, with: { (snapshot) in
+                if let minutes = snapshot.value as? Float {
+                    self.aimHourSumLabel.text = "\(minutes)"
+                } else {
+                    print("Could not refresh minutes.")
                 }
             })
         }
@@ -681,7 +719,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changeTitleAction = UIAlertAction(title: "Change Title", style: .default) { (action) in
-
+                        
                         let sessionTitleChangeController = AimSessionTitleChangeViewController(nibName: "AimSessionTitleChangeViewController", bundle: nil)
                         
                         sessionTitleChangeController.currentSession = sessionBeingManaged
@@ -692,13 +730,19 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                     }
                     
                     let changePriorityAction = UIAlertAction(title: "Change Priority", style: .default) { (action) in
-                        print("Should change priority")
                         
+                        let sessionPriorityChangeController = AimSessionPriorityChangeViewController(nibName: "AimSessionPriorityChangeViewController", bundle: nil)
+                        
+                        sessionPriorityChangeController.currentSession = sessionBeingManaged
+                        
+                        let popup = PopupDialog(viewController: sessionPriorityChangeController, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true, completion: nil)
+                        
+                        self.present(popup, animated: true, completion: nil)
                     }
                     
                     let deleteSessionAction = UIAlertAction(title: "Remove Session", style: .destructive) { (action) in
                         // Force unwrapping UID because no user can see their sessions without logging in first(app has UID in that case)
-                        self.ref?.child("users").child(currentAppUserID!).child("Sessions").child(sessionBeingManaged.title).removeValue()
+                        self.ref?.child("users").child(currentAppUserID!).child("Sessions").child(sessionBeingManaged.id).removeValue()
                         self.aimSessionFetchedArray.removeAll()
                         self.retrieveSessions()
                         self.aimSessionCollectionView.reloadData()
@@ -723,11 +767,27 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
     }
     
+    func shouldReevaluateUserLogin() {
+        if Auth.auth().currentUser?.uid != nil {
+            retrieveSessions()
+            refreshButton.isEnabled = true
+            handleTokenSumReadingFromFirebase()
+            handleMinutesSumReadingFromFirebase()
+        }
+    }
+    
     @IBAction func refreshTokenButtonClicked(_ sender: Any) {
-        handleTokenSumReadingFromFirebase()
-        aimSessionFetchedArray.removeAll()
-        retrieveSessions()
-        aimSessionCollectionView.reloadData()
+        if Auth.auth().currentUser?.uid != nil {
+            handleTokenSumReadingFromFirebase()
+            handleMinutesSumReadingFromFirebase()
+            aimSessionFetchedArray.removeAll()
+            retrieveSessions()
+            aimSessionCollectionView.reloadData()
+        }
+    }
+    
+    func shouldSegueToNewSessionVC() {
+        performSegue(withIdentifier: "segueToPopupViewController", sender: self)
     }
     
     // MARK: - Navigation

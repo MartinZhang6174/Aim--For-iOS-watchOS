@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import UserNotifications
-import WatchConnectivity
+//import WatchConnectivity
 import RealmSwift
 import FBSDKCoreKit
 import GoogleSignIn
@@ -28,8 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        
+        // Configure a FIRApp instance
+        FirebaseApp.configure()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
@@ -60,15 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             
         }
-        
-        // Configure a FIRApp instance
-        FirebaseApp.configure()
-        
+
         // Setting up watch connectivity
-        setupWatchConnectivity()
+//        setupWatchConnectivity()
         
         // Setting up notification center for future notifications to session syncing
-        setupNotificationCenter()
+//        setupNotificationCenter()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -112,11 +112,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    private func setupNotificationCenter() {
-        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationAddedSessionOnPhone), object: nil, queue: nil) { (notification:Notification) -> Void in
-            self.sendSessionsToWatch(notification)
-        }
-    }
+//    private func setupNotificationCenter() {
+//        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: NotificationAddedSessionOnPhone), object: nil, queue: nil) { (notification:Notification) -> Void in
+////            self.sendSessionsToWatch(notification)
+//        }
+//    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             guard let uid = user?.uid else { return }
             print("User login success", uid)
-            self.notificationCenter.post(name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
+            self.notificationCenter.post(name: NSNotification.Name(rawValue: "ShouldReevaluateUserLogin"), object: nil)
         }
     }
     
@@ -148,10 +148,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // ...
         print("Did just sign out of Google.")
     }
+    
+    // MARK: - 3D Touch
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type == "com.martinzhang.Aim.new-session" {
+            /*if Auth.auth().currentUser?.uid != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let newSessionVC = storyboard.instantiateViewController(withIdentifier: "NewSessionVC")
+                let mainVCNavi = storyboard.instantiateViewController(withIdentifier: "MainVCNavigation")
+                window?.rootViewController = mainVCNavi
+                window?.makeKeyAndVisible()
+                window?.rootViewController?.present(newSessionVC, animated: true, completion: nil)
+//                window?.makeKeyAndVisible()
+//                notificationCenter.post(name: NSNotification.Name.init(rawValue: "MainVCShouldSegueToNewSessionVC"), object: nil)
+            } else {
+                let warning = AimStandardStatusBarNotification()
+                warning.display(withMessage: "Please log in to add a session.", forDuration: 1.5)
+            }*/
+            window?.rootViewController?.dismiss(animated: false, completion: nil)
+            
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let newSessionVC = storyboard.instantiateViewController(withIdentifier: "NewSessionVC")
+                window?.rootViewController?.present(newSessionVC, animated: true, completion: nil)
+        }
+        
+        if shortcutItem.type == "com.martinzhang.Aim.awards" {
+//            window?.rootViewController?.dismiss(animated: true, completion: nil)
+//            window?.rootViewController?.performSegue(withIdentifier: "mainVCToAwardsSceneSegue", sender: window?.rootViewController)
+            
+            window?.rootViewController?.dismiss(animated: false, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let awardsVC = storyboard.instantiateViewController(withIdentifier: "AwardsVCNavi")
+            window?.rootViewController?.present(awardsVC, animated: true, completion: nil)
+//            if let rootNavi = window?.rootViewController as? UINavigationController {
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let awardsVC = storyboard.instantiateViewController(withIdentifier: "AwardsVC")
+//                rootNavi.pushViewController(awardsVC, animated: true)
+//            }
+        }
+    }
 }
 
 // MARK: - Watch connectivity
-
+/*
 extension AppDelegate: WCSessionDelegate {
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
@@ -210,4 +249,4 @@ extension AppDelegate: WCSessionDelegate {
         print(applicationContext)
     }
 }
-
+*/
