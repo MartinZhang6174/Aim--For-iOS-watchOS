@@ -60,7 +60,6 @@
 		9C6890DB1DA5E5C0005CA654 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DA1DA5E5C0005CA654 /* ExtensionDelegate.swift */; };
 		9C6890DD1DA5E5C0005CA654 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6890DC1DA5E5C0005CA654 /* NotificationController.swift */; };
 		9C6890DF1DA5E5C0005CA654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6890DE1DA5E5C0005CA654 /* Assets.xcassets */; };
-		9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9C6890C51DA5E5C0005CA654 /* Aim! .app */; };
 		9C7160261DC5A940003C7773 /* AimDurationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160241DC5A940003C7773 /* AimDurationDelegate.swift */; };
 		9C7160271DC5A940003C7773 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7160251DC5A940003C7773 /* TimerManager.swift */; };
 		9C73A4781EDF85D5007C7F1F /* AimSessionCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73A4771EDF85D5007C7F1F /* AimSessionCentral.swift */; };
@@ -114,13 +113,6 @@
 			remoteGlobalIDString = 9C6890D01DA5E5C0005CA654;
 			remoteInfo = "Aim! For watchOS Extension";
 		};
-		9C6890E11DA5E5C0005CA654 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9C6890921DA5DA8D005CA654 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C6890C41DA5E5C0005CA654;
-			remoteInfo = "Aim! For watchOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,7 +145,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				9C6890E31DA5E5C0005CA654 /* Aim! .app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,7 +531,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9C6890E21DA5E5C0005CA654 /* PBXTargetDependency */,
 			);
 			name = "Aim!";
 			productName = "Aim!";
@@ -990,11 +980,6 @@
 			isa = PBXTargetDependency;
 			target = 9C6890D01DA5E5C0005CA654 /* Aim! Extension */;
 			targetProxy = 9C6890D31DA5E5C0005CA654 /* PBXContainerItemProxy */;
-		};
-		9C6890E21DA5E5C0005CA654 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9C6890C41DA5E5C0005CA654 /* Aim!  */;
-			targetProxy = 9C6890E11DA5E5C0005CA654 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

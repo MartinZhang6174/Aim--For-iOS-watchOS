@@ -2,29 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>See all your awards</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>achievementsShortcutIcon</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Achievements</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.martinzhang.Aim.awards</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>Create a new session</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>newSessionShortcutIcon</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>New Session</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.martinzhang.Aim.new-session</string>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -61,7 +38,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0.1</string>
 	<key>FacebookAppID</key>
 	<string>1409297799161693</string>
 	<key>FacebookDisplayName</key>
@@ -103,6 +80,29 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PhosphateProInline.otf</string>
+	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>achievementsShortcutIcon</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>See all your awards</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Achievements</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.martinzhang.Aim.awards</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>newSessionShortcutIcon</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Create a new session</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>New Session</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.martinzhang.Aim.new-session</string>
+		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
