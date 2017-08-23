@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-import WatchConnectivity
+//import WatchConnectivity
 import RealmSwift
 import Realm
 
@@ -55,11 +55,11 @@ class AimMainSessionSelectionInterfaceController: WKInterfaceController {
             
             let userValues = ["Tokens": currentTokensOnWatch, "Hours": currenHoursOnWatch] as [String: Any]
             
-            do {
-                try WCSession.default().transferUserInfo(["UserInfo": userValues])
-            } catch let err {
-                print("Error communicating with ccmpanion device: \(err)")
-            }
+//            do {
+//                try WCSession.default().transferUserInfo(["UserInfo": userValues])
+//            } catch let err {
+//                print("Error communicating with ccmpanion device: \(err)")
+//            }
         }
     }
     

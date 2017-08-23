@@ -14,7 +14,7 @@ import RealmSwift
 import FBSDKLoginKit
 import FacebookLogin
 import GoogleSignIn
-import WatchConnectivity
+//import WatchConnectivity
 import CWStatusBarNotification
 import AVFoundation
 import PopupDialog
@@ -142,6 +142,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         notificationCenter.addObserver(self, selector: #selector(shouldReevaluateUserLogin), name: NSNotification.Name(rawValue: "ShouldReevaluateUserLogin"), object: nil)
         
+        notificationCenter.addObserver(self, selector: #selector(shouldSegueToNewSessionVC), name: NSNotification.Name(rawValue: "MainVCShouldSegueToNewSessionVC"), object: nil)
+        
         // Putting Aim! logo onto nav bar:
         let navBarAimLogo = UIImage(named: "aim!LogoForNavigationBar")
         self.navigationItem.titleView = UIImageView.init(image: navBarAimLogo)
@@ -238,11 +240,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                             // Transfer user info to apple watch app(maybe put this into the token sum label/button action too):
                             let userInfoValues = ["Email": userInRealm.email, "TotalTokens": userInRealm.tokenPool] as [String : Any]
                             
-                            do {
-                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
-                            } catch _ {
-                                print("Error sending user info.")
-                            }
+//                            do {
+//                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
+//                            } catch _ {
+//                                print("Error sending user info.")
+//                            }
                         }
                     } catch let err {
                         print(err)
@@ -280,9 +282,9 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             AimUser.defaultUser(in: realm, withEmail: userLoginEmail!)
         } else {
             // If the use isn't logged in, delete all session data on WATCH APP
-            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
-                print("Could not establish communications to WatchKit app.")
-            })
+//            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+//                print("Could not establish communications to WatchKit app.")
+//            })
         }
     }
     
@@ -342,11 +344,11 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
             
             // Transfer the session loaded to Apple Watch app
-            do {
-                try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
-            } catch let error {
-                print(error)
-            }
+//            do {
+//                try WCSession.default().transferUserInfo(["Session": sessionInfoValues])
+//            } catch let error {
+//                print(error)
+//            }
             
             // Trying to find a way to animate collectionview data reloading
             self.aimSessionCollectionView.reloadData()
@@ -782,6 +784,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             retrieveSessions()
             aimSessionCollectionView.reloadData()
         }
+    }
+    
+    func shouldSegueToNewSessionVC() {
+        performSegue(withIdentifier: "segueToPopupViewController", sender: self)
     }
     
     // MARK: - Navigation

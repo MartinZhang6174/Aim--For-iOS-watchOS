@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import WatchConnectivity
+//import WatchConnectivity
 import FBSDKLoginKit
 import FacebookLogin
 import GoogleSignIn
@@ -162,9 +162,9 @@ class AimSettingsTableViewController: UITableViewController {
             let statusBarNotification = AimStandardStatusBarNotification()
             statusBarNotification.display(withMessage: "Please login to use the watch app.", forDuration: 1.5)
             
-            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
-                print("Could not establish communications to WatchKit app: \(err)")
-            })
+//            WCSession.default().sendMessage(["UserAuthState": false], replyHandler: nil, errorHandler: { (err) in
+//                print("Could not establish communications to WatchKit app: \(err)")
+//            })
         }
         
     }

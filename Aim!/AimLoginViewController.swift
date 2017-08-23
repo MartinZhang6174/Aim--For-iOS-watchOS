@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import Firebase
-import WatchConnectivity
+//import WatchConnectivity
 import FacebookLogin
 import FBSDKLoginKit
 import GoogleSignIn
