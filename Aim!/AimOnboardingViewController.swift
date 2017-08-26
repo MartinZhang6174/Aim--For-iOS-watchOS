@@ -8,6 +8,7 @@
 
 import UIKit
 import paper_onboarding
+import DeviceKit
 
 class AimOnboardingViewController: UIViewController, PaperOnboardingDataSource, PaperOnboardingDelegate {
 

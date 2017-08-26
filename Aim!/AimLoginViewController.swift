@@ -83,6 +83,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             googleLoginTopConstraint.constant = 5
         }
         
+        if currentDevice.isPad {
+            topTextFieldTopAnchorConstraint.constant = 100
+            topButtonTopAnchorConstraint.constant = 300
+        }
+        
         NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
         fBLoginButton.delegate = self
         NSLayoutConstraint.activate([googleLoginTopConstraint, googleLoginCenterXAnchor, googleLoginHeightAnchor, googleLoginWidthAnchor])

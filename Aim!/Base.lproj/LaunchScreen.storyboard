@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,18 +19,30 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aim!_Launch_Screen" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-dP-7Wc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aim!LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-dP-7Wc">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2017 Martin Zhang, All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ3-xe-NSB">
+                                <rect key="frame" x="20" y="1012" width="728" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Ngs-Fb-I5q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="DQ3-xe-NSB" secondAttribute="trailing" id="Drm-CY-Rri"/>
                             <constraint firstItem="hT4-dP-7Wc" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="S0j-Vu-9jH"/>
                             <constraint firstItem="hT4-dP-7Wc" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TL4-bG-paN"/>
                             <constraint firstAttribute="trailing" secondItem="hT4-dP-7Wc" secondAttribute="trailing" id="hFi-jt-22h"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="DQ3-xe-NSB" secondAttribute="bottom" id="l8w-sM-D09"/>
+                            <constraint firstItem="DQ3-xe-NSB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="oBh-QV-BOJ"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hT4-dP-7Wc" secondAttribute="bottom" id="vb4-Zz-Wa4"/>
                         </constraints>
                     </view>
@@ -40,6 +53,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Aim!_Launch_Screen" width="375" height="667"/>
+        <image name="Aim!LaunchScreen" width="375" height="667"/>
     </resources>
 </document>
