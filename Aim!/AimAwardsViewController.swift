@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import MarqueeLabel
+import DeviceKit
 
 class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -72,17 +72,25 @@ class AimAwardsViewController: UIViewController, UICollectionViewDelegate, UICol
         let awardObj = awardArray[indexPath.row]
         
         cell.badgeImageView.image = UIImage(named: awardObj.badgeTitle!)
-        
-        cell.badgeLabel.animationCurve = .curveEaseInOut
-        cell.badgeLabel.fadeLength = 5.0
-        cell.badgeLabel.lineBreakMode = .byTruncatingHead
         cell.badgeLabel.text = awardObj.badgeDescription
-        cell.badgeLabel.scrollDuration = 9.0
-        cell.badgeLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
-        cell.badgeLabel.marqueeType = .MLContinuous
-        cell.badgeLabel.tapToScroll = true
+        
+//        cell.badgeLabel.animationCurve = .curveEaseInOut
+//        cell.badgeLabel.fadeLength = 5.0
+//        cell.badgeLabel.lineBreakMode = .byTruncatingHead
+//        cell.badgeLabel.scrollDuration = 9.0
+//        cell.badgeLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
+//        cell.badgeLabel.marqueeType = .MLContinuous
+//        cell.badgeLabel.tapToScroll = true
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let device = Device()
+        if device.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+            return CGSize(width: 80, height: 80)
+        }
+        return CGSize(width: 100, height: 100)
     }
     
     @IBAction func doneButtonClicked(_ sender: Any) {

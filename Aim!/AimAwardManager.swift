@@ -13,7 +13,7 @@ class AimAwardManager {
     
     lazy var fireRef = Database.database().reference()
     
-    var awardDescriptionsDict = ["ThreeDayBadge": "Started 3 Aim! sessions in a day.", "FourDayBadge": "Started 4 Aim! sessions in a day.", "FiveDayBadge": "Started 5 Aim! sessions in a day.", "FacebookBadge": "Logged in with Facebook.", "PhotoLibraryBadge": "Picked a photo from library.", "GoogleBadge": "Logged in with Google", "ReminderBadge": "Set reminders to use Aim!", "BatteryLowBadge": "Started session in low battery mode.", "CameraBadge": "Took a photo for an Aim! session."]
+    var awardDescriptionsDict = ["ThreeDayBadge": "Started 3 Aim! sessions in a day.", "FourDayBadge": "Started 4 Aim! sessions in a day.", "FiveDayBadge": "Started 5 Aim! sessions in a day.", "FacebookBadge": "Logged in with Facebook.", "PhotoLibraryBadge": "Picked a photo from library.", "GoogleBadge": "Logged in with Google.", "ReminderBadge": "Set reminders to use Aim!", "BatteryLowBadge": "Started session in low battery mode.", "CameraBadge": "Took a photo for an Aim! session."]
     
     func getAwardDescription(for awardName: String) -> String {
         if let awardDesc = awardDescriptionsDict[awardName] {

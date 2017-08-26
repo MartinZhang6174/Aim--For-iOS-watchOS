@@ -11,6 +11,20 @@ import MarqueeLabel
 
 class AimAwardsBadgeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var badgeImageView: UIImageView!
-    @IBOutlet weak var badgeLabel: MarqueeLabel!
+    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var badgeUIView: UIView!
+    @IBOutlet weak var badgeInfoUIView: UIView!
+    
+    var isFlipped = false
+    
+    @IBAction func flipBadge(_ sender: Any) {
+        if isFlipped == false {
+            UIView.transition(from: badgeUIView, to: badgeInfoUIView, duration: 0.7, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+            isFlipped = true
+        } else if isFlipped == true {
+            UIView.transition(from: badgeInfoUIView, to: badgeUIView, duration: 0.7, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            isFlipped = false
+        }
+    }
     
 }
