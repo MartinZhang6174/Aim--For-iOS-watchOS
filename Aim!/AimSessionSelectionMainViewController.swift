@@ -37,6 +37,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     let sessionManager = SessionDurationManager()
     var awardManager = AimAwardManager()
     
+    var quoteLoadingView: NVActivityIndicatorView?
+    
     // let quotesAPIKey = "1fz_Wkqa9BGXusXp1WWkWQeF"
     var quoteCategory = "success"
     var quoteMaxCharRestriction = 150
@@ -80,8 +82,8 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         let quoteLoadingIndicatorViewFrameRect = CGRect(x: self.view.center.x-25, y: self.quoteLabel.center.y-20, width: 50, height: 50)
         
-        let quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
-        self.moveLoadingView(loadingView: quoteLoadingView)
+        quoteLoadingView = NVActivityIndicatorView(frame: quoteLoadingIndicatorViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        self.moveLoadingView(loadingView: quoteLoadingView!)
         
         self.quoteView.isUserInteractionEnabled = false
         
@@ -99,7 +101,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                 let quoteFetchTask = URLSession.shared.dataTask(with: quoteFetchingURL) { (data, response, error) in
                     if error != nil {
                         print("\(error!.localizedDescription)")
-                        self.endLoadingView(movingLoadingView: quoteLoadingView)
+                        self.endLoadingView(movingLoadingView: self.quoteLoadingView!)
                         
                         let statusBarNotification = AimStandardStatusBarNotification()
                         OperationQueue.main.addOperation {
@@ -117,7 +119,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                 // Quote loading task completed:
                                 OperationQueue.main.addOperation {
                                     self.quoteView.isUserInteractionEnabled = true
-                                    self.endLoadingView(movingLoadingView: quoteLoadingView)
+                                    self.endLoadingView(movingLoadingView: self.quoteLoadingView!)
                                     self.quoteLabel.text = quote
                                     if quoteAuthorName != nil {
                                         self.quoteAuthorLabel.text = "by  " + quoteAuthorName!

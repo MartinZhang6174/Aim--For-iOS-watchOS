@@ -26,6 +26,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         return NotificationCenter.default
     }()
     
+    var loginLoadingView: NVActivityIndicatorView?
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
@@ -37,7 +38,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     
     @IBOutlet weak var aimLogoTopAnchorConstraint: NSLayoutConstraint!
     @IBOutlet weak var topTextFieldTopAnchorConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topButtonTopAnchorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomButtonBottomAnchorConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var topButtonTopAnchorConstraint: NSLayoutConstraint! // Obsolete
     @IBOutlet weak var topTextFieldWidthAnchorConstraint: NSLayoutConstraint!
     @IBOutlet weak var topButtonHeightAnchorConstraint: NSLayoutConstraint!
     @IBOutlet weak var topButtonWidthAnchorConstraint: NSLayoutConstraint!
@@ -70,11 +72,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         let googleLoginWidthAnchor = googleLoginButton.widthAnchor.constraint(equalTo: fBLoginButton.widthAnchor)
         
         let currentDevice = Device()
-        if currentDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) {
+        if currentDevice.isOneOf([.iPhone5, .iPhoneSE, .iPhone5s, .iPhone5c]) || currentDevice.isSimulator {
             aimLogoTopAnchorConstraint.constant = 40
             topTextFieldTopAnchorConstraint.constant = 20
             topTextFieldWidthAnchorConstraint.constant = 170
-            topButtonTopAnchorConstraint.constant = 20
+            bottomButtonBottomAnchorConstraint.constant = 125
             topButtonHeightAnchorConstraint.constant = 40
             topButtonWidthAnchorConstraint.constant = 140
             signupButton.titleLabel?.font = UIFont(name: "PhosphatePro-Inline", size: 17)
@@ -85,8 +87,10 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         
         if currentDevice.isPad {
             topTextFieldTopAnchorConstraint.constant = 100
-            topButtonTopAnchorConstraint.constant = 300
+            bottomButtonBottomAnchorConstraint.constant = 200
         }
+        
+        loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         
         NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
         fBLoginButton.delegate = self
@@ -120,6 +124,31 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         self.hideKeyboardWhenTappedAround()
         
 //        notificationCenter.addObserver(self, selector: #selector(shouldDismiss), name: NSNotification.Name(rawValue: "ShouldDismissLoginVCNotification"), object: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            
+            let orient = UIApplication.shared.statusBarOrientation
+            
+            switch orient {
+            case .portrait:
+                print("Portrait")
+                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+                
+            case .landscapeLeft,.landscapeRight :
+                print("Landscape")
+                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+                
+            default:
+                print("Default")
+                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+            }
+        }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            //refresh view once rotation is completed not in will transition as it returns incorrect frame size.Refresh here
+            self.view.setNeedsDisplay()
+        })
     }
     
     override func viewWillLayoutSubviews() {
@@ -263,18 +292,16 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             passwordConfirmEntryTextField.alpha = 0.7
         } else {
             // If password confirming tf ISN'T hidden (it's there), handle signup
-            let loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
-            
             guard let email = emailAddressEntryTextField.text, let pwd1 = passwordCreateEntryTextField.text, let pwd2 = passwordConfirmEntryTextField.text else {
                 return
             }
             
             if pwd1 != "" && pwd1 == pwd2 {
-                moveLoadingView(loadingView: loginLoadingView)
+                moveLoadingView(loadingView: loginLoadingView!)
                 
                 Auth.auth().createUser(withEmail: email, password: pwd1, completion: { (user: User?, error) in
                     if error != nil {
-                        self.endLoadingView(movingLoadingView: loginLoadingView)
+                        self.endLoadingView(movingLoadingView: self.loginLoadingView!)
                         self.emailAddressEntryTextField.shake()
                         let statusBarNotification = AimStandardStatusBarNotification()
                         statusBarNotification.display(withMessage: "The email address entered is in use or badly formatted, please check again.", forDuration: 1.5)
@@ -293,7 +320,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                     let userInfoValues = ["Email" : email, "Password" : pwd1, "Tokens" : 0] as [String : Any]
                     userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                         if err != nil {
-                            self.endLoadingView(movingLoadingView: loginLoadingView)
+                            self.endLoadingView(movingLoadingView: self.loginLoadingView!)
                             print(err as Any)
                             return
                         }
@@ -305,7 +332,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                     print("Registered new user.")
                 })
             } else {
-                self.endLoadingView(movingLoadingView: loginLoadingView)
+                self.endLoadingView(movingLoadingView: loginLoadingView!)
                 self.passwordCreateEntryTextField.shake()
                 self.passwordConfirmEntryTextField.shake()
                 
