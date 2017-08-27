@@ -610,42 +610,13 @@
 				ORGANIZATIONNAME = "Martin Zhang";
 				TargetAttributes = {
 					9C6890991DA5DA8D005CA654 = {
-						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FD5Z2GLC5U;
-						DevelopmentTeamName = "Martin Zhang (Personal Team)";
-						LastSwiftMigration = 0820;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
-							};
-							com.apple.BackgroundModes = {
-								enabled = 0;
-							};
-							com.apple.Keychain = {
-								enabled = 0;
-							};
-						};
-					};
-					9C6890AD1DA5DA8D005CA654 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-						TestTargetID = 9C6890991DA5DA8D005CA654;
 					};
 					9C6890C41DA5E5C0005CA654 = {
-						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FD5Z2GLC5U;
-						LastSwiftMigration = 0800;
 					};
 					9C6890D01DA5E5C0005CA654 = {
-						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FD5Z2GLC5U;
-						DevelopmentTeamName = "Martin Zhang (Personal Team)";
-						LastSwiftMigration = 0800;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
-							};
-						};
 					};
 				};
 			};

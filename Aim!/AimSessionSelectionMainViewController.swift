@@ -177,6 +177,10 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        if Device().isPad {
+            imagePicker.allowsEditing = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -652,6 +656,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
     }
     
     func presentSessionActionSheet(withGesture gesture: UILongPressGestureRecognizer!) {
+        let device = Device()
         
         if gesture.state != .ended {
             return
@@ -664,10 +669,18 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             if indexPath.row != aimSessionFetchedArray.count {
                 if let sessionBeingManaged = aimSessionFetchedArray[indexPath.row] as? AimSession {
                     let alert = UIAlertController(title: "Managing Session '\(sessionBeingManaged.title)'.", message: "Choose one of the actions below.", preferredStyle: .actionSheet)
+                    if device.isPad {
+                        alert.popoverPresentationController?.sourceView = self.view
+                        alert.popoverPresentationController?.sourceRect = CGRect(origin: gesture.location(in: self.view), size: CGSize(width: 1.0, height: 1.0))
+                    }
                     self.sessionAwaitingChange = sessionBeingManaged
                     
                     let changeImageAction = UIAlertAction(title: "Change Image", style: .default) { (action) in
-                        let alert = UIAlertController(title: "Please Choose Your New Image for '\(sessionBeingManaged.title)'.", message: "You can either take a picture using your camera or pick one from your photo library.", preferredStyle: UIAlertControllerStyle.actionSheet)
+                        let alert = UIAlertController(title: "Please Choose Your New Image for '\(sessionBeingManaged.title)'.", message: "You can either take a picture using your camera or pick one from your photo library.", preferredStyle: UIAlertControllerStyle.alert)
+//                        if device.isPad {
+//                            alert.popoverPresentationController?.sourceView = self.view
+//                            alert.popoverPresentationController?.sourceRect = CGRect(origin: gesture.location(in: self.view), size: CGSize(width: 1.0, height: 1.0))
+//                        }
                         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
                             let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
                             if authStatus == AVAuthorizationStatus.denied {

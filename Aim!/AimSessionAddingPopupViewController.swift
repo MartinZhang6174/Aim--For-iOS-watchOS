@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import Firebase
+import DeviceKit
 
 class AimSessionAddingPopupViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
@@ -31,8 +32,14 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let device = Device()
+        
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        if device.isPad {
+            imagePicker.allowsEditing = false
+        }
         
         aimSessionTitleTextField.delegate = self
         
@@ -64,6 +71,13 @@ class AimSessionAddingPopupViewController: UIViewController, UINavigationControl
     
     @IBAction func sessionImageAddButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: "Please Choose Your Photo Source", message: "You can either take a picture using your camera or pick one from your photo library.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let device = Device()
+        if device.isPad {
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.size.width / 2.0, y: self.view.bounds.size.height / 2.0, width: 1.0, height: 1.0)
+        }
+        
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
