@@ -26,7 +26,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
         return NotificationCenter.default
     }()
     
-    var loginLoadingView: NVActivityIndicatorView?
+//    var loginLoadingView: NVActivityIndicatorView?
     var loadingViewFrameRect = CGRect()
     var loadingViewType = NVActivityIndicatorType(rawValue: 10)
     var loadingViewPadding = CGFloat()
@@ -90,7 +90,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             bottomButtonBottomAnchorConstraint.constant = 200
         }
         
-        loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+//        loginLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: aimApplicationThemeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
         
         NSLayoutConstraint.activate([fBLoginTopConstraint, fBLoginCenterXAnchor, fbLoginWidthAnchor, fbLoginHeightAnchor])
         fBLoginButton.delegate = self
@@ -135,19 +135,16 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             switch orient {
             case .portrait:
                 print("Portrait")
-                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+                self.loadingViewFrameRect = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
                 
             case .landscapeLeft,.landscapeRight :
                 print("Landscape")
-                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+                self.loadingViewFrameRect = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
                 
             default:
                 print("Default")
-                self.loginLoadingView?.frame = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
+                self.loadingViewFrameRect = CGRect(x: self.view.center.x - 25, y: self.aimLogoImageView.frame.maxY + 10, width: 50, height: 50)
             }
-        }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //refresh view once rotation is completed not in will transition as it returns incorrect frame size.Refresh here
-            self.view.setNeedsDisplay()
         })
     }
     
@@ -285,6 +282,8 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
     @IBAction func signUpButtonPressed(_ sender: Any) {
         // Configuring loading view at this point in order to test TODO: move this to point where the info entered is valid and system establishing connections to Firebase.
         
+        let signUpLoadingView = NVActivityIndicatorView(frame: loadingViewFrameRect, type: NVActivityIndicatorType.ballRotate, color: themeOrangeColor, padding: NVActivityIndicatorView.DEFAULT_PADDING)
+        
         // If password confirming tf is hidden, show it first(with placeholder change to password creation tf)
         if passwordConfirmEntryTextField.isHidden == true {
             passwordCreateEntryTextField.placeholder = "Create your password"
@@ -297,11 +296,11 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
             }
             
             if pwd1 != "" && pwd1 == pwd2 {
-                moveLoadingView(loadingView: loginLoadingView!)
+                moveLoadingView(loadingView: signUpLoadingView)
                 
                 Auth.auth().createUser(withEmail: email, password: pwd1, completion: { (user: User?, error) in
                     if error != nil {
-                        self.endLoadingView(movingLoadingView: self.loginLoadingView!)
+                        self.endLoadingView(movingLoadingView: signUpLoadingView)
                         self.emailAddressEntryTextField.shake()
                         let statusBarNotification = AimStandardStatusBarNotification()
                         statusBarNotification.display(withMessage: "The email address entered is in use or badly formatted, please check again.", forDuration: 1.5)
@@ -320,7 +319,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                     let userInfoValues = ["Email" : email, "Password" : pwd1, "Tokens" : 0] as [String : Any]
                     userReference.updateChildValues(userInfoValues, withCompletionBlock: { (err, reference) in
                         if err != nil {
-                            self.endLoadingView(movingLoadingView: self.loginLoadingView!)
+                            self.endLoadingView(movingLoadingView: signUpLoadingView)
                             print(err as Any)
                             return
                         }
@@ -332,7 +331,7 @@ class AimLoginViewController: UIViewController, UITextFieldDelegate, LoginButton
                     print("Registered new user.")
                 })
             } else {
-                self.endLoadingView(movingLoadingView: loginLoadingView!)
+                self.endLoadingView(movingLoadingView: signUpLoadingView)
                 self.passwordCreateEntryTextField.shake()
                 self.passwordConfirmEntryTextField.shake()
                 

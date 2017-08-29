@@ -244,7 +244,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
                                 self.aimTokenSumLabel.text = "\(userInRealm.tokenPool)"
                             }
                             // Transfer user info to apple watch app(maybe put this into the token sum label/button action too):
-                            let userInfoValues = ["Email": userInRealm.email, "TotalTokens": userInRealm.tokenPool] as [String : Any]
+//                            let userInfoValues = ["Email": userInRealm.email, "TotalTokens": userInRealm.tokenPool] as [String : Any]
                             
 //                            do {
 //                                try WCSession.default().transferUserInfo(["CurrentUser": userInfoValues])
@@ -347,7 +347,7 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
             }
             
             // NOT ASSIGNING TIME INTERVAL VALUE TO THIS WATCH RECEIVED OBJECT>>>>>>>>>>>>>>>><<<<<<<<<<<<<<
-            let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
+//            let sessionInfoValues = ["Title": sessionObj.title, "DateCreated": sessionObj.dateCreated, "Priority": sessionObj.isPrioritized, "Tokens": sessionObj.currentToken, "Hours": sessionObj.hoursAccumulated] as [String: Any]
             
             // Transfer the session loaded to Apple Watch app
 //            do {
@@ -357,10 +357,12 @@ class AimSessionSelectionMainViewController: UIViewController, UICollectionViewD
 //            }
             
             // Trying to find a way to animate collectionview data reloading
-            self.aimSessionCollectionView.reloadData()
-            let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
-            let indexSet = IndexSet(integersIn: range)
-            self.aimSessionCollectionView.reloadSections(indexSet)
+            self.aimSessionCollectionView.performBatchUpdates({
+                self.aimSessionCollectionView.reloadData()
+                let range = Range(uncheckedBounds: (0, self.aimSessionCollectionView.numberOfSections))
+                let indexSet = IndexSet(integersIn: range)
+                self.aimSessionCollectionView.reloadSections(indexSet)
+            }, completion: nil)
         })
     }
     
