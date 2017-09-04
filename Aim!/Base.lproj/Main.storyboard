@@ -33,7 +33,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g75-He-eBQ">
-                                <rect key="frame" x="101.33333333333331" y="581" width="212" height="45"/>
+                                <rect key="frame" x="101.66666666666669" y="581" width="212" height="45"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="27"/>
                                 <state key="normal" title="Welcome to Aim!">
                                     <color key="titleColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -287,13 +287,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-v0-26P">
-                                                    <rect key="frame" x="14.666666666666664" y="79.666666666666671" width="71.333333333333343" height="19"/>
+                                                    <rect key="frame" x="16.666666666666664" y="79.666666666666671" width="67.333333333333343" height="19"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT8-Zy-v91">
-                                                    <rect key="frame" x="36" y="8" width="29.666666666666671" height="77"/>
+                                                    <rect key="frame" x="31" y="9.6666666666666643" width="38.666666666666671" height="74.666666666666657"/>
                                                     <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="64"/>
                                                     <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -477,7 +477,7 @@
                             <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNI-v0-Z5N">
-                            <rect key="frame" x="25" y="41.333333333333329" width="110.33333333333334" height="26.999999999999986"/>
+                            <rect key="frame" x="25" y="41" width="110.33333333333334" height="27"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="23"/>
                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -534,7 +534,7 @@
                             <tableViewSection headerTitle="Account Information" id="Se3-rB-HE4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Qfd-rl-rr5">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qfd-rl-rr5" id="CeS-1A-70w">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
@@ -559,7 +559,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="iVD-Pl-mSB">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iVD-Pl-mSB" id="sUP-eY-icA">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
@@ -588,7 +588,7 @@
                             <tableViewSection headerTitle="Accessibility" id="epe-if-at8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wiC-g5-Jr9">
-                                        <rect key="frame" x="0.0" y="199.33333333333334" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wiC-g5-Jr9" id="hcV-9I-7iD">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -620,7 +620,7 @@
                             <tableViewSection headerTitle="General Settings" footerTitle="If allowed, Aim! notifies you at specified reminder times." id="swI-Yg-uZK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="qDs-3O-jqs">
-                                        <rect key="frame" x="0.0" y="306.66666666666669" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="306.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDs-3O-jqs" id="PSd-9e-kPJ">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
@@ -645,39 +645,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Apple Watch" footerTitle="Activate the companion app on your paired Apple Watch here." id="qfX-Us-Z0x">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="hC1-az-JDt">
-                                        <rect key="frame" x="0.0" y="426.00000000000006" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hC1-az-JDt" id="FuY-60-vxL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GV-ya-aRq">
-                                                    <rect key="frame" x="12" y="5" width="79" height="33"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Sync Data">
-                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="syncDataToWatchAppButtonClicked:" destination="bpa-Ik-IKv" eventType="touchUpInside" id="l1I-A9-Mnx"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="4GV-ya-aRq" firstAttribute="leading" secondItem="FuY-60-vxL" secondAttribute="leadingMargin" constant="4" id="0yx-6p-ihE"/>
-                                                <constraint firstItem="4GV-ya-aRq" firstAttribute="centerY" secondItem="FuY-60-vxL" secondAttribute="centerY" id="yQX-h1-RZa"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="jo9-0z-qcS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TN3-1B-mnp">
-                                        <rect key="frame" x="0.0" y="518.00000000000011" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="398.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TN3-1B-mnp" id="ek5-K6-c14">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -699,7 +670,7 @@
                                         <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="REd-u3-xhC">
-                                        <rect key="frame" x="0.0" y="562.00000000000011" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="442.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REd-u3-xhC" id="qpA-Lg-iHW">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -810,7 +781,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA1-Va-wxA" customClass="BFPaperButton">
-                                <rect key="frame" x="180" y="561" width="55" height="35"/>
+                                <rect key="frame" x="179.66666666666666" y="561" width="55" height="35"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
                                 <state key="normal" title=" Done ">
@@ -946,7 +917,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48o-D1-OSD" customClass="BFPaperButton">
-                                <rect key="frame" x="166" y="523" width="83" height="39"/>
+                                <rect key="frame" x="166.33333333333334" y="523" width="83" height="39"/>
                                 <color key="backgroundColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                 <state key="normal" title=" Dismiss ">
@@ -1751,7 +1722,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="aqz-6Y-qJx">
-                                                    <rect key="frame" x="120" y="41.333333333333343" width="174.33333333333331" height="318.66666666666663"/>
+                                                    <rect key="frame" x="120" y="40.666666666666657" width="174.33333333333331" height="318.66666666666663"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mondays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-eW-vTM">
                                                             <rect key="frame" x="0.0" y="0.0" width="174.33333333333331" height="26.666666666666664"/>
@@ -1766,31 +1737,31 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesdays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cy-JJ-UvP">
-                                                            <rect key="frame" x="0.0" y="97.333333333333314" width="174.33333333333331" height="26.666666666666686"/>
+                                                            <rect key="frame" x="0.0" y="97.333333333333343" width="174.33333333333331" height="26.666666666666657"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursdays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nU9-kl-fKL">
-                                                            <rect key="frame" x="0.0" y="146" width="174.33333333333331" height="26.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="146" width="174.33333333333331" height="26.666666666666686"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fridays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-6f-hJH">
-                                                            <rect key="frame" x="0.0" y="194.66666666666666" width="174.33333333333331" height="26.666666666666686"/>
+                                                            <rect key="frame" x="0.0" y="194.66666666666669" width="174.33333333333331" height="26.666666666666657"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturdays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8c-S0-iT5">
-                                                            <rect key="frame" x="0.0" y="243.33333333333331" width="174.33333333333331" height="26.666666666666629"/>
+                                                            <rect key="frame" x="0.0" y="243.33333333333334" width="174.33333333333331" height="26.666666666666657"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sundays - N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDy-Id-B1G">
-                                                            <rect key="frame" x="0.0" y="292" width="174.33333333333331" height="26.666666666666686"/>
+                                                            <rect key="frame" x="0.0" y="292" width="174.33333333333331" height="26.666666666666629"/>
                                                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="22"/>
                                                             <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2042,7 +2013,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuK-6q-vAU">
-                                <rect key="frame" x="168.33333333333337" y="92" width="77.666666666666657" height="36"/>
+                                <rect key="frame" x="168.66666666666666" y="92" width="77.666666666666686" height="36"/>
                                 <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="30"/>
                                 <color key="textColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2118,7 +2089,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure device is flat on a plain." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Omt-OA-0tj">
-                            <rect key="frame" x="21.000000000000014" y="76" width="228.33333333333337" height="48"/>
+                            <rect key="frame" x="21.666666666666671" y="76" width="228.33333333333331" height="48"/>
                             <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="20"/>
                             <color key="textColor" red="1" green="0.1843137255" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -2274,7 +2245,7 @@
                                         <color key="thumbTintColor" red="0.1019607843" green="0.078431372550000003" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVz-kO-7BT">
-                                        <rect key="frame" x="90" y="162.66666666666669" width="156" height="23.000000000000028"/>
+                                        <rect key="frame" x="89.333333333333329" y="162.66666666666669" width="156" height="23.000000000000028"/>
                                         <fontDescription key="fontDescription" name="PhosphatePro-Inline" family="Phosphate Pro" pointSize="19"/>
                                         <state key="normal" title="  Add An Image" image="CameraFilled">
                                             <color key="titleColor" red="1" green="0.185564382" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2486,6 +2457,6 @@
         <image name="settingBarButtonItem" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TnZ-09-S6k"/>
+        <segue reference="WVp-5S-bFM"/>
     </inferredMetricsTieBreakers>
 </document>
